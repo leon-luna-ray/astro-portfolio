@@ -14,6 +14,8 @@ This is my current web developer portfolio.
 - Vue.js
 - Typescript
 - JavaScript
+- Tailwind CSS
+- Sass
 - Sanity.io
 - GROQ
 - Netlify
