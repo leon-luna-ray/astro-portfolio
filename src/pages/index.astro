@@ -3,13 +3,12 @@ import { fetchFeaturedProjects, fetchGlobal, fetchProfile } from "../lib/api";
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.vue";
 import Hero from "../components/Hero.vue";
-import FeaturedProjects from '../components/FeaturedProjects.vue';
+import FeaturedProjects from "../components/FeaturedProjects.vue";
 import Footer from "../components/Footer.vue";
 
 const global = await fetchGlobal();
 const profile = await fetchProfile();
 const featuredProjects = await fetchFeaturedProjects();
-console.log(featuredProjects);
 ---
 
 <!DOCTYPE html>
@@ -24,7 +23,7 @@ console.log(featuredProjects);
     <Header title={`${profile?.name} | ${profile?.title}`} />
     <main>
       <Hero intro={global?.intro} />
-	  <FeaturedProjects projects={featuredProjects}/>
+      <FeaturedProjects projects={featuredProjects} />
     </main>
     <Footer />
   </body>

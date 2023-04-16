@@ -4,7 +4,7 @@ const props = defineProps({
 })
 </script>
 <template>
-    <div class="hero">
+    <div class="hero-banner">
         <div class="inner">
             <h1>🧑‍🚀 Hello, World!</h1>
             <p>{{ intro }}</p>

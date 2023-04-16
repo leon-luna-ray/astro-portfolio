@@ -1,0 +1,6 @@
+.hero-banner {
+    @apply py-[2rem];
+    .inner {
+        @apply flex flex-col;
+    }
+}
