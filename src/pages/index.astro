@@ -1,26 +1,30 @@
 ---
-import { fetchProfile } from "../sanity/api";
+import { fetchFeaturedProjects, fetchGlobal, fetchProfile } from "../lib/api";
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.vue";
 import Hero from "../components/Hero.vue";
+import FeaturedProjects from '../components/FeaturedProjects.vue';
 import Footer from "../components/Footer.vue";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
+const global = await fetchGlobal();
 const profile = await fetchProfile();
+const featuredProjects = await fetchFeaturedProjects();
+console.log(featuredProjects);
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <BaseHead
+      title={`Ray Luna | ${global?.title}`}
+      description={global?.description}
+    />
   </head>
   <body>
-    <Header title={SITE_TITLE} />
+    <Header title={`${profile?.name} | ${profile?.title}`} />
     <main>
-      <Hero />
-      <p>
-        {profile?.bio}
-      </p>
+      <Hero intro={global?.intro} />
+	  <FeaturedProjects projects={featuredProjects}/>
     </main>
     <Footer />
   </body>
