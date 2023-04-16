@@ -5,7 +5,7 @@ const props = defineProps({
 </script>
 <template>
     <div class="hero-banner">
-        <div class="inner">
+        <div class=" container inner">
             <h1>🧑‍🚀 Hello, World!</h1>
             <p>{{ intro }}</p>
         </div>

@@ -1,6 +1,6 @@
 .hero-banner {
     @apply py-[2rem];
     .inner {
-        @apply flex flex-col;
+        @apply flex flex-col justify-center items-center;
     }
 }
