@@ -1,7 +1,6 @@
 import { useSanityClient, groq } from 'astro-sanity';
 
 export async function fetchProfile() {
-    // Sanity queires are in the GROQ query language
     const query = groq`*[_type == "profileDetails"][0]`;
     const profile = await useSanityClient().fetch(query);
   
