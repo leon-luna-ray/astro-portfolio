@@ -15,7 +15,9 @@ const props = defineProps({
             <img :src="getThumbnailUrl(project?.mainImage)" alt="">
         </div>
         <div class="text">
-            <h3>{{ project?.title }}</h3>
+            <div class="title">
+                <h3>{{ project?.title }}</h3>
+            </div>
             <p>{{ project?.description[0].children[0].text }}</p>
             <div class="links">
                 <a v-if="project.url" :href="project.url" target="_blank">View Project</a>
