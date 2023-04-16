@@ -1,6 +1,6 @@
 # Developer Portfolio
 
-This is my current web developer portfolio.
+This is my current web developer portfolio in development.
 
 ### Project Links
 - [https://www.rayluna.dev/](https://www.rayluna.dev/)
