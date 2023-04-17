@@ -1,6 +1,16 @@
 .hero-banner {
-    @apply py-[2rem];
+    @apply md:container py-[2rem];
+
     .inner {
         @apply flex flex-col justify-center items-center;
+
+        p {
+            @apply text-[2rem] font-[100];
+        }
+    }
+    .title {
+        h1 span {
+            @apply text-80 green-text-gradient;
+        }
     }
 }

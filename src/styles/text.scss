@@ -4,6 +4,9 @@
     .text-16 {
         @apply text-[1rem];
     }
+    .text-18 {
+        @apply text-[1.125rem];
+    }
     .text-24 {
         @apply text-[1.5rem];
     }
@@ -21,5 +24,11 @@
     }
     .text-64 {
         @apply text-[4rem];
+    }
+    .text-72 {
+        @apply text-[4.5rem];
+    }
+    .text-80 {
+        @apply text-[5rem];
     }
 }

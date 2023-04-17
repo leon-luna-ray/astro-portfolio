@@ -1,23 +1,18 @@
 body {
-  @apply bg-black text-soft-white;
+  @apply bg-black text-soft-white text-18;
 }
-h1,
-h2 {
-  @apply font-[800];
+h1, .h1 {
+  @apply text-64 font-play font-[800];
 }
-h3,
-h4 {
-  @apply font-[600];
+h2, .h2 {
+  @apply text-48 font-[700] white-text-gradient;
 }
-h1 {
-  @apply text-64;
+h3, .h3 {
+  @apply text-32 font-[600] white-text-gradient;
 }
-h2 {
-  @apply text-48;
+h4, .h4 {
+  @apply text-24 font-[500] white-text-gradient;
 }
-h3 {
-  @apply text-32;
-}
-h4 {
-  @apply text-24;
+a {
+  @apply underline hover:text-primary-yellow;
 }

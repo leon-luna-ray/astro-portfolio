@@ -4,4 +4,10 @@
   .test-border {
     @apply border-2 border-red-500;
   }
+  .green-text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-green to-primary-blue;
+  }
+  .white-text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-white to-gray-200/90;
+  }
 }
