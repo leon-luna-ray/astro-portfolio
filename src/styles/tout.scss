@@ -9,6 +9,7 @@
         }
     }
     .title {
+        @apply flex flex-col justify-center items-center;
         h1 span {
             @apply text-80 green-text-gradient;
         }
