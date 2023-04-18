@@ -1,20 +1,20 @@
 body {
-  @apply bg-gray-950 text-soft-white text-18;
+  @apply bg-gray-950 text-soft-white text-18 font-raleway font-light;
 }
 main {
   @apply mt-[112px];
 }
 h1, .h1 {
-  @apply text-64 font-play font-[800];
+  @apply text-64 font-play font-[700] font-play;
 }
 h2, .h2 {
-  @apply text-48 font-[700] white-text-gradient;
+  @apply text-48 font-[600] white-text-gradient font-play;
 }
 h3, .h3 {
-  @apply text-32 font-[600] white-text-gradient;
+  @apply text-32 font-[500] white-text-gradient font-play;
 }
 h4, .h4 {
-  @apply text-24 font-[500] white-text-gradient;
+  @apply text-24 font-[500] white-text-gradient font-play;
 }
 a {
   @apply underline hover:text-primary-yellow;

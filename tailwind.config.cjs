@@ -7,6 +7,8 @@ module.exports = {
     extend: {
       fontFamily: {
         play: ['Play', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
+        raleway: ['Raleway', 'sans-serif'],
       },
       backgroundImage: {
         'blue-dots': "url('/img/loc-bg.jpg')",
