@@ -12,7 +12,7 @@ const props = defineProps({
     <div v-if="projects" class="featured-projects">
         <div class="container">
             <h2>Featured Projects</h2>
-            <div class="list">
+            <div class="list relative">
                 <CardFeaturedProject v-for="project in projects" :key="project._id" :project="project" />
             </div>
         </div>

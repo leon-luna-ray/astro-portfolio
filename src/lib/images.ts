@@ -8,5 +8,5 @@ export function getImageUrl(source:object) {
 }
 
 export function getThumbnailUrl(source:object) {
-  return getImageUrl(source).size(300,300).url();
+  return getImageUrl(source).size(400,400).url();
 }
