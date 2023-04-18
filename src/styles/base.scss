@@ -1,6 +1,9 @@
 body {
   @apply bg-gray-950 text-soft-white text-18;
 }
+main {
+  @apply mt-[112px];
+}
 h1, .h1 {
   @apply text-64 font-play font-[800];
 }

@@ -1,11 +1,19 @@
-#site-header .container {
-    @apply flex justify-between;
+#site-header {
+    @apply py-[1.5rem] fixed top-0 w-full z-10 bg-inherit;
 
-    #logo {
-        @apply flex;
+    .container {
+        @apply flex justify-between;
 
-        img {
-            @apply max-h-[4rem];
+        #logo {
+            @apply flex;
+
+            img {
+                @apply max-h-[4rem];
+            }
         }
+    }
+
+    nav {
+        @apply flex gap-x-[1rem];
     }
 }
