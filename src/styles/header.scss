@@ -1,3 +1,11 @@
 #site-header .container {
     @apply flex justify-between;
+
+    #logo {
+        @apply flex;
+
+        img {
+            @apply max-h-[4rem];
+        }
+    }
 }

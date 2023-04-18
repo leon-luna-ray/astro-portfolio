@@ -1,5 +1,5 @@
 .hero-banner {
-    @apply md:container py-[2rem];
+    @apply md:container py-[2rem] bg-white-stars bg-fixed;
 
     .inner {
         @apply flex flex-col justify-center items-center;
