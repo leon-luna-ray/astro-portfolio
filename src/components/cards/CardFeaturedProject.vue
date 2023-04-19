@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getThumbnailUrl } from '../../lib/images';
+import { getSmallUrl } from '../../lib/images';
 
 const props = defineProps({
     project: {
@@ -12,7 +12,7 @@ const props = defineProps({
 <template>
     <div v-if="project" class="card featured-project">
         <div class="image">
-            <img :src="getThumbnailUrl(project?.mainImage)" alt="">
+            <img :src="getSmallUrl(project?.mainImage)" alt="">
         </div>
         <div class="text">
             <div class="title">

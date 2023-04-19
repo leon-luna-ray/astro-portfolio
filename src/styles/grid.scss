@@ -1,0 +1,9 @@
+.featured-projects {
+    h2 {
+        @apply font-play;
+    }
+    .projects {
+    @apply grid md:grid-cols-2 md:gap-[3rem] py-[2rem];
+
+}
+}

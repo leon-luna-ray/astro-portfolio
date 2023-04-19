@@ -10,3 +10,7 @@ export function getImageUrl(source:object) {
 export function getThumbnailUrl(source:object) {
   return getImageUrl(source).size(400,400).url();
 }
+
+export function getSmallUrl(source:object) {
+  return getImageUrl(source).width(600).url();
+}
