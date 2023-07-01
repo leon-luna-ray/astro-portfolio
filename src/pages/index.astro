@@ -1,10 +1,10 @@
 ---
-import { fetchFeaturedProjects, fetchGlobal, fetchProfile } from "../lib/api";
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.vue";
-import Hero from "../components/Hero.vue";
-import FeaturedProjects from "../components/FeaturedProjects.vue";
-import Footer from "../components/Footer.vue";
+import { fetchFeaturedProjects, fetchGlobal, fetchProfile } from '../lib/api';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.vue';
+import Hero from '../components/Hero.vue';
+import FeaturedProjects from '../components/FeaturedProjects.vue';
+import Footer from '../components/Footer.vue';
 
 const global = await fetchGlobal();
 const profile = await fetchProfile();
@@ -12,7 +12,7 @@ const featuredProjects = await fetchFeaturedProjects();
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
   <head>
     <BaseHead
       title={`Ray Luna | ${global?.title}`}
@@ -20,11 +20,94 @@ const featuredProjects = await fetchFeaturedProjects();
     />
   </head>
   <body>
-    <Header title={`${profile?.name} | ${profile?.title}`} />
     <main>
-      <Hero intro={global?.intro} />
-      <FeaturedProjects projects={featuredProjects} />
+      <div class='header-hero'>
+        <div class="top-label">
+          <span>Funky 70's Portfolio</span>
+        </div>
+        <h1>Code With Style</h1>
+        <p>
+          Welcome to a groovy web developer’s world! Dive into a funky mix of
+          browns, yellows, and oranges and let’s boogie through our skillset and
+          stellar projects.
+        </p>
+        <div class='btn-links'>
+          <a href='#'>Explore Skills</a>
+          <a href='#'>Check Projects</a>
+        </div>
+      </div>
+      <!-- <div class='image-carousel'>
+        <h1>Image Carousel Goes Here</h1>
+      </div>
+      <div class='image-text-tout'>
+        <div class='text'>
+          <span class='label'>Web Maestro</span>
+          <h2>
+            Meet our developer, coding guru and disco-enthusiast, Lexie Carter!
+          </h2>
+        </div>
+        <div class='image'>Image goes here</div>
+      </div>
+      <div class='skills-section'>
+        <div class='intro'>
+          <h3>Skills and expertise</h3>
+          <p>
+            Using the power of programming and a passion for 70’s style, Lexie’s
+            languages and tools are as groovy as her funky aesthetics.
+          </p>
+        </div>
+        <div class='skills-list'>
+          <h3>Core Skills</h3>
+          <ul>
+            <li>HTML 2023</li>
+            <li>CSS 2023</li>
+            <li>JavaScript 2023</li>
+            <li>Vue 2023</li>
+          </ul>
+        </div>
+      </div>
+      <div class='featured-projects'>
+        <div class='project-card'>
+          <div class='img-wrap'>Image goes here</div>
+          <h4>Responsive Design</h4>
+          <p>Creating dazzling, responsive experiences for all devices.</p>
+        </div>
+        <div class='project-card'>
+          <div class='img-wrap'>Image goes here</div>
+          <h4>Responsive Design</h4>
+          <p>Creating dazzling, responsive experiences for all devices.</p>
+        </div>
+        <div class='project-card'>
+          <div class='img-wrap'>Image goes here</div>
+          <h4>Responsive Design</h4>
+          <p>Creating dazzling, responsive experiences for all devices.</p>
+        </div>
+        <div class='project-card'>
+          <div class='img-wrap'>Image goes here</div>
+          <h4>Responsive Design</h4>
+          <p>Creating dazzling, responsive experiences for all devices.</p>
+        </div>
+        <div class='project-card'>
+          <div class='img-wrap'>Image goes here</div>
+          <h4>Responsive Design</h4>
+          <p>Creating dazzling, responsive experiences for all devices.</p>
+        </div>
+        <div class='project-card'>
+          <div class='img-wrap'>Image goes here</div>
+          <h4>Responsive Design</h4>
+          <p>Creating dazzling, responsive experiences for all devices.</p>
+        </div>
+      </div>
     </main>
-    <Footer />
+    <footer>
+      <div class='social-icons'>
+        <a href='#'>Email</a>
+        <a href='#'>Github</a>
+        <a href='#'>Linkedin</a>
+      </div>
+      <div class='copyright'>
+        <p>© 2023 Ray Luna. All rights reserved.</p>
+      </div>
+    </footer> -->
   </body>
 </html>
