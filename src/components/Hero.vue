@@ -6,7 +6,6 @@ const props = defineProps({
 })
 
 const scrollToSection = (id: string): void => {
-    console.log('click!')
     const element = document.querySelector(id);
     if (element) {
         element.scrollIntoView({
@@ -30,8 +29,8 @@ console.log('is this working?')
             </div>
         </div>
         <div class='btn-links'>
-            <a class="btn dark" @click.prevent="scrollToSection('#skills')">Explore Skills</a>
-            <a class="btn light" href='#featured-projects'>Check Projects</a>
+            <a class="btn dark" @click.prevent="scrollToSection('#featured-skills')">Explore Skills</a>
+            <a class="btn light" @click.prevent="scrollToSection('#featured-projects')">Check Projects</a>
         </div>
     </div>
 </template>
