@@ -14,7 +14,7 @@ const global = await fetchGlobal();
 const profile = await fetchProfile();
 const featuredProjects = await fetchFeaturedProjects();
 
-console.log(global);
+// console.log(global);
 console.log(profile);
 // console.log(global);
 ---
@@ -38,12 +38,16 @@ console.log(profile);
       <ImageCarousel />
       <ImageTextTout />
       <TextTout>
-        <h3 slot='title' class="title">About Me</h3>
-        <p slot='text' class="text">{profile?.bio}</p>
+        <h3 slot='title' class='title'>About Me</h3>
+        <p slot='text' class='text'>{profile?.bio}</p>
       </TextTout>
       <SkillsSection />
       <FeaturedProjects projects={featuredProjects} />
     </main>
-    <Footer />
+    <Footer
+      linkedin={profile?.linkedin}
+      github={profile?.github}
+      email={profile?.email}
+    />
   </body>
 </html>
