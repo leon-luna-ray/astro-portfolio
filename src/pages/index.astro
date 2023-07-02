@@ -25,13 +25,14 @@ const featuredProjects = await fetchFeaturedProjects();
     />
   </head>
   <body>
+    <Header/>
     <main>
       <Hero />
       <ImageCarousel />
       <ImageTextTout />
       <SkillsSection />
       <FeaturedProjects projects={featuredProjects} />
-      <Footer />
     </main>
+    <Footer />
   </body>
 </html>
