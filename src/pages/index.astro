@@ -13,11 +13,7 @@ const global = await fetchGlobal();
 const profile = await fetchProfile();
 const featuredProjects = await fetchFeaturedProjects();
 
-console.log(featuredProjects)
-
-if(featuredProjects){
-  console.log('projects!')
-}
+console.log(featuredProjects);
 ---
 
 <!DOCTYPE html>
@@ -34,7 +30,7 @@ if(featuredProjects){
       <ImageCarousel />
       <ImageTextTout />
       <SkillsSection />
-      <FeaturedProjects :projects={featuredProjects} />
+      <FeaturedProjects projects={featuredProjects} />
       <!--
     <footer>
       <div class='social-icons'>

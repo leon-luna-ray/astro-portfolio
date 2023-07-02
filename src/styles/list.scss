@@ -1,7 +1,3 @@
-.featured-projects .list {
-    @apply flex flex-col gap-y-[1rem] py-[2rem];
-}
-
 .skills-list {
     @apply container py-[6.25rem] grid md:grid-cols-2;
 

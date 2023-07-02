@@ -7,38 +7,21 @@ const props = defineProps({
         required: true,
     },
 })
+
+console.log(props.projects)
 </script>
 <template>
     <div class='featured-projects'>
-        <div class='project-card'>
-            <div class='img-wrap'>Image goes here</div>
-            <h4>Responsive Design</h4>
-            <p>Creating dazzling, responsive experiences for all devices.</p>
-        </div>
-        <div class='project-card'>
-            <div class='img-wrap'>Image goes here</div>
-            <h4>Responsive Design</h4>
-            <p>Creating dazzling, responsive experiences for all devices.</p>
-        </div>
-        <div class='project-card'>
-            <div class='img-wrap'>Image goes here</div>
-            <h4>Responsive Design</h4>
-            <p>Creating dazzling, responsive experiences for all devices.</p>
-        </div>
-        <div class='project-card'>
-            <div class='img-wrap'>Image goes here</div>
-            <h4>Responsive Design</h4>
-            <p>Creating dazzling, responsive experiences for all devices.</p>
-        </div>
-        <div class='project-card'>
-            <div class='img-wrap'>Image goes here</div>
-            <h4>Responsive Design</h4>
-            <p>Creating dazzling, responsive experiences for all devices.</p>
-        </div>
-        <div class='project-card'>
-            <div class='img-wrap'>Image goes here</div>
-            <h4>Responsive Design</h4>
-            <p>Creating dazzling, responsive experiences for all devices.</p>
+        <div class="project-grid">
+            <div v-for="project in projects" class='card featured-project'>
+                <div class='img-wrap'>
+                    <img src="../assets/img/ruta1x1.jpg" alt="">
+                </div>
+                <div class="text">
+                    <span class="title">Responsive Design</span>
+                    <span class="description">Creating dazzling, responsive experiences for all devices.</span>
+                </div>
+            </div>
         </div>
     </div>
 </template>
