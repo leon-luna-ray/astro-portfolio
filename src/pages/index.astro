@@ -13,7 +13,9 @@ const global = await fetchGlobal();
 const profile = await fetchProfile();
 const featuredProjects = await fetchFeaturedProjects();
 
-// console.log(featuredProjects);
+console.log(global);
+// console.log(profile);
+// console.log(global);
 ---
 
 <!DOCTYPE html>
@@ -27,7 +29,7 @@ const featuredProjects = await fetchFeaturedProjects();
   <body>
     <Header/>
     <main>
-      <Hero />
+      <Hero intro={global?.intro} client:load/>
       <ImageCarousel />
       <ImageTextTout />
       <SkillsSection />

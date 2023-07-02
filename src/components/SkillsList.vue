@@ -1,5 +1,5 @@
 <template>
-    <div class='skills-list'>
+    <div id="skills" class='skills-list'>
         <div class='intro'>
             <h3 class="title">Skills and expertise</h3>
             <p>

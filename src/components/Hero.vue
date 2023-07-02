@@ -1,4 +1,22 @@
 <script setup lang="ts">
+const props = defineProps({
+    intro: {
+        type: String,
+    },
+})
+
+const scrollToSection = (id: string): void => {
+    console.log('click!')
+    const element = document.querySelector(id);
+    if (element) {
+        element.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+        });
+    }
+};
+
+console.log('is this working?')
 </script>
 <template>
     <div class='hero'>
@@ -7,15 +25,13 @@
                 <h1 class='title'>Ray Luna</h1>
                 <h2 class="subtitle">Code with style</h2>
                 <p class='intro'>
-                    Welcome to a groovy web developer’s world! Dive into a funky mix
-                    of browns, yellows, and oranges and let’s boogie through our
-                    skillset and stellar projects.
+                    {{ intro }}
                 </p>
             </div>
         </div>
         <div class='btn-links'>
-            <a class="btn dark" href='#'>Explore Skills</a>
-            <a class="btn light" href='#'>Check Projects</a>
+            <a class="btn dark" @click.prevent="scrollToSection('#skills')">Explore Skills</a>
+            <a class="btn light" href='#featured-projects'>Check Projects</a>
         </div>
     </div>
 </template>
