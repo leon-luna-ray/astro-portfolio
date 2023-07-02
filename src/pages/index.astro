@@ -35,7 +35,7 @@ console.log(profile);
         <h1 slot='title' class='title'>{profile?.name}</h1>
         <p slot='intro' class='intro'>{global?.intro}</p>
       </Hero>
-      <ImageCarousel />
+      <ImageCarousel profileImage={profile?.image} client:load />
       <ImageTextTout />
       <TextTout>
         <h3 slot='title' class='title'>About Me</h3>
