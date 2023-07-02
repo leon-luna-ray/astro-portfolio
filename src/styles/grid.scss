@@ -1,7 +1,14 @@
 .featured-projects {
     @apply pt-[4.375rem] md:py-[6.25rem];
 
+    .title {
+        @apply container;
+
+        h3 {
+            @apply text-[1.25rem];
+        }
+    }
     .project-grid {
-        @apply grid md:grid-cols-3 container gap-[2.5rem];
+        @apply grid md:grid-cols-3 container gap-[2.5rem] pt-[2.5rem];
     }
 }

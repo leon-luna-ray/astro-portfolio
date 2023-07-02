@@ -11,6 +11,9 @@ const props = defineProps({
 </script>
 <template>
     <div id="featured-projects" class='featured-projects'>
+        <div class="title">
+            <h3>Featured Projects</h3>
+        </div>
         <div class="project-grid">
             <CardFeaturedProject v-for="project in projects" :project="project"/>
         </div>
