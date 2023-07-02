@@ -3,6 +3,8 @@ import { fetchFeaturedProjects, fetchGlobal, fetchProfile } from '../lib/api';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.vue';
 import Hero from '../components/Hero.vue';
+import ImageCarousel from '../components/ImageCarousel.vue'
+import ImageTextTout from '../components/ImageTextTout.vue'
 import FeaturedProjects from '../components/FeaturedProjects.vue';
 import Footer from '../components/Footer.vue';
 
@@ -21,34 +23,10 @@ const featuredProjects = await fetchFeaturedProjects();
   </head>
   <body>
     <main>
-      <div class='header-hero'>
-        <div class="top-label">
-          <span>Funky 70's Portfolio</span>
-        </div>
-        <h1>Code With Style</h1>
-        <p>
-          Welcome to a groovy web developer’s world! Dive into a funky mix of
-          browns, yellows, and oranges and let’s boogie through our skillset and
-          stellar projects.
-        </p>
-        <div class='btn-links'>
-          <a href='#'>Explore Skills</a>
-          <a href='#'>Check Projects</a>
-        </div>
-      </div>
-      <!-- <div class='image-carousel'>
-        <h1>Image Carousel Goes Here</h1>
-      </div>
-      <div class='image-text-tout'>
-        <div class='text'>
-          <span class='label'>Web Maestro</span>
-          <h2>
-            Meet our developer, coding guru and disco-enthusiast, Lexie Carter!
-          </h2>
-        </div>
-        <div class='image'>Image goes here</div>
-      </div>
-      <div class='skills-section'>
+      <Hero/>
+      <ImageCarousel/>
+      <ImageTextTout/>
+      <!--<div class='skills-section'>
         <div class='intro'>
           <h3>Skills and expertise</h3>
           <p>
@@ -108,6 +86,7 @@ const featuredProjects = await fetchFeaturedProjects();
       <div class='copyright'>
         <p>© 2023 Ray Luna. All rights reserved.</p>
       </div>
-    </footer> -->
+    </footer>  -->
+    </main>
   </body>
 </html>

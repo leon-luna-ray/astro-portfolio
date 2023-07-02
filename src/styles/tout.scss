@@ -1,6 +1,21 @@
-.hero-banner {
-    @apply py-[2rem];
+.image-text-tout {
+    @apply py-[3.125rem];
+
     .inner {
-        @apply flex flex-col;
+        @apply container grid grid-cols-2;
+    }
+
+    .text {
+        p {
+            @apply font-monoton text-[3.125rem] pt-[2.5rem];
+        }
+    }
+
+    .img-wrap {
+        @apply relative;
+
+        img {
+            @apply absolute animate-spin-slow;
+        }
     }
 }

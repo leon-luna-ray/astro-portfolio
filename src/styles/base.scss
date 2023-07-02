@@ -1,6 +1,19 @@
 body {
-  @apply bg-primary-yellow font-archivo;
+  @apply bg-primary-yellow font-archivo md:py-[6.25rem];
 }
-h1,h2,h3,h4 {
-  @apply font-bold;
+h1,h2,h3,h4,h5 {
+  @apply font-monoton;
+}
+
+h1 {
+  @apply text-[5rem];
+}
+h2 {
+  @apply text-[4rem];
+}
+h3 {
+  @apply text-[3rem];
+}
+h4 {
+  @apply text-[2rem];
 }

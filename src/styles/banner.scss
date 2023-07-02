@@ -1,3 +1,35 @@
-.header-hero {
-    @apply test-border;
+.hero {
+    @apply container;
+
+    .top-label {
+        @apply flex items-center justify-center;
+
+        span {
+            @apply px-4 text-center font-bold text;
+        }
+
+        .divider {
+            @apply flex-grow bg-black h-[2px];
+        }
+    }
+
+    .hero-text {
+        @apply flex justify-center;
+
+        .inner {
+            @apply max-w-[800px] text-center;
+        }
+        .title {
+            @apply pt-[3.125rem] text-center;
+        }
+        .intro {
+            @apply py-[1.875rem] text-[1.25rem] font-light;
+        }
+    }
+
+    .btn-links {
+        @apply flex justify-center gap-x-[0.625rem];
+
+
+    }
 }
