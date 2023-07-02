@@ -11,5 +11,8 @@
         .title {
             @apply font-bold;
         }
+        .description {
+            @apply line-clamp-3;
+        }
     }
 }

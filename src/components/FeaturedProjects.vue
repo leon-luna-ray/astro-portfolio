@@ -11,7 +11,7 @@ const props = defineProps({
 </script>
 <template>
     <div id="featured-projects" class='featured-projects'>
-        <div class="title">
+        <div class="section-title">
             <h3>Featured Projects</h3>
         </div>
         <div class="project-grid">
