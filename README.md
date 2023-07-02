@@ -18,5 +18,4 @@ This is my current web developer portfolio in development.
 - Tailwind CSS
 - Sass
 - Sanity.io
-- GROQ
 - Netlify

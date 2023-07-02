@@ -12,9 +12,9 @@ const props = defineProps({
 
 <template>
     <div class='card featured-project'>
-        <div class='img-wrap'>
+        <a class='img-wrap' :href="project.url" target="_blank">
             <img :src="getThumbnailUrl(project?.mainImage)" :alt="`Image of ${project.title}`">
-        </div>
+        </a>
         <div class="text">
             <span class="title">{{ project.title }}</span>
             <span class="description">{{ project?.description[0].children[0].text }}</span>

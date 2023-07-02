@@ -8,14 +8,14 @@
             @apply bg-neutral-brown;
 
             img {
-                @apply sepia hover:sepia-0;
+                @apply img-sepia;
             }
         }
         &.black {
             @apply bg-black;
 
             img {
-                @apply grayscale hover:grayscale-0;
+                @apply img-grayscale;
             }
         }
         img {
