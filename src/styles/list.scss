@@ -1,3 +1,28 @@
 .featured-projects .list {
     @apply flex flex-col gap-y-[1rem] py-[2rem];
 }
+
+.skills-list {
+    @apply container py-[6.25rem] grid md:grid-cols-2;
+
+    .intro,
+    .list {
+        @apply flex flex-col gap-y-[2.5rem] px-[1rem];
+    }
+    .title,
+    p {
+        @apply text-[1.25rem];
+    }
+
+    .list ul {
+        @apply font-bold flex flex-col gap-y-[1rem];
+
+        li {
+            @apply flex justify-between;
+        }
+
+        li:not(:last-child) {
+            @apply border-b border-primary-orange pb-[1rem];
+        }
+    }
+}

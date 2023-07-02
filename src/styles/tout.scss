@@ -12,7 +12,7 @@
     }
 
     .img-wrap {
-        @apply relative;
+        @apply relative flex justify-end items-center h-[98%];
 
         img {
             @apply absolute animate-spin-slow;

@@ -9,10 +9,36 @@ const props = defineProps({
 })
 </script>
 <template>
-    <div v-if="projects" class="featured-projects">
-        <h2>Featured Projects</h2>
-        <div class="list">
-            <CardFeaturedProject v-for="project in projects" :key="project._id" :project="project" />
+    <div class='featured-projects'>
+        <div class='project-card'>
+            <div class='img-wrap'>Image goes here</div>
+            <h4>Responsive Design</h4>
+            <p>Creating dazzling, responsive experiences for all devices.</p>
+        </div>
+        <div class='project-card'>
+            <div class='img-wrap'>Image goes here</div>
+            <h4>Responsive Design</h4>
+            <p>Creating dazzling, responsive experiences for all devices.</p>
+        </div>
+        <div class='project-card'>
+            <div class='img-wrap'>Image goes here</div>
+            <h4>Responsive Design</h4>
+            <p>Creating dazzling, responsive experiences for all devices.</p>
+        </div>
+        <div class='project-card'>
+            <div class='img-wrap'>Image goes here</div>
+            <h4>Responsive Design</h4>
+            <p>Creating dazzling, responsive experiences for all devices.</p>
+        </div>
+        <div class='project-card'>
+            <div class='img-wrap'>Image goes here</div>
+            <h4>Responsive Design</h4>
+            <p>Creating dazzling, responsive experiences for all devices.</p>
+        </div>
+        <div class='project-card'>
+            <div class='img-wrap'>Image goes here</div>
+            <h4>Responsive Design</h4>
+            <p>Creating dazzling, responsive experiences for all devices.</p>
         </div>
     </div>
 </template>

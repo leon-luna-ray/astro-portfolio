@@ -3,14 +3,21 @@ import { fetchFeaturedProjects, fetchGlobal, fetchProfile } from '../lib/api';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.vue';
 import Hero from '../components/Hero.vue';
-import ImageCarousel from '../components/ImageCarousel.vue'
-import ImageTextTout from '../components/ImageTextTout.vue'
+import ImageCarousel from '../components/ImageCarousel.vue';
+import ImageTextTout from '../components/ImageTextTout.vue';
+import SkillsSection from '../components/SkillsList.vue';
 import FeaturedProjects from '../components/FeaturedProjects.vue';
 import Footer from '../components/Footer.vue';
 
 const global = await fetchGlobal();
 const profile = await fetchProfile();
 const featuredProjects = await fetchFeaturedProjects();
+
+console.log(featuredProjects)
+
+if(featuredProjects){
+  console.log('projects!')
+}
 ---
 
 <!DOCTYPE html>
@@ -23,60 +30,12 @@ const featuredProjects = await fetchFeaturedProjects();
   </head>
   <body>
     <main>
-      <Hero/>
-      <ImageCarousel/>
-      <ImageTextTout/>
-      <!--<div class='skills-section'>
-        <div class='intro'>
-          <h3>Skills and expertise</h3>
-          <p>
-            Using the power of programming and a passion for 70’s style, Lexie’s
-            languages and tools are as groovy as her funky aesthetics.
-          </p>
-        </div>
-        <div class='skills-list'>
-          <h3>Core Skills</h3>
-          <ul>
-            <li>HTML 2023</li>
-            <li>CSS 2023</li>
-            <li>JavaScript 2023</li>
-            <li>Vue 2023</li>
-          </ul>
-        </div>
-      </div>
-      <div class='featured-projects'>
-        <div class='project-card'>
-          <div class='img-wrap'>Image goes here</div>
-          <h4>Responsive Design</h4>
-          <p>Creating dazzling, responsive experiences for all devices.</p>
-        </div>
-        <div class='project-card'>
-          <div class='img-wrap'>Image goes here</div>
-          <h4>Responsive Design</h4>
-          <p>Creating dazzling, responsive experiences for all devices.</p>
-        </div>
-        <div class='project-card'>
-          <div class='img-wrap'>Image goes here</div>
-          <h4>Responsive Design</h4>
-          <p>Creating dazzling, responsive experiences for all devices.</p>
-        </div>
-        <div class='project-card'>
-          <div class='img-wrap'>Image goes here</div>
-          <h4>Responsive Design</h4>
-          <p>Creating dazzling, responsive experiences for all devices.</p>
-        </div>
-        <div class='project-card'>
-          <div class='img-wrap'>Image goes here</div>
-          <h4>Responsive Design</h4>
-          <p>Creating dazzling, responsive experiences for all devices.</p>
-        </div>
-        <div class='project-card'>
-          <div class='img-wrap'>Image goes here</div>
-          <h4>Responsive Design</h4>
-          <p>Creating dazzling, responsive experiences for all devices.</p>
-        </div>
-      </div>
-    </main>
+      <Hero />
+      <ImageCarousel />
+      <ImageTextTout />
+      <SkillsSection />
+      <FeaturedProjects :projects={featuredProjects} />
+      <!--
     <footer>
       <div class='social-icons'>
         <a href='#'>Email</a>
