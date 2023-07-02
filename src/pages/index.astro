@@ -7,6 +7,7 @@ import ImageCarousel from '../components/ImageCarousel.vue';
 import ImageTextTout from '../components/ImageTextTout.vue';
 import SkillsSection from '../components/SkillsList.vue';
 import FeaturedProjects from '../components/FeaturedProjects.vue';
+import TextTout from '../components/TextTout.vue';
 import Footer from '../components/Footer.vue';
 
 const global = await fetchGlobal();
@@ -27,8 +28,8 @@ console.log(profile);
     />
   </head>
   <body>
-    <div id="top-bg" aria-hidden="true"></div>
-    <Header client:load title={global?.title} name={profile?.name}/>
+    <div id='top-bg' aria-hidden='true'></div>
+    <Header client:load title={global?.title} name={profile?.name} />
     <main>
       <Hero client:load>
         <h1 slot='title' class='title'>{profile?.name}</h1>
@@ -36,6 +37,10 @@ console.log(profile);
       </Hero>
       <ImageCarousel />
       <ImageTextTout />
+      <TextTout>
+        <h3 slot='title' class="title">About Me</h3>
+        <p slot='text' class="text">{profile?.bio}</p>
+      </TextTout>
       <SkillsSection />
       <FeaturedProjects projects={featuredProjects} />
     </main>
