@@ -1,13 +1,18 @@
 .image-text-tout {
-    @apply pt-[1.688rem] md:py-[3.125rem];
+    @apply md:pt-[1.688rem] md:py-[3.125rem] overflow-hidden;
 
     .inner {
         @apply container grid md:grid-cols-2;
     }
 
     .text {
+        @apply text-center md:text-left;
+
+        .label {
+            @apply font-semibold;
+        }
         p {
-            @apply font-monoton text-[2rem] md:text-[3.125rem] pt-[2.5rem];
+            @apply font-monoton text-[2rem] md:text-[3.125rem] pt-[1rem] md:pt-[2.5rem];
         }
     }
 

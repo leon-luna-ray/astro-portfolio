@@ -1,10 +1,4 @@
 <script setup lang="ts">
-const props = defineProps({
-    intro: {
-        type: String,
-    },
-})
-
 const scrollToSection = (id: string): void => {
     const element = document.querySelector(id);
     if (element) {
@@ -14,18 +8,14 @@ const scrollToSection = (id: string): void => {
         });
     }
 };
-
-console.log('is this working?')
 </script>
 <template>
     <div class='hero'>
         <div class='hero-text'>
             <div class='inner'>
-                <h1 class='title'>Ray Luna</h1>
+                <slot name="title"></slot>
                 <h2 class="subtitle">Code with style</h2>
-                <p class='intro'>
-                    {{ intro }}
-                </p>
+                <slot name="intro"></slot>
             </div>
         </div>
         <div class='btn-links'>

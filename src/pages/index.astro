@@ -14,7 +14,7 @@ const profile = await fetchProfile();
 const featuredProjects = await fetchFeaturedProjects();
 
 console.log(global);
-// console.log(profile);
+console.log(profile);
 // console.log(global);
 ---
 
@@ -22,14 +22,18 @@ console.log(global);
 <html lang='en'>
   <head>
     <BaseHead
-      title={`Ray Luna | ${global?.title}`}
+      title={`${profile?.name} | ${global?.title}`}
       description={global?.description}
     />
   </head>
   <body>
-    <Header/>
+    <div id="top-bg" aria-hidden="true"></div>
+    <Header client:load title={global?.title} name={profile?.name}/>
     <main>
-      <Hero intro={global?.intro} client:load/>
+      <Hero client:load>
+        <h1 slot='title' class='title'>{profile?.name}</h1>
+        <p slot='intro' class='intro'>{global?.intro}</p>
+      </Hero>
       <ImageCarousel />
       <ImageTextTout />
       <SkillsSection />

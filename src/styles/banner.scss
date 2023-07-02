@@ -1,8 +1,12 @@
+#top-bg {
+    @apply fixed w-screen top-0 h-[1rem] z-[2] bg-primary-yellow;
+}
+
 #header {
-    @apply container;
+    @apply  sticky top-0 md:top-[1rem] bg-primary-yellow z-[2];
 
     .top-label {
-        @apply flex items-center justify-center border-t border-b border-black md:border-none;
+        @apply container flex items-center justify-center border-t border-b border-black md:border-none;
 
         span {
             @apply px-4 py-[1.25rem] md:py-0 text-center font-bold text;
