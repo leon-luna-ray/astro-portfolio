@@ -13,7 +13,7 @@ const global = await fetchGlobal();
 const profile = await fetchProfile();
 const featuredProjects = await fetchFeaturedProjects();
 
-console.log(featuredProjects);
+// console.log(featuredProjects);
 ---
 
 <!DOCTYPE html>
@@ -31,17 +31,7 @@ console.log(featuredProjects);
       <ImageTextTout />
       <SkillsSection />
       <FeaturedProjects projects={featuredProjects} />
-      <!--
-    <footer>
-      <div class='social-icons'>
-        <a href='#'>Email</a>
-        <a href='#'>Github</a>
-        <a href='#'>Linkedin</a>
-      </div>
-      <div class='copyright'>
-        <p>© 2023 Ray Luna. All rights reserved.</p>
-      </div>
-    </footer>  -->
+      <Footer />
     </main>
   </body>
 </html>
