@@ -1,5 +1,5 @@
 .featured-projects {
-    @apply py-[6.25rem];
+    @apply pt-[4.375rem] md:py-[6.25rem];
 
     .project-grid {
         @apply grid md:grid-cols-3 container gap-[2.5rem];

@@ -1,18 +1,18 @@
 .image-text-tout {
-    @apply py-[3.125rem];
+    @apply pt-[1.688rem] md:py-[3.125rem];
 
     .inner {
-        @apply container grid grid-cols-2;
+        @apply container grid md:grid-cols-2;
     }
 
     .text {
         p {
-            @apply font-monoton text-[3.125rem] pt-[2.5rem];
+            @apply font-monoton text-[2rem] md:text-[3.125rem] pt-[2.5rem];
         }
     }
 
     .img-wrap {
-        @apply relative flex justify-end items-center h-[98%];
+        @apply hidden md:flex relative justify-end items-center h-[98%];
 
         img {
             @apply absolute animate-spin-slow;
