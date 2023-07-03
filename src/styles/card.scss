@@ -1,0 +1,18 @@
+.card.featured-project {
+    @apply flex flex-col gap-y-[1.875rem];
+
+    .img-wrap img {
+        @apply rounded-3xl w-full aspect-square object-cover img-grayscale zoom-in-out;
+    }
+
+    .text {
+        @apply flex flex-col gap-y-[0.625rem] text-[1.125rem];
+
+        .title {
+            @apply font-bold;
+        }
+        .description {
+            @apply line-clamp-3;
+        }
+    }
+}

@@ -1,9 +1,39 @@
 .featured-projects {
-    h2 {
-        @apply font-play;
-    }
-    .projects {
-    @apply grid md:grid-cols-2 md:gap-[3rem] py-[2rem];
+    @apply pb-[4rem];
 
+    .section-title {
+        @apply container;
+
+        h3 {
+            @apply text-[1.25rem];
+        }
+    }
+    .project-grid {
+        @apply grid md:grid-cols-3 container gap-[2.5rem] pt-[4rem];
+    }
 }
+
+.image-carousel {
+    @apply container pt-[3.75rem] flex justify-center md:justify-between gap-x-[1.25rem] pb-[2rem] md:pb-[4.375rem];
+
+    .slide {
+        @apply flex justify-center items-center aspect-square rounded-3xl p-[2rem] max-w-[460px] w-fit;
+
+        &.brown {
+            @apply bg-neutral-brown hidden md:block;
+
+            img {
+                @apply img-sepia;
+            }
+        }
+        &.black {
+            @apply bg-black;
+            img {
+                // @apply img-sepia;
+            }
+        }
+        img {
+            @apply aspect-square object-cover rounded-3xl;
+        }
+    }
 }

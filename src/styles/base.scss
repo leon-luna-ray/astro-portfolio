@@ -1,21 +1,19 @@
 body {
-  @apply bg-gray-950 text-soft-white text-18 font-raleway font-light;
+  @apply bg-primary-yellow font-archivo font-extralight pt-[1.25rem] pb-[2.5rem] md:py-[6.25rem] relative;
 }
-main {
-  @apply mt-[112px];
+h1,h2,h3,h4,h5 {
+  @apply font-monoton;
 }
-h1, .h1 {
-  @apply text-64 font-play font-[700] font-play;
+
+h1 {
+  @apply text-[5rem];
 }
-h2, .h2 {
-  @apply text-48 font-[600] white-text-gradient font-play;
+h2 {
+  @apply text-[4rem];
 }
-h3, .h3 {
-  @apply text-32 font-[500] white-text-gradient font-play;
+h3 {
+  @apply text-[3rem];
 }
-h4, .h4 {
-  @apply text-24 font-[500] white-text-gradient font-play;
-}
-a {
-  @apply underline hover:text-primary-yellow;
+h4 {
+  @apply text-[2rem];
 }
