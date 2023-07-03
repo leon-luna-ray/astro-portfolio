@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getSmallUrl } from '../../lib/images';
+import { getThumbnailUrl } from '../../lib/images';
 
 const props = defineProps({
     project: {
