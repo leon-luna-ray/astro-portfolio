@@ -1,5 +1,21 @@
+.link-list {
+    @apply font-bold flex flex-col gap-y-[1rem];
+
+    li {
+        @apply flex justify-between;
+    }
+
+    li:not(:last-child) {
+        @apply border-b border-primary-orange pb-[1rem];
+    }
+}
+
 .skills-list {
-    @apply container py-[4rem] md:py-[6.25rem] grid md:grid-cols-2 gap-[2.5rem];
+    @apply container py-[4rem] md:py-[6.25rem] flex flex-col gap-y-[5rem];
+
+    .bottom {
+        @apply grid md:grid-cols-3 gap-[2.5rem];
+    }
 
     .intro,
     .list {
@@ -8,17 +24,5 @@
     .title,
     p {
         @apply text-[1.25rem];
-    }
-
-    .list ul {
-        @apply font-bold flex flex-col gap-y-[1rem];
-
-        li {
-            @apply flex justify-between;
-        }
-
-        li:not(:last-child) {
-            @apply border-b border-primary-orange pb-[1rem];
-        }
     }
 }

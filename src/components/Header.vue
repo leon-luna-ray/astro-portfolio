@@ -13,7 +13,8 @@ const props = defineProps({
 
 // Composables
 const { y } = useWindowScroll();
-const isMobile = useMediaQuery('(max-width: 640px)')
+const isMobile = useMediaQuery('(max-width: 640px)');
+
 // State
 const isSticky = ref(false);
 
