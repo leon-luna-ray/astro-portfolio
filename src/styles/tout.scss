@@ -1,6 +1,38 @@
-.hero-banner {
-    @apply py-[2rem];
+.image-text-tout {
+    @apply md:pt-[1.688rem] md:py-[3.125rem] overflow-hidden;
+
     .inner {
-        @apply flex flex-col;
+        @apply container grid md:grid-cols-2;
+    }
+
+    .text {
+        @apply text-center md:text-left;
+
+        .label {
+            @apply font-semibold;
+        }
+        p {
+            @apply font-monoton text-[2rem] md:text-[3.125rem] pt-[1rem] md:pt-[2.5rem];
+        }
+    }
+
+    .img-wrap {
+        @apply hidden md:flex relative justify-end items-center h-[98%];
+
+        img {
+            @apply absolute animate-spin-slow;
+        }
+    }
+}
+
+.text-tout {
+    @apply container pt-[3.125rem];
+
+    .title, .text {
+        @apply text-[1.25rem];
+    }
+
+    .text {
+        @apply pt-[2.5rem];
     }
 }

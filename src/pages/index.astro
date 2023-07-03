@@ -1,30 +1,56 @@
 ---
-import { fetchFeaturedProjects, fetchGlobal, fetchProfile } from "../lib/api";
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.vue";
-import Hero from "../components/Hero.vue";
-import FeaturedProjects from "../components/FeaturedProjects.vue";
-import Footer from "../components/Footer.vue";
+import {
+  fetchFeaturedProjects,
+  fetchGlobal,
+  fetchProfile,
+  fetchSkills,
+} from '../lib/api';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.vue';
+import Hero from '../components/Hero.vue';
+import ImageCarousel from '../components/ImageCarousel.vue';
+import ImageTextTout from '../components/ImageTextTout.vue';
+import FeaturedSkills from '../components/FeaturedSkills.vue';
+import FeaturedProjects from '../components/FeaturedProjects.vue';
+import TextTout from '../components/TextTout.vue';
+import Footer from '../components/Footer.vue';
 
+const featuredProjects = await fetchFeaturedProjects();
 const global = await fetchGlobal();
 const profile = await fetchProfile();
-const featuredProjects = await fetchFeaturedProjects();
+const skills = await fetchSkills();
+
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
   <head>
     <BaseHead
-      title={`Ray Luna | ${global?.title}`}
+      title={`${profile?.name} | ${global?.title}`}
       description={global?.description}
     />
   </head>
   <body>
-    <Header title={`${profile?.name} | ${profile?.title}`} />
+    <div id='top-bg' aria-hidden='true'></div>
+    <Header client:load title={global?.title} name={profile?.name} />
     <main>
-      <Hero intro={global?.intro} />
+      <Hero client:load>
+        <h1 slot='title' class='title'>{profile?.name}</h1>
+        <p slot='intro' class='intro'>{global?.intro}</p>
+      </Hero>
+      <ImageCarousel profileImage={profile?.image} client:load />
+      <ImageTextTout />
+      <TextTout>
+        <h3 slot='title' class='title'>About Me</h3>
+        <p slot='text' class='text'>{profile?.bio}</p>
+      </TextTout>
+      <FeaturedSkills skills={skills}/>
       <FeaturedProjects projects={featuredProjects} />
     </main>
-    <Footer />
+    <Footer
+      linkedin={profile?.linkedin}
+      github={profile?.github}
+      email={profile?.email}
+    />
   </body>
 </html>

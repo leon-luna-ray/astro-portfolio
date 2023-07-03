@@ -7,12 +7,15 @@ const props = defineProps({
         required: true,
     },
 })
+
 </script>
 <template>
-    <div v-if="projects" class="featured-projects">
-        <h2>Featured Projects</h2>
-        <div class="list">
-            <CardFeaturedProject v-for="project in projects" :key="project._id" :project="project" />
+    <div id="featured-projects" class='featured-projects'>
+        <div class="section-title">
+            <h3>Featured Projects</h3>
+        </div>
+        <div class="project-grid">
+            <CardFeaturedProject v-for="project in projects" :project="project"/>
         </div>
     </div>
 </template>
