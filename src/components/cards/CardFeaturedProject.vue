@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { getThumbnailUrl } from '../../lib/images';
+import { sanityPortableText } from '../../lib/text';
 
 const props = defineProps({
     project: {
@@ -7,7 +8,6 @@ const props = defineProps({
         required: true,
     },
 })
-
 </script>
 
 <template>
@@ -17,7 +17,7 @@ const props = defineProps({
         </a>
         <div class="text">
             <span class="title">{{ project.title }}</span>
-            <span class="description">{{ project?.description[0].children[0].text }}</span>
+            <div class="description" v-html="sanityPortableText(project?.description[0])"></div>
         </div>
     </div>
 </template>

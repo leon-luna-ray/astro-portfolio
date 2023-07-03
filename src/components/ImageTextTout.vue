@@ -9,7 +9,7 @@
                 </p>
             </div>
             <div class='img-wrap'>
-                <img src="../assets/img/spinner.png" alt="decoration">
+                <img src="/img/spinner.png" alt="decoration">
             </div>
         </div>
     </div>
