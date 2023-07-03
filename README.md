@@ -1,6 +1,8 @@
 # Developer Portfolio
 
-This is my current web developer portfolio in development.
+This is my current web developer portfolio and website [https://www.rayluna.dev/](https://www.rayluna.dev/).
+
+It is a static site built with Astro and Vue.js components with data coming from Sanity.io CMS. It contains my bio, contact information, list of technology skills and featured projects.
 
 ### Project Links
 - [https://www.rayluna.dev/](https://www.rayluna.dev/)
@@ -19,3 +21,7 @@ This is my current web developer portfolio in development.
 - Sass
 - Sanity.io
 - Netlify
+
+## Image
+
+![Screenshot](./public/img/astro-portfolio.png)
