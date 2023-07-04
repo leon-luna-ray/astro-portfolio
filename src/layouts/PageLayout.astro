@@ -10,6 +10,9 @@ import Footer from '../components/Footer.vue';
 // TODO refactor to reduce api calls
 const global = await fetchGlobal();
 const profile = await fetchProfile();
+
+console.log(Astro.url.pathname)
+console.log(Astro.props.title)
 ---
 
 <!DOCTYPE html>

@@ -29,7 +29,7 @@ const bottomPadding = computed(() => ({
     'md:pb-[1rem]': isSticky.value,
 }))
 const labelText = computed(() => {
-    return isNameHidden.value ? `${props.name} | ${props.title}` : props.title;
+    return isNameHidden.value ? `${props.name} - ${props.title}` : props.title;
 })
 
 // Methods
