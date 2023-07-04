@@ -15,7 +15,7 @@ const props = defineProps({
             <h3>Featured Projects</h3>
         </div>
         <div class="project-grid">
-            <CardFeaturedProject v-for="project in projects" :project="project" />
+            <CardFeaturedProject v-for="project in projects" :project="project" :key="project._id"/>
         </div>
     </div>
 </template>
