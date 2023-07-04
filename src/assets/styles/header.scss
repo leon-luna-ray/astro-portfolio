@@ -9,11 +9,18 @@
         @apply container flex items-center justify-center border-t border-b border-black md:border-none;
 
         span {
-            @apply px-4 py-[1.25rem] md:py-0 text-center font-bold text;
+            @apply text-center font-bold text;
         }
 
         .divider {
             @apply flex-grow bg-black h-[2px] hidden md:block;
+        }
+
+        .label-text {
+            @apply px-4 py-[1.25rem] md:py-0 flex justify-center gap-[0.5rem] flex-col md:flex-row;
+        }
+        .dash {
+            @apply hidden md:block;
         }
     }
 }

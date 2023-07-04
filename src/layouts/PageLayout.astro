@@ -8,8 +8,11 @@ import Footer from '../components/Footer.vue';
 const global = await fetchGlobal();
 const profile = await fetchProfile();
 
+const isHome = () => {
+    return Astro.url.pathname === '/';
+};
 const pageTitle = () => {
-    if (Astro.url.pathname === '/') {
+    if (isHome()) {
         return global?.title;
     }
     return Astro.props.title;
@@ -26,7 +29,12 @@ const pageTitle = () => {
     </head>
     <body>
         <div id='top-bg' aria-hidden='true'></div>
-        <Header client:load title={global?.title} name={profile?.name} />
+        <Header
+            client:load
+            isHome={isHome()}
+            name={profile?.name}
+            title={pageTitle()}
+        />
         <!--Page Content -->
         <main>
             <slot />
