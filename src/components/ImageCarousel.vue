@@ -24,7 +24,7 @@ const slideBgColor = (index: number) => {
 }
 
 const isTop = computed(() => ({
-    'top': top.value < 150,
+    'top': top.value < 300,
 }))
 
 </script>

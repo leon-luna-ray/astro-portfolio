@@ -27,7 +27,7 @@ const skills = await fetchSkills();
   </Hero>
   <ImageCarousel profileImage={profile?.image} images={global?.decorationImages} client:load />
   <ImageTextTout label={profile?.nickname} text={profile?.greeting}/>
-  <TextTout>
+  <TextTout class="md:-mt-[4rem]">
     <h3 slot='title' class='title'>About Me</h3>
     <p slot='text' class='text'>{profile?.bio}</p>
   </TextTout>
