@@ -51,9 +51,7 @@ export async function fetchProject(slug: string) {
     url,
   }`;
 
-  // const params = { slug };
   const project = await useSanityClient().fetch(query);
-  console.log(project)
   return project;
 }
 

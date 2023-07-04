@@ -47,10 +47,10 @@ watch(y, handleScroll)
 </script>
 <template>
     <header id="header" :class="bottomPadding">
-        <div class='top-label'>
+        <a href="/" class='top-label'>
             <div class='divider'></div>
             <span>{{ labelText }}</span>
             <div class='divider'></div>
-        </div>
+        </a>
     </header>
 </template>

@@ -11,14 +11,10 @@ const props = defineProps({
 
 
 })
-
 const projectUrl = computed(() => {
     return `/projects/${props.project?.slug?.current}`
 })
-
-console.log()
 </script>
-
 <template>
     <div class='card featured-project'>
         <a class='img-wrap' :href="projectUrl">
