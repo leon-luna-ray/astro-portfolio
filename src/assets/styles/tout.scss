@@ -6,7 +6,7 @@
     }
 
     .text {
-        @apply text-center md:text-left;
+        @apply text-center md:text-left flex justify-center flex-col;
 
         .label {
             @apply font-semibold;
@@ -17,10 +17,10 @@
     }
 
     .img-wrap {
-        @apply hidden md:flex relative justify-end items-center h-[98%];
+        @apply hidden md:flex relative justify-end items-center h-[98%] aspect-square overflow-hidden;
 
         img {
-            @apply absolute animate-spin-slow;
+            @apply absolute animate-spin-slow object-cover rounded-full;
         }
     }
 }
