@@ -52,7 +52,7 @@ export async function fetchProject(slug: string) {
   }`;
 
   const project = await useSanityClient().fetch(query);
-  return project;
+  return project[0];
 }
 
 export async function fetchSkills() {

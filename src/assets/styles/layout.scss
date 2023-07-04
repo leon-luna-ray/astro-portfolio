@@ -1,0 +1,7 @@
+.project-details {
+    @apply container grid md:grid-cols-2 gap-[2.5rem];
+
+    .title {
+        @apply text-[1.25rem] md:pb-[2.5rem];
+    }
+}

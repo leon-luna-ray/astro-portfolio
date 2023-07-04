@@ -3,7 +3,7 @@
 }
 
 #header {
-    @apply  sticky top-0 md:top-[1rem] bg-primary-yellow z-[2];
+    @apply sticky top-0 md:top-[1rem] bg-primary-yellow z-[2];
 
     .top-label {
         @apply container flex items-center justify-center border-t border-b border-black md:border-none;
@@ -52,5 +52,23 @@
 
     .btn-links {
         @apply flex flex-col md:flex-row justify-center gap-[0.625rem];
+    }
+}
+
+.detail-header {
+    @apply md:py-[4rem];
+
+    .inner {
+        @apply container grid md:grid-cols-2 gap-[2.5rem];
+    }
+    .title {
+        @apply flex justify-center items-center text-center;
+    }
+    .image {
+        @apply flex md:p-[4rem];
+
+        img {
+            @apply aspect-square object-cover rounded-3xl border border-black flex;
+        }
     }
 }

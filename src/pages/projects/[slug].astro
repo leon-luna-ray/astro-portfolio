@@ -1,8 +1,10 @@
 ---
 import { fetchProject } from '../../lib/api';
-import Hero from '../../components/Hero.vue';
+import { sanityPortableText } from '../../lib/text';
 
+import DetailHeader from '../../components/DetailHeader.vue';
 import PageLayout from '../../layouts/PageLayout.astro';
+import TechList from '../../components/TechList.vue';
 
 const project = await fetchProject(Astro.params.slug || '');
 
@@ -12,12 +14,17 @@ if (!project) {
         statusText: 'Not found',
     });
 }
-
-console.log(project);
 ---
 
-<PageLayout title='Project Detail' class='project-detail-page'>
-    <Hero showLinks={false}>
-        <h1 slot='title' class='title'>{project[0].title}</h1>
-    </Hero>
+<PageLayout title='Project Detail'>
+    <DetailHeader title={project.title} image={project.mainImage} />
+    <div class='project-details'>
+        <div class='text'>
+            <h2 slot='title' class='title'>Description</h2>
+            <p slot='text' class='text'>{sanityPortableText(project.description)}</p>
+        </div>
+        <div class="technologies">
+            <TechList title={'Technologies'} items={project.technologies}/>
+        </div>
+    </div>
 </PageLayout>

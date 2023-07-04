@@ -2,7 +2,7 @@
     @apply flex flex-col gap-y-[1.875rem];
 
     .img-wrap img {
-        @apply rounded-3xl w-full aspect-square object-cover img-grayscale zoom-in-out;
+        @apply rounded-3xl w-full aspect-square object-cover img-grayscale zoom-in-out border border-black;
     }
 
     .text {

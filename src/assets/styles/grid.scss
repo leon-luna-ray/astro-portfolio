@@ -1,16 +1,12 @@
-.featured-projects {
-    @apply pb-[4rem] md:pb-[6.25rem];
+.featured-projects .section-title {
+    @apply container;
 
-    .section-title {
-        @apply container;
-
-        h3 {
-            @apply text-[1.25rem];
-        }
+    h3 {
+        @apply text-[1.25rem];
     }
-    .project-grid {
-        @apply grid md:grid-cols-3 container gap-[2.5rem] pt-[4rem];
-    }
+}
+.project-grid {
+    @apply grid md:grid-cols-3 container gap-[2.5rem] pt-[4rem];
 }
 
 .image-carousel {
