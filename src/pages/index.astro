@@ -25,7 +25,7 @@ const skills = await fetchSkills();
     <h2 slot='subtitle' class='subtitle'>{profile?.tagline}</h2>
     <p slot='intro' class='intro'>{global?.intro}</p>
   </Hero>
-  <ImageCarousel profileImage={profile?.image} client:load />
+  <ImageCarousel profileImage={profile?.image} images={global?.decorationImages} client:load />
   <ImageTextTout label={profile?.nickname} text={profile?.greeting}/>
   <TextTout>
     <h3 slot='title' class='title'>About Me</h3>
