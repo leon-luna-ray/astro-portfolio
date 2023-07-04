@@ -19,14 +19,13 @@ const props = defineProps({
 <template>
     <div class="detail-header">
         <div class="inner">
+            <div class="image">
+                <img :src="getMediumUrl(image)" :alt="`Screenshot of ${title}`">
+            </div>
             <div class="text">
                 <h1>{{ title }}</h1>
                 <div class="description" v-html="sanityPortableText(description)"></div>
             </div>
-            <div class="image">
-                <img :src="getMediumUrl(image)" :alt="`Screenshot of ${title}`">
-            </div>
-
         </div>
     </div>
 </template>
