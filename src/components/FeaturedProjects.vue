@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import CardFeaturedProject from './cards/CardFeaturedProject.vue';
-import Project from '../interfaces/Project';
+import type Project from '../interfaces/Project';
 
 const props = defineProps({
-  projects: {
-    type: Array as () => Project[],
-    required: true,
-  },
+    projects: {
+        type: Array as () => Project[],
+        required: true,
+    },
 });
 </script>
 <template>

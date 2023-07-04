@@ -1,36 +1,19 @@
 ---
-// import {
-//   fetchFeaturedProjects,
-//   fetchGlobal,
-//   fetchProfile,
-//   fetchSkills,
-// } from '../lib/api';
-// // import BaseHead from '../components/BaseHead.astro';
-// // import Header from '../components/Header.vue';
-// // import Hero from '../components/Hero.vue';
-// // import ImageCarousel from '../components/ImageCarousel.vue';
-// // import ImageTextTout from '../components/ImageTextTout.vue';
-// // import FeaturedSkills from '../components/FeaturedSkills.vue';
-// // import FeaturedProjects from '../components/FeaturedProjects.vue';
-// // import TextTout from '../components/TextTout.vue';
-// // import Footer from '../components/Footer.vue';
+import {
+  fetchFeaturedProjects,
+  fetchGlobal,
+  fetchProfile,
+  fetchSkills,
+} from '../../lib/api';
 
-// const featuredProjects = await fetchFeaturedProjects();
-// const global = await fetchGlobal();
-// const profile = await fetchProfile();
-// const skills = await fetchSkills();
+import PageLayout from '../../layouts/PageLayout.astro';
 
+const featuredProjects = await fetchFeaturedProjects();
+const global = await fetchGlobal();
+const profile = await fetchProfile();
+const skills = await fetchSkills();
 ---
 
-<!DOCTYPE html>
-<html lang='en'>
-  <!-- <head>
-    <BaseHead
-      title={`${profile?.name} | ${global?.title}`}
-      description={global?.description}
-    />
-  </head> -->
-  <body>
+<PageLayout title="project-detail-page">
     <h1>Project Detail Page</h1>
-  </body>
-</html>
+</PageLayout>
