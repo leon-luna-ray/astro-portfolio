@@ -18,14 +18,14 @@
         &.brown {
             @apply bg-neutral-brown hidden md:block;
 
-            img {
+            img:not(.top) {
                 @apply img-sepia;
             }
         }
         &.black {
             @apply bg-black;
-            img {
-                // @apply img-sepia;
+            img:not(.top) {
+                @apply img-grayscale;
             }
         }
         img {
