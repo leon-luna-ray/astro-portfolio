@@ -8,12 +8,10 @@ import {
 
 import PageLayout from '../../layouts/PageLayout.astro';
 
-const featuredProjects = await fetchFeaturedProjects();
-const global = await fetchGlobal();
-const profile = await fetchProfile();
-const skills = await fetchSkills();
+const { slug } = Astro.params;
+
 ---
 
-<PageLayout title="project-detail-page">
+<PageLayout title="Project Detail">
     <h1>Project Detail Page</h1>
 </PageLayout>
