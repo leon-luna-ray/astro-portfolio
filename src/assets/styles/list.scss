@@ -11,7 +11,7 @@
 }
 
 .skills-list {
-    @apply container py-[4rem] md:py-[6.25rem] flex flex-col gap-y-[5rem];
+    @apply container flex flex-col gap-y-[5rem];
 
     .bottom {
         @apply grid md:grid-cols-3 gap-[2.5rem];

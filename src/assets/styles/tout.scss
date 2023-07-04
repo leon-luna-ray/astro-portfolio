@@ -1,5 +1,5 @@
 .image-text-tout {
-    @apply md:pt-[1.688rem] md:py-[3.125rem] overflow-hidden;
+    @apply overflow-hidden;
 
     .inner {
         @apply container grid md:grid-cols-2;
@@ -26,7 +26,7 @@
 }
 
 .text-tout {
-    @apply container pt-[3.125rem];
+    @apply container;
 
     .title, .text {
         @apply text-[1.25rem];

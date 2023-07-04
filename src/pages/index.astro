@@ -31,6 +31,6 @@ const skills = await fetchSkills();
     <h3 slot='title' class='title'>About Me</h3>
     <p slot='text' class='text'>{profile?.bio}</p>
   </TextTout>
-  <FeaturedSkills skills={skills} />
   <FeaturedProjects projects={featuredProjects} />
+  <FeaturedSkills skills={skills} />
 </PageLayout>

@@ -56,16 +56,23 @@
 }
 
 .detail-header {
-    @apply md:py-[4rem];
+    @apply md:py-[6.25rem];
 
     .inner {
-        @apply container grid md:grid-cols-2 gap-[2.5rem];
+        @apply container grid md:grid-cols-2 md:gap-[4rem];
     }
-    .title {
-        @apply flex justify-center items-center text-center;
+    .text {
+        @apply flex flex-col gap-y-[1rem] md:gap-y-[2.5rem] items-center justify-center text-center;
+
+        h1 {
+            @apply h2;
+        }
+    }
+    .description {
+        @apply text-[1.25rem]
     }
     .image {
-        @apply flex md:p-[4rem];
+        @apply flex;
 
         img {
             @apply aspect-square object-cover rounded-3xl border border-black flex;

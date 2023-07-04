@@ -17,11 +17,10 @@ if (!project) {
 ---
 
 <PageLayout title='Project Detail'>
-    <DetailHeader title={project.title} image={project.mainImage} />
+    <DetailHeader title={project.title} image={project.mainImage} description={project.description}/>
     <div class='project-details'>
-        <div class='text'>
-            <h2 slot='title' class='title'>Description</h2>
-            <p slot='text' class='text'>{sanityPortableText(project.description)}</p>
+        <div class="links">
+            <h2>Links</h2>
         </div>
         <div class="technologies">
             <TechList title={'Technologies'} items={project.technologies}/>
