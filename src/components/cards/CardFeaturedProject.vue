@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { getThumbnailUrl } from '../../lib/images';
 import { sanityPortableText } from '../../lib/text';
 
@@ -7,12 +8,20 @@ const props = defineProps({
         type: Object,
         required: true,
     },
+
+
 })
+
+const projectUrl = computed(() => {
+    return `/projects/${props.project?.slug?.current}`
+})
+
+console.log()
 </script>
 
 <template>
     <div class='card featured-project'>
-        <a class='img-wrap' :href="project.url" target="_blank">
+        <a class='img-wrap' :href="projectUrl">
             <img :src="getThumbnailUrl(project?.mainImage)" :alt="`Image of ${project.title}`">
         </a>
         <div class="text">

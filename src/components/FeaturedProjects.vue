@@ -8,6 +8,7 @@ const props = defineProps({
     },
 })
 
+
 </script>
 <template>
     <div id="featured-projects" class='featured-projects'>
