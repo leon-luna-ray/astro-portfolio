@@ -1,6 +1,5 @@
 ---
 import { fetchProject } from '../../lib/api';
-import { sanityPortableText } from '../../lib/text';
 
 import DetailHeader from '../../components/DetailHeader.vue';
 import PageLayout from '../../layouts/PageLayout.astro';
@@ -22,7 +21,7 @@ console.log(project)
     <DetailHeader
         title={project.title}
         image={project.mainImage}
-        description={project.description}
+        intro={project.intro}
         launchUrl={project.url}
         codeUrl={project.repository}
     />

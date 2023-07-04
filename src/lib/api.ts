@@ -26,6 +26,7 @@ export async function fetchHobbies() {
 export async function fetchFeaturedProjects() {
   const query = groq`*[_type == "project" && featured] | order(_updatedAt desc) {
       _id,
+      intro,
       description,
       mainImage,
       slug,
@@ -39,8 +40,10 @@ export async function fetchFeaturedProjects() {
 export async function fetchProject(slug: string) {
   const query = groq`*[_type == "project" && slug.current == '${slug}'] {
     _id,
+    customUrl,
     description,
     featured,
+    intro,
     mainImage,
     repository,
     slug,

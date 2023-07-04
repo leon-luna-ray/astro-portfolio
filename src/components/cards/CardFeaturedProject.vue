@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { getThumbnailUrl } from '../../lib/images';
-import { sanityPortableText } from '../../lib/text';
 
 const props = defineProps({
     project: {
@@ -22,7 +21,7 @@ const projectUrl = computed(() => {
         </a>
         <div class="text">
             <span class="title">{{ project.title }}</span>
-            <div class="description" v-html="sanityPortableText(project?.description[0])"></div>
+            <div class="description">{{ project.intro }}</div>
         </div>
     </div>
 </template>

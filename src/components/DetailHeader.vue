@@ -11,9 +11,9 @@ const props = defineProps({
         type: Object,
         required: true,
     },
-    description: {
+    intro: {
         type: Object,
-        required: true,
+        required: false,
     },
     launchUrl: {
         type: String,
@@ -33,7 +33,7 @@ const props = defineProps({
             </div>
             <div class="text">
                 <h1>{{ title }}</h1>
-                <div class="description" v-html="sanityPortableText(description)"></div>
+                <div class="description">{{ intro }}</div>
                 <div class="btn-links">
 
                     <a v-if="launchUrl" class="btn light" :href="launchUrl" target="_blank">Launch</a>
