@@ -31,9 +31,8 @@ const pageTitle = () => {
         <div id='top-bg' aria-hidden='true'></div>
         <Header
             client:load
-            isHome={isHome()}
             name={profile?.name}
-            title={pageTitle()}
+            title={global?.title}
         />
         <!--Page Content -->
         <main>

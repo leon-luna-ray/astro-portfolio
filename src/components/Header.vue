@@ -9,9 +9,6 @@ const props = defineProps({
     name: {
         type: String,
     },
-    isHome: {
-        type: Boolean,
-    }
 });
 
 // Composables

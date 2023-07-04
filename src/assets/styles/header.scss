@@ -17,7 +17,7 @@
         }
 
         .label-text {
-            @apply px-4 py-[1.25rem] md:py-0 flex justify-center gap-[0.5rem] flex-col md:flex-row;
+            @apply px-4 py-[1rem] md:py-0 flex justify-center gap-x-[0.5rem] flex-col md:flex-row;
         }
         .dash {
             @apply hidden md:block;
@@ -63,7 +63,7 @@
 }
 
 .detail-header {
-    @apply py-[3.125rem] md:py-[6.25rem];
+    @apply border-b md:border-b-0 border-black pb-[3.125rem] md:py-[6.25rem];
 
     .inner {
         @apply md:container grid md:grid-cols-2 gap-y-[3.125rem] md:gap-[4rem];
@@ -75,7 +75,7 @@
             @apply h2;
         }
     }
-    @media (max-width: 640px) {
+    @media (max-width: 740px) {
         .text {
           @apply container;
         }
@@ -84,10 +84,10 @@
         @apply text-[1.25rem] md:line-clamp-5;
     }
     .image {
-        @apply flex order-last md:order-none aspect-square ;
+        @apply flex aspect-square ;
 
         img {
-            @apply  object-cover md:rounded-3xl md:border border-black;
+            @apply  object-cover md:rounded-3xl border-b md:border border-black;
         }
     }
 }
