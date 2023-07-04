@@ -14,16 +14,24 @@ if (!project) {
         statusText: 'Not found',
     });
 }
+
+console.log(project)
 ---
 
 <PageLayout title={project.title}>
-    <DetailHeader title={project.title} image={project.mainImage} description={project.description}/>
+    <DetailHeader
+        title={project.title}
+        image={project.mainImage}
+        description={project.description}
+        launchUrl={project.url}
+        codeUrl={project.repository}
+    />
     <div class='project-details'>
-        <div class="links">
-            <h2 class="title">Links</h2>
+        <div class='links'>
+            <h2 class='title'>Links</h2>
         </div>
-        <div class="technologies">
-            <TechList title={'Technologies'} items={project.technologies}/>
+        <div class='technologies'>
+            <TechList title={'Technologies'} items={project.technologies} />
         </div>
     </div>
 </PageLayout>

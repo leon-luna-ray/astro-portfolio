@@ -8,3 +8,7 @@
         @apply text-white bg-primary-red;
     }
 }
+
+.btn-links {
+    @apply flex flex-col md:flex-row justify-center gap-[0.625rem];
+}
