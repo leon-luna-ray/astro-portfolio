@@ -1,8 +1,5 @@
 ---
-import {
-    fetchGlobal,
-    fetchProfile,
-} from '../lib/api';
+import { fetchGlobal, fetchProfile } from '../lib/api';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.vue';
 import Footer from '../components/Footer.vue';
@@ -11,15 +8,19 @@ import Footer from '../components/Footer.vue';
 const global = await fetchGlobal();
 const profile = await fetchProfile();
 
-console.log(Astro.url.pathname)
-console.log(Astro.props.title)
+const pageTitle = () => {
+    if (Astro.url.pathname === '/') {
+        return global?.title;
+    }
+    return Astro.props.title;
+};
 ---
 
 <!DOCTYPE html>
 <html lang='en'>
     <head>
         <BaseHead
-            title={`${profile?.name} | ${global?.title}`}
+            title={`${profile?.name} | ${pageTitle()}`}
             description={global?.description}
         />
     </head>
@@ -28,7 +29,7 @@ console.log(Astro.props.title)
         <Header client:load title={global?.title} name={profile?.name} />
         <!--Page Content -->
         <main>
-            <slot></slot>
+            <slot />
         </main>
         <Footer
             linkedin={profile?.linkedin}
