@@ -18,6 +18,7 @@ const props = defineProps({
                 <slot name="intro"></slot>
             </div>
         </div>
+        <!-- TODO find a way to refactor this -->
         <div v-if="showLinks" class='btn-links'>
             <a class="btn dark" @click.prevent="scrollToSection('#featured-skills')">Explore Skills</a>
             <a class="btn light" @click.prevent="scrollToSection('#featured-projects')">Check Projects</a>

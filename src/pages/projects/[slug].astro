@@ -4,15 +4,20 @@ import Hero from '../../components/Hero.vue';
 
 import PageLayout from '../../layouts/PageLayout.astro';
 
-export function getStaticPaths() {
-    return [{ params: { slug: 'astro-portfolio' } }];
+const project = await fetchProject(Astro.params.slug || '');
+
+if (!project) {
+    return new Response(null, {
+        status: 404,
+        statusText: 'Not found',
+    });
 }
 
-const { slug } = Astro.params;
+console.log(project);
 ---
 
 <PageLayout title='Project Detail' class='project-detail-page'>
     <Hero showLinks={false}>
-        <h1 slot='title' class='title'>{slug}</h1>
+        <h1 slot='title' class='title'>{project[0].title}</h1>
     </Hero>
 </PageLayout>
