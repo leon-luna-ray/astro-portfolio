@@ -26,7 +26,9 @@
 }
 
 .text-tout {
-    @apply container;
+    &.full {
+        @apply container;
+    }
 
     .title, .text {
         @apply text-[1.25rem];

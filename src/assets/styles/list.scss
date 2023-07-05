@@ -26,3 +26,13 @@
         @apply text-[1.25rem];
     }
 }
+
+.info-list {
+
+    li {
+        @apply flex flex-col;
+    }
+    .label {
+        @apply font-bold text-[0.875rem] uppercase;
+    }
+}

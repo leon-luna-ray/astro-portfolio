@@ -4,6 +4,7 @@ import { fetchProject } from '../../lib/api';
 import DetailHeader from '../../components/DetailHeader.vue';
 import PageLayout from '../../layouts/PageLayout.astro';
 import TechList from '../../components/TechList.vue';
+import PortableText from '../../components/PortableText.vue';
 
 const project = await fetchProject(Astro.params.slug || '');
 
@@ -14,7 +15,7 @@ if (!project) {
     });
 }
 
-console.log(project)
+console.log(project);
 ---
 
 <PageLayout title={project.title}>
@@ -26,11 +27,22 @@ console.log(project)
         codeUrl={project.repository}
     />
     <div class='project-details'>
-        <div class='links'>
-            <h2 class='title'>Links</h2>
+        <div class="description">
+            <h2 class="title">Description</h2>
+            <PortableText data={project.description} />
         </div>
-        <div class='technologies'>
+        <div class='data'>
             <TechList title={'Technologies'} items={project.technologies} />
+            <div class="links">
+                <h2 class="title">info</h2>
+
+                <ul class="info-list">
+                    <li>
+                        <span class="label">URL</span>
+                        <a href={project?.url} class="value" target="_blank">{project?.url}</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </PageLayout>

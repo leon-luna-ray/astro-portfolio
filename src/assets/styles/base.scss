@@ -1,5 +1,8 @@
 body {
-  @apply bg-primary-yellow font-archivo font-extralight py-[3.125] md:py-[6.25rem] relative text-neutral-brown;
+  @apply bg-primary-yellow font-archivo font-extralight py-[3.125] md:py-[6.25rem] relative text-neutral-brown underline-offset-2;
+}
+a {
+  @apply hover:text-neutral-500 hover:cursor-pointer transition ease-in-out;
 }
 main {
   @apply flex flex-col gap-y-[3.125rem] md:gap-y-[6.25rem] pb-[3.125] md:pb-[6.25rem];

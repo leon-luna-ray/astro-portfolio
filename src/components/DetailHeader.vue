@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { getMediumUrl } from '../lib/images';
-import { sanityPortableText } from '../lib/text';
 
 const props = defineProps({
     title: {
