@@ -10,6 +10,9 @@ export function getImageUrl(source:object) {
 export function getThumbnailUrl(source:object) {
   return getImageUrl(source).size(300,300).url();
 }
+export function getMediumUrl(source: object) {
+  return getImageUrl(source).fit('max').width(600).height(600).url();
+}
 export function getLargeUrl(source: object) {
   return getImageUrl(source).fit('max').width(1200).height(1200).url();
 }

@@ -8,38 +8,70 @@ export async function fetchGlobal() {
 }
 
 export async function fetchProfile() {
-    const query = groq`*[_type == "profileDetails"][0]`;
-    const profile = await useSanityClient().fetch(query);
+  const query = groq`*[_type == "profileDetails"][0]`;
+  const profile = await useSanityClient().fetch(query);
 
-    return profile;
-  }
+  return profile;
+}
 
-  export async function fetchHobbies() {
-    const query = groq`*[_type == "profileDetails"][0] {hobbies[]->}`;
-    const hobbies = await useSanityClient().fetch(query);
+export async function fetchHobbies() {
+  const query = groq`*[_type == "profileDetails"][0] {hobbies[]->}`;
+  const hobbies = await useSanityClient().fetch(query);
 
-    return hobbies;
-  }
+  return hobbies;
+}
 
-  export async function fetchFeaturedProjects() {
-    const query = groq`*[_type == "project" && featured] | order(_updatedAt desc) {
+export async function fetchProjects() {
+  const query = groq`*[_type == "project"] | order(title asc) {
       _id,
+      intro,
+      mainImage,
+      slug,
+      title,
+    }`;
+  const projects = await useSanityClient().fetch(query);
+
+  return projects;
+}
+
+export async function fetchFeaturedProjects() {
+  const query = groq`*[_type == "project" && featured] | order(_updatedAt desc) {
+      _id,
+      intro,
       description,
       mainImage,
       slug,
-      repository,
-      technologies[]->{_id, title, slug},
       title,
-      url,
     }`;
-    const projects = await useSanityClient().fetch(query);
+  const projects = await useSanityClient().fetch(query);
 
-    return projects;
-  }
+  return projects;
+}
 
-  export async function fetchSkills() {
-    const query = groq`*[_type == "skillsList"] | order(title) {title, "skills" : skills[] -> {title, website}}`;
-    const skills = await useSanityClient().fetch(query);
+export async function fetchProject(slug: string) {
+  const query = groq`*[_type == "project" && slug.current == '${slug}'] {
+    _id,
+    customUrl,
+    description,
+    featured,
+    intro,
+    mainImage,
+    repository,
+    slug,
+    status,
+    technologies[]->{_id, title, slug, description, website, tags[]->{title, slug}},
+    tags[]->{title, slug},
+    title,
+    url,
+  }`;
 
-    return skills;
-  }
+  const project = await useSanityClient().fetch(query);
+  return project[0];
+}
+
+export async function fetchSkills() {
+  const query = groq`*[_type == "skillsList"] | order(title) {title, "skills" : skills[] -> {title, website}}`;
+  const skills = await useSanityClient().fetch(query);
+
+  return skills;
+}

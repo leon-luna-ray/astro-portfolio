@@ -5,52 +5,40 @@ import {
   fetchProfile,
   fetchSkills,
 } from '../lib/api';
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.vue';
+import PageLayout from '../layouts/PageLayout.astro';
 import Hero from '../components/Hero.vue';
 import ImageCarousel from '../components/ImageCarousel.vue';
 import ImageTextTout from '../components/ImageTextTout.vue';
 import FeaturedSkills from '../components/FeaturedSkills.vue';
-import FeaturedProjects from '../components/FeaturedProjects.vue';
+import ProjectGrid from '../components/ProjectGrid.vue';
 import TextTout from '../components/TextTout.vue';
-import Footer from '../components/Footer.vue';
 
 const featuredProjects = await fetchFeaturedProjects();
 const global = await fetchGlobal();
 const profile = await fetchProfile();
 const skills = await fetchSkills();
-
 ---
 
-<!DOCTYPE html>
-<html lang='en'>
-  <head>
-    <BaseHead
-      title={`${profile?.name} | ${global?.title}`}
-      description={global?.description}
-    />
-  </head>
-  <body>
-    <div id='top-bg' aria-hidden='true'></div>
-    <Header client:load title={global?.title} name={profile?.name} />
-    <main>
-      <Hero client:load>
-        <h1 slot='title' class='title'>{profile?.name}</h1>
-        <p slot='intro' class='intro'>{global?.intro}</p>
-      </Hero>
-      <ImageCarousel profileImage={profile?.image} client:load />
-      <ImageTextTout />
-      <TextTout>
-        <h3 slot='title' class='title'>About Me</h3>
-        <p slot='text' class='text'>{profile?.bio}</p>
-      </TextTout>
-      <FeaturedSkills skills={skills}/>
-      <FeaturedProjects projects={featuredProjects} />
-    </main>
-    <Footer
-      linkedin={profile?.linkedin}
-      github={profile?.github}
-      email={profile?.email}
-    />
-  </body>
-</html>
+<PageLayout title='Home'>
+  <Hero showLinks={true} client:load>
+    <h1 slot='title' class='title'>{profile?.name}</h1>
+    <h2 slot='subtitle' class='subtitle'>{profile?.tagline}</h2>
+    <p slot='intro' class='intro'>{global?.intro}</p>
+    <div slot='btn-links' class='btn-links'>
+      <a class='btn light' href='/projects'>Check Projects</a>
+      <a class='btn dark' href='#featured-skills'>Explore Skills</a>
+    </div>
+  </Hero>
+  <ImageCarousel
+    profileImage={profile?.image}
+    images={global?.decorationImages}
+    client:load
+  />
+  <ImageTextTout label={profile?.nickname} text={profile?.greeting} />
+  <TextTout class='md:-mt-[4rem] container'>
+    <h3 slot='title' class='title'>About Me</h3>
+    <p slot='text' class='text'>{profile?.bio}</p>
+  </TextTout>
+  <ProjectGrid title='Featured Projects' projects={featuredProjects} />
+  <FeaturedSkills skills={skills} />
+</PageLayout>

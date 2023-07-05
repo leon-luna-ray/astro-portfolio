@@ -1,0 +1,48 @@
+---
+import { fetchGlobal, fetchProfile } from '../lib/api';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.vue';
+import Footer from '../components/Footer.vue';
+
+// TODO refactor to reduce api calls
+const global = await fetchGlobal();
+const profile = await fetchProfile();
+
+const isHome = () => {
+    return Astro.url.pathname === '/';
+};
+const pageTitle = () => {
+    if (isHome()) {
+        return global?.title;
+    }
+    return Astro.props.title;
+};
+---
+
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <BaseHead
+            title={`${profile?.name} | ${pageTitle()}`}
+            description={global?.description}
+        />
+    </head>
+    <body>
+        <div id='top-bg' aria-hidden='true'></div>
+        <Header
+            client:load
+            name={profile?.name}
+            title={global?.title}
+            isHome={isHome()}
+        />
+        <!--Page Content -->
+        <main>
+            <slot />
+        </main>
+        <Footer
+            linkedin={profile?.linkedin}
+            github={profile?.github}
+            email={profile?.email}
+        />
+    </body>
+</html>

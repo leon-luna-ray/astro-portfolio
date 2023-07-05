@@ -1,4 +1,4 @@
-# Developer Portfolio
+# Astro Portfolio
 
 This is my current web developer portfolio and website [https://www.rayluna.dev/](https://www.rayluna.dev/).
 
