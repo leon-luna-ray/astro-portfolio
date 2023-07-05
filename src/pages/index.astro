@@ -24,10 +24,18 @@ const skills = await fetchSkills();
     <h1 slot='title' class='title'>{profile?.name}</h1>
     <h2 slot='subtitle' class='subtitle'>{profile?.tagline}</h2>
     <p slot='intro' class='intro'>{global?.intro}</p>
+    <div slot='btn-links' class='btn-links'>
+      <a class='btn light' href='/projects'>Check Projects</a>
+      <a class='btn dark' href='#featured-skills'>Explore Skills</a>
+    </div>
   </Hero>
-  <ImageCarousel profileImage={profile?.image} images={global?.decorationImages} client:load />
-  <ImageTextTout label={profile?.nickname} text={profile?.greeting}/>
-  <TextTout class="md:-mt-[4rem] container">
+  <ImageCarousel
+    profileImage={profile?.image}
+    images={global?.decorationImages}
+    client:load
+  />
+  <ImageTextTout label={profile?.nickname} text={profile?.greeting} />
+  <TextTout class='md:-mt-[4rem] container'>
     <h3 slot='title' class='title'>About Me</h3>
     <p slot='text' class='text'>{profile?.bio}</p>
   </TextTout>

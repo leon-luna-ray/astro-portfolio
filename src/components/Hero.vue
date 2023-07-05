@@ -1,14 +1,3 @@
-<script setup lang="ts">
-import { scrollToSection } from '../utils/utils';
-
-const props = defineProps({
-    showLinks: {
-        type: Boolean,
-        required: false,
-    },
-});
-
-</script>
 <template>
     <div class='hero'>
         <div class='hero-text'>
@@ -18,10 +7,6 @@ const props = defineProps({
                 <slot name="intro"></slot>
             </div>
         </div>
-        <!-- TODO find a way to refactor this -->
-        <div v-if="showLinks" class='btn-links'>
-            <a class="btn dark" @click.prevent="scrollToSection('#featured-skills')">Explore Skills</a>
-            <a class="btn light" href="/projects">Check Projects</a>
-        </div>
+        <slot name="btn-links"></slot>
     </div>
 </template>
