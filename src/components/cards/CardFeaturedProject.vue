@@ -13,6 +13,9 @@ const props = defineProps({
 const projectUrl = computed(() => {
     return `/projects/${props.project?.slug?.current}`
 })
+const statusIcon = computed(() => {
+    return props.project?.status === 'live' ? null : '⚠️';
+})
 </script>
 <template>
     <div class='card featured-project'>
@@ -20,7 +23,10 @@ const projectUrl = computed(() => {
             <img :src="getThumbnailUrl(project?.mainImage)" :alt="`Image of ${project.title}`">
         </a>
         <div class="text">
-            <span class="title">{{ project.title }}</span>
+            <div class="project-title flex gap-x-[0.5rem]">
+                <span class="title">{{ project.title }}</span>
+                <span v-if="statusIcon" class="status">{{ statusIcon }}</span>
+            </div>
             <div class="description">{{ project.intro }}</div>
         </div>
     </div>

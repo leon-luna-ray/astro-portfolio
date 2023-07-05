@@ -27,6 +27,7 @@ export async function fetchProjects() {
       intro,
       mainImage,
       slug,
+      status,
       title,
     }`;
   const projects = await useSanityClient().fetch(query);
@@ -41,6 +42,7 @@ export async function fetchFeaturedProjects() {
       description,
       mainImage,
       slug,
+      status,
       title,
     }`;
   const projects = await useSanityClient().fetch(query);
