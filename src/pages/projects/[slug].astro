@@ -26,7 +26,6 @@ if (!project) {
         codeUrl={project.repository}
     />
     <div class='project-details'>
-        <TechList title={'Technologies'} items={project.technologies} />
         <div class='data'>
             <ProjectInfo data={project} />
             <div class='description'>
@@ -34,5 +33,6 @@ if (!project) {
                 <PortableText data={project.description} />
             </div>
         </div>
+        <TechList title={'Technologies'} items={project.technologies} />
     </div>
 </PageLayout>
