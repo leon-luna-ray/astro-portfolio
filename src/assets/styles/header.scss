@@ -64,6 +64,10 @@
     .inner {
         @apply md:container grid md:grid-cols-2 gap-y-[3.125rem] md:gap-[4rem];
     }
+
+    .label {
+        @apply bg-neutral-brown text-primary-yellow uppercase py-[0.5rem] px-[0.75rem] font-semibold text-[0.875rem] rounded-xl;
+    }
     .text {
         @apply flex flex-col gap-y-[1rem] lg:gap-y-[2.5rem] items-center justify-center text-center;
 

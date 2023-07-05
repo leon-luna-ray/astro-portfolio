@@ -22,6 +22,10 @@ const props = defineProps({
         type: String,
         required: false,
     },
+    isFeatured: {
+        type: Boolean,
+        required: false,
+    }
 })
 </script>
 <template>
@@ -31,6 +35,7 @@ const props = defineProps({
                 <img :src="getMediumUrl(image)" :alt="`Screenshot of ${title}`">
             </div>
             <div class="text">
+                <div v-if="isFeatured" class="label">Featured Project</div>
                 <h1>{{ title }}</h1>
                 <div class="description">{{ intro }}</div>
                 <div class="btn-links">
