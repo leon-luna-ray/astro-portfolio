@@ -9,6 +9,9 @@ const props = defineProps({
     name: {
         type: String,
     },
+    isHome: {
+        type: Boolean,
+    }
 });
 
 // Composables
@@ -21,6 +24,10 @@ const isSticky = ref(false);
 const bottomPadding = computed(() => ({
     'md:pb-[1rem]': isSticky.value,
 }))
+
+const backText = computed(()=>{
+    return '< Back'
+})
 
 // Methods
 const handleScroll = () => {
@@ -37,7 +44,7 @@ watch(y, handleScroll)
 </script>
 <template>
     <header id="header" :class="bottomPadding">
-        <a href="/" class='top-label'>
+        <a href="/" class='top-label hover:text-inherit'>
             <div class='divider'></div>
             <div class="label-text">
                 <span class="name">{{ name }}</span>
