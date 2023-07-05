@@ -32,7 +32,7 @@ const pageTitle = () => {
         <Header
             client:load
             name={profile?.name}
-            title={global?.title}
+            title={pageTitle()}
             isHome={isHome()}
         />
         <!--Page Content -->
