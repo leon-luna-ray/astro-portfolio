@@ -34,7 +34,6 @@ const props = defineProps({
                 <h1>{{ title }}</h1>
                 <div class="description">{{ intro }}</div>
                 <div class="btn-links">
-
                     <a v-if="launchUrl" class="btn light" :href="launchUrl" target="_blank">Launch</a>
                     <a v-if="codeUrl" class="btn dark" :href="codeUrl" target="_blank">Code</a>
                 </div>
