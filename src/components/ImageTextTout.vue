@@ -5,7 +5,7 @@ const props = defineProps({
         required: false,
     },
     text: {
-        type: Boolean,
+        type: String,
         required: true,
     },
 });
