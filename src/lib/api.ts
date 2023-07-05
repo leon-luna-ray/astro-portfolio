@@ -21,7 +21,18 @@ export async function fetchHobbies() {
   return hobbies;
 }
 
+export async function fetchProjects() {
+  const query = groq`*[_type == "project"] | order(title asc) {
+      _id,
+      intro,
+      mainImage,
+      slug,
+      title,
+    }`;
+  const projects = await useSanityClient().fetch(query);
 
+  return projects;
+}
 
 export async function fetchFeaturedProjects() {
   const query = groq`*[_type == "project" && featured] | order(_updatedAt desc) {

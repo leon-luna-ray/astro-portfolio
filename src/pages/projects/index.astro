@@ -1,0 +1,23 @@
+---
+import { fetchProjects } from '../../lib/api';
+
+import PageLayout from '../../layouts/PageLayout.astro';
+import Hero from '../../components/Hero.vue';
+import ProjectGrid from '../../components/ProjectGrid.vue';
+
+const projects = await fetchProjects();
+
+if (!projects?.length) {
+    return new Response(null, {
+        status: 404,
+        statusText: 'Not found',
+    });
+}
+---
+
+<PageLayout title='Projects'>
+    <Hero showLinks={false} client:load>
+        <h1 slot='title' class='title'>Projects</h1>
+    </Hero>
+  <ProjectGrid projects={projects} />
+</PageLayout>

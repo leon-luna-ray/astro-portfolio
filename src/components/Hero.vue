@@ -21,7 +21,7 @@ const props = defineProps({
         <!-- TODO find a way to refactor this -->
         <div v-if="showLinks" class='btn-links'>
             <a class="btn dark" @click.prevent="scrollToSection('#featured-skills')">Explore Skills</a>
-            <a class="btn light" @click.prevent="scrollToSection('#featured-projects')">Check Projects</a>
+            <a class="btn light" href="/projects">Check Projects</a>
         </div>
     </div>
 </template>

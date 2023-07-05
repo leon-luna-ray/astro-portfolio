@@ -10,7 +10,7 @@ import Hero from '../components/Hero.vue';
 import ImageCarousel from '../components/ImageCarousel.vue';
 import ImageTextTout from '../components/ImageTextTout.vue';
 import FeaturedSkills from '../components/FeaturedSkills.vue';
-import FeaturedProjects from '../components/FeaturedProjects.vue';
+import ProjectGrid from '../components/ProjectGrid.vue';
 import TextTout from '../components/TextTout.vue';
 
 const featuredProjects = await fetchFeaturedProjects();
@@ -27,10 +27,10 @@ const skills = await fetchSkills();
   </Hero>
   <ImageCarousel profileImage={profile?.image} images={global?.decorationImages} client:load />
   <ImageTextTout label={profile?.nickname} text={profile?.greeting}/>
-  <TextTout class="md:-mt-[4rem]">
+  <TextTout class="md:-mt-[4rem] container">
     <h3 slot='title' class='title'>About Me</h3>
     <p slot='text' class='text'>{profile?.bio}</p>
   </TextTout>
-  <FeaturedProjects projects={featuredProjects} />
+  <ProjectGrid title='Featured Projects' projects={featuredProjects} />
   <FeaturedSkills skills={skills} />
 </PageLayout>

@@ -7,12 +7,16 @@ const props = defineProps({
         type: Array as () => Project[],
         required: true,
     },
+    title: {
+        type: String,
+        required: false,
+    },
 });
 </script>
 <template>
     <div id="featured-projects" class='featured-projects'>
-        <div class="section-title">
-            <h3>Featured Projects</h3>
+        <div v-if="title" class="section-title">
+            <h3>{{ title }}</h3>
         </div>
         <div class="project-grid">
             <CardFeaturedProject v-for="project in projects" :project="project" :key="project._id"/>
