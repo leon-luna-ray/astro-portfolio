@@ -3,9 +3,9 @@ import { fetchProject } from '../../lib/api';
 
 import DetailHeader from '../../components/DetailHeader.vue';
 import PageLayout from '../../layouts/PageLayout.astro';
-import TechList from '../../components/TechList.vue';
 import ProjectInfo from '../../components/ProjectInfo.vue';
 import PortableText from '../../components/PortableText.vue';
+import TechList from '../../components/TechList.vue';
 
 const project = await fetchProject(Astro.params.slug || '');
 

@@ -1,5 +1,5 @@
 body {
-  @apply bg-primary-yellow font-archivo font-extralight py-[3.125] md:py-[6.25rem] relative text-neutral-brown underline-offset-2 test-border;
+  @apply bg-primary-yellow font-archivo font-extralight py-[3.125] md:py-[6.25rem] relative text-neutral-brown underline-offset-2;
 }
 a {
   @apply hover:text-white hover:cursor-pointer transition ease-in-out;
