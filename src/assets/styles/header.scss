@@ -85,9 +85,7 @@
     }
     .image {
         @apply flex aspect-square flex-col gap-y-[1.5rem];
-        // .back-label {
-        //     @apply uppercase font-bold flex gap-x-[0.5rem];
-        // }
+
         .btn {
             @apply py-[0.2rem];
         }

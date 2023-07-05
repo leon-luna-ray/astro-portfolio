@@ -32,9 +32,6 @@ const props = defineProps({
     <div class="detail-header">
         <div class="inner">
             <div class="image">
-                <!-- <a href="/projects" class="btn dark hidden">
-                    <span>{{ `Back` }}</span>
-                </a> -->
                 <img :src="getMediumUrl(image)" :alt="`Screenshot of ${title}`">
             </div>
             <div class="text">
