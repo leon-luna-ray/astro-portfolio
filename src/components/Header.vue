@@ -11,7 +11,12 @@ const props = defineProps({
     },
     isHome: {
         type: Boolean,
-    }
+    },
+    path: {
+        type: Array,
+        required: true,
+    },
+
 });
 
 // Composables
@@ -49,7 +54,10 @@ watch(y, handleScroll)
             <div class="label-text">
                 <span class="name">{{ name }}</span>
                 <span class="dash"> - </span>
-                <span class="title">{{ title }}</span>
+                <div v-if="path?.length" v-for="(item, index) in path" class="path flex">
+                    <span class="capitalize">{{ item }}</span>
+                    <span v-if="index < path.length - 1" class="dash pl-2 hidden md:block"> - </span>
+                </div>
             </div>
             <div class='divider'></div>
         </a>

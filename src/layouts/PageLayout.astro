@@ -17,6 +17,19 @@ const pageTitle = () => {
     }
     return Astro.props.title;
 };
+
+const getPathParts = () => {
+  const path = Astro.url.pathname
+  const pathParts = path.replace(/^\/|\/$/g, '').replaceAll('-', ' ').split('/');
+
+  if (path === '/') {
+    return [];
+  }
+
+  return pathParts;
+};
+
+console.log(getPathParts())
 ---
 
 <!DOCTYPE html>
@@ -33,6 +46,7 @@ const pageTitle = () => {
             client:load
             name={profile?.name}
             title={pageTitle()}
+            path={getPathParts()}
             isHome={isHome()}
         />
         <!--Page Content -->
