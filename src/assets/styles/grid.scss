@@ -1,5 +1,9 @@
 .featured-projects .section-title {
-    @apply container pb-[4rem];
+    @apply container pb-[4rem] flex justify-between;
+
+    a {
+        @apply uppercase font-bold;
+    }
 
     h3 {
         @apply text-[1.25rem];

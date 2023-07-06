@@ -11,7 +11,7 @@ const props = defineProps({
         type: String,
         required: false,
     },
-    showStatus: {
+    showLink: {
         type: Boolean,
         required: false,
     }
@@ -21,10 +21,10 @@ const props = defineProps({
     <div id="featured-projects" class='featured-projects'>
         <div v-if="title" class="section-title">
             <h3>{{ title }}</h3>
+            <a href="/projects">View All</a>
         </div>
         <div class="project-grid">
-            <CardFeaturedProject v-for="project in projects" :project="project" :key="project._id"
-                :showStatus="showStatus" />
+            <CardFeaturedProject v-for="project in projects" :project="project" :key="project._id" />
         </div>
     </div>
 </template>

@@ -7,11 +7,6 @@ const props = defineProps({
         type: Object,
         required: true,
     },
-    showStatus: {
-        type: Boolean,
-        required: false,
-    }
-
 })
 const projectUrl = computed(() => {
     return `/projects/${props.project?.slug?.current}`
