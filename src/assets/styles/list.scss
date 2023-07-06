@@ -29,7 +29,9 @@
 
 .info-list {
     @apply flex flex-col gap-y-[1rem] md:grid md:grid-cols-2;
-
+    a {
+        @apply no-underline;
+    }
     li {
         @apply flex flex-col;
     }

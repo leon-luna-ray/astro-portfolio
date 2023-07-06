@@ -5,6 +5,10 @@
 #header {
     @apply sticky top-0 md:top-[1rem] bg-primary-yellow z-[2];
 
+    a {
+        @apply no-underline;
+    }
+
     .top-label {
         @apply container flex items-center justify-center border-t border-b border-black md:border-none;
 

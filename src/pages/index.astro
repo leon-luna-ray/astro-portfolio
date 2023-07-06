@@ -39,6 +39,10 @@ const skills = await fetchSkills();
     <h3 slot='title' class='title'>About Me</h3>
     <p slot='text' class='text'>{profile?.bio}</p>
   </TextTout>
-  <ProjectGrid title='Featured Projects' projects={featuredProjects} />
+  <ProjectGrid
+    title='Featured Projects'
+    projects={featuredProjects}
+    showLink={true}
+  />
   <FeaturedSkills skills={skills} />
 </PageLayout>

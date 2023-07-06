@@ -9,12 +9,15 @@ const props = defineProps({
 
 const statusIcon = (status: string): string => {
     if (status === 'live') {
-        return '🟢'
+        return '';
+    }
+    if (status === 'development') {
+        return '🚧'
     }
     if (status === 'bug' || status === 'down') {
         return '⛔️'
     }
-    return '🟡'
+    return '⚠️'
 }
 
 const projectStatusLabel = computed(() => {

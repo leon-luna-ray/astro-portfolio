@@ -1,5 +1,5 @@
 .btn {
-    @apply flex justify-center items-center px-[1.25rem] py-[0.625rem] rounded-full font-bold hover:cursor-pointer;
+    @apply flex justify-center items-center px-[1.25rem] py-[0.625rem] rounded-full font-bold hover:cursor-pointer no-underline;
 
     &.dark {
         @apply bg-black text-primary-orange;
