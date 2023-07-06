@@ -33,18 +33,21 @@ const projectStatusLabel = computed(() => {
                 <span class="label">Status</span>
                 <span class="value uppercase">{{ projectStatusLabel }}</span>
             </li>
-            <li v-if="data.url">
-                <span class="label">URL</span>
-                <a :href=data.url class="value" target="_blank">{{ data.url }}</a>
-            </li>
             <li v-if="data.customUrl">
-                <span class="label">Custom Url</span>
+                <span class="label">URL</span>
                 <a :href=data.customUrl class="value" target="_blank">{{ data.customUrl }}</a>
             </li>
-            <li v-if="data.repository">
-                <span class="label">Code Repository</span>
+            <li v-else aria-hidden="true" class="hidden md:block"></li>
+            <li v-if="data.repository" class="order-last md:order-none">
+                <span class="label">Code url</span>
                 <a :href=data.repository class="value" target="_blank">{{ data.repository }}</a>
             </li>
+            <li v-if="data.url">
+                <span class="label">App Url</span>
+                <a :href=data.url class="value" target="_blank">{{ data.url }}</a>
+            </li>
+
+
         </ul>
     </div>
 </template>
