@@ -1,15 +1,14 @@
 ---
-import { Octokit } from 'octokit';
 import { fetchProject } from '../../lib/api';
+// import { Octokit } from 'octokit';
 
+// import BarGraph from '../../components/BarGraph.vue';
 import DetailHeader from '../../components/DetailHeader.vue';
 import PageLayout from '../../layouts/PageLayout.astro';
 import ProjectInfo from '../../components/ProjectInfo.vue';
 import PortableText from '../../components/PortableText.vue';
 import TechList from '../../components/TechList.vue';
-import BarGraph from '../../components/BarGraph.vue';
 
-const octokit = new Octokit({});
 const project = await fetchProject(Astro.params.slug || '');
 
 if (!project) {
@@ -18,14 +17,15 @@ if (!project) {
         statusText: 'Not found',
     });
 }
-const getRepolSlug = (url: string): string => {
-    url = url.endsWith('/') ? url.slice(0, -1) : url;
-    const slug = url.split('/').pop();
+// const octokit = new Octokit({});
+// const getRepolSlug = (url: string): string => {
+//     url = url.endsWith('/') ? url.slice(0, -1) : url;
+//     const slug = url.split('/').pop();
 
-    return slug;
-};
-const repo = project?.repository;
-const slug = getRepolSlug(repo);
+//     return slug;
+// };
+// const repo = project?.repository;
+// const slug = getRepolSlug(repo);
 
 // const languages = await octokit.request(
 //     `GET /repos/leon-luna-ray/${slug}/languages`,

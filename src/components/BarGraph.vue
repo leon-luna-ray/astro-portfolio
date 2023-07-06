@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 import { computed } from 'vue';
 const props = defineProps({
     data: {
@@ -28,4 +28,4 @@ const props = defineProps({
             Languages
         </h2>
     </div>
-</template>
+</template> -->
