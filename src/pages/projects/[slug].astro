@@ -8,6 +8,7 @@ import PageLayout from '../../layouts/PageLayout.astro';
 import ProjectInfo from '../../components/ProjectInfo.vue';
 import PortableText from '../../components/PortableText.vue';
 import TechList from '../../components/TechList.vue';
+import TagGrid from '../../components/TagGrid.vue';
 
 const project = await fetchProject(Astro.params.slug || '');
 
@@ -57,9 +58,10 @@ if (!project) {
                 <PortableText data={project.description} />
             </div>
         </div>
-        <div class="sidebar flex flex-col">
+        <div class="sidebar flex flex-col gap-y-[2.5rem] md:gap-y-[3.125rem]">
             <!-- <BarGraph data={languages.data}/> -->
             <TechList title={'Technologies'} items={project.technologies} />
+            <TagGrid tags={project.tags} title="tags"/>
         </div>
     </div>
 </PageLayout>

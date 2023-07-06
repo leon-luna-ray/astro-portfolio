@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue';
-import { useWindowScroll } from '@vueuse/core'
+import { useTitle, useWindowScroll } from '@vueuse/core'
 
 const props = defineProps({
     title: {
@@ -30,9 +30,6 @@ const bottomPadding = computed(() => ({
     'md:pb-[1rem]': isSticky.value,
 }))
 
-const backText = computed(()=>{
-    return '< Back'
-})
 
 // Methods
 const handleScroll = () => {
@@ -54,10 +51,13 @@ watch(y, handleScroll)
             <div class="label-text">
                 <span class="name">{{ name }}</span>
                 <span class="dash"> - </span>
-                <div v-if="path?.length" v-for="(item, index) in path" class="path flex">
+                <div v-if="path.length" v-for="(item, index) in path" class="path flex">
+                    <!-- todo crate href for breadcrumbs -->
+                    <!-- <a v-if="index < path.length - 1" class="capitalize">{{ item }}</a> -->
                     <span class="capitalize">{{ item }}</span>
                     <span v-if="index < path.length - 1" class="dash pl-2 hidden md:block"> - </span>
                 </div>
+                <span v-else>Developer Portfolio</span>
             </div>
             <div class='divider'></div>
         </a>

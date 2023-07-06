@@ -11,7 +11,7 @@ const props = defineProps({
         required: true,
     },
     intro: {
-        type: Object,
+        type: String,
         required: false,
     },
     launchUrl: {
