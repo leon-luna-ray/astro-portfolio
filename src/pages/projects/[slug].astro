@@ -58,10 +58,14 @@ if (!project) {
                 <PortableText data={project.description} />
             </div>
         </div>
-        <div class="sidebar flex flex-col gap-y-[2.5rem] md:gap-y-[3.125rem]">
+        <div class='sidebar flex flex-col gap-y-[2.5rem] md:gap-y-[3.125rem]'>
             <!-- <BarGraph data={languages.data}/> -->
-            <TechList title={'Technologies'} items={project.technologies} />
-            <TagGrid tags={project.tags} title="tags"/>
+            <TechList
+                client:load
+                title={'Technologies'}
+                items={project.technologies}
+            />
+            <TagGrid tags={project.tags} title='tags' />
         </div>
     </div>
 </PageLayout>

@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { defineProps, ref } from 'vue';
+import { defineProps, ref, Ref } from 'vue';
 
+import IconChevronUp from './icons/IconChevronUp.vue'
+import IconChevronDown from './icons/IconChevronDown.vue'
 import PortableText from '../components/PortableText.vue'
 
 const props = defineProps({
@@ -14,21 +16,33 @@ const props = defineProps({
     },
 });
 
-const expandedItem = ref(null);
+// State
+const expandedItem: Ref<number | null> = ref(null);
 
-function toggleItem(item) {
-    expandedItem.value = (expandedItem.value === item ? null : item);
+// Methods
+const isItemExpanded = (index: number) => {
+    return index === expandedItem.value;
 }
-console.log(props.items)
+const setExpandedItem = (value: number | null): void => {
+    if (expandedItem.value === value) {
+        expandedItem.value = null;
+    } else {
+        expandedItem.value = value;
+    }
+};
 </script>
 <template>
     <div class="tech-list">
         <h3 v-if="title" class="title">{{ title }}</h3>
         <ul class="link-list">
-            <li v-for="item in items">
-                <span>{{ item.title }}</span>
-                <PortableText :data="item.description" class="description"/>
+            <li v-for="(item, index) in items" class="hover:cursor-pointer">
+                <div class="title">
+                    <span @click="setExpandedItem(index)">{{ item.title }}</span>
+                    <IconChevronUp/>
+                    <IconChevronDown/>
+                </div>
+                <PortableText v-if="expandedItem === index" :data="item.description" class="description" />
             </li>
         </ul>
     </div>
-</template>x
+</template>
