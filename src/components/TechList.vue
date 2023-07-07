@@ -20,9 +20,6 @@ const props = defineProps({
 const expandedItem: Ref<number | null> = ref(null);
 
 // Methods
-const isItemExpanded = (index: number) => {
-    return index === expandedItem.value;
-}
 const setExpandedItem = (value: number | null): void => {
     if (expandedItem.value === value) {
         expandedItem.value = null;
@@ -36,10 +33,10 @@ const setExpandedItem = (value: number | null): void => {
         <h3 v-if="title" class="title">{{ title }}</h3>
         <ul class="link-list">
             <li v-for="(item, index) in items" class="hover:cursor-pointer">
-                <div class="title">
-                    <span @click="setExpandedItem(index)">{{ item.title }}</span>
-                    <IconChevronUp/>
-                    <IconChevronDown/>
+                <div class="title" @click="setExpandedItem(index)">
+                    <span>{{ item.title }}</span>
+                    <IconChevronUp v-if="expandedItem === index" class="chevron up" />
+                    <IconChevronDown v-else class="chevron down" />
                 </div>
                 <PortableText v-if="expandedItem === index" :data="item.description" class="description" />
             </li>

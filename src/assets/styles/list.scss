@@ -12,6 +12,14 @@
     .description {
         @apply text-[0.875rem] font-light;
     }
+
+    .title {
+        @apply flex justify-between pb-0 items-center text-[1rem];
+    }
+
+    .chevron {
+        @apply h-[1rem];
+    }
 }
 
 .skills-list {
