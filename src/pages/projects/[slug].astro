@@ -50,11 +50,6 @@ if (repoSlug) {
                 <PortableText data={project.description} />
             </div>
         </div>
-        <TechList
-            client:load
-            title={'Technologies'}
-            items={project.technologies}
-        />
         <div class='sidebar flex flex-col gap-y-[3.125rem] md:gap-y-[3.125rem]'>
             {
                 languages.length > 0 && (
@@ -64,6 +59,11 @@ if (repoSlug) {
                     </div>
                 )
             }
+            <TechList
+                client:load
+                title={'Technologies'}
+                items={project.technologies}
+            />
             <TagGrid tags={project.tags} title='tags' />
         </div>
     </div>
