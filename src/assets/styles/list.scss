@@ -53,9 +53,9 @@
 }
 
 .bar-graph {
-    @apply flex flex-col gap-y-[0.5rem];
+    @apply flex flex-col gap-y-[0.6rem];
     li {
-        @apply flex flex-col gap-y-[0.5rem];
+        @apply flex flex-col gap-y-[0.1rem];
 
         .value {
             @apply grid grid-cols-6;
