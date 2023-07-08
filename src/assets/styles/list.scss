@@ -55,6 +55,19 @@
 .bar-graph {
     @apply flex flex-col gap-y-[1rem];
     li {
-        @apply flex justify-between;
+        @apply flex flex-col gap-y-[0.5rem];
+
+        .value {
+            @apply grid grid-cols-6;
+        }
+        .bar {
+            @apply col-span-5;
+        }
+        .fill {
+            @apply bg-green-300 h-[10px];
+        }
+        .label {
+            @apply col-span-1;
+        }
     }
 }

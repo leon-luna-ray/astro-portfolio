@@ -1,6 +1,6 @@
 import { useSanityClient, groq } from 'astro-sanity';
 import { Octokit } from 'octokit';
-import { calculateLanguagePercentage } from '../utils/utils';
+import { formatLanguageData } from '../utils/utils';
 
 // Octokit
 const octokit = new Octokit({});
@@ -10,7 +10,7 @@ export async function fetchLanguages(slug: string) {
     const languages = await octokit.request(
       `GET /repos/leon-luna-ray/${slug}/languages`,
       {
-        owner: 'leon-luna-ray',
+        owner: import.meta.env.VITE_GITHUB_USERNAME,
         repo: slug,
         auth: import.meta.env.VITE_GITHUB_API_KEY,
         headers: {
@@ -18,7 +18,7 @@ export async function fetchLanguages(slug: string) {
         },
       }
     );
-    return calculateLanguagePercentage(languages.data);
+    return formatLanguageData(languages.data);
   } catch (error) {
     console.error('Error fetching languages:', error);
     throw error;
