@@ -1,8 +1,7 @@
 ---
-import { fetchProject } from '../../lib/api';
-// import { Octokit } from 'octokit';
+import { fetchProject, fetchLanguages } from '../../lib/api';
 
-// import BarGraph from '../../components/BarGraph.vue';
+import BarGraph from '../../components/BarGraph.vue';
 import DetailHeader from '../../components/DetailHeader.vue';
 import PageLayout from '../../layouts/PageLayout.astro';
 import ProjectInfo from '../../components/ProjectInfo.vue';
@@ -18,27 +17,8 @@ if (!project) {
         statusText: 'Not found',
     });
 }
-// const octokit = new Octokit({});
-// const getRepolSlug = (url: string): string => {
-//     url = url.endsWith('/') ? url.slice(0, -1) : url;
-//     const slug = url.split('/').pop();
 
-//     return slug;
-// };
-// const repo = project?.repository;
-// const slug = getRepolSlug(repo);
-
-// const languages = await octokit.request(
-//     `GET /repos/leon-luna-ray/${slug}/languages`,
-//     {
-//         owner: 'leon-luna-ray',
-//         repo: slug,
-//         auth: import.meta.env.VITE_GITHUB_API_KEY,
-//         headers: {
-//             'X-GitHub-Api-Version': '2022-11-28',
-//         },
-//     }
-// );
+const languages = await fetchLanguages('lds_www');
 ---
 
 <PageLayout title={project.title}>
@@ -59,7 +39,7 @@ if (!project) {
             </div>
         </div>
         <div class='sidebar flex flex-col gap-y-[3.125rem] md:gap-y-[3.125rem]'>
-            <!-- <BarGraph data={languages.data}/> -->
+            <BarGraph data={languages}/>
             <TechList
                 client:load
                 title={'Technologies'}
