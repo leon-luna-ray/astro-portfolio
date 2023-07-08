@@ -1,5 +1,6 @@
 ---
 import { fetchProject, fetchLanguages } from '../../lib/api';
+import { getRepoSlug } from '../../utils/utils';
 
 import BarGraph from '../../components/BarGraph.vue';
 import DetailHeader from '../../components/DetailHeader.vue';
@@ -8,6 +9,8 @@ import ProjectInfo from '../../components/ProjectInfo.vue';
 import PortableText from '../../components/PortableText.vue';
 import TechList from '../../components/TechList.vue';
 import TagGrid from '../../components/TagGrid.vue';
+
+import type Language from '../../interfaces/Language';
 
 const project = await fetchProject(Astro.params.slug || '');
 
@@ -18,7 +21,16 @@ if (!project) {
     });
 }
 
-const languages = await fetchLanguages('lds_www');
+let languages: Language[] = [];
+const repoSlug = getRepoSlug(project.repository);
+
+if (repoSlug) {
+    const fetchedLanguages = await fetchLanguages(repoSlug);
+    languages = fetchedLanguages.map((language) => ({
+        name: language.title,
+        count: language.value,
+    }));
+}
 ---
 
 <PageLayout title={project.title}>
@@ -39,10 +51,14 @@ const languages = await fetchLanguages('lds_www');
             </div>
         </div>
         <div class='sidebar flex flex-col gap-y-[3.125rem] md:gap-y-[3.125rem]'>
-            <div class="languages">
-                <h2 class="title">Languages</h2>
-                <BarGraph data={languages}/>
-            </div>
+            {
+                languages.length > 0 && (
+                    <div class='languages'>
+                        <h2 class='title'>Languages</h2>
+                        <BarGraph data={languages} />
+                    </div>
+                )
+            }
             <TechList
                 client:load
                 title={'Technologies'}

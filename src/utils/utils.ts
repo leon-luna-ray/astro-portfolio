@@ -1,13 +1,3 @@
-export const scrollToSection = (id: string): void => {
-    const element = document.querySelector(id);
-    if (element) {
-        element.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-        });
-    }
-};
-
 export const calculateLanguagePercentage = (
     languageObject: Record<string, number>
 ): { title: string; value: number }[] => {
@@ -26,4 +16,27 @@ export const calculateLanguagePercentage = (
     languageArray.sort((a, b) => b.value - a.value);
 
     return languageArray;
+};
+
+export const getRepoSlug = (url: string) => {
+    const domain = 'github.com';
+    const urlObject = new URL(url);
+
+    if (urlObject.hostname.includes(domain)) {
+        const path = urlObject.pathname;
+        const slug = path.split('/').filter(Boolean).pop();
+        return slug || null;
+    }
+
+    return null;
+};
+
+export const scrollToSection = (id: string): void => {
+    const element = document.querySelector(id);
+    if (element) {
+        element.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+        });
+    }
 };
