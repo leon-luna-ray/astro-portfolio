@@ -19,7 +19,7 @@ export const calculateLanguagePercentage = (
     const languageArray = Object.entries(languageObject).map(
         ([language, bytes]) => ({
             title: language,
-            value: Math.round((bytes / totalBytes) * 100),
+            value: parseFloat(((bytes / totalBytes) * 100).toFixed(2)),
         })
     );
 
