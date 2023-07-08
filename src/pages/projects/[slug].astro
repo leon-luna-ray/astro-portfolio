@@ -41,11 +41,14 @@ if (repoSlug) {
     />
     <div class="project-details">
         <div class="data">
-            <ProjectInfo data={project} />
-            <div class="description">
-                <h2 class="title">Description</h2>
-                <PortableText data={project.description} />
+            <div class="top">
+                <ProjectInfo data={project} />
+                <div class="description">
+                    <h2 class="title">Description</h2>
+                    <PortableText data={project.description} />
+                </div>
             </div>
+            <TagGrid tags={project.tags} title="tags" class="w-[50%]" />
         </div>
         <div class="sidebar flex flex-col gap-y-[3.125rem] md:gap-y-[3.125rem]">
             {
@@ -61,7 +64,6 @@ if (repoSlug) {
                 title={"Technologies"}
                 items={project.technologies}
             />
-            <TagGrid tags={project.tags} title="tags" />
         </div>
     </div>
 </PageLayout>
