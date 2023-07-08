@@ -27,8 +27,8 @@ const repoSlug = getRepoSlug(project.repository);
 if (repoSlug) {
     const fetchedLanguages = await fetchLanguages(repoSlug);
     languages = fetchedLanguages.map((language) => ({
-        name: language.title,
-        count: language.value,
+        title: language.title,
+        value: language.value,
     }));
 }
 ---
