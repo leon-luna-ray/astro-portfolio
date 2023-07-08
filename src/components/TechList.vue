@@ -17,7 +17,7 @@ const props = defineProps({
 });
 
 // State
-const expandedItem: Ref<number | null> = ref(null);
+const expandedItem: Ref<number | null> = ref(0);
 
 // Methods
 const setExpandedItem = (value: number | null): void => {
