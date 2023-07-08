@@ -9,6 +9,8 @@ const props = defineProps({
   },
 });
 
+const color = '#f1e05a';
+
 const getFillStyle = (item: Language) => {
   return {
     width: `${item.value}%`,
