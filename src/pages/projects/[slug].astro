@@ -1,23 +1,23 @@
 ---
-import { fetchProject, fetchLanguages } from '../../lib/api';
-import { getRepoSlug } from '../../utils/utils';
+import { fetchProject, fetchLanguages } from "../../lib/api";
+import { getRepoSlug } from "../../utils/utils";
 
-import BarGraph from '../../components/BarGraph.vue';
-import DetailHeader from '../../components/DetailHeader.vue';
-import PageLayout from '../../layouts/PageLayout.astro';
-import ProjectInfo from '../../components/ProjectInfo.vue';
-import PortableText from '../../components/PortableText.vue';
-import TechList from '../../components/TechList.vue';
-import TagGrid from '../../components/TagGrid.vue';
+import BarGraph from "../../components/BarGraph.vue";
+import DetailHeader from "../../components/DetailHeader.vue";
+import PageLayout from "../../layouts/PageLayout.astro";
+import ProjectInfo from "../../components/ProjectInfo.vue";
+import PortableText from "../../components/PortableText.vue";
+import TechList from "../../components/TechList.vue";
+import TagGrid from "../../components/TagGrid.vue";
 
-import type Language from '../../interfaces/Language';
+import type Language from "../../interfaces/Language";
 
-const project = await fetchProject(Astro.params.slug || '');
+const project = await fetchProject(Astro.params.slug || "");
 
 if (!project) {
     return new Response(null, {
         status: 404,
-        statusText: 'Not found',
+        statusText: "Not found",
     });
 }
 
@@ -26,10 +26,7 @@ const repoSlug = getRepoSlug(project.repository);
 
 if (repoSlug) {
     const fetchedLanguages = await fetchLanguages(repoSlug);
-    languages = fetchedLanguages.map((language) => ({
-        title: language.title,
-        value: language.value,
-    }));
+    languages = fetchedLanguages;
 }
 ---
 
@@ -42,29 +39,31 @@ if (repoSlug) {
         codeUrl={project.repository}
         isFeatured={project.featured}
     />
-    <div class='project-details'>
-        <div class='data'>
-            <ProjectInfo data={project} />
-            <div class='description'>
-                <h2 class='title'>Description</h2>
-                <PortableText data={project.description} />
+    <div class="project-details">
+        <div class="data">
+            <div class="top">
+                <ProjectInfo data={project} />
+                <div class="description">
+                    <h2 class="title">Description</h2>
+                    <PortableText data={project.description} />
+                </div>
             </div>
+            <TagGrid tags={project.tags} title="tags" class="w-[50%]" />
         </div>
-        <div class='sidebar flex flex-col gap-y-[3.125rem] md:gap-y-[3.125rem]'>
+        <div class="sidebar flex flex-col gap-y-[3.125rem] md:gap-y-[3.125rem]">
             {
                 languages.length > 0 && (
-                    <div class='languages'>
-                        <h2 class='title'>Languages</h2>
+                    <div class="languages">
+                        <h2 class="title">Languages</h2>
                         <BarGraph data={languages} />
                     </div>
                 )
             }
             <TechList
                 client:load
-                title={'Technologies'}
+                title={"Technologies"}
                 items={project.technologies}
             />
-            <TagGrid tags={project.tags} title='tags' />
         </div>
     </div>
 </PageLayout>

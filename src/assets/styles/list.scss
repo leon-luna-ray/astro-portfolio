@@ -53,8 +53,21 @@
 }
 
 .bar-graph {
-    @apply flex flex-col gap-y-[1rem];
+    @apply flex flex-col gap-y-[0.5rem];
     li {
-        @apply flex justify-between;
+        @apply flex flex-col gap-y-[0.5rem];
+
+        .value {
+            @apply grid grid-cols-6;
+        }
+        .bar {
+            @apply col-span-5;
+        }
+        .fill {
+            @apply h-[15px] rounded-full border border-neutral-brown;
+        }
+        .label {
+            @apply col-span-1 leading-none pl-1;
+        }
     }
 }
