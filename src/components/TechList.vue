@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, ref, Ref } from 'vue';
+import { ref, Ref } from 'vue';
 
 import IconChevronUp from './icons/IconChevronUp.vue'
 import IconChevronDown from './icons/IconChevronDown.vue'
