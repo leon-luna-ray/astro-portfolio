@@ -51,3 +51,10 @@
         @apply font-bold text-[0.875rem] uppercase;
     }
 }
+
+.bar-graph {
+    @apply flex flex-col gap-y-[1rem];
+    li {
+        @apply flex justify-between;
+    }
+}

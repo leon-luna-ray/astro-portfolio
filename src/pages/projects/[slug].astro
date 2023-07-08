@@ -1,14 +1,16 @@
 ---
-import { fetchProject } from '../../lib/api';
-// import { Octokit } from 'octokit';
+import { fetchProject, fetchLanguages } from '../../lib/api';
+import { getRepoSlug } from '../../utils/utils';
 
-// import BarGraph from '../../components/BarGraph.vue';
+import BarGraph from '../../components/BarGraph.vue';
 import DetailHeader from '../../components/DetailHeader.vue';
 import PageLayout from '../../layouts/PageLayout.astro';
 import ProjectInfo from '../../components/ProjectInfo.vue';
 import PortableText from '../../components/PortableText.vue';
 import TechList from '../../components/TechList.vue';
 import TagGrid from '../../components/TagGrid.vue';
+
+import type Language from '../../interfaces/Language';
 
 const project = await fetchProject(Astro.params.slug || '');
 
@@ -18,27 +20,17 @@ if (!project) {
         statusText: 'Not found',
     });
 }
-// const octokit = new Octokit({});
-// const getRepolSlug = (url: string): string => {
-//     url = url.endsWith('/') ? url.slice(0, -1) : url;
-//     const slug = url.split('/').pop();
 
-//     return slug;
-// };
-// const repo = project?.repository;
-// const slug = getRepolSlug(repo);
+let languages: Language[] = [];
+const repoSlug = getRepoSlug(project.repository);
 
-// const languages = await octokit.request(
-//     `GET /repos/leon-luna-ray/${slug}/languages`,
-//     {
-//         owner: 'leon-luna-ray',
-//         repo: slug,
-//         auth: import.meta.env.VITE_GITHUB_API_KEY,
-//         headers: {
-//             'X-GitHub-Api-Version': '2022-11-28',
-//         },
-//     }
-// );
+if (repoSlug) {
+    const fetchedLanguages = await fetchLanguages(repoSlug);
+    languages = fetchedLanguages.map((language) => ({
+        title: language.title,
+        value: language.value,
+    }));
+}
 ---
 
 <PageLayout title={project.title}>
@@ -59,7 +51,14 @@ if (!project) {
             </div>
         </div>
         <div class='sidebar flex flex-col gap-y-[3.125rem] md:gap-y-[3.125rem]'>
-            <!-- <BarGraph data={languages.data}/> -->
+            {
+                languages.length > 0 && (
+                    <div class='languages'>
+                        <h2 class='title'>Languages</h2>
+                        <BarGraph data={languages} />
+                    </div>
+                )
+            }
             <TechList
                 client:load
                 title={'Technologies'}

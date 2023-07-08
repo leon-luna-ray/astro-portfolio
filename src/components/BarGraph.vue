@@ -1,31 +1,16 @@
-<!-- <script setup lang="ts">
-import { computed } from 'vue';
+<script setup lang="ts">
 const props = defineProps({
     data: {
-        type: Object,
+        type: Array,
         required: true,
     },
 })
-
-// const graphData = computed(() => {
-//     const dataArray = Object.entries(props.data);
-//     const totalCount = dataArray.reduce((total, [key, value]) => total + value, 0);
-
-//     const resultArray = dataArray.map(([key, value]) => ({
-//         title: key,
-//         total: Math.round((value / totalCount) * 100),
-//     }));
-
-//     resultArray.sort((a, b) => b.total - a.total);
-
-//     return props.data;
-// })
-// console.log(graphData.value)
 </script>
 <template>
-    <div class="bar-graph">
-        <h2 class="title">
-            Languages
-        </h2>
-    </div>
-</template> -->
+    <ul v-if="data?.length" class="bar-graph">
+        <li v-for="item in data">
+            <span>{{ item.title }}</span>
+            <span>{{ item.value }}%</span>
+        </li>
+    </ul>
+</template>

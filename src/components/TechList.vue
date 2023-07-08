@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, ref, Ref, onMounted } from 'vue';
+import { ref, Ref } from 'vue';
 
 import IconChevronUp from './icons/IconChevronUp.vue'
 import IconChevronDown from './icons/IconChevronDown.vue'
@@ -27,10 +27,6 @@ const setExpandedItem = (value: number | null): void => {
         expandedItem.value = value;
     }
 };
-
-onMounted(() => {
-    setExpandedItem(0);
-})
 </script>
 <template>
     <div class="tech-list">
