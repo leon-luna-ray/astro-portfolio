@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { getMediumUrl } from '../lib/images';
+import { getStatusIcon } from '../utils/utils';
 
 const props = defineProps({
     title: {
@@ -25,7 +27,21 @@ const props = defineProps({
     isFeatured: {
         type: Boolean,
         required: false,
+    },
+    status: {
+        type: String,
+        required: false,
+    },
+})
+
+const labelText = computed(() => {
+    if (props.isFeatured) {
+        return 'Featured Project';
     }
+    else if (props.status && props.status !== 'live') {
+        return `${getStatusIcon(props.status)} ${props.status}`
+    }
+    return null;
 })
 </script>
 <template>
@@ -35,7 +51,7 @@ const props = defineProps({
                 <img :src="getMediumUrl(image)" :alt="`Screenshot of ${title}`">
             </div>
             <div class="text">
-                <div v-if="isFeatured" class="label">Featured Project</div>
+                <div v-if="labelText" class="label">{{ labelText }}</div>
                 <h1>{{ title }}</h1>
                 <div class="description">{{ intro }}</div>
                 <div class="btn-links">
