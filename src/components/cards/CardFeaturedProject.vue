@@ -7,10 +7,8 @@ const props = defineProps({
         type: Object,
         required: true,
     },
-})
-const projectUrl = computed(() => {
-    return `/projects/${props.project?.slug?.current}`
-})
+});
+
 const projectStatusText = (status: string): string => {
     if (status === 'live') {
         return '';
@@ -18,11 +16,15 @@ const projectStatusText = (status: string): string => {
     if (status === 'development') {
         return '🚧'
     }
-    if(status === 'bug' || status === 'down'){
+    if (status === 'bug' || status === 'down') {
         return '⛔️'
     }
     return '⚠️'
-}
+};
+
+const projectUrl = computed(() => {
+    return `/projects/${props.project?.slug?.current}`
+});
 </script>
 <template>
     <div class='card featured-project'>

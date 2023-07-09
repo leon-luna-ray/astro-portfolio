@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import { getMediumUrl } from '../lib/images';
 import { getStatusIcon } from '../utils/utils';
 
+// Todo refactor to 1 prop
 const props = defineProps({
     title: {
         type: String,
@@ -35,11 +36,11 @@ const props = defineProps({
 })
 
 const labelText = computed(() => {
+    if (props.status && props.status !== 'live') {
+        return `${getStatusIcon(props.status)} ${props.status}`
+    }
     if (props.isFeatured) {
         return 'Featured Project';
-    }
-    else if (props.status && props.status !== 'live') {
-        return `${getStatusIcon(props.status)} ${props.status}`
     }
     return null;
 })
