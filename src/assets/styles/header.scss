@@ -95,7 +95,7 @@
         }
 
         img {
-            @apply object-cover md:rounded-3xl border-y md:border border-black;
+            @apply object-cover md:rounded-3xl border-y md:border-2 border-neutral-brown;
         }
     }
     .btn-links {

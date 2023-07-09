@@ -5,7 +5,7 @@
         @apply bg-black text-primary-orange;
     }
     &.light {
-        @apply text-white bg-primary-red;
+        @apply text-white bg-primary-red border border-neutral-brown;
     }
 }
 
