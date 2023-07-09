@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { formatDate } from '../utils/date'
-const item: { commit?: { message?: string, author: { date: string } } } = {} as any;
 
 const props = defineProps({
     items: {
@@ -8,9 +7,6 @@ const props = defineProps({
         required: true,
     },
 });
-
-
-
 </script>
 <template>
     <ul class="activity-log">
