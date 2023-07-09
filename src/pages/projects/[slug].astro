@@ -1,6 +1,7 @@
 ---
 import { fetchProject, fetchLanguages, fetchCommits } from '../../lib/api';
 
+import ActivityLog from '../../components/ActivityLog.vue';
 import BarGraph from '../../components/BarGraph.vue';
 import DetailHeader from '../../components/DetailHeader.vue';
 import PageLayout from '../../layouts/PageLayout.astro';
@@ -57,6 +58,14 @@ if (commits?.length) {
                     <PortableText data={project.description} />
                 </div>
                 {
+                    commits?.length > 0 && (
+                        <div class='activity'>
+                            <h2 class="title">Activity</h2>
+                            <ActivityLog items={commits}/>
+                        </div>
+                    )
+                }
+                {
                     project?.relatedProjects?.length > 0 && (
                         <div class='related-projects'>
                             <h2 class='title'>Related Projects</h2>
@@ -81,8 +90,8 @@ if (commits?.length) {
                     title='Technologies'
                     items={project.technologies}
                 />
-                <TagGrid tags={project.tags} title='tags' />
             </div>
+            <TagGrid tags={project.tags} title='tags' />
         </div>
     </div>
 </PageLayout>

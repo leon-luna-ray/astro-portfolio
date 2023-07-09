@@ -1,11 +1,15 @@
 #footer {
-    @apply flex flex-col justify-center items-center gap-y-[1.875rem] ;
+    @apply flex flex-col justify-center items-center gap-y-[1.875rem];
 
     .social-icons {
         @apply flex gap-x-[1.25rem];
 
         svg {
-            @apply h-[32px] w-[32px]  zoom-in-out;
+            @apply h-[32px] w-[32px]  zoom-in-out fill-neutral-brown;
+
+            g {
+                @apply fill-neutral-brown;
+            }
         }
     }
 }

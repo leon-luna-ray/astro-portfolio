@@ -21,7 +21,7 @@ const props = defineProps({
     <div id="featured-projects" class='featured-projects'>
         <div v-if="title" class="section-title">
             <h3>{{ title }}</h3>
-            <a href="/projects">View All</a>
+            <a v-if="showLink" href="/projects">View All</a>
         </div>
         <div class="project-grid">
             <CardFeaturedProject v-for="project in projects" :project="project" :key="project._id" />

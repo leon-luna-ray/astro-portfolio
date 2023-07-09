@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue';
-import { useTitle, useWindowScroll } from '@vueuse/core'
+import { useWindowScroll } from '@vueuse/core'
 
 const props = defineProps({
     title: {
@@ -13,10 +13,9 @@ const props = defineProps({
         type: Boolean,
     },
     path: {
-        type: Array,
+        type: Array as () => Array<string>,
         required: true,
     },
-
 });
 
 // Composables
@@ -40,26 +39,32 @@ const handleScroll = () => {
         isSticky.value = false;
     }
 }
+const getTitle = (path: string): string => {
+    const elements = path.split('/');
+    const lastElement = elements[elements.length - 1];
+    if (lastElement === '') {
+        // Todo refactor values
+        return props.isHome ? 'Ray Luna - Developer Portfolio' : 'Ray Luna';
+    }
+    const title = lastElement.replace(/-/g, ' ');
+    return title
+}
 
 // Watchers
 watch(y, handleScroll)
 </script>
 <template>
     <header id="header" :class="bottomPadding">
-        <a href="/" class='top-label hover:text-inherit'>
+        <div class='top-label hover:text-inherit'>
             <div class='divider'></div>
             <div class="label-text">
-                <span class="name">{{ name }}</span>
-                <span class="dash"> - </span>
                 <div v-if="path.length" v-for="(item, index) in path" class="path flex">
-                    <!-- todo crate href for breadcrumbs -->
-                    <!-- <a v-if="index < path.length - 1" class="capitalize">{{ item }}</a> -->
-                    <span class="capitalize">{{ item }}</span>
+                    <a v-if="index < path.length - 1" :href="path[index]" class="text-item">{{ getTitle(item) }}</a>
+                    <span v-else class="text-item">{{ getTitle(item) }}</span>
                     <span v-if="index < path.length - 1" class="dash pl-2 hidden md:block"> - </span>
                 </div>
-                <span v-else>Developer Portfolio</span>
             </div>
             <div class='divider'></div>
-        </a>
+        </div>
     </header>
 </template>

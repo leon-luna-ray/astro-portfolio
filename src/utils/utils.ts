@@ -26,39 +26,15 @@ export const formatLanguageData = (
   return languageArray;
 };
 
-export const getRepoSlug = (url: string) => {
-  const domain = "github.com";
-  const urlObject = new URL(url);
-
-  if (urlObject.hostname.includes(domain)) {
-    const path = urlObject.pathname;
-    const slug = path.split("/").filter(Boolean).pop();
-    return slug || null;
-  }
-
-  return null;
-};
-
-export const scrollToSection = (id: string): void => {
-  const element = document.querySelector(id);
-  if (element) {
-    element.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }
-};
-
-
 export const getStatusIcon = (status: string): string => {
   if (status === 'live') {
-      return '🟢';
+    return '🟢';
   }
   if (status === 'development') {
-      return '🚧'
+    return '🚧'
   }
   if (status === 'bug' || status === 'down') {
-      return '⛔️'
+    return '⛔️'
   }
   return '⚠️'
 }

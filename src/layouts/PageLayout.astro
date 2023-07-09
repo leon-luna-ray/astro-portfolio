@@ -4,7 +4,6 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.vue';
 import Footer from '../components/Footer.vue';
 
-// TODO refactor to reduce api calls
 const global = await fetchGlobal();
 const profile = await fetchProfile();
 
@@ -17,16 +16,28 @@ const pageTitle = () => {
     }
     return Astro.props.title;
 };
+const getPathArray = (): string[] => {
+    const path = Astro.url.pathname;
 
-const getPathParts = () => {
-  const path = Astro.url.pathname
-  const pathParts = path.replace(/^\/|\/$/g, '').replaceAll('-', ' ').split('/');
+    if (isHome()) {
+        return ['/'];
+    }
 
-  if (path === '/') {
-    return [];
-  }
+    const paths: string[] = [];
+    const segments = path.split('/').filter(Boolean);
 
-  return pathParts;
+    let currentPath = '';
+
+    for (const segment of segments) {
+        currentPath += `/${segment}`;
+        paths.push(currentPath);
+    }
+
+    if (path !== '/') {
+        paths.unshift('/');
+    }
+
+    return paths;
 };
 ---
 
@@ -44,7 +55,7 @@ const getPathParts = () => {
             client:load
             name={profile?.name}
             title={pageTitle()}
-            path={getPathParts()}
+            path={getPathArray()}
             isHome={isHome()}
         />
         <!--Page Content -->
