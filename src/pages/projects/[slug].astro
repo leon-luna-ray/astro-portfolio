@@ -1,5 +1,10 @@
 ---
-import { fetchProject, fetchLanguages } from '../../lib/api';
+import {
+    fetchProject,
+    fetchLanguages,
+    fetchCommits,
+    fetchRepository,
+} from '../../lib/api';
 
 import BarGraph from '../../components/BarGraph.vue';
 import DetailHeader from '../../components/DetailHeader.vue';
@@ -22,12 +27,15 @@ if (!project) {
 }
 
 let languages: Language[] = [];
+let repository = {};
 
 if (project?.repositorySlug) {
     const fetchedLanguages = await fetchLanguages(project.repositorySlug);
     languages = fetchedLanguages;
-}
 
+    const fetchedRepository = await fetchRepository(project.repositorySlug);
+    repository = fetchedRepository;
+}
 ---
 
 <PageLayout title={project.title}>
@@ -42,7 +50,7 @@ if (project?.repositorySlug) {
     <div class='project-details'>
         <div class='data'>
             <div class='top'>
-                <ProjectInfo data={project} />
+                <ProjectInfo data={project} repoData={repository} />
                 <div class='description'>
                     <h2 class='title'>Description</h2>
                     <PortableText data={project.description} />
@@ -56,7 +64,6 @@ if (project?.repositorySlug) {
                     )
                 }
             </div>
-
         </div>
         <div class='sidebar flex flex-col gap-y-[3.125rem] justify-between'>
             <div class='top flex-col gap-y-[3.125rem]'>
@@ -73,8 +80,8 @@ if (project?.repositorySlug) {
                     title='Technologies'
                     items={project.technologies}
                 />
+                <TagGrid tags={project.tags} title='tags' />
             </div>
-            <TagGrid tags={project.tags} title='tags' />
         </div>
     </div>
 </PageLayout>

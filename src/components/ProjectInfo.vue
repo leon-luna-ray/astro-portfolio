@@ -5,11 +5,15 @@ const props = defineProps({
         type: Object,
         required: true,
     },
+    repoData: {
+        type: Object,
+        required: false,
+    },
 })
 
 const statusIcon = (status: string): string => {
     if (status === 'live') {
-        return '';
+        return '🟢';
     }
     if (status === 'development') {
         return '🚧'
@@ -23,6 +27,8 @@ const statusIcon = (status: string): string => {
 const projectStatusLabel = computed(() => {
     return `${statusIcon(props.data.status)} ${props.data.status}`;
 })
+
+console.log(props.repoData)
 </script>
 <template>
     <div class="info">
