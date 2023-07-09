@@ -85,6 +85,7 @@ export async function fetchProject(slug: string) {
     intro,
     mainImage,
     repository,
+    repositorySlug,
     slug,
     status,
     technologies[]->{_id, title, slug, description, website, tags[]->{title, slug}},
