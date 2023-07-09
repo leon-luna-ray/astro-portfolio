@@ -20,7 +20,7 @@
     @apply flex gap-x-[1rem] no-underline;
 
     .img-wrap {
-        @apply w-[125px] h-[125px] col-span-1 flex-shrink-0;
+        @apply w-[150px] h-[150px] col-span-1 flex-shrink-0;
     }
 
    img {
@@ -47,6 +47,6 @@
         @apply flex justify-between w-full;
     }
     .intro {
-        @apply pr-[2rem] lg:pr-[6.25rem] line-clamp-4 md:line-clamp-none;
+        @apply line-clamp-4;
     }
 }
