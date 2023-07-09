@@ -59,18 +59,18 @@ if (commits?.length) {
                     <PortableText data={project.description} />
                 </div>
                 {
-                    commits?.length > 0 && (
-                        <div class='activity'>
-                            <h2 class='title'>Activity</h2>
-                            <ActivityLog items={commits} />
-                        </div>
-                    )
-                }
-                {
                     project?.galleryImages?.length > 0 && (
                         <div class='images'>
                             <h2 class='title'>Images</h2>
                             <ImageGallery images={project.galleryImages}/>
+                        </div>
+                    )
+                }
+                {
+                    commits?.length > 0 && (
+                        <div class='activity'>
+                            <h2 class='title'>Activity</h2>
+                            <ActivityLog items={commits} />
                         </div>
                     )
                 }
