@@ -3,7 +3,6 @@ import { ref, Ref } from 'vue';
 
 import IconChevronUp from './icons/IconChevronUp.vue'
 import IconChevronDown from './icons/IconChevronDown.vue'
-import PortableText from '../components/PortableText.vue'
 
 const props = defineProps({
     title: {
@@ -17,7 +16,7 @@ const props = defineProps({
 });
 
 // State
-const expandedItem: Ref<number | null> = ref(null);
+const expandedItem: Ref<number | null> = ref(0);
 
 // Methods
 const setExpandedItem = (value: number | null): void => {
@@ -38,7 +37,7 @@ const setExpandedItem = (value: number | null): void => {
                     <IconChevronUp v-if="expandedItem === index" class="chevron up" />
                     <IconChevronDown v-else class="chevron down" />
                 </div>
-                <PortableText v-if="expandedItem === index" :data="item.description" class="description" />
+                <p v-if="expandedItem === index" class="description">{{ item.description }}</p>
             </li>
         </ul>
     </div>
