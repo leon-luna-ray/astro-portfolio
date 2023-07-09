@@ -1,16 +1,22 @@
+<script setup lang="ts">
+import { formatDate } from '../utils/date'
+const item: { commit?: { message?: string, author: { date: string } } } = {} as any;
+
+const props = defineProps({
+    items: {
+        type: Array,
+        required: true,
+    },
+});
+
+
+
+</script>
 <template>
     <ul class="activity-log">
-        <li>
-            Item
-        </li>
-        <li>
-            Item
-        </li>
-        <li>
-            Item
-        </li>
-        <li>
-            Item
+        <li v-for="item in items">
+            <p v-if="item.commit?.message" class="message">{{ item.commit?.message }}</p>
+            <span class="date">{{ formatDate(item.commit.author.date) }}</span>
         </li>
     </ul>
 </template>

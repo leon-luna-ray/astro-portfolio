@@ -31,10 +31,19 @@ export const getTimeSince = (dateString: string): string => {
 
 export const formatDate = (dateString: string): string => {
     const options: Intl.DateTimeFormatOptions = {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
+      month: 'short',
+      day: 'numeric'
     };
+
     const date: Date = new Date(dateString);
-    return date.toLocaleDateString('en-US', options);
-};
+    const currentDate: Date = new Date();
+
+    if (date.getFullYear() === currentDate.getFullYear()) {
+      return date.toLocaleDateString('en-US', options);
+    } else {
+      return date.toLocaleDateString('en-US', {
+        ...options,
+        year: 'numeric'
+      });
+    }
+  };
