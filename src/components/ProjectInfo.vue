@@ -8,8 +8,8 @@ const props = defineProps({
         type: Object,
         required: true,
     },
-    repoData: {
-        type: Object,
+    lastCommit: {
+        type: String,
         required: false,
     },
 })
@@ -32,14 +32,8 @@ const projectStatusLabel = computed(() => {
 })
 
 const timeSinceUpdate = computed(() => {
-    if (props.repoData) {
-        return getTimeSince(props.repoData.updated_at);
-    }
-    return null;
-})
-const createdAt = computed(() => {
-    if (props.repoData) {
-        return formatDate(props.repoData.pushed_at)
+    if (props.lastCommit) {
+        return getTimeSince(props.lastCommit);
     }
     return null;
 })
