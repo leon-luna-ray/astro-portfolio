@@ -71,3 +71,7 @@
         }
     }
 }
+
+.thumbnail-links {
+    @apply flex flex-col gap-y-[1.5rem];
+}

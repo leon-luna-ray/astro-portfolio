@@ -8,6 +8,7 @@ import ProjectInfo from '../../components/ProjectInfo.vue';
 import PortableText from '../../components/PortableText.vue';
 import TechList from '../../components/TechList.vue';
 import TagGrid from '../../components/TagGrid.vue';
+import ThumbnailLinks from '../../components/ThumbnailLinks.vue';
 
 import type { Language } from '../../interfaces/Language';
 
@@ -26,6 +27,7 @@ if (project?.repositorySlug) {
     const fetchedLanguages = await fetchLanguages(project.repositorySlug);
     languages = fetchedLanguages;
 }
+
 ---
 
 <PageLayout title={project.title}>
@@ -45,23 +47,34 @@ if (project?.repositorySlug) {
                     <h2 class='title'>Description</h2>
                     <PortableText data={project.description} />
                 </div>
+                {
+                    project?.relatedProjects?.length > 0 && (
+                        <div class='related-projects'>
+                            <h2 class='title'>Related Projects</h2>
+                            <ThumbnailLinks data={project.relatedProjects} />
+                        </div>
+                    )
+                }
             </div>
-            <TagGrid tags={project.tags} title='tags' class='w-[50%]' />
+
         </div>
-        <div class='sidebar flex flex-col gap-y-[3.125rem] md:gap-y-[3.125rem]'>
-            {
-                languages.length > 0 && (
-                    <div class='languages'>
-                        <h2 class='title'>Languages</h2>
-                        <BarGraph data={languages} />
-                    </div>
-                )
-            }
-            <TechList
-                client:load
-                title='Technologies'
-                items={project.technologies}
-            />
+        <div class='sidebar flex flex-col gap-y-[3.125rem] justify-between'>
+            <div class='top flex-col gap-y-[3.125rem]'>
+                {
+                    languages.length > 0 && (
+                        <div class='languages'>
+                            <h2 class='title'>Languages</h2>
+                            <BarGraph data={languages} />
+                        </div>
+                    )
+                }
+                <TechList
+                    client:load
+                    title='Technologies'
+                    items={project.technologies}
+                />
+            </div>
+            <TagGrid tags={project.tags} title='tags' />
         </div>
     </div>
 </PageLayout>
