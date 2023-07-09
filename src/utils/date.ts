@@ -4,7 +4,9 @@ export const getTimeSince = (dateString: string): string => {
     const timeDiff: number = now.getTime() - date.getTime();
 
     const minutes: number = Math.floor(timeDiff / (1000 * 60));
-    if (minutes < 60) {
+    if (minutes === 0) {
+        return 'now';
+    } else if (minutes < 60) {
         return `${minutes} minute${minutes !== 1 ? 's' : ''} ago`;
     }
 

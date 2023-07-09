@@ -3,7 +3,6 @@ import { computed } from 'vue';
 import { getMediumUrl } from '../lib/images';
 import { getStatusIcon } from '../utils/utils';
 
-// Todo refactor to 1 prop
 const props = defineProps({
     title: {
         type: String,
