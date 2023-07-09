@@ -1,6 +1,7 @@
 ---
 import { fetchProject, fetchLanguages, fetchCommits } from '../../lib/api';
 
+import ActivityLog from '../../components/ActivityLog.vue'
 import BarGraph from '../../components/BarGraph.vue';
 import DetailHeader from '../../components/DetailHeader.vue';
 import PageLayout from '../../layouts/PageLayout.astro';
@@ -57,6 +58,11 @@ if (commits?.length) {
                     <h2 class='title'>Description</h2>
                     <PortableText data={project.description} />
                 </div>
+                {
+                    commits?.length > 0 && (
+                        <ActivityLog/>
+                    )
+                }
                 {
                     project?.relatedProjects?.length > 0 && (
                         <div class='related-projects'>
