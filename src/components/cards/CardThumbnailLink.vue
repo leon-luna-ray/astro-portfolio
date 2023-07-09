@@ -20,7 +20,7 @@ const props = defineProps({
 
                     <span class="project-title">{{ link.title }}</span>
                     <div class="icon">
-                <IconChevronRight/>
+                <!-- <IconChevronRight/> -->
             </div>
                 </div>
                 <div class="intro">{{ link.intro }}</div>

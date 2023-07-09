@@ -37,3 +37,7 @@
         }
     }
 }
+
+.thumbnail-links {
+    @apply grid xl:grid-cols-2 gap-x-[1rem] gap-y-[2rem];
+}
