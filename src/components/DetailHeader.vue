@@ -44,6 +44,9 @@ const labelText = computed(() => {
     }
     return null;
 })
+const showLanuchBtn = computed(() => {
+    return props.status ? getStatusIcon(props.status) !== '⛔️' : true;
+})
 </script>
 <template>
     <div class="detail-header">
@@ -56,7 +59,7 @@ const labelText = computed(() => {
                 <h1>{{ title }}</h1>
                 <div class="description">{{ intro }}</div>
                 <div class="btn-links">
-                    <a v-if="launchUrl" class="btn light" :href="launchUrl" target="_blank">Launch</a>
+                    <a v-if="launchUrl && showLanuchBtn" class="btn light" :href="launchUrl" target="_blank">Launch</a>
                     <a v-if="codeUrl" class="btn dark" :href="codeUrl" target="_blank">Code</a>
                 </div>
             </div>
