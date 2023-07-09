@@ -2,6 +2,7 @@
 import { fetchProject, fetchLanguages, fetchCommits } from '../../lib/api';
 
 import ActivityLog from '../../components/ActivityLog.vue';
+import ImageGallery from '../../components/ImageGallery.vue';
 import BarGraph from '../../components/BarGraph.vue';
 import DetailHeader from '../../components/DetailHeader.vue';
 import PageLayout from '../../layouts/PageLayout.astro';
@@ -60,8 +61,16 @@ if (commits?.length) {
                 {
                     commits?.length > 0 && (
                         <div class='activity'>
-                            <h2 class="title">Activity</h2>
-                            <ActivityLog items={commits}/>
+                            <h2 class='title'>Activity</h2>
+                            <ActivityLog items={commits} />
+                        </div>
+                    )
+                }
+                {
+                    project?.galleryImages?.length > 0 && (
+                        <div class='images'>
+                            <h2 class='title'>Images</h2>
+                            <ImageGallery images={project.galleryImages}/>
                         </div>
                     )
                 }

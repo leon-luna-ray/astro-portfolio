@@ -41,3 +41,13 @@
 .thumbnail-links {
     @apply grid xl:grid-cols-2 gap-x-[1rem] gap-y-[2rem];
 }
+
+.image-gallery {
+    @apply grid grid-cols-2 xl:grid-cols-3 gap-[1rem];
+
+    .img-wrap {
+        img {
+            @apply rounded-2xl border border-neutral-brown w-full;
+        }
+    }
+}

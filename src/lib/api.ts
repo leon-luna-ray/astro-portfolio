@@ -124,6 +124,7 @@ export async function fetchProject(slug: string) {
     featured,
     intro,
     mainImage,
+    galleryImages,
     relatedProjects[]->{_id, slug, title, mainImage, intro},
     repository,
     repositorySlug,
