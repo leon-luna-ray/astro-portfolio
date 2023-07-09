@@ -1,15 +1,21 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { getTimeSince, formatDate } from '../utils/date'
+
 const props = defineProps({
     data: {
         type: Object,
         required: true,
     },
+    repoData: {
+        type: Object,
+        required: false,
+    },
 })
 
 const statusIcon = (status: string): string => {
     if (status === 'live') {
-        return '';
+        return '🟢';
     }
     if (status === 'development') {
         return '🚧'
@@ -23,6 +29,19 @@ const statusIcon = (status: string): string => {
 const projectStatusLabel = computed(() => {
     return `${statusIcon(props.data.status)} ${props.data.status}`;
 })
+
+const timeSinceUpdate = computed(() => {
+    if (props.repoData) {
+        return getTimeSince(props.repoData.updated_at);
+    }
+    return null;
+})
+const createdAt = computed(() => {
+    if (props.repoData) {
+        return formatDate(props.repoData.created_at)
+    }
+    return null;
+})
 </script>
 <template>
     <div class="info">
@@ -33,21 +52,26 @@ const projectStatusLabel = computed(() => {
                 <span class="label">Status</span>
                 <span class="value uppercase">{{ projectStatusLabel }}</span>
             </li>
+            <!-- <li v-if="timeSinceUpdate">
+                <span class="label">Created</span>
+                <span class="value">{{ createdAt }}</span>
+            </li> -->
+            <li v-if="timeSinceUpdate">
+                <span class="label">Updated</span>
+                <span class="value">{{ timeSinceUpdate }}</span>
+            </li>
             <li v-if="data.customUrl">
                 <span class="label">URL</span>
                 <a :href=data.customUrl class="value" target="_blank">{{ data.customUrl }}</a>
-            </li>
-            <li v-else aria-hidden="true" class="hidden md:block"></li>
-            <li v-if="data.repository" class="order-last md:order-none">
-                <span class="label">Code url</span>
-                <a :href=data.repository class="value" target="_blank">{{ data.repository }}</a>
             </li>
             <li v-if="data.url">
                 <span class="label">App Url</span>
                 <a :href=data.url class="value" target="_blank">{{ data.url }}</a>
             </li>
-
-
+            <li v-if="data.repository" class="order-last md:order-none">
+                <span class="label">Code url</span>
+                <a :href=data.repository class="value" target="_blank">{{ data.repository }}</a>
+            </li>
         </ul>
     </div>
 </template>
