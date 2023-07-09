@@ -48,3 +48,17 @@ export const scrollToSection = (id: string): void => {
     });
   }
 };
+
+
+export const getStatusIcon = (status: string): string => {
+  if (status === 'live') {
+      return '🟢';
+  }
+  if (status === 'development') {
+      return '🚧'
+  }
+  if (status === 'bug' || status === 'down') {
+      return '⛔️'
+  }
+  return '⚠️'
+}

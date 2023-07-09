@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { getStatusIcon } from '../utils/utils'
 import { getTimeSince, formatDate } from '../utils/date'
 
 const props = defineProps({
@@ -27,7 +28,7 @@ const statusIcon = (status: string): string => {
 }
 
 const projectStatusLabel = computed(() => {
-    return `${statusIcon(props.data.status)} ${props.data.status}`;
+    return `${getStatusIcon(props.data.status)} ${props.data.status}`;
 })
 
 const timeSinceUpdate = computed(() => {
@@ -38,7 +39,7 @@ const timeSinceUpdate = computed(() => {
 })
 const createdAt = computed(() => {
     if (props.repoData) {
-        return formatDate(props.repoData.created_at)
+        return formatDate(props.repoData.pushed_at)
     }
     return null;
 })
