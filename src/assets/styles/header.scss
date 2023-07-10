@@ -6,7 +6,7 @@
     @apply sticky top-0 md:top-[1rem] bg-primary-yellow z-[2];
 
     a {
-        @apply no-underline;
+        @apply no-underline hover:text-neutral-brown md:hover:text-white;;
     }
 
     .top-label {
@@ -27,18 +27,19 @@
         .path {
             @apply flex;
         }
-        .mobile {
-            @apply text-center font-semibold text-[1.125rem];
 
-            .page-title {
-                @apply capitalize;
-            }
-            .inner {
-                @apply flex gap-x-[0.3rem];
+    }
+    .mobile {
+        @apply text-center font-semibold text-[1.125rem];
 
-                &.home {
-                    @apply flex-col;
-                }
+        .page-title {
+            @apply capitalize;
+        }
+        .inner {
+            @apply flex gap-x-[0.3rem];
+
+            &.home {
+                @apply flex-col;
             }
         }
     }

@@ -64,7 +64,7 @@ watch(y, handleScroll)
                         <!-- Todo refactor hard coded values -->
                         <div v-if="path.length > 1" class="inner">
                             <span>Ray Luna</span>
-                            <span>|</span>
+                            <span>-</span>
                             <span>Developer Portfolio</span>
                         </div>
                         <div v-else class="inner home">
