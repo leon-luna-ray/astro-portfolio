@@ -52,13 +52,12 @@ const getPathArray = (): string[] => {
     <body>
         <div id='top-bg' aria-hidden='true'></div>
         <Header
-            client:load
+            client:only
             name={profile?.name}
             title={pageTitle()}
             path={getPathArray()}
             isHome={isHome()}
         />
-        <!--Page Content -->
         <main>
             <slot />
         </main>

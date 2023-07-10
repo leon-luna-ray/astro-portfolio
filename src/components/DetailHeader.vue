@@ -50,12 +50,12 @@ const showLanuchBtn = computed(() => {
 <template>
     <div class="detail-header">
         <div class="inner">
-            <div class="image">
+            <div class="image flex flex-shrink">
                 <img :src="getMediumUrl(image)" :alt="`Screenshot of ${title}`">
             </div>
             <div class="text">
                 <div v-if="labelText" class="label">{{ labelText }}</div>
-                <h1>{{ title }}</h1>
+                <h1 class="title">{{ title }}</h1>
                 <div class="description">{{ intro }}</div>
                 <div class="btn-links">
                     <a v-if="launchUrl && showLanuchBtn" class="btn light" :href="launchUrl" target="_blank">Launch</a>

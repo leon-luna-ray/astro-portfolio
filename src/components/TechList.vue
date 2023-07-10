@@ -37,7 +37,7 @@ const setExpandedItem = (value: number | null): void => {
                     <IconChevronUp v-if="expandedItem === index" class="chevron up" />
                     <IconChevronDown v-else class="chevron down" />
                 </div>
-                <p v-if="expandedItem === index" class="description">{{ item.description }}</p>
+                <p v-if="expandedItem === index" class="description" @click="setExpandedItem(null)">{{ item.description }}</p>
             </li>
         </ul>
     </div>

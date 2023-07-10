@@ -38,4 +38,3 @@ export const formatDate = (dateString: string): string => {
     const date: Date = new Date(dateString);
     return date.toLocaleDateString('en-US', options);
 };
-

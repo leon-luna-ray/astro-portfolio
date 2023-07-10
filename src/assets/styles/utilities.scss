@@ -29,6 +29,9 @@
 .zoom-in-out {
     @apply hover:cursor-pointer transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300;
 }
+.zoom-hover {
+    @apply cursor-pointer translate-y-1 scale-110;
+}
 .test-border {
     @apply border-4 border-red-500;
 }

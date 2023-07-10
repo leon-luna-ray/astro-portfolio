@@ -6,7 +6,7 @@
     @apply sticky top-0 md:top-[1rem] bg-primary-yellow z-[2];
 
     a {
-        @apply no-underline;
+        @apply no-underline hover:text-neutral-brown md:hover:text-white;;
     }
 
     .top-label {
@@ -16,13 +16,31 @@
             @apply flex-grow bg-black h-[2px] hidden md:block;
         }
         .label-text {
-            @apply px-4 py-[1rem] md:py-0 flex justify-center gap-x-[0.5rem] flex-col md:flex-row;
+            @apply px-4 py-[1rem] md:py-0 flex justify-center gap-x-[0.5rem];
         }
         .text-item {
             @apply text-center font-bold text capitalize;
         }
         .dash {
             @apply hidden md:block;
+        }
+        .path {
+            @apply flex;
+        }
+
+    }
+    .mobile {
+        @apply text-center font-semibold text-[1.125rem];
+
+        .page-title {
+            @apply capitalize;
+        }
+        .inner {
+            @apply flex gap-x-[0.3rem];
+
+            &.home {
+                @apply flex-col;
+            }
         }
     }
 }
@@ -70,11 +88,12 @@
     .label {
         @apply bg-neutral-brown text-primary-yellow uppercase py-[0.3rem] px-[0.6rem] font-semibold text-[0.75rem] rounded-lg;
     }
+
     .text {
         @apply flex flex-col gap-y-[1rem] lg:gap-y-[2.5rem] items-center justify-center text-center;
 
         h1 {
-            @apply h2 flex;
+            @apply text-[3rem] lg:text-[4rem];
         }
     }
     @media (max-width: 740px) {
@@ -86,14 +105,14 @@
         @apply text-[1.25rem] md:line-clamp-5;
     }
     .image {
-        @apply flex aspect-square flex-col gap-y-[1.5rem] order-last md:order-none;
+        @apply flex flex-col gap-y-[1.5rem] order-last md:order-none;
 
         .btn {
             @apply py-[0.2rem];
         }
 
         img {
-            @apply object-cover md:rounded-3xl border-y md:border-2 border-neutral-brown;
+            @apply aspect-square object-cover md:rounded-3xl border-y md:border-2 border-neutral-brown w-full;
         }
     }
     .btn-links {

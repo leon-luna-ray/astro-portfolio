@@ -14,19 +14,18 @@ const props = defineProps({
             <img :src="getThumbnailUrl(link.mainImage)" alt="">
         </div>
         <div class="link-info">
-
             <div class="text">
                 <div class="title-section">
-
                     <span class="project-title">{{ link.title }}</span>
                     <div class="icon">
-                <!-- <IconChevronRight/> -->
-            </div>
+                    </div>
                 </div>
                 <div class="intro">{{ link.intro }}</div>
             </div>
 
-
+            <div class="icon">
+                <IconChevronRight />
+            </div>
         </div>
     </a>
 </template>

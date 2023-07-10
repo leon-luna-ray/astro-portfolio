@@ -19,6 +19,9 @@
     .slide {
         @apply flex justify-center items-center aspect-square rounded-3xl p-[2rem] max-w-[460px] w-fit;
 
+        img {
+            @apply aspect-square object-cover rounded-3xl transition ease-in-out duration-500;
+        }
         &.brown {
             @apply bg-neutral-brown hidden md:block;
 
@@ -31,9 +34,6 @@
             img:not(.top) {
                 @apply img-grayscale;
             }
-        }
-        img {
-            @apply aspect-square object-cover rounded-3xl;
         }
     }
 }
