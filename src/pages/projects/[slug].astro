@@ -82,11 +82,13 @@ if (commits?.length) {
                         </div>
                     )
                 }
+                <!-- End of page on mobile -->
                 <TagGrid tags={project.tags} title='categories' class="md:hidden"/>
             </div>
         </div>
         <div class='sidebar flex flex-col gap-y-[3.125rem] justify-between'>
             <div class='top flex-col gap-y-[3.125rem]'>
+                <!-- Top of page on mobile -->
                 <ProjectInfo data={project} lastCommit={lastCommit} class='md:hidden'/>
                 {
                     languages.length > 0 && (
