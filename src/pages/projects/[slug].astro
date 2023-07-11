@@ -53,7 +53,7 @@ if (commits?.length) {
     <div class='project-details'>
         <div class='data'>
             <div class='top'>
-                <ProjectInfo data={project} lastCommit={lastCommit} />
+                <ProjectInfo data={project} lastCommit={lastCommit} class='hidden md:block'/>
                 <div class='description'>
                     <h2 class='title'>Description</h2>
                     <PortableText data={project.description} />
@@ -82,10 +82,14 @@ if (commits?.length) {
                         </div>
                     )
                 }
+                <!-- End of page on mobile -->
+                <TagGrid tags={project.tags} title='categories' class="md:hidden"/>
             </div>
         </div>
         <div class='sidebar flex flex-col gap-y-[3.125rem] justify-between'>
             <div class='top flex-col gap-y-[3.125rem]'>
+                <!-- Top of page on mobile -->
+                <ProjectInfo data={project} lastCommit={lastCommit} class='md:hidden'/>
                 {
                     languages.length > 0 && (
                         <div class='languages'>
@@ -99,7 +103,7 @@ if (commits?.length) {
                     title='Technologies'
                     items={project.technologies}
                 />
-                <TagGrid tags={project.tags} title='categories' />
+                <TagGrid tags={project.tags} title='categories' class="hidden md:block"/>
             </div>
         </div>
     </div>
