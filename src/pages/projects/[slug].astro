@@ -74,6 +74,7 @@ if (commits?.length) {
                         </div>
                     )
                 }
+                <TagGrid tags={project.tags} title='categories' class="md:hidden"/>
                 {
                     project?.relatedProjects?.length > 0 && (
                         <div class='related-projects'>
@@ -83,7 +84,7 @@ if (commits?.length) {
                     )
                 }
                 <!-- End of page on mobile -->
-                <TagGrid tags={project.tags} title='categories' class="md:hidden"/>
+
             </div>
         </div>
         <div class='sidebar flex flex-col gap-y-[3.125rem] justify-between'>
