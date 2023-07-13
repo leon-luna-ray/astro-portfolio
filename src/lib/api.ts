@@ -5,12 +5,12 @@ import { formatLanguageData } from '../utils/utils';
 // Octokit
 const octokit = new Octokit({});
 
-export async function fetchRepository(slug: string) {
+export async function fetchRepository(username: string, slug: string) {
   try {
     const repository = await octokit.request(
-      `GET /repos/leon-luna-ray/${slug}`,
+      `GET /repos/${username}/${slug}`,
       {
-        owner: import.meta.env.VITE_GITHUB_USERNAME,
+        owner:username,
         repo: slug,
         auth: import.meta.env.VITE_GITHUB_API_KEY,
         headers: {
@@ -25,12 +25,12 @@ export async function fetchRepository(slug: string) {
   }
 }
 
-export async function fetchLanguages(slug: string) {
+export async function fetchLanguages(username: string, slug: string) {
   try {
     const languages = await octokit.request(
-      `GET /repos/leon-luna-ray/${slug}/languages`,
+      `GET /repos/${username}/${slug}/languages`,
       {
-        owner: import.meta.env.VITE_GITHUB_USERNAME,
+        owner:username,
         repo: slug,
         auth: import.meta.env.VITE_GITHUB_API_KEY,
         headers: {
@@ -45,12 +45,12 @@ export async function fetchLanguages(slug: string) {
   }
 }
 
-export async function fetchCommits(slug: string) {
+export async function fetchCommits(username: string, slug: string) {
   try {
     const commits = await octokit.request(
-      `GET /repos/leon-luna-ray/${slug}/commits`,
+      `GET /repos/${username}/${slug}/commits`,
       {
-        owner: import.meta.env.VITE_GITHUB_USERNAME,
+        owner:username,
         repo: slug,
         auth: import.meta.env.VITE_GITHUB_API_KEY,
         headers: {
@@ -127,6 +127,7 @@ export async function fetchProject(slug: string) {
     galleryImages,
     relatedProjects[]->{_id, slug, title, mainImage, intro},
     repository,
+    repositoryUsername,
     repositorySlug,
     slug,
     status,
