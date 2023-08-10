@@ -110,6 +110,7 @@ export async function fetchFeaturedProjects() {
       slug,
       status,
       title,
+      technologies[]->{_id, title, slug, description, website, tags[]->{title, slug}},
     }`;
   const projects = await useSanityClient().fetch(query);
 
@@ -142,7 +143,7 @@ export async function fetchProject(slug: string) {
 }
 
 export async function fetchSkills() {
-  const query = groq`*[_type == "skillsList"] | order(title) {title, "skills" : skills[] -> {title, website}}`;
+  const query = groq`*[_type == "skillsList"] | order(title) {title, "skills" : skills[] -> {_id, title, slug, description, website}}`;
   const skills = await useSanityClient().fetch(query);
 
   return skills;

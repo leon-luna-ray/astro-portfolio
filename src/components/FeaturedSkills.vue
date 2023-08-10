@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import LinkList from './LinkList.vue';
+import TechList from './TechList.vue';
 import TextTout from './TextTout.vue';
 
 const props = defineProps({
@@ -26,10 +27,7 @@ const props = defineProps({
         </div>
         <div class="bottom">
             <div v-for="list in skills" class="list">
-                <h3 class="title">{{ list.title }}</h3>
-                <LinkList>
-                    <li v-for="skill in list.skills">{{ skill.title }}</li>
-                </LinkList>
+                <TechList :items="list.skills" :title="list.title" />
             </div>
         </div>
     </div>

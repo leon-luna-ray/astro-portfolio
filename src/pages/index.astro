@@ -44,5 +44,5 @@ const skills = await fetchSkills();
     projects={featuredProjects}
     showLink={true}
   />
-  <FeaturedSkills skills={skills} />
+  <FeaturedSkills skills={skills} client:load/>
 </PageLayout>
