@@ -14,6 +14,7 @@ const props = defineProps({
 });
 </script>
 <template>
+    <!-- TODO move classes to stylesheets, move text to sanity -->
     <div id="featured-skills" class="container flex flex-col gap-y-[2.5rem]">
         <div class="top">
             <div class='intro flex flex-col gap-y-[2rem]'>
