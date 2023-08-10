@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import LinkList from './LinkList.vue';
+import TechList from './TechList.vue';
 import TextTout from './TextTout.vue';
 
 const props = defineProps({
@@ -13,10 +14,11 @@ const props = defineProps({
 });
 </script>
 <template>
-    <div id="featured-skills" class='skills-list'>
+    <!-- TODO move classes to stylesheets, move text to sanity -->
+    <div id="featured-skills" class="container flex flex-col gap-y-[2.5rem]">
         <div class="top">
-            <div class='intro'>
-                <h3 class="title">Skills and expertise</h3>
+            <div class='intro flex flex-col gap-y-[2rem]'>
+                <h4 class="text-[1.25rem]">Skills and expertise</h4>
                 <p>
                     I leverage a diverse range of tools to develop interactive web applications, utilizing content management systems, the latest backend and frontend frameworks, and multiple programming languages.
 
@@ -24,12 +26,10 @@ const props = defineProps({
                 </p>
             </div>
         </div>
-        <div class="bottom">
-            <div v-for="list in skills" class="list">
-                <h3 class="title">{{ list.title }}</h3>
-                <LinkList>
-                    <li v-for="skill in list.skills">{{ skill.title }}</li>
-                </LinkList>
+        <div class="bottom grid md:grid-cols-3 gap-[2rem]">
+            <div v-for="list in skills" class="lists flex flex-col gap-y-[2rem]">
+                <h4 class="title text-[1.125em]">{{ list.title }}</h4>
+                <TechList :items="list.skills" :title="list.title" />
             </div>
         </div>
     </div>
