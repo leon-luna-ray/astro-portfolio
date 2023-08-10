@@ -27,7 +27,7 @@ const props = defineProps({
         <div class="bottom grid md:grid-cols-3 gap-[2rem]">
             <div v-for="list in skills" class="lists flex flex-col gap-y-[2rem]">
                 <h4 class="title text-[1.125em]">{{ list.title }}</h4>
-                <TechList :items="list.skills" :title="list.title" />
+                <TechList :items="list.skills" />
             </div>
         </div>
     </div>
