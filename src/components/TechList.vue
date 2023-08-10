@@ -9,6 +9,10 @@ const props = defineProps({
         type: Array,
         required: true,
     },
+    title: {
+        type: String,
+        required: false,
+    },
     isOpen: {
         type: Boolean,
         required: false,
@@ -35,6 +39,7 @@ onMounted(() => {
 </script>
 <template>
     <div class="tech-list">
+        <h3 v-if="title" class="title">{{ title }}</h3>
         <ul class="link-list">
             <li v-for="(item, index) in items" class="hover:cursor-pointer">
                 <div class="title" @click="setExpandedItem(index)">
