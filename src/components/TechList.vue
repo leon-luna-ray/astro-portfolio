@@ -9,6 +9,10 @@ const props = defineProps({
         type: Array,
         required: true,
     },
+    title: {
+        type: String,
+        required: false,
+    },
     isOpen: {
         type: Boolean,
         required: false,
@@ -34,6 +38,7 @@ onMounted(() => {
 });
 </script>
 <template>
+    <h3 v-if="title" class="title">{{ title }}</h3>
     <div class="tech-list">
         <ul class="link-list">
             <li v-for="(item, index) in items" class="hover:cursor-pointer">

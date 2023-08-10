@@ -1,7 +1,5 @@
 <script lang="ts" setup>
-import LinkList from './LinkList.vue';
 import TechList from './TechList.vue';
-import TextTout from './TextTout.vue';
 
 const props = defineProps({
     skills: {
@@ -14,7 +12,7 @@ const props = defineProps({
 });
 </script>
 <template>
-    <!-- TODO move classes to stylesheets, move text to sanity -->
+    <!-- TODO move classes to stylesheets, move text to sanity, move this component to astro file -->
     <div id="featured-skills" class="container flex flex-col gap-y-[2.5rem]">
         <div class="top">
             <div class='intro flex flex-col gap-y-[2rem]'>
