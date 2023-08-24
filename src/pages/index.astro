@@ -22,7 +22,10 @@ const skills = await fetchSkills();
 <PageLayout title='Home'>
   <Hero showLinks={true} client:load>
     <h1 slot='title' class='title'>{profile?.name}</h1>
-    <h2 slot='subtitle' class='subtitle'>{profile?.tagline}</h2>
+    <h2 slot='subtitle' class='subtitle one pt-[1rem]'>{profile?.tagline}</h2>
+    <h2 slot='subtitle' class='subtitle two'>{profile?.tagline}</h2>
+    <h2 slot='subtitle' class='subtitle three'>{profile?.tagline}</h2>
+    <h2 slot='subtitle' class='subtitle four pb-[1rem] md:pb-[2rem]'>{profile?.tagline}</h2>
     <p slot='intro' class='intro'>{global?.intro}</p>
     <div slot='btn-links' class='btn-links'>
       <a class='btn light' href='/projects'>Check Projects</a>
@@ -44,5 +47,5 @@ const skills = await fetchSkills();
     projects={featuredProjects}
     showLink={true}
   />
-  <FeaturedSkills skills={skills} client:load/>
+  <FeaturedSkills skills={skills} client:load />
 </PageLayout>
