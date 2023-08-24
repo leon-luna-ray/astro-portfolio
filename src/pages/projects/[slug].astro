@@ -43,6 +43,7 @@ if (commits?.length) {
 
 <PageLayout title={project.title}>
     <DetailHeader
+        client:load
         title={project.title}
         image={project.mainImage}
         intro={project.intro}
@@ -85,7 +86,6 @@ if (commits?.length) {
                     )
                 }
                 <!-- End of page on mobile -->
-
             </div>
         </div>
         <div class='sidebar flex flex-col gap-y-[3.125rem] justify-between'>
