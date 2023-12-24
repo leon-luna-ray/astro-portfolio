@@ -25,6 +25,6 @@ if (!projects?.length) {
             <a class='btn dark mt-[2.5rem]' href='/'>Home</a>
         </div>
     </Hero>
-    <FilterButtons items={technologies}/>
+    <FilterButtons client:load items={technologies} query={Astro.url.search}/>
     <ProjectGrid projects={projects} showLink={false} />
 </PageLayout>
