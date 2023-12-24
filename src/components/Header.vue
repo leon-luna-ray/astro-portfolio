@@ -1,6 +1,6 @@
 <template>
     <header id="header" :class="['dark:text-primary-yellow',bottomPadding]">
-        <div class='top-label hover:text-inherit'>
+        <div class='hover:text-inherit'>
             <div class='flex-grow bg-black h-[2px] hidden md:block'></div>
             <div class="px-4 py-[1rem] md:py-0 flex justify-center gap-x-[0.5rem]">
                 <a v-if="isMobile && path.length" href="/" class="text-center font-semibold hover:text-white">
