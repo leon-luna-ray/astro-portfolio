@@ -1,11 +1,13 @@
 ---
-import { fetchProjects } from '../../lib/api';
+import { fetchProjects, fetchProjectTechnologies } from '../../lib/api';
 
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.vue';
 import ProjectGrid from '../../components/ProjectGrid.vue';
 
+const searchParams = Astro.url.search || null;
 const projects = await fetchProjects();
+const technologies = await fetchProjectTechnologies();
 
 if (!projects?.length) {
     return new Response(null, {

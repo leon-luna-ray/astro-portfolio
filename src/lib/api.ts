@@ -87,6 +87,34 @@ export async function fetchHobbies() {
   return hobbies;
 }
 
+export async function fetchProjectTechnologies() {
+  const query = groq`*[_type == "project"] {
+    technologies[]->{_id, title, slug}
+  }`;
+
+  const projects = await useSanityClient().fetch(query);
+
+  // Extract and flatten technologies from projects
+  const technologies = projects
+    .flatMap(project => project.technologies)
+    .filter(Boolean); // Remove potential null or undefined values
+
+  // Create a Map to store unique technologies based on _id
+  const uniqueTechnologiesMap = new Map();
+
+  // Populate the Map with unique technologies
+  technologies.forEach(tech => {
+    if (tech._id && !uniqueTechnologiesMap.has(tech._id)) {
+      uniqueTechnologiesMap.set(tech._id, tech);
+    }
+  });
+
+  // Convert Map values back to an array
+  const uniqueTechnologies = Array.from(uniqueTechnologiesMap.values());
+
+  return uniqueTechnologies;
+}
+
 export async function fetchProjects() {
   const query = groq`*[_type == "project"] | order(title asc) {
       _id,
@@ -95,6 +123,7 @@ export async function fetchProjects() {
       slug,
       status,
       title,
+      technologies[]->{_id, title, slug,},
     }`;
   const projects = await useSanityClient().fetch(query);
 
