@@ -10,7 +10,7 @@ export async function fetchRepository(username: string, slug: string) {
     const repository = await octokit.request(
       `GET /repos/${username}/${slug}`,
       {
-        owner:username,
+        owner: username,
         repo: slug,
         auth: import.meta.env.VITE_GITHUB_API_KEY,
         headers: {
@@ -30,7 +30,7 @@ export async function fetchLanguages(username: string, slug: string) {
     const languages = await octokit.request(
       `GET /repos/${username}/${slug}/languages`,
       {
-        owner:username,
+        owner: username,
         repo: slug,
         auth: import.meta.env.VITE_GITHUB_API_KEY,
         headers: {
@@ -50,7 +50,7 @@ export async function fetchCommits(username: string, slug: string) {
     const commits = await octokit.request(
       `GET /repos/${username}/${slug}/commits`,
       {
-        owner:username,
+        owner: username,
         repo: slug,
         auth: import.meta.env.VITE_GITHUB_API_KEY,
         headers: {
@@ -94,22 +94,18 @@ export async function fetchProjectTechnologies() {
 
   const projects = await useSanityClient().fetch(query);
 
-  // Extract and flatten technologies from projects
   const technologies = projects
     .flatMap(project => project.technologies)
-    .filter(Boolean); // Remove potential null or undefined values
+    .filter(Boolean);
 
-  // Create a Map to store unique technologies based on _id
   const uniqueTechnologiesMap = new Map();
 
-  // Populate the Map with unique technologies
   technologies.forEach(tech => {
     if (tech._id && !uniqueTechnologiesMap.has(tech._id)) {
       uniqueTechnologiesMap.set(tech._id, tech);
     }
   });
 
-  // Convert Map values back to an array
   const uniqueTechnologies = Array.from(uniqueTechnologiesMap.values());
 
   return uniqueTechnologies;
