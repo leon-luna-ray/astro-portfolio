@@ -25,7 +25,7 @@ const props = defineProps({
 const techQuery = ref<string | null>(null);
 
 const isSelected = (slug: string) => {
-    return techQuery.value && techQuery.value === slug ? 'bg-neutral-brown text-primary-yellow' : '';
+    return techQuery.value && techQuery.value === slug ? 'bg-neutral-brown text-primary-yellow hover:bg-primary-yellow hover:text-black' : '';
 };
 
 const handleItemClick = (item) => {

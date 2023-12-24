@@ -1,4 +1,18 @@
+<template>
+    <div id="featured-projects" class='featured-projects'>
+        <div v-if="title" class="section-title">
+            <h3>{{ title }}</h3>
+            <a v-if="showLink" href="/projects">View All</a>
+        </div>
+        <div class="project-grid">
+            <CardFeaturedProject v-for="project in projects" :project="project" :key="project._id" />
+        </div>
+    </div>
+</template>
+
 <script setup lang="ts">
+import { fetchProjects } from '../lib/api';
+
 import CardFeaturedProject from './cards/CardFeaturedProject.vue';
 import type Project from '../interfaces/Project';
 
@@ -17,14 +31,3 @@ const props = defineProps({
     }
 });
 </script>
-<template>
-    <div id="featured-projects" class='featured-projects'>
-        <div v-if="title" class="section-title">
-            <h3>{{ title }}</h3>
-            <a v-if="showLink" href="/projects">View All</a>
-        </div>
-        <div class="project-grid">
-            <CardFeaturedProject v-for="project in projects" :project="project" :key="project._id" />
-        </div>
-    </div>
-</template>
