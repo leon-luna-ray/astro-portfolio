@@ -34,19 +34,23 @@
   };
   
   const handleItemClick = (item) => {
-    const queryParams = new URLSearchParams(window.location.search);
-  
-    // If the clicked item is already selected
-    if (techQuery.value === item.slug.current) {
-      techQuery.value = null;
-      queryParams.delete('tech');
-    } else {
-      techQuery.value = item.slug.current;
-      queryParams.set('tech', item.slug.current);
-    }
-  
+  const queryParams = new URLSearchParams(window.location.search);
+
+  if (techQuery.value === item.slug.current) {
+    techQuery.value = null;
+    queryParams.delete('tech');
+  } else {
+    techQuery.value = item.slug.current;
+    queryParams.set('tech', item.slug.current);
+  }
+
+  if (queryParams.toString() === '') {
+    window.history.replaceState({}, '', `${window.location.pathname}`);
+  } else {
     window.history.replaceState({}, '', `${window.location.pathname}?${queryParams}`);
-  };
+  }
+};
+
   
   onMounted(() => {
     if (props.query) {
