@@ -34,7 +34,7 @@
 
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue';
-import { useWindowScroll, useMediaQuery } from '@vueuse/core'
+import { useWindowScroll, useMediaQuery } from '@vueuse/core';
 
 const props = defineProps({
     title: {

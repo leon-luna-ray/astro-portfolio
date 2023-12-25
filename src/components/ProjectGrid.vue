@@ -11,8 +11,11 @@
 </template>
 
 <script setup lang="ts">
-import { fetchProjects } from '../lib/api';
+import { useStore } from '@nanostores/vue'
+import { $techFilter } from '../stores/projects.js'
+const techFilter = useStore($techFilter)
 
+console.log(techFilter)
 import CardFeaturedProject from './cards/CardFeaturedProject.vue';
 import type Project from '../interfaces/Project';
 
