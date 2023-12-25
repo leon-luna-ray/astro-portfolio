@@ -11,11 +11,16 @@
 </template>
 
 <script setup lang="ts">
+import { watch } from 'vue';
 import { useStore } from '@nanostores/vue'
 import { $techFilter } from '../stores/projects.js'
+
 const techFilter = useStore($techFilter)
 
-console.log(techFilter)
+watch(techFilter, ()=>{
+    console.log(techFilter.value)
+})
+
 import CardFeaturedProject from './cards/CardFeaturedProject.vue';
 import type Project from '../interfaces/Project';
 

@@ -9,7 +9,11 @@
 </template>
   
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
+import { useStore } from '@nanostores/vue'
+import { $techFilter } from '../stores/projects.js'
+
+const techFilter = useStore($techFilter)
 
 const props = defineProps({
     items: {
@@ -46,6 +50,9 @@ const handleItemClick = (item) => {
     }
 };
 
+watch(techQuery, ()=>{
+    $techFilter.set(techQuery.value);
+})
 
 onMounted(() => {
     if (props.query) {
@@ -54,6 +61,7 @@ onMounted(() => {
 
         if (techParam) {
             techQuery.value = techParam;
+            $techFilter.set(techParam);
         }
     }
 });
