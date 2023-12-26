@@ -18,7 +18,7 @@ const props = defineProps({
                 <p>{{ text }}</p>
             </div>
             <div class='img-wrap'>
-                <img src="/img/spinner.png" alt="decoration">
+                <!-- <img src="/img/spinner.png" alt="decoration"> -->
             </div>
         </div>
     </div>
