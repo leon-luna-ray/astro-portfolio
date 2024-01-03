@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import DiscoBall from './DiscoBall.vue';
 const props = defineProps({
     label: {
         type: String,
@@ -19,6 +20,7 @@ const props = defineProps({
             </div>
             <div class='img-wrap'>
                 <!-- <img src="/img/spinner.png" alt="decoration"> -->
+                <DiscoBall client:only />
             </div>
         </div>
     </div>
