@@ -1,5 +1,6 @@
 body {
-  @apply bg-primary-yellow dark:bg-dark-brown dark:text-white font-archivo font-extralight pb-[3.125rem] md:py-[6.25rem] relative text-neutral-brown underline-offset-4;
+  @apply bg-primary-yellow font-archivo font-extralight pb-[3.125rem] md:py-[6.25rem] relative text-neutral-brown underline-offset-4;
+  // @apply bg-primary-yellow dark:bg-dark-brown dark:text-white font-archivo font-extralight pb-[3.125rem] md:py-[6.25rem] relative text-neutral-brown underline-offset-4;
 }
 a {
   @apply hover:text-white hover:cursor-pointer transition ease-in-out underline;
@@ -8,7 +9,8 @@ main {
   @apply flex flex-col gap-y-[3.125rem] pb-[3.125rem] md:pb-[6.25rem];
 }
 h1,h2,h3,h4,h5 {
-  @apply font-monoton dark:text-primary-yellow;
+  @apply font-monoton;
+  // @apply font-monoton dark:text-primary-yellow;
 }
 
 h1, .h1 {
