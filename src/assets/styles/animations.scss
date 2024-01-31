@@ -1,36 +1,36 @@
 
 .image-text-tout {
-    // border:3px solid red;
     position: relative;
 }
+
 #disco-ball {
-// border:2px solid red;
-z-index: 99;
-// position: relative;
+position: relative;
+border: 3px solid red;
+width: 100%;
+height: 100%;
+
     .tres-container {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        // display: flex;
-        // align-items: center;
-        // justify-content: center;
-    }
-    
-    #tres-canvas {
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
+        width: 30vh;
+        height: 30vh;
+
+    }
+    
+    #tres-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 30vh;
+        height: 30vh;
         // background: radial-gradient(circle, #000 0%, #000 100%);
     }
     
     .overlay-block {
-        width: 80%;
-        height: 100%;
-        // max-width: 30vh;
-        // max-height: 30vw;
+        width: 33%;
+        height: 40%;
+        max-width: 30vh;
+        max-height: 30vw;
     }
 }

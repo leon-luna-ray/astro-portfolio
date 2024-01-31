@@ -7,13 +7,14 @@
     import * as THREE from "three";
     import { OrbitControls } from "three/addons/controls/OrbitControls.js";
     import * as BufferGeometryUtils from "three/addons/utils/BufferGeometryUtils.js";
-
+    const container = document.querySelector(".tres-container");
+    const canvasEl = document.querySelector("#tres-canvas");
+    
     document.addEventListener("DOMContentLoaded", (event) => {
         console.log("DOM fully loaded and parsed");
         console.log("hello?");
 
-        const container = document.querySelector(".tres-container");
-        const canvasEl = document.querySelector("#tres-canvas");
+
 
         let renderer,
             clock,
