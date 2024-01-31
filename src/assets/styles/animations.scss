@@ -1,11 +1,12 @@
 
-.image-text-tout {
+.image-text-tout .img-wrap {
     position: relative;
+    padding-top: 1rem;
+    padding-left: 1rem;
 }
 
 #disco-ball {
 position: relative;
-border: 3px solid red;
 width: 100%;
 height: 100%;
 
@@ -13,8 +14,8 @@ height: 100%;
         position: fixed;
         top: 0;
         left: 0;
-        width: 30vh;
-        height: 30vh;
+        width: 36vh;
+        height: 36vh;
 
     }
     
@@ -22,15 +23,15 @@ height: 100%;
         position: absolute;
         top: 0;
         left: 0;
-        width: 30vh;
-        height: 30vh;
+        width: 100%;
+        height: 100%;
         // background: radial-gradient(circle, #000 0%, #000 100%);
     }
     
     .overlay-block {
-        width: 33%;
-        height: 40%;
-        max-width: 30vh;
-        max-height: 30vw;
+        width: 100%;
+        height: 100%;
+        // max-width: 30vh;
+        // max-height: 30vw;
     }
 }
