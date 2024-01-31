@@ -12,6 +12,7 @@ import ImageTextTout from '../components/ImageTextTout.vue';
 import FeaturedSkills from '../components/FeaturedSkills.vue';
 import ProjectGrid from '../components/ProjectGrid.vue';
 import TextTout from '../components/TextTout.vue';
+import DiscoBall from '../components/DiscoBall.astro';
 
 const featuredProjects = await fetchFeaturedProjects();
 const global = await fetchGlobal();
@@ -37,7 +38,9 @@ const skills = await fetchSkills();
     images={global?.decorationImages}
     client:load
   />
-  <ImageTextTout label={profile?.nickname} text={profile?.greeting} />
+  <ImageTextTout label={profile?.nickname} text={profile?.greeting} >
+    <DiscoBall/>
+  </ImageTextTout>
   <TextTout class='md:-mt-[4rem] container'>
     <h3 slot='title' class='title'>About Me</h3>
     <p slot='text' class='text'>{profile?.bio}</p>
