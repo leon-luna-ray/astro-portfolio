@@ -1,9 +1,9 @@
 <template>
-    <header id="header" :class="['dark:text-primary-yellow',bottomPadding]">
-        <div class='     hover:text-inherit'>
-            <div class='flex-grow bg-black h-[2px] hidden md:block'></div>
-            <div class="px-4 py-[1rem] md:py-0 flex justify-center gap-x-[0.5rem]">
-                <a v-if="isMobile && path.length" href="/" class="text-center font-semibold hover:text-white">
+    <header id="header" :class="bottomPadding">
+        <div class='top-label hover:text-inherit'>
+            <div class='divider'></div>
+            <div class="label-text">
+                <a v-if="isMobile && path.length" href="/" class="mobile">
                     <div class="site">
                         <!-- Todo refactor hard coded values -->
                         <div v-if="path.length > 1" class="inner">
@@ -11,20 +11,19 @@
                             <span>-</span>
                             <span>Developer Portfolio</span>
                         </div>
-                        <div v-else class="flex gap-x-[0.3rem] flex-col">
+                        <div v-else class="inner home">
                             <span>Ray Luna</span>
                             <span>Developer Portfolio</span>
                         </div>
                     </div>
-                    <span v-if="!isHome" class="capitalize">
+                    <span v-if="!isHome" class="page-title">
                         {{ getTitle(path[path.length - 1]) }}
                     </span>
                 </a>
-                <div v-else-if="path.length" v-for="(item, index) in path" class="flex">
-                    <a v-if="index < path.length - 1" :href="path[index]" class="text-center font-bold text capitalize">{{
-                        getTitle(item) }}</a>
-                    <span v-else class="text-center font-bold text capitalize">{{ getTitle(item) }}</span>
-                    <span v-if="index < path.length - 1" class="hidden md:block pl-2 hidden md:block"> - </span>
+                <div v-else-if="path.length" v-for="(item, index) in path" class="path flex">
+                    <a v-if="index < path.length - 1" :href="path[index]" class="text-item">{{ getTitle(item) }}</a>
+                    <span v-else class="text-item">{{ getTitle(item) }}</span>
+                    <span v-if="index < path.length - 1" class="dash pl-2 hidden md:block"> - </span>
                 </div>
             </div>
             <div class='divider'></div>
@@ -34,7 +33,7 @@
 
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue';
-import { useWindowScroll, useMediaQuery } from '@vueuse/core';
+import { useWindowScroll, useMediaQuery } from '@vueuse/core'
 
 const props = defineProps({
     title: {
