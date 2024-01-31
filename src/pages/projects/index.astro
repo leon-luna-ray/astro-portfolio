@@ -21,7 +21,11 @@ if (!projects?.length) {
 <PageLayout title='Projects'>
     <Hero showLinks={false} client:load>
         <h1 slot='title' class='title'>Projects</h1>
+        <div slot='btn-links' class='btn-links'>
+            <a class='btn dark mt-[2.5rem]' href='/'>Home</a>
+        </div>
     </Hero>
     <!-- <FilterButtons client:load items={technologies} query={Astro.url.search}/> -->
     <ProjectGrid client:load projects={projects} showLink={false} />
 </PageLayout>
+g
