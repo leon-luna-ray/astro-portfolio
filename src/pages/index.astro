@@ -33,12 +33,12 @@ const skills = await fetchSkills();
       <a class='btn dark' href='#featured-skills'>Explore Skills</a>
     </div>
   </Hero>
+  <DiscoBall />
   <ImageCarousel
     profileImage={profile?.image}
     images={global?.decorationImages}
     client:load
   />
-  <DiscoBall />
   <ImageTextTout label={profile?.nickname} text={profile?.greeting} client:load >
     <!-- <DiscoBall /> -->
   </ImageTextTout>
