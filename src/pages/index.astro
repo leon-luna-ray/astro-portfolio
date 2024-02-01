@@ -38,8 +38,9 @@ const skills = await fetchSkills();
     images={global?.decorationImages}
     client:load
   />
+  <DiscoBall />
   <ImageTextTout label={profile?.nickname} text={profile?.greeting} client:load >
-    <DiscoBall />
+    <!-- <DiscoBall /> -->
   </ImageTextTout>
   <TextTout class='md:-mt-[4rem] container'>
     <h3 slot='title' class='title'>About Me</h3>

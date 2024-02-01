@@ -110,22 +110,21 @@
 
             const camera = new THREE.PerspectiveCamera(
                 50,
-                scene.userData.element.clientWidth /
-                    scene.userData.element.clientHeight,
-                1,
+                500,
+                0.5,
                 10
             );
-            camera.position.z = 2;
+            camera.position.z = 3;
             scene.userData.camera = camera;
 
             const controls = new OrbitControls(
                 scene.userData.camera,
                 scene.userData.element
             );
-            controls.minDistance = 2;
-            controls.maxDistance = 5;
+            // controls.minDistance = 2;
+            // controls.maxDistance = 5;
             controls.autoRotate = true;
-            controls.autoRotateSpeed = 6;
+            controls.autoRotateSpeed = 4;
             controls.enableZoom = false;
             controls.enableDamping = true;
             scene.userData.controls = controls;
