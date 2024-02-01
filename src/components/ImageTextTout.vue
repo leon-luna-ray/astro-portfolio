@@ -12,13 +12,13 @@ const props = defineProps({
 });
 </script>
 <template>
-    <div class='image-text-tout'>
-        <div class="inner">
-            <div class='text'>
-                <span v-if="label" class='label'>{{ label }}</span>
-                <p>{{ text }}</p>
+    <div class='overflow-hidden'>
+        <div class="container grid md:grid-cols-2">
+            <div class='text-center md:text-left flex justify-center flex-col'>
+                <span v-if="label" class='font-semibold'>{{ label }}</span>
+                <p class="font-monoton text-[2rem] md:text-[3.125rem] pt-[1rem] md:pt-[2.5rem]">{{ text }}</p>
             </div>
-            <div class='img-wrap'>
+            <div class='hidden md:flex relative justify-end items-center h-[98%] aspect-square overflow-hidden'>
                 <!-- <img src="/img/spinner.png" alt="decoration"> -->
                 <!-- <DiscoBall client:load /> -->
                 <slot/>

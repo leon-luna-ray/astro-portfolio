@@ -14,6 +14,7 @@ import ProjectGrid from '../components/ProjectGrid.vue';
 import TextTout from '../components/TextTout.vue';
 import DiscoBall from '../components/DiscoBall.astro';
 
+import { getMediumUrl } from '../lib/images';
 const featuredProjects = await fetchFeaturedProjects();
 const global = await fetchGlobal();
 const profile = await fetchProfile();
@@ -34,13 +35,16 @@ const skills = await fetchSkills();
     </div>
   </Hero>
   <DiscoBall />
-  <ImageCarousel
+  <!-- <ImageCarousel
     profileImage={profile?.image}
     images={global?.decorationImages}
     client:load
-  />
+  /> -->
   <ImageTextTout label={profile?.nickname} text={profile?.greeting} client:load >
     <!-- <DiscoBall /> -->
+    <div class="flex justify-center items-center aspect-square rounded-3xl p-[2rem] max-w-[460px] w-fit brown">
+      <img src={getMediumUrl(profile?.image)} alt="Profile Image">
+  </div>
   </ImageTextTout>
   <TextTout class='md:-mt-[4rem] container'>
     <h3 slot='title' class='title'>About Me</h3>

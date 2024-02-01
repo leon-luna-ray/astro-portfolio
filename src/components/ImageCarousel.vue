@@ -30,7 +30,7 @@ const isTop = computed(() => ({
 </script>
 
 <template>
-    <div v-if="images?.length > 1" class='image-carousel' ref="carouselRef">
+    <div v-if="images?.length > 1" class='image-carousel md:hidden' ref="carouselRef">
         <div :class="['slide top', slideBgColor(0)]">
             <img :src="getMediumUrl(images[0])" alt="test img" :class="isTop">
         </div>

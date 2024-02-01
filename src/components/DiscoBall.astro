@@ -108,12 +108,7 @@
             scene.userData.element = element;
             container.appendChild(element);
 
-            const camera = new THREE.PerspectiveCamera(
-                50,
-                500,
-                0.5,
-                10
-            );
+            const camera = new THREE.PerspectiveCamera(50, scene.userData.element.clientWidth / scene.userData.element.clientHeight, 1, 10);
             camera.position.z = 3;
             scene.userData.camera = camera;
 
@@ -121,10 +116,10 @@
                 scene.userData.camera,
                 scene.userData.element
             );
-            // controls.minDistance = 2;
-            // controls.maxDistance = 5;
+            controls.minDistance = 5;
+            controls.maxDistance = 5;
             controls.autoRotate = true;
-            controls.autoRotateSpeed = 4;
+            controls.autoRotateSpeed = 2;
             controls.enableZoom = false;
             controls.enableDamping = true;
             scene.userData.controls = controls;
@@ -151,8 +146,7 @@
                 scene.userData.controls.update();
 
                 if (idx === 0) {
-                    scene.children[0].rotateX(delta);
-                    scene.children[0].rotateZ(delta);
+                    scene.children[0].rotateY(delta);
                 } else if (idx === 2) {
                     scene.children[0].rotateZ(-3 * delta);
                 }
