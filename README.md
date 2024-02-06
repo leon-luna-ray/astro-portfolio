@@ -16,13 +16,13 @@ The stie contains my bio that gives a glimpse into my professional background, s
 ## Technologies
 
 - Astro
-- Vue.js
-- Typescript
 - JavaScript
-- Tailwind CSS
+- Netlify
 - Sass
 - Sanity.io
-- Netlify
+- Tailwind CSS
+- Typescript
+- Vue.js
 
 ## Image
 
