@@ -35,3 +35,6 @@
 .test-border {
     @apply border-4 border-red-500;
 }
+.rounded-image {
+    @apply rounded-3xl w-full aspect-square object-cover  border border-neutral-brown;
+}

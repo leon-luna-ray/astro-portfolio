@@ -27,17 +27,16 @@ const projectUrl = computed(() => {
 });
 </script>
 <template>
-    <div class='card featured-project'>
-        <a class='img-wrap' :href="projectUrl">
-            <img :src="getThumbnailUrl(project?.mainImage)" :alt="`Image of ${project.title}`">
+    <div class='flex flex-col gap-y-[1.875rem]'>
+        <a :href="projectUrl">
+            <img :src="getThumbnailUrl(project?.mainImage)" :alt="`Image of ${project.title}`" class="zoom-in-out rounded-image">
         </a>
-        <div class="text">
+        <div class="flex flex-col gap-y-[0.625rem] text-[1.125rem]">
             <div class="project-title flex gap-x-[0.5rem] justify-between">
-                <span class="title">{{ project.title }}</span>
+                <span class="font-bold">{{ project.title }}</span>
                 <div v-if="projectStatusText(project.status)" class="status">{{ projectStatusText(project.status) }}</div>
             </div>
-
-            <div class="description">{{ project.intro }}</div>
+            <div class="line-clamp-3">{{ project.intro }}</div>
         </div>
     </div>
 </template>
