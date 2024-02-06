@@ -7,7 +7,7 @@ import {
 } from '../lib/api';
 import PageLayout from '../layouts/PageLayout.astro';
 import Hero from '../components/Hero.vue';
-import ImageCarousel from '../components/ImageCarousel.vue';
+// import ImageCarousel from '../components/ImageCarousel.vue';
 import ImageTextTout from '../components/ImageTextTout.vue';
 import FeaturedSkills from '../components/FeaturedSkills.vue';
 import ProjectGrid from '../components/ProjectGrid.vue';
@@ -28,13 +28,15 @@ const skills = await fetchSkills();
     <h2 slot='subtitle' class='subtitle two'>{profile?.tagline}</h2>
     <h2 slot='subtitle' class='subtitle three'>{profile?.tagline}</h2>
     <h2 slot='subtitle' class='subtitle four pb-[1rem] md:pb-[2rem]'>{profile?.tagline}</h2>
+    <div class="relative" slot='disco-ball'>
+      <DiscoBall />
+    </div>
     <p slot='intro' class='intro'>{global?.intro}</p>
     <div slot='btn-links' class='btn-links'>
       <a class='btn light' href='/projects/'>Check Projects</a>
       <a class='btn dark' href='#featured-skills'>Explore Skills</a>
     </div>
   </Hero>
-  <DiscoBall />
   <!-- <ImageCarousel
     profileImage={profile?.image}
     images={global?.decorationImages}
