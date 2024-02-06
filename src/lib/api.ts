@@ -10,7 +10,7 @@ export async function fetchRepository(username: string, slug: string) {
     const repository = await octokit.request(
       `GET /repos/${username}/${slug}`,
       {
-        owner:username,
+        owner: username,
         repo: slug,
         auth: import.meta.env.VITE_GITHUB_API_KEY,
         headers: {
@@ -30,7 +30,7 @@ export async function fetchLanguages(username: string, slug: string) {
     const languages = await octokit.request(
       `GET /repos/${username}/${slug}/languages`,
       {
-        owner:username,
+        owner: username,
         repo: slug,
         auth: import.meta.env.VITE_GITHUB_API_KEY,
         headers: {
@@ -50,7 +50,7 @@ export async function fetchCommits(username: string, slug: string) {
     const commits = await octokit.request(
       `GET /repos/${username}/${slug}/commits`,
       {
-        owner:username,
+        owner: username,
         repo: slug,
         auth: import.meta.env.VITE_GITHUB_API_KEY,
         headers: {
@@ -87,6 +87,43 @@ export async function fetchHobbies() {
   return hobbies;
 }
 
+export async function fetchProjectTechnologies() {
+  const query = groq`*[_type == "project"] {
+    technologies[]->{_id, title, slug}
+  }`;
+
+  const projects = await useSanityClient().fetch(query);
+
+  const technologies = projects
+    .flatMap(project => project.technologies)
+    .filter(Boolean);
+
+  const uniqueTechnologiesMap = new Map();
+
+  technologies.forEach(tech => {
+    if (tech._id && !uniqueTechnologiesMap.has(tech._id)) {
+      uniqueTechnologiesMap.set(tech._id, tech);
+    }
+  });
+
+  const uniqueTechnologies = Array.from(uniqueTechnologiesMap.values());
+
+  return uniqueTechnologies;
+}
+export async function fetchProjectGroup(slug: string) {
+  const query = groq`*[_type == "projectGroup" && slug.current == "${slug}"] | order(title asc) {
+    _id,
+    title,
+    slug,
+    description,
+    projects[]->{_id, intro, mainImage, slug, status, title, technologies[]->{_id, title, slug,},},
+  }`;
+
+  const projectGroup = await useSanityClient().fetch(query);
+
+  return projectGroup[0];
+}
+
 export async function fetchProjects() {
   const query = groq`*[_type == "project"] | order(title asc) {
       _id,
@@ -95,6 +132,7 @@ export async function fetchProjects() {
       slug,
       status,
       title,
+      technologies[]->{_id, title, slug,},
     }`;
   const projects = await useSanityClient().fetch(query);
 

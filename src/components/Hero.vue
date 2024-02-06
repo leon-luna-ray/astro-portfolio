@@ -4,6 +4,7 @@
             <div class='inner'>
                 <slot name="title"></slot>
                 <slot name="subtitle"></slot>
+                <slot name="disco-ball"></slot>
                 <slot name="intro"></slot>
             </div>
         </div>

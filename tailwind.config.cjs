@@ -34,6 +34,7 @@ module.exports = {
         monoton: ['Monoton', 'cursive'],
       },
       colors: {
+        'dark-brown':'#120000',
         primary: {
           red: '#F94144',
           orange: '#F8961E',

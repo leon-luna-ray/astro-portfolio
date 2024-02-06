@@ -1,26 +1,39 @@
 ---
-import { fetchProjects } from '../../lib/api';
+import { fetchProjects, fetchProjectGroup } from "../../lib/api";
 
-import PageLayout from '../../layouts/PageLayout.astro';
-import Hero from '../../components/Hero.vue';
-import ProjectGrid from '../../components/ProjectGrid.vue';
+import PageLayout from "../../layouts/PageLayout.astro";
+import Hero from "../../components/Hero.vue";
+import ProjectGrid from "../../components/ProjectGrid.vue";
+import ProjectSection from "../../components/ProjectSection.vue";
+// import FilterButtons from '../../components/FilterButtons.vue';
 
 const projects = await fetchProjects();
+const personalProjects = await fetchProjectGroup("personal-projects");
+const portfolioProjects = await fetchProjectGroup("portfolio-projects");
+const categories = [personalProjects, portfolioProjects];
+
+// const searchParams = Astro.url.search || null;
+// const technologies = await fetchProjectTechnologies();
 
 if (!projects?.length) {
     return new Response(null, {
         status: 404,
-        statusText: 'Not found',
+        statusText: "Not found",
     });
 }
 ---
 
-<PageLayout title='Projects'>
+<PageLayout title="Projects">
     <Hero showLinks={false} client:load>
-        <h1 slot='title' class='title'>Projects</h1>
-        <div slot='btn-links' class='btn-links'>
-            <a class='btn dark mt-[2.5rem]' href='/'>Home</a>
+        <h1 slot="title" class="title">Projects</h1>
+        <div slot="btn-links" class="btn-links">
+            <a class="btn dark mt-[2.5rem]" href="/">Home</a>
         </div>
     </Hero>
-    <ProjectGrid projects={projects} showLink={false} />
+    <!-- <FilterButtons client:load items={technologies} query={Astro.url.search}/> -->
+    <ProjectSection
+        client:load
+        projects={projects}
+        categories={categories}
+    />
 </PageLayout>

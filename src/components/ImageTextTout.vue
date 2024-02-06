@@ -1,3 +1,16 @@
+<template>
+    <div class="container grid md:grid-cols-5 gap-x-[4rem] md:py-[5rem] gap-y-[2rem]">
+        <div class='md:col-span-2 relative flex justify-center items-center aspect-square'>
+            <div class="flex justify-center items-center aspect-square rounded-3xl p-[2rem] w-fit bg-black">
+                <slot />
+            </div>
+        </div>
+        <div class='md:col-span-3 text-center md:text-left flex justify-center flex-col'>
+            <span v-if="label" class='font-semibold'>{{ label }}</span>
+            <p class="font-monoton text-[2rem] md:text-[3.125rem] pt-[1rem] md:pt-[2.5rem]">{{ text }}</p>
+        </div>
+    </div>
+</template>
 <script setup lang="ts">
 const props = defineProps({
     label: {
@@ -10,16 +23,3 @@ const props = defineProps({
     },
 });
 </script>
-<template>
-    <div class='image-text-tout'>
-        <div class="inner">
-            <div class='text'>
-                <span v-if="label" class='label'>{{ label }}</span>
-                <p>{{ text }}</p>
-            </div>
-            <div class='img-wrap'>
-                <img src="/img/spinner.png" alt="decoration">
-            </div>
-        </div>
-    </div>
-</template>

@@ -1,3 +1,36 @@
+<template>
+    <header id="header" :class="bottomPadding">
+        <div class='top-label hover:text-inherit'>
+            <div class='divider'></div>
+            <div class="label-text">
+                <a v-if="isMobile && path.length" href="/" class="mobile">
+                    <div class="site">
+                        <!-- Todo refactor hard coded values -->
+                        <div v-if="path.length > 1" class="inner">
+                            <span>Ray Luna</span>
+                            <span>-</span>
+                            <span>Developer Portfolio</span>
+                        </div>
+                        <div v-else class="inner home">
+                            <span>Ray Luna</span>
+                            <span>Developer Portfolio</span>
+                        </div>
+                    </div>
+                    <span v-if="!isHome" class="page-title">
+                        {{ getTitle(path[path.length - 1]) }}
+                    </span>
+                </a>
+                <div v-else-if="path.length" v-for="(item, index) in path" class="path flex">
+                    <a v-if="index < path.length - 1" :href="path[index]" class="text-item">{{ getTitle(item) }}</a>
+                    <span v-else class="text-item">{{ getTitle(item) }}</span>
+                    <span v-if="index < path.length - 1" class="dash pl-2 hidden md:block"> - </span>
+                </div>
+            </div>
+            <div class='divider'></div>
+        </div>
+    </header>
+</template>
+
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue';
 import { useWindowScroll, useMediaQuery } from '@vueuse/core'
@@ -54,35 +87,3 @@ const getTitle = (path: string): string => {
 // Watchers
 watch(y, handleScroll)
 </script>
-<template>
-    <header id="header" :class="bottomPadding">
-        <div class='top-label hover:text-inherit'>
-            <div class='divider'></div>
-            <div class="label-text">
-                <a v-if="isMobile && path.length" href="/" class="mobile">
-                    <div class="site">
-                        <!-- Todo refactor hard coded values -->
-                        <div v-if="path.length > 1" class="inner">
-                            <span>Ray Luna</span>
-                            <span>-</span>
-                            <span>Developer Portfolio</span>
-                        </div>
-                        <div v-else class="inner home">
-                            <span>Ray Luna</span>
-                            <span>Developer Portfolio</span>
-                        </div>
-                    </div>
-                    <span v-if="!isHome" class="page-title">
-                        {{ getTitle(path[path.length - 1]) }}
-                    </span>
-                </a>
-                <div v-else-if="path.length" v-for="(item, index) in path" class="path flex">
-                    <a v-if="index < path.length - 1" :href="path[index]" class="text-item">{{ getTitle(item) }}</a>
-                    <span v-else class="text-item">{{ getTitle(item) }}</span>
-                    <span v-if="index < path.length - 1" class="dash pl-2 hidden md:block"> - </span>
-                </div>
-            </div>
-            <div class='divider'></div>
-        </div>
-    </header>
-</template>
