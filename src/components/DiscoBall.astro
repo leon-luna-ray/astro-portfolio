@@ -7,6 +7,8 @@
     import * as THREE from "three";
     import { OrbitControls } from "three/addons/controls/OrbitControls.js";
     import * as BufferGeometryUtils from "three/addons/utils/BufferGeometryUtils.js";
+    import crystalImage from '../images/crystal.png'
+    
     const container = document.querySelector(".tres-container");
     const canvasEl = document.querySelector("#tres-canvas");
     // const parent = document.querySelector("#disco-ball");
@@ -37,7 +39,7 @@
             clock = new THREE.Clock();
 
             new THREE.TextureLoader().load(
-                "https://assets.codepen.io/959327/matcap-crystal.png",
+                crystalImage.src,
                 (t) => {
                     texture = t;
                     for (let i = 0; i < objects.length; i++) {
