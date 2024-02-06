@@ -1,4 +1,4 @@
-interface Project {
+export interface Project {
     url: string;
     _id: string;
     description: { [key: string]: unknown }[];
@@ -14,5 +14,3 @@ interface Project {
     technologies: { [key: string]: unknown }[];
     title: string;
   }
-
-  export default Project;

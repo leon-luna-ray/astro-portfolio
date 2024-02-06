@@ -115,6 +115,7 @@ export async function fetchProjectGroup(slug: string) {
     _id,
     title,
     slug,
+    description,
     projects[]->{_id, intro, mainImage, slug, status, title, technologies[]->{_id, title, slug,},},
   }`;
 

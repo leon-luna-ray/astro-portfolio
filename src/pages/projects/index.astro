@@ -4,6 +4,7 @@ import { fetchProjects, fetchProjectGroup } from "../../lib/api";
 import PageLayout from "../../layouts/PageLayout.astro";
 import Hero from "../../components/Hero.vue";
 import ProjectGrid from "../../components/ProjectGrid.vue";
+import ProjectSection from "../../components/ProjectSection.vue";
 // import FilterButtons from '../../components/FilterButtons.vue';
 
 const projects = await fetchProjects();
@@ -30,10 +31,9 @@ if (!projects?.length) {
         </div>
     </Hero>
     <!-- <FilterButtons client:load items={technologies} query={Astro.url.search}/> -->
-    <ProjectGrid
+    <ProjectSection
         client:load
         projects={projects}
         categories={categories}
-        showLink={false}
     />
 </PageLayout>
