@@ -7,7 +7,7 @@ import ProjectGrid from '../../components/ProjectGrid.vue';
 import FilterButtons from '../../components/FilterButtons.vue';
 
 const searchParams = Astro.url.search || null;
-;
+const projects = await fetchProjects();
 const technologies = await fetchProjectTechnologies();
 
 if (!projects?.length) {

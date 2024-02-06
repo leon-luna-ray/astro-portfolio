@@ -1,16 +1,3 @@
-<script setup lang="ts">
-
-const props = defineProps({
-    label: {
-        type: String,
-        required: false,
-    },
-    text: {
-        type: String,
-        required: true,
-    },
-});
-</script>
 <template>
     <div class="container grid md:grid-cols-5 gap-x-[4rem] md:py-[5rem]">
         <div class='md:col-span-2 relative flex justify-center items-center aspect-square'>
@@ -24,3 +11,15 @@ const props = defineProps({
         </div>
     </div>
 </template>
+<script setup lang="ts">
+const props = defineProps({
+    label: {
+        type: String,
+        required: false,
+    },
+    text: {
+        type: String,
+        required: true,
+    },
+});
+</script>
