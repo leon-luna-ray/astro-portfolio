@@ -110,6 +110,18 @@ export async function fetchProjectTechnologies() {
 
   return uniqueTechnologies;
 }
+export async function fetchProjectGroup(slug: string) {
+  const query = groq`*[_type == "projectGroup" && slug.current == "${slug}"] | order(title asc) {
+    _id,
+    title,
+    slug,
+    projects[]->{_id, intro, mainImage, slug, status, title, technologies[]->{_id, title, slug,},},
+  }`;
+
+  const projectGroup = await useSanityClient().fetch(query);
+
+  return projectGroup[0];
+}
 
 export async function fetchProjects() {
   const query = groq`*[_type == "project"] | order(title asc) {
