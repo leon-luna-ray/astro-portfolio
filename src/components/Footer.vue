@@ -18,15 +18,15 @@ const props = defineProps({
 const year = new Date().getFullYear();
 </script>
 <template>
-    <footer id="footer">
-        <div class='social-icons'>
-            <a v-if="email" :href="`mailto:${email}`">
+    <footer class="flex flex-col justify-center items-center gap-y-[1.875rem]">
+        <div class='social-icons flex gap-x-[1.25rem]'>
+            <a v-if="email" :href="`mailto:${email}`" aria-label="Email">
                 <IconEmail />
             </a>
-            <a v-if="github" :href="github" target="_blank">
+            <a v-if="github" :href="github" target="_blank" aria-label="GitHub">
                 <IconGithub />
             </a>
-            <a v-if="linkedin" :href="linkedin" target="_blank">
+            <a v-if="linkedin" :href="linkedin" target="_blank" aria-label="LinkedIn">
                 <IconLinkedin />
             </a>
         </div>
