@@ -41,10 +41,9 @@ const gridCols = computed(() => ({
 </script>
 
 <template>
-    <div id="featured-projects" class='featured-projects'>
-
-        <div :class="['grid container gap-[2.5rem]', gridCols]">
-            <CardFeaturedProject v-for="project in projects" :project="project" :key="project._id" />
-        </div>
-    </div>
+    <ul :class="['grid container gap-[2.5rem]', gridCols]">
+        <li v-for="project in projects">
+            <CardFeaturedProject :project="project" :key="project._id" />
+        </li>
+    </ul>
 </template>

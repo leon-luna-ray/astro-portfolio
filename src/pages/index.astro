@@ -7,9 +7,8 @@ import {
 } from "../lib/api";
 import PageLayout from "../layouts/PageLayout.astro";
 import Hero from "../components/Hero.vue";
-// import ImageCarousel from '../components/ImageCarousel.vue';
 import ImageTextTout from "../components/ImageTextTout.vue";
-import FeaturedSkills from "../components/FeaturedSkills.vue";
+import TechList from "../components/TechList.vue";
 import ProjectGrid from "../components/ProjectGrid.vue";
 import TextBlock from "../components/TextBlock.vue";
 import DiscoBall from "../components/DiscoBall.astro";
@@ -19,6 +18,9 @@ const featuredProjects = await fetchFeaturedProjects();
 const global = await fetchGlobal();
 const profile = await fetchProfile();
 const skills = await fetchSkills();
+console.log(skills)
+const skillsIntro =
+  "I leverage a diverse range of tools to develop interactive web applications, utilizing content management systems, the latest backend and frontend frameworks, and multiple programming languages. My expertise spans across different domains, including organizational websites, educational portals, and enterprise solutions.";
 ---
 
 <PageLayout title="Home">
@@ -27,9 +29,17 @@ const skills = await fetchSkills();
     <Hero showLinks={true} client:load>
       <h1 slot="title" class="title">{profile?.name}</h1>
       <h2 slot="subtitle" class="subtitle one pt-[1rem]">{profile?.tagline}</h2>
-      <h2 slot="subtitle" class="subtitle two" aria-hidden="true">{profile?.tagline}</h2>
-      <h2 slot="subtitle" class="subtitle three" aria-hidden="true">{profile?.tagline}</h2>
-      <h2 slot="subtitle" class="subtitle four pb-[1rem] md:pb-[2rem]" aria-hidden="true">
+      <h2 slot="subtitle" class="subtitle two" aria-hidden="true">
+        {profile?.tagline}
+      </h2>
+      <h2 slot="subtitle" class="subtitle three" aria-hidden="true">
+        {profile?.tagline}
+      </h2>
+      <h2
+        slot="subtitle"
+        class="subtitle four pb-[1rem] md:pb-[2rem]"
+        aria-hidden="true"
+      >
         {profile?.tagline}
       </h2>
       <div class="relative" slot="disco-ball">
@@ -44,8 +54,15 @@ const skills = await fetchSkills();
   </section>
   <!-- About -->
   <section class="page-section flex-col-3">
-    <ImageTextTout label={profile?.nickname} text={profile?.greeting} client:load>
-      <img src={getMediumUrl(profile?.image)} alt="Headshot of Ray Luna standing in front of a mountain at dusk. He is wearing a tropical print shirt." />
+    <ImageTextTout
+      label={profile?.nickname}
+      text={profile?.greeting}
+      client:load
+    >
+      <img
+        src={getMediumUrl(profile?.image)}
+        alt="Headshot of Ray Luna standing in front of a mountain at dusk. He is wearing a tropical print shirt."
+      />
     </ImageTextTout>
     <TextBlock text={profile?.bio}>
       <h3 slot="title" class="text-[1.25rem]">About Me</h3>
@@ -56,12 +73,33 @@ const skills = await fetchSkills();
     <TextBlock>
       <div slot="title" class="flex justify-between gap-y-[1rem]">
         <h3 class="text-[1.25rem]">FeaturedProjects</h3>
-        <a v-if="showLink" class="uppercase font-bold" href="/projects">View All</a>
+        <a v-if="showLink" class="uppercase font-bold" href="/projects"
+          >View All</a
+        >
       </div>
     </TextBlock>
-    <ProjectGrid title="Featured Projects" projects={featuredProjects} showLink={true} />
+    <ProjectGrid
+      title="Featured Projects"
+      projects={featuredProjects}
+      showLink={true}
+    />
   </section>
-  <section class="page-section">
-    <FeaturedSkills skills={skills} client:load />
+  <!-- Skills -->
+  <section class="page-section flex-col-3">
+    <TextBlock text={skillsIntro}>
+      <h3 slot="title" class="text-[1.25rem]">Skills and expertise</h3>
+    </TextBlock>
+    <div class="container bottom grid md:grid-cols-3 gap-[2rem]">
+      <!-- {skills.map((item) => (
+        <div class="lists flex flex-col gap-y-[2rem]">
+          <h4 class="title text-[1.125em]">{item.title}</h4>
+          <TechList items={item.skills} client:load />
+          </div>
+      ))} -->
+
+<TechList items={skills[0].skills} client:load />
+<TechList items={skills[1].skills} client:load />
+<TechList items={skills[2].skills} client:load />
+      </div>
   </section>
 </PageLayout>
