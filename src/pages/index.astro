@@ -4,55 +4,64 @@ import {
   fetchGlobal,
   fetchProfile,
   fetchSkills,
-} from '../lib/api';
-import PageLayout from '../layouts/PageLayout.astro';
-import Hero from '../components/Hero.vue';
-// import ImageCarousel from '../components/ImageCarousel.vue';
-import ImageTextTout from '../components/ImageTextTout.vue';
-import FeaturedSkills from '../components/FeaturedSkills.vue';
-import ProjectGrid from '../components/ProjectGrid.vue';
-import TextTout from '../components/TextTout.vue';
-import DiscoBall from '../components/DiscoBall.astro';
+} from "../lib/api";
+import PageLayout from "../layouts/PageLayout.astro";
+import Hero from "../components/Hero.vue";
+import ImageTextTout from "../components/ImageTextTout.vue";
+import FeaturedSkills from "../components/FeaturedSkills.vue";
+import ProjectGrid from "../components/ProjectGrid.vue";
+import TextBlock from "../components/TextBlock.vue";
+import DiscoBall from "../components/DiscoBall.astro";
 
-import { getMediumUrl } from '../lib/images';
+import { getMediumUrl } from "../lib/images";
 const featuredProjects = await fetchFeaturedProjects();
 const global = await fetchGlobal();
 const profile = await fetchProfile();
 const skills = await fetchSkills();
 ---
 
-<PageLayout title='Home'>
-  <Hero showLinks={true} client:load>
-    <h1 slot='title' class='title'>{profile?.name}</h1>
-    <h2 slot='subtitle' class='subtitle one pt-[1rem]'>{profile?.tagline}</h2>
-    <h2 slot='subtitle' class='subtitle two'>{profile?.tagline}</h2>
-    <h2 slot='subtitle' class='subtitle three'>{profile?.tagline}</h2>
-    <h2 slot='subtitle' class='subtitle four pb-[1rem] md:pb-[2rem]'>{profile?.tagline}</h2>
-    <div class="relative" slot='disco-ball'>
-      <DiscoBall />
-    </div>
-    <p slot='intro' class='intro'>{global?.intro}</p>
-    <div slot='btn-links' class='btn-links'>
-      <a class='btn light' href='/projects/'>Check Projects</a>
-      <a class='btn dark' href='#featured-skills'>Explore Skills</a>
-    </div>
-  </Hero>
-  <!-- <ImageCarousel
-    profileImage={profile?.image}
-    images={global?.decorationImages}
-    client:load
-  /> -->
-  <ImageTextTout label={profile?.nickname} text={profile?.greeting} client:load >
-      <img src={getMediumUrl(profile?.image)} alt="Profile Image">
-  </ImageTextTout>
-  <TextTout class='md:-mt-[4rem] container'>
-    <h3 slot='title' class="text-[1.25rem]">About Me</h3>
-    <p slot='text' class='pt-[2.5rem]'>{profile?.bio}</p>
-  </TextTout>
-  <ProjectGrid
-    title='Featured Projects'
-    projects={featuredProjects}
-    showLink={true}
-  />
-  <FeaturedSkills skills={skills} client:load />
+<PageLayout title="Home">
+  <!-- Intro -->
+  <section class="page-section">
+    <Hero showLinks={true} client:load>
+      <h1 slot="title" class="title">{profile?.name}</h1>
+      <h2 slot="subtitle" class="subtitle one pt-[1rem]">{profile?.tagline}</h2>
+      <h2 slot="subtitle" class="subtitle two" aria-hidden="true">{profile?.tagline}</h2>
+      <h2 slot="subtitle" class="subtitle three" aria-hidden="true">{profile?.tagline}</h2>
+      <h2 slot="subtitle" class="subtitle four pb-[1rem] md:pb-[2rem]" aria-hidden="true">
+        {profile?.tagline}
+      </h2>
+      <div class="relative" slot="disco-ball">
+        <DiscoBall />
+      </div>
+      <p slot="intro" class="intro">{global?.intro}</p>
+      <div slot="btn-links" class="btn-links">
+        <a class="btn light" href="/projects/">Check Projects</a>
+        <a class="btn dark" href="#featured-skills">Explore Skills</a>
+      </div>
+    </Hero>
+  </section>
+  <!-- About -->
+  <section class="page-section flex-col-3">
+    <ImageTextTout label={profile?.nickname} text={profile?.greeting} client:load>
+      <img src={getMediumUrl(profile?.image)} alt="Headshot of Ray Luna standing in front of a mountain at dusk. He is wearing a tropical print shirt." />
+    </ImageTextTout>
+    <TextBlock text={profile?.bio}>
+      <h3 slot="title" class="text-[1.25rem]">About Me</h3>
+    </TextBlock>
+  </section>
+  <!-- Projects -->
+  <section class="page-section flex-col-3">
+    <TextBlock>
+      <div slot="title" class="flex justify-between gap-y-[1rem]">
+        <h3 class="text-[1.25rem]">FeaturedProjects</h3>
+        <a v-if="showLink" class="uppercase font-bold" href="/projects">View All</a>
+      </div>
+    </TextBlock>
+    <ProjectGrid title="Featured Projects" projects={featuredProjects} showLink={true} />
+  </section>
+  <!-- Skills -->
+  <section class="page-section">
+    <FeaturedSkills skills={skills} client:load />
+  </section>
 </PageLayout>

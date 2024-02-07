@@ -1,0 +1,92 @@
+.btn {
+    @apply flex justify-center items-center px-[1.25rem] py-[0.625rem] rounded-full font-bold hover:cursor-pointer no-underline;
+
+    &.disabled {
+        @apply bg-black text-primary-red hover:cursor-not-allowed;
+    }
+
+    &.dark {
+        @apply bg-black text-primary-orange;
+    }
+
+    &.light {
+        @apply text-white bg-red-600 border border-neutral-brown;
+    }
+}
+
+.btn-links {
+    @apply flex flex-col md:flex-row justify-center gap-[0.625rem];
+}
+
+.tag {
+    @apply bg-neutral-brown text-primary-yellow uppercase py-[0.3rem] px-[0.6rem] font-semibold text-[0.75rem] rounded-lg;
+}
+
+.hero {
+    @apply container;
+
+    .top-label {
+        @apply flex items-center justify-center;
+
+        span {
+            @apply px-4 text-center font-bold text;
+        }
+
+        .divider {
+            @apply flex-grow bg-black h-[2px];
+        }
+    }
+
+    .hero-text {
+        @apply flex justify-center;
+
+        .inner {
+            @apply max-w-[800px] text-center;
+        }
+
+        .title {
+            @apply pt-[1.875rem] md:pt-[3.125rem] text-center text-[3.7rem] md:text-[6rem];
+        }
+
+        .subtitle {
+            @apply text-[2.2rem] md:text-[3.6rem] leading-[30px] md:leading-[45px];
+
+            &.two {
+
+                @apply text-red-800;
+            }
+
+            &.three {
+                @apply text-orange-700;
+            }
+
+            &.four {
+                @apply text-yellow-600;
+            }
+        }
+
+        .intro {
+            @apply py-[1.875rem] text-[1.25rem] font-light;
+        }
+    }
+}
+
+.link-list {
+    li:not(:last-child) {
+        @apply border-b border-primary-orange pb-[1rem];
+    }
+
+    .chevron {
+        @apply h-[1rem];
+    }
+}
+
+.social-icons {
+    svg {
+        @apply h-[32px] w-[32px]  zoom-in-out fill-neutral-brown;
+
+        g {
+            @apply fill-neutral-brown;
+        }
+    }
+}

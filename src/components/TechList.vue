@@ -38,18 +38,18 @@ onMounted(() => {
 });
 </script>
 <template>
-    <div class="tech-list">
-        <h3 v-if="title" class="title">{{ title }}</h3>
-        <ul class="link-list">
-            <li v-for="(item, index) in items" class="hover:cursor-pointer">
-                <div class="title" @click="setExpandedItem(index)">
+    <div class="tech-list flex-col-2">
+        <h4 v-if="title" class="text-[1.25rem]">{{ title }}</h4>
+        <ul class="link-list font-bold flex-col-1">
+            <li v-for="(item, index) in items" class="hover:cursor-pointer flex-col-1">
+                <div class="flex justify-between pb-0 items-center text-[1rem]" @click="setExpandedItem(index)">
                     <span>{{ item.title }}</span>
-                    <IconChevronUp v-if="expandedItem === index" class="chevron up" />
-                    <IconChevronDown v-else class="chevron down" />
+                    <IconChevronUp v-if="expandedItem === index" class="h-[1rem] up" aria-label="Open"/>
+                    <IconChevronDown v-else class="h-[1rem] down" />
                 </div>
-                <p v-if="expandedItem === index" class="description" @click="setExpandedItem(null)">{{ item.description }}
+                <p v-if="expandedItem === index" class="text-[0.875rem] font-light" @click="setExpandedItem(null)">{{ item.description }}
                 </p>
             </li>
         </ul>
     </div>
-</template>
+</template>     
