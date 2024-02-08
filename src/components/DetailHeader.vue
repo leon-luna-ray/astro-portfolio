@@ -48,15 +48,15 @@ const showLanuchBtn = computed(() => {
 })
 </script>
 <template>
-    <div class="detail-header">
-        <div class="inner">
-            <div class="image flex flex-shrink">
-                <img :src="getMediumUrl(image)" :alt="`Screenshot of ${title}`">
+    <div class="detail-header border-black pt-[2.5rem] md:pb-0 md:pt-[4rem]">
+        <div class="inner md:container grid md:grid-cols-2 gap-y-[3.125rem] md:gap-[4rem]">
+            <div class="flex flex-col gap-y-[1.5rem] order-last md:order-none flex-shrink">
+                <img :src="getMediumUrl(image)" :alt="`Screenshot of ${title}`" class="aspect-square object-cover md:rounded-3xl border-y md:border-2 border-neutral-brown w-full">
             </div>
-            <div class="text">
-                <div v-if="labelText" class="label">{{ labelText }}</div>
-                <h1 class="title">{{ title }}</h1>
-                <div class="description">{{ intro }}</div>
+            <div class="text flex flex-col gap-y-[1rem] lg:gap-y-[2.5rem] items-center justify-center text-center">
+                <div v-if="labelText" class="bg-neutral-brown text-primary-yellow uppercase py-[0.3rem] px-[0.6rem] font-semibold text-[0.75rem] rounded-lg">{{ labelText }}</div>
+                <h1 class="text-[3rem] lg:text-[4rem]">{{ title }}</h1>
+                <div class="description text-[1.25rem] md:line-clamp-5">{{ intro }}</div>
                 <div class="btn-links">
                     <a v-if="launchUrl && showLanuchBtn" class="btn light" :href="launchUrl" target="_blank">Launch</a>
                     <div v-else-if="launchUrl" class="btn disabled" :href="launchUrl" target="_blank">Launch</div>

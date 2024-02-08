@@ -28,21 +28,22 @@ let commits = [];
 let lastCommit;
 
 // Fetch Github Data
-if (project?.repositoryUsername && project?.repositorySlug) {
-    const fetchedLanguages = await fetchLanguages(project.repositoryUsername, project.repositorySlug);
-    languages = fetchedLanguages;
+// if (project?.repositoryUsername && project?.repositorySlug) {
+//     const fetchedLanguages = await fetchLanguages(project.repositoryUsername, project.repositorySlug);
+//     languages = fetchedLanguages;
 
-    const fetchedCommits = await fetchCommits(project.repositoryUsername, project.repositorySlug);
-    commits = Array.isArray(fetchedCommits) ? fetchedCommits.slice(0, 6) : [];
-}
+//     const fetchedCommits = await fetchCommits(project.repositoryUsername, project.repositorySlug);
+//     commits = Array.isArray(fetchedCommits) ? fetchedCommits.slice(0, 6) : [];
+// }
 
-if (commits?.length) {
-    lastCommit = commits[0].commit.author.date;
-}
+// if (commits?.length) {
+//     lastCommit = commits[0].commit.author.date;
+// }
 ---
 
 <PageLayout title={project.title}>
-    <DetailHeader
+    <section>
+        <DetailHeader
         client:load
         title={project.title}
         image={project.mainImage}
@@ -51,7 +52,8 @@ if (commits?.length) {
         codeUrl={project.repository}
         isFeatured={project.featured}
         status={project.status}
-    />
+        />
+    </section>
     <div class='project-details container grid md:grid-cols-3 gap-[2.5rem] md:gap-x-[6.25rem];'>
         <div class='flex flex-col justify-between gap-y-[2.5rem] md:col-span-2 order-last md:order-none'>
             <div class='flex-col-3'>
