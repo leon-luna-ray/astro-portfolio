@@ -7,7 +7,7 @@ import BarGraph from '../../components/BarGraph.vue';
 import DetailHeader from '../../components/DetailHeader.vue';
 import PageLayout from '../../layouts/PageLayout.astro';
 import ProjectInfo from '../../components/ProjectInfo.vue';
-import PortableText from '../../components/TextBlock.vue';
+import TextBlock from '../../components/TextBlock.vue';
 import TechList from '../../components/TechList.vue';
 import TagGrid from '../../components/TagGrid.vue';
 import ThumbnailLinks from '../../components/ThumbnailLinks.vue';
@@ -55,10 +55,10 @@ if (commits?.length) {
     <div class='project-details'>
         <div class='data'>
             <div class='top'>
-                <ProjectInfo data={project} lastCommit={lastCommit} class='hidden md:block'/>
+                <ProjectInfo data={project} lastCommit={lastCommit} class='hidden md:block' />
                 <div class='description'>
                     <h2 class='title'>Description</h2>
-                    <PortableText data={project.description} />
+                    <TextBlock text={project.description} isRichtext={true} client:load />
                 </div>
                 {
                     commits?.length > 0 && (

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { defineProps } from 'vue';
 import ProjectGroup from './ProjectGroup.vue';
 import ProjectGrid from './ProjectGrid.vue';
 import type { Project } from '../interfaces/Project';
