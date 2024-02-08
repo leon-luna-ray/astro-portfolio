@@ -56,39 +56,35 @@ if (commits?.length) {
     </section>
     <div class='project-details container grid md:grid-cols-3 gap-[2.5rem] md:gap-x-[6.25rem];'>
         <div class='flex-col-2 justify-between md:col-span-2 order-last md:order-none'>
-                <section>
-                    <ProjectInfo data={project} lastCommit={lastCommit} class='hidden md:block' />
-                </section>
-                <section class='description'>
-                    <h2 class='title'>Description</h2>
-                    <TextBlock text={project.description} isRichtext={true} client:load />
-                </section>
-                {
-                    commits?.length > 0 && (
-                        <section class='activity'>
-                            <h2 class='title'>Activity</h2>
-                            <ActivityLog items={commits} />
-                        </section>
-                    )
-                }
-                {
-                    project?.galleryImages?.length > 0 && (
-                        <section class='images'>
-                            <h2 class='title'>Images</h2>
-                            <ImageGallery images={project.galleryImages} />
-                        </section>
-                    )
-                }
+            <section>
+                <ProjectInfo data={project} lastCommit={lastCommit} class='hidden md:block' />
+            </section>
+            <section class='flex-col-2'>
+                <h2 class='title'>Description</h2>
+                <TextBlock text={project.description} isRichtext={true} client:load />
+            </section>
+            {commits?.length > 0 && (
+            <section class='flex-col-2'>
+                <h2 class='title'>Activity</h2>
+                <ActivityLog items={commits} />
+            </section>   
+            )}
+            {project?.galleryImages?.length > 0 && (
+            <section class='flex-col-2'>
+                <h2 class='title'>Images</h2>
+                <ImageGallery images={project.galleryImages} />
+            </section>
+            )}
+            <section class="md:hidden">
                 <TagGrid tags={project.tags} title='categories' class="md:hidden"/>
-                {
-                    project?.relatedProjects?.length > 0 && (
-                        <section class='related-projects'>
-                            <h2 class='title'>Related Projects</h2>
-                            <ThumbnailLinks data={project.relatedProjects} />
-                        </section>
-                    )
-                }
-                <!-- End of page on mobile -->
+            </section>
+            {project?.relatedProjects?.length > 0 && (
+            <section class='flex-col-2'>
+                <h2 class='title'>Related Projects</h2>
+                <ThumbnailLinks data={project.relatedProjects} />
+            </section>
+            )}
+            <!-- End of page on mobile -->
         </div>
         <aside class='sidebar flex flex-col gap-y-[3.125rem] justify-between'>
             <div class='flex-col-3'>
