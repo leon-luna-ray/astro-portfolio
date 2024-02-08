@@ -46,7 +46,7 @@ const skillsIntro = 'I leverage a diverse range of tools to develop interactive 
   </section>
   
   <!-- About -->
-  <section class="page-section container flex-col-4">
+  <section class="page-section flex-col-4">
     <ImageTextTout label={profile?.nickname} text={profile?.greeting} client:load>
       <img src={getMediumUrl(profile?.image)} alt="Headshot of Ray Luna standing in front of a mountain at dusk. He is wearing a tropical print shirt." />
     </ImageTextTout>
@@ -56,18 +56,18 @@ const skillsIntro = 'I leverage a diverse range of tools to develop interactive 
   </section>
   
   <!-- Projects -->
-  <section class="page-section container flex-col-3">
+  <section class="page-section flex-col-3">
     <TextBlock isRichtext={false}>
       <div slot="title" class="flex justify-between gap-y-[1rem]">
         <h3 class="text-[1.25rem]">FeaturedProjects</h3>
         <a v-if="showLink" class="uppercase font-bold" href="/projects">View All</a>
       </div>
     </TextBlock>
-    <ProjectGrid projects={featuredProjects} minGridCols={2} />
+    <ProjectGrid projects={featuredProjects} minGridCols={1} />
   </section>
 
   <!-- Skills -->
-  <section class="page-section container flex-col-3">
+  <section class="page-section flex-col-3">
     <TextBlock text={skillsIntro} isRichtext={false}>
       <h2 slot="title" class="text-[1.25rem]">Skills and expertise</h2>
     </TextBlock>

@@ -27,5 +27,5 @@ h4, .h4 {
 }
 
 .page-section {
-  @apply py-[1rem] md:py-[2rem];
+  @apply py-[1rem] md:py-[2rem] container;
 }
