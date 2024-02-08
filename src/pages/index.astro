@@ -46,7 +46,7 @@ const skillsIntro = 'I leverage a diverse range of tools to develop interactive 
   </section>
   
   <!-- About -->
-  <section class="page-section container flex-col-3">
+  <section class="page-section container flex-col-4">
     <ImageTextTout label={profile?.nickname} text={profile?.greeting} client:load>
       <img src={getMediumUrl(profile?.image)} alt="Headshot of Ray Luna standing in front of a mountain at dusk. He is wearing a tropical print shirt." />
     </ImageTextTout>
@@ -67,7 +67,7 @@ const skillsIntro = 'I leverage a diverse range of tools to develop interactive 
   </section>
 
   <!-- Skills -->
-  <section class="page-section container flex-col-">
+  <section class="page-section container flex-col-3">
     <TextBlock text={skillsIntro} isRichtext={false}>
       <h2 slot="title" class="text-[1.25rem]">Skills and expertise</h2>
     </TextBlock>
