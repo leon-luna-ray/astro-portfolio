@@ -81,6 +81,10 @@
     }
 }
 
+.project-details .title {
+    @apply text-[1.25rem] pb-[2rem] md:pb-[2.5rem];
+}
+
 .social-icons {
     svg {
         @apply h-[32px] w-[32px]  zoom-in-out fill-neutral-brown;

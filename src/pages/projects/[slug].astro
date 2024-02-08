@@ -52,9 +52,9 @@ if (commits?.length) {
         isFeatured={project.featured}
         status={project.status}
     />
-    <div class='project-details'>
-        <div class='data'>
-            <div class='top'>
+    <div class='project-details container grid md:grid-cols-3 gap-[2.5rem] md:gap-x-[6.25rem];'>
+        <div class='flex flex-col justify-between gap-y-[2.5rem] md:col-span-2 order-last md:order-none'>
+            <div class='flex-col-3'>
                 <ProjectInfo data={project} lastCommit={lastCommit} class='hidden md:block' />
                 <div class='description'>
                     <h2 class='title'>Description</h2>
@@ -89,7 +89,7 @@ if (commits?.length) {
             </div>
         </div>
         <div class='sidebar flex flex-col gap-y-[3.125rem] justify-between'>
-            <div class='top flex-col gap-y-[3.125rem]'>
+            <div class='flex-col-3'>
                 <!-- Top of page on mobile -->
                 <ProjectInfo data={project} lastCommit={lastCommit} class='md:hidden'/>
                 {
