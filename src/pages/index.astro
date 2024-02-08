@@ -8,7 +8,8 @@ import {
 import PageLayout from "../layouts/PageLayout.astro";
 import Hero from "../components/Hero.vue";
 import ImageTextTout from "../components/ImageTextTout.vue";
-import FeaturedSkills from "../components/FeaturedSkills.vue";
+// import FeaturedSkills from "../components/FeaturedSkills.vue";
+import TechList from "../components/TechList.vue";
 import ProjectGrid from "../components/ProjectGrid.vue";
 import TextBlock from "../components/TextBlock.vue";
 import DiscoBall from "../components/DiscoBall.astro";
@@ -18,6 +19,8 @@ const featuredProjects = await fetchFeaturedProjects();
 const global = await fetchGlobal();
 const profile = await fetchProfile();
 const skills = await fetchSkills();
+
+const skillsIntro = 'I leverage a diverse range of tools to develop interactive web applications, utilizing content management systems, the latest backend and frontend frameworks, and multiple programming languages.My expertise spans across different domains, including organizational websites, educational portals, and enterprise solutions.'
 ---
 
 <PageLayout title="Home">
@@ -41,27 +44,39 @@ const skills = await fetchSkills();
       </div>
     </Hero>
   </section>
+  
   <!-- About -->
-  <section class="page-section flex-col-3">
+  <section class="page-section flex-col-4">
     <ImageTextTout label={profile?.nickname} text={profile?.greeting} client:load>
       <img src={getMediumUrl(profile?.image)} alt="Headshot of Ray Luna standing in front of a mountain at dusk. He is wearing a tropical print shirt." />
     </ImageTextTout>
-    <TextBlock text={profile?.bio}>
+    <TextBlock text={profile?.bio} isRichtext={false}>
       <h3 slot="title" class="text-[1.25rem]">About Me</h3>
     </TextBlock>
   </section>
+  
   <!-- Projects -->
   <section class="page-section flex-col-3">
-    <TextBlock>
+    <TextBlock isRichtext={false}>
       <div slot="title" class="flex justify-between gap-y-[1rem]">
         <h3 class="text-[1.25rem]">FeaturedProjects</h3>
         <a v-if="showLink" class="uppercase font-bold" href="/projects">View All</a>
       </div>
     </TextBlock>
-    <ProjectGrid title="Featured Projects" projects={featuredProjects} showLink={true} />
+    <ProjectGrid projects={featuredProjects} minGridCols={1} />
   </section>
+
   <!-- Skills -->
-  <section class="page-section">
-    <FeaturedSkills skills={skills} client:load />
+  <section class="page-section flex-col-3">
+    <TextBlock text={skillsIntro} isRichtext={false}>
+      <h2 slot="title" class="text-[1.25rem]">Skills and expertise</h2>
+    </TextBlock>
+    <ul class="bottom grid md:grid-cols-3 gap-[2rem]">{skills.map((item) => (
+      <li class="lists flex flex-col gap-y-[2rem]">
+          <h3 class="text-[1.25rem]">{item.title}</h3>
+          <TechList items={item.skills} isOpen={false} client:load />
+      </li>))}
+    </ul>
+    <!-- <FeaturedSkills skills={skills} client:load /> -->
   </section>
 </PageLayout>

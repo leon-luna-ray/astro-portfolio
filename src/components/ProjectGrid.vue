@@ -1,14 +1,5 @@
 <script setup lang="ts">
-import { computed, watch } from 'vue';
-import { useStore } from '@nanostores/vue'
-import { $techFilter } from '../stores/projects.js'
-
-const techFilter = useStore($techFilter)
-
-watch(techFilter, () => {
-    console.log(techFilter.value)
-})
-
+import { computed } from 'vue';
 import CardFeaturedProject from './cards/CardFeaturedProject.vue';
 import type { Project } from '../interfaces/Project';
 
@@ -16,14 +7,6 @@ const props = defineProps({
     projects: {
         type: Array as () => Project[],
         required: true,
-    },
-    title: {
-        type: String,
-        required: false,
-    },
-    showLink: {
-        type: Boolean,
-        required: false,
     },
     minGridCols: {
         type: Number,
@@ -41,7 +24,7 @@ const gridCols = computed(() => ({
 </script>
 
 <template>
-    <ul :class="['grid container gap-[2.5rem]', gridCols]">
+    <ul :class="['grid gap-[1rem] md:gap-[2rem]', gridCols]">
         <li v-for="project in projects">
             <CardFeaturedProject :project="project" :key="project._id" />
         </li>

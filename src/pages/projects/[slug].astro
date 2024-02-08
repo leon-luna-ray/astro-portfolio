@@ -7,7 +7,7 @@ import BarGraph from '../../components/BarGraph.vue';
 import DetailHeader from '../../components/DetailHeader.vue';
 import PageLayout from '../../layouts/PageLayout.astro';
 import ProjectInfo from '../../components/ProjectInfo.vue';
-import PortableText from '../../components/TextBlock.vue';
+import TextBlock from '../../components/TextBlock.vue';
 import TechList from '../../components/TechList.vue';
 import TagGrid from '../../components/TagGrid.vue';
 import ThumbnailLinks from '../../components/ThumbnailLinks.vue';
@@ -42,7 +42,8 @@ if (commits?.length) {
 ---
 
 <PageLayout title={project.title}>
-    <DetailHeader
+    <section>
+        <DetailHeader
         client:load
         title={project.title}
         image={project.mainImage}
@@ -51,45 +52,46 @@ if (commits?.length) {
         codeUrl={project.repository}
         isFeatured={project.featured}
         status={project.status}
-    />
-    <div class='project-details'>
-        <div class='data'>
-            <div class='top'>
-                <ProjectInfo data={project} lastCommit={lastCommit} class='hidden md:block'/>
-                <div class='description'>
+        />
+    </section>
+    <div class='project-details container grid md:grid-cols-3 gap-[2.5rem] md:gap-x-[6.25rem];'>
+        <div class='flex-col-2 justify-between md:col-span-2 order-last md:order-none'>
+                <section>
+                    <ProjectInfo data={project} lastCommit={lastCommit} class='hidden md:block' />
+                </section>
+                <section class='description'>
                     <h2 class='title'>Description</h2>
-                    <PortableText data={project.description} />
-                </div>
+                    <TextBlock text={project.description} isRichtext={true} client:load />
+                </section>
                 {
                     commits?.length > 0 && (
-                        <div class='activity'>
+                        <section class='activity'>
                             <h2 class='title'>Activity</h2>
                             <ActivityLog items={commits} />
-                        </div>
+                        </section>
                     )
                 }
                 {
                     project?.galleryImages?.length > 0 && (
-                        <div class='images'>
+                        <section class='images'>
                             <h2 class='title'>Images</h2>
                             <ImageGallery images={project.galleryImages} />
-                        </div>
+                        </section>
                     )
                 }
                 <TagGrid tags={project.tags} title='categories' class="md:hidden"/>
                 {
                     project?.relatedProjects?.length > 0 && (
-                        <div class='related-projects'>
+                        <section class='related-projects'>
                             <h2 class='title'>Related Projects</h2>
                             <ThumbnailLinks data={project.relatedProjects} />
-                        </div>
+                        </section>
                     )
                 }
                 <!-- End of page on mobile -->
-            </div>
         </div>
-        <div class='sidebar flex flex-col gap-y-[3.125rem] justify-between'>
-            <div class='top flex-col gap-y-[3.125rem]'>
+        <aside class='sidebar flex flex-col gap-y-[3.125rem] justify-between'>
+            <div class='flex-col-3'>
                 <!-- Top of page on mobile -->
                 <ProjectInfo data={project} lastCommit={lastCommit} class='md:hidden'/>
                 {
@@ -108,6 +110,6 @@ if (commits?.length) {
                 />
                 <TagGrid tags={project.tags} title='categories' class="hidden md:block" />
             </div>
-        </div>
+        </aside>
     </div>
 </PageLayout>

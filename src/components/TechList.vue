@@ -44,12 +44,12 @@ onMounted(() => {
             <li v-for="(item, index) in items" class="hover:cursor-pointer flex-col-1">
                 <div class="flex justify-between pb-0 items-center text-[1rem]" @click="setExpandedItem(index)">
                     <span>{{ item.title }}</span>
-                    <IconChevronUp v-if="expandedItem === index" class="h-[1rem] up" aria-label="Open"/>
-                    <IconChevronDown v-else class="h-[1rem] down" />
+                    <IconChevronUp v-if="expandedItem === index" class="h-[1rem] up" aria-hidden="true"/>
+                    <IconChevronDown v-else class="h-[1rem] down" aria-hidden="true"/>
                 </div>
                 <p v-if="expandedItem === index" class="text-[0.875rem] font-light" @click="setExpandedItem(null)">{{ item.description }}
                 </p>
             </li>
         </ul>
     </div>
-</template>     
+</template>

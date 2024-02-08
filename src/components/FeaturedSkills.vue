@@ -15,7 +15,7 @@ const props = defineProps({
     <div class="container flex flex-col gap-y-[2.5rem]">
         <div class="top">
             <div class='intro flex flex-col gap-y-[2rem]'>
-                <h4 class="text-[1.25rem]">Skills and expertise</h4>
+                <h2 class="text-[1.25rem]">Skills and expertise</h2>
                 <p class="text-[1.125rem]">
                     I leverage a diverse range of tools to develop interactive web applications, utilizing content management systems, the latest backend and frontend frameworks, and multiple programming languages.
 
@@ -25,7 +25,7 @@ const props = defineProps({
         </div>
         <div class="bottom grid md:grid-cols-3 gap-[2rem]">
             <div v-for="list in skills" class="lists flex flex-col gap-y-[2rem]">
-                <h4 class="title text-[1.125em]">{{ list.title }}</h4>
+                <h3 class="title text-[1.125em]">{{ list.title }}</h3>
                 <TechList :items="list.skills" />
             </div>
         </div>
