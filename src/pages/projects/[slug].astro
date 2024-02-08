@@ -28,17 +28,17 @@ let commits = [];
 let lastCommit;
 
 // Fetch Github Data
-// if (project?.repositoryUsername && project?.repositorySlug) {
-//     const fetchedLanguages = await fetchLanguages(project.repositoryUsername, project.repositorySlug);
-//     languages = fetchedLanguages;
+if (project?.repositoryUsername && project?.repositorySlug) {
+    const fetchedLanguages = await fetchLanguages(project.repositoryUsername, project.repositorySlug);
+    languages = fetchedLanguages;
 
-//     const fetchedCommits = await fetchCommits(project.repositoryUsername, project.repositorySlug);
-//     commits = Array.isArray(fetchedCommits) ? fetchedCommits.slice(0, 6) : [];
-// }
+    const fetchedCommits = await fetchCommits(project.repositoryUsername, project.repositorySlug);
+    commits = Array.isArray(fetchedCommits) ? fetchedCommits.slice(0, 6) : [];
+}
 
-// if (commits?.length) {
-//     lastCommit = commits[0].commit.author.date;
-// }
+if (commits?.length) {
+    lastCommit = commits[0].commit.author.date;
+}
 ---
 
 <PageLayout title={project.title}>
@@ -55,42 +55,42 @@ let lastCommit;
         />
     </section>
     <div class='project-details container grid md:grid-cols-3 gap-[2.5rem] md:gap-x-[6.25rem];'>
-        <div class='flex flex-col justify-between gap-y-[2.5rem] md:col-span-2 order-last md:order-none'>
-            <div class='flex-col-3'>
-                <ProjectInfo data={project} lastCommit={lastCommit} class='hidden md:block' />
-                <div class='description'>
+        <div class='flex-col-2 justify-between md:col-span-2 order-last md:order-none'>
+                <section>
+                    <ProjectInfo data={project} lastCommit={lastCommit} class='hidden md:block' />
+                </section>
+                <section class='description'>
                     <h2 class='title'>Description</h2>
                     <TextBlock text={project.description} isRichtext={true} client:load />
-                </div>
+                </section>
                 {
                     commits?.length > 0 && (
-                        <div class='activity'>
+                        <section class='activity'>
                             <h2 class='title'>Activity</h2>
                             <ActivityLog items={commits} />
-                        </div>
+                        </section>
                     )
                 }
                 {
                     project?.galleryImages?.length > 0 && (
-                        <div class='images'>
+                        <section class='images'>
                             <h2 class='title'>Images</h2>
                             <ImageGallery images={project.galleryImages} />
-                        </div>
+                        </section>
                     )
                 }
                 <TagGrid tags={project.tags} title='categories' class="md:hidden"/>
                 {
                     project?.relatedProjects?.length > 0 && (
-                        <div class='related-projects'>
+                        <section class='related-projects'>
                             <h2 class='title'>Related Projects</h2>
                             <ThumbnailLinks data={project.relatedProjects} />
-                        </div>
+                        </section>
                     )
                 }
                 <!-- End of page on mobile -->
-            </div>
         </div>
-        <div class='sidebar flex flex-col gap-y-[3.125rem] justify-between'>
+        <aside class='sidebar flex flex-col gap-y-[3.125rem] justify-between'>
             <div class='flex-col-3'>
                 <!-- Top of page on mobile -->
                 <ProjectInfo data={project} lastCommit={lastCommit} class='md:hidden'/>
@@ -110,6 +110,6 @@ let lastCommit;
                 />
                 <TagGrid tags={project.tags} title='categories' class="hidden md:block" />
             </div>
-        </div>
+        </aside>
     </div>
 </PageLayout>
