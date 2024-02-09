@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import type { Tag } from '../interfaces/Tag'
+
 const props = defineProps({
     title: {
         type: String,
         required: false,
     },
     tags: {
-        type: Array,
+        type: Array as () => Tag[],
         required: true,
     },
 })
