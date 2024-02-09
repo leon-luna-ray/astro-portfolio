@@ -10,9 +10,10 @@ import ProjectInfo from '../../components/ProjectInfo.vue';
 import TextBlock from '../../components/TextBlock.vue';
 import TechList from '../../components/TechList.vue';
 import TagGrid from '../../components/TagGrid.vue';
-import ThumbnailLinks from '../../components/ThumbnailLinks.vue';
+import CardThumbnailLink from '../../components/cards/CardThumbnailLink.vue';
 
 import type { Language } from '../../interfaces/Language';
+import type { Project } from '../../interfaces/Project';
 
 const project = await fetchProject(Astro.params.slug || '');
 
@@ -60,18 +61,18 @@ if (commits?.length) {
                 <ProjectInfo data={project} lastCommit={lastCommit} class='hidden md:block' />
             </section>
             <section class='flex-col-2'>
-                <h2 class='title'>Description</h2>
+                <h2 class='section-title'>Description</h2>
                 <TextBlock text={project.description} isRichtext={true} client:load />
             </section>
             {commits?.length > 0 && (
             <section class='flex-col-2'>
-                <h2 class='title'>Activity</h2>
+                <h2 class='section-title'>Activity</h2>
                 <ActivityLog items={commits} />
             </section>   
             )}
             {project?.galleryImages?.length > 0 && (
             <section class='flex-col-2'>
-                <h2 class='title'>Images</h2>
+                <h2 class='section-title'>Images</h2>
                 <ImageGallery images={project.galleryImages} />
             </section>
             )}
@@ -79,11 +80,18 @@ if (commits?.length) {
                 <TagGrid tags={project.tags} title='categories' class="md:hidden"/>
             </section>
             {project?.relatedProjects?.length > 0 && (
-            <section class='flex-col-2'>
-                <h2 class='title'>Related Projects</h2>
-                <ThumbnailLinks data={project.relatedProjects} />
-            </section>
+                <section class='flex-col-2'>
+                    <h2 class='section-title'>Related Projects</h2>
+                    <ul class="grid xl:grid-cols-2 gap-x-[1rem] gap-y-[2rem]">
+                        {project.relatedProjects.map((relatedProject: Project) => (
+                        <li>
+                            <CardThumbnailLink link={relatedProject}/>
+                        </li>
+                        ))}
+                    </ul>
+                </section>
             )}
+
             <!-- End of page on mobile -->
         </div>
         <aside class='sidebar flex flex-col gap-y-[3.125rem] justify-between'>
@@ -93,7 +101,7 @@ if (commits?.length) {
                 {
                     languages.length > 0 && (
                         <div class='languages'>
-                            <h2 class='title'>Languages</h2>
+                            <h2 class='section-title'>Languages</h2>
                             <BarGraph data={languages} />
                         </div>
                     )

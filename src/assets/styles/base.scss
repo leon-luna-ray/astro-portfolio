@@ -33,3 +33,7 @@ h4, .h4 {
 .richtext {
   @apply flex-col-1;
 }
+
+.section-title {
+  @apply text-[1.25rem];
+}
