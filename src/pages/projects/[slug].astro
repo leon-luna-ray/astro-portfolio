@@ -56,31 +56,30 @@ let lastCommit;
         />
     </section>
     <div class='project-details container grid md:grid-cols-3 gap-[2.5rem] md:gap-x-[6.25rem];'>
-        <div class='flex-col-2 justify-between md:col-span-2 order-last md:order-none'>
-            <section>
+        <div class='flex-col-3 justify-between md:col-span-2 order-last md:order-none'>
+            <section class="flex-col-1">
+                <h2 class="section-title hidden md:block">Details</h2>
                 <ProjectInfo data={project} lastCommit={lastCommit} class='hidden md:block' />
             </section>
-            <section class='flex-col-2'>
+            <section class='flex-col-1'>
                 <h2 class='section-title'>Description</h2>
                 <TextBlock text={project.description} isRichtext={true} client:load />
             </section>
             {commits?.length > 0 && (
-            <section class='flex-col-2'>
+            <section class='flex-col-1'>
                 <h2 class='section-title'>Activity</h2>
                 <ActivityLog items={commits} />
             </section>   
             )}
             {project?.galleryImages?.length > 0 && (
-            <section class='flex-col-2'>
+            <section class='flex-col-1'>
                 <h2 class='section-title'>Images</h2>
                 <ImageGallery images={project.galleryImages} />
             </section>
             )}
-            <section class="md:hidden">
-                <TagGrid tags={project.tags} title='categories' class="md:hidden"/>
-            </section>
+
             {project?.relatedProjects?.length > 0 && (
-            <section class='flex-col-2'>
+            <section class='flex-col-1'>
                 <h2 class='section-title'>Related Projects</h2>
                 <ul class="grid xl:grid-cols-2 gap-x-[1rem] gap-y-[2rem]">
                     {project.relatedProjects.map((relatedProject: Project) => (
@@ -91,28 +90,36 @@ let lastCommit;
                 </ul>
             </section>
             )}
-
+            <section class="md:!hidden flex-col-1">
+                <h2 class='section-title'>Categories</h2>
+                <TagGrid tags={project.tags} title='categories' />
+            </section>
             <!-- End of page on mobile -->
         </div>
         <aside class='sidebar flex flex-col gap-y-[3.125rem] justify-between'>
             <div class='flex-col-3'>
                 <!-- Top of page on mobile -->
-                <ProjectInfo data={project} lastCommit={lastCommit} class='md:hidden'/>
-                {
-                    languages.length > 0 && (
-                        <div class='languages'>
-                            <h2 class='section-title'>Languages</h2>
-                            <BarGraph data={languages} />
-                        </div>
-                    )
-                }
-                <TechList
-                    client:load
-                    title='Technologies'
-                    items={project.technologies}
-                    isOpen={true}
-                />
-                <TagGrid tags={project.tags} title='categories' class="hidden md:block" />
+                <section class="md:!hidden flex-col-1">
+                    <h2 class="section-title">Details</h2>
+                    <ProjectInfo data={project} lastCommit={lastCommit} />
+                </section>
+                {languages.length > 0 && (
+                <section class='languages'>
+                    <h2 class='section-title'>Languages</h2>
+                    <BarGraph data={languages} />
+                </section>
+                )}
+                <section class="flex-col-1">
+                    <h2 class='section-title'>Technologies</h2>
+                    <TechList
+                        client:load
+                        items={project.technologies}
+                        isOpen={true}/>
+                </section>
+                <section class="hidden md:block flex-col-1">
+                    <h2 class='section-title'>Categories</h2>
+                    <TagGrid tags={project.tags} title='categories' />
+                </section>
             </div>
         </aside>
     </div>

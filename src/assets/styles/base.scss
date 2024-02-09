@@ -1,5 +1,5 @@
 body {
-  @apply bg-primary-yellow font-archivo font-extralight pb-[3.125rem] md:py-[6.25rem] relative text-neutral-brown underline-offset-4 text-[1.125rem];
+  @apply bg-primary-yellow font-archivo font-extralight pb-[3.125rem] md:py-[6.25rem] relative text-neutral-brown underline-offset-4;
   // @apply bg-primary-yellow dark:bg-dark-brown dark:text-white font-archivo font-extralight pb-[3.125rem] md:py-[6.25rem] relative text-neutral-brown underline-offset-4;
 }
 a {
@@ -10,20 +10,22 @@ main {
 }
 h1,h2,h3,h4,h5 {
   @apply font-monoton;
-  // @apply font-monoton dark:text-primary-yellow;
 }
 
 h1, .h1 {
-  @apply text-[5rem];
+  @apply text-[3.5rem];
 }
 h2, .h2 {
-  @apply text-[4rem];
+  @apply text-[3rem];
 }
 h3, .h3 {
-  @apply text-[3rem];
+  @apply text-[2.5rem];
 }
 h4, .h4 {
   @apply text-[2rem];
+}
+h5, .h5 {
+  @apply text-[1.75rem];
 }
 
 .page-section {
@@ -36,4 +38,8 @@ h4, .h4 {
 
 .section-title {
   @apply text-[1.25rem] test-border;
+}
+
+.mobile-section * {
+  @apply hidden test-border;
 }

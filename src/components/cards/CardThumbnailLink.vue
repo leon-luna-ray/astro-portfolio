@@ -9,7 +9,7 @@ const props = defineProps({
 })
 </script>
 <template>
-    <a v-if="link?.slug" class="hover:zoom-hover transition ease-in-out duration-300 card thumbnail-link flex gap-x-[1rem] no-underline hover:text-neutral-brown" :href="`/projects/${link.slug.current}`">
+    <a v-if="link?.slug" class="card thumbnail-link flex gap-x-[1rem] no-underline hover:text-neutral-brown" :href="`/projects/${link.slug.current}`">
         <div class="w-[150px] h-[150px] col-span-1 flex-shrink-0">
             <img :src="getThumbnailUrl(link.mainImage)" alt="" class="object-cover h-full w-full border border-neutral-brown rounded-xl">
         </div>
