@@ -37,9 +37,5 @@ h5, .h5 {
 }
 
 .section-title {
-  @apply text-[1.25rem] test-border;
-}
-
-.mobile-section * {
-  @apply hidden test-border;
+  @apply text-[1.25rem];
 }
