@@ -33,8 +33,7 @@ const projectUrl = computed(() => {
             <div class="flex flex-col gap-y-[0.625rem] text-[1.125rem]">
                 <div class="project-title flex gap-x-[0.5rem] justify-between">
                     <span class="font-bold">{{ project.title }}</span>
-                    <div v-if="projectStatusText(project.status)" class="status">{{ projectStatusText(project.status) }}
-                    </div>
+                    <div v-if="projectStatusText(project.status)" class="status">{{ projectStatusText(project.status) }}</div>
                 </div>
                 <div class="line-clamp-3">{{ project.intro }}</div>
             </div>
