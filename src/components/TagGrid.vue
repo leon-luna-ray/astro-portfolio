@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Tag from './Tag.vue'
+import type { Tag } from '../interfaces/Tag'
 
 const props = defineProps({
     title: {
@@ -7,16 +7,15 @@ const props = defineProps({
         required: false,
     },
     tags: {
-        type: Array,
+        type: Array as () => Tag[],
         required: true,
     },
 })
 </script>
 <template>
     <div v-if="tags?.length" class="tag-grid">
-        <h2 v-if="title" class="title">{{ title }}</h2>
         <div class="tag-grid flex flex-wrap gap-y-[0.75rem] gap-x-[0.5rem]">
-            <Tag v-for="tag in tags" :tag="tag" />
+            <div v-for="tag in tags" class="tag">{{ tag.title }}</div>
         </div>
     </div>
 </template>

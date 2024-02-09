@@ -24,19 +24,19 @@ if (!projects?.length) {
 ---
 
 <PageLayout title="Projects">
-    <section>
+    <!-- <section>
         <Hero showLinks={false} client:load>
             <h1 slot="title" class="title">Projects</h1>
             <div slot="btn-links" class="btn-links">
                 <a class="btn dark mt-[2.5rem]" href="/">Home</a>
             </div>
         </Hero>
-    </section>
+    </section> -->
     <!-- <FilterButtons client:load items={technologies} query={Astro.url.search}/> -->
     {categories.map((category) => (
     <section class="page-section flex-col-3">
         <TextBlock class="text-center" text={category.description} isRichtext={true} client:load>
-            <h2 slot='title' class="h3">{category.title}</h2>
+            <h2 slot='title'>{category.title}</h2>
         </TextBlock>
         <ProjectGrid projects={category.projects} minGridCols={2} client:load />
     </section>

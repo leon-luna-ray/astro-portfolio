@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { getStatusIcon } from '../utils/utils'
-import { getTimeSince, formatDate } from '../utils/date'
+import { getTimeSince } from '../utils/date'
 
 const props = defineProps({
     data: {
@@ -40,17 +40,11 @@ const timeSinceUpdate = computed(() => {
 </script>
 <template>
     <div class="info">
-        <h2 class="title">Details</h2>
-
         <ul class="info-list">
             <li v-if="data.status">
                 <span class="label">Status</span>
                 <span class="value uppercase">{{ projectStatusLabel }}</span>
             </li>
-            <!-- <li v-if="timeSinceUpdate">
-                <span class="label">Created</span>
-                <span class="value">{{ createdAt }}</span>
-            </li> -->
             <li v-if="timeSinceUpdate">
                 <span class="label">Updated</span>
                 <span class="value">{{ timeSinceUpdate }}</span>

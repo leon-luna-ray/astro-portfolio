@@ -9,10 +9,6 @@ const props = defineProps({
         type: Array,
         required: true,
     },
-    title: {
-        type: String,
-        required: false,
-    },
     isOpen: {
         type: Boolean,
         required: false,
@@ -39,7 +35,6 @@ onMounted(() => {
 </script>
 <template>
     <div class="tech-list flex-col-2">
-        <h4 v-if="title" class="text-[1.25rem]">{{ title }}</h4>
         <ul class="link-list font-bold flex-col-1">
             <li v-for="(item, index) in items" class="hover:cursor-pointer flex-col-1">
                 <div class="flex justify-between pb-0 items-center text-[1rem]" @click="setExpandedItem(index)">

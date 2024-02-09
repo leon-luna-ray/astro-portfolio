@@ -36,3 +36,7 @@
         height: 100%;
     }
 }
+
+.card.thumbnail-link:hover {
+    @apply zoom-hover transition ease-in-out duration-300;
+}

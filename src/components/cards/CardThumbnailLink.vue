@@ -9,21 +9,21 @@ const props = defineProps({
 })
 </script>
 <template>
-    <a v-if="link?.slug" class="card thumbnail-link" :href="`/projects/${link.slug.current}`">
-        <div class="img-wrap">
-            <img :src="getThumbnailUrl(link.mainImage)" alt="">
+    <a v-if="link?.slug" class="card thumbnail-link flex gap-x-[1rem] no-underline hover:text-neutral-brown" :href="`/projects/${link.slug.current}`">
+        <div class="w-[150px] h-[150px] col-span-1 flex-shrink-0">
+            <img :src="getThumbnailUrl(link.mainImage)" alt="" class="object-cover h-full w-full border border-neutral-brown rounded-xl">
         </div>
-        <div class="link-info">
-            <div class="text">
-                <div class="title-section">
-                    <span class="project-title">{{ link.title }}</span>
-                    <div class="icon">
+        <div class="link-info justify-between flex-col-1 w-full">
+            <div class="flex-col-05 w-full">
+                <div class="flex justify-between w-full">
+                    <h3 class="font-semibold text-[1rem] font-archivo">{{ link.title }}</h3>
+                    <div class="chevron-icon-sm flex justify-end">
                     </div>
                 </div>
-                <div class="intro">{{ link.intro }}</div>
+                <div class="line-clamp-4 text-[0.875rem]">{{ link.intro }}</div>
             </div>
 
-            <div class="icon">
+            <div class="chevron-icon-sm flex justify-end">
                 <IconChevronRight />
             </div>
         </div>
