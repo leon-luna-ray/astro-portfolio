@@ -28,14 +28,14 @@ const projectUrl = computed(() => {
 </script>
 <template>
     <a :href="projectUrl" class="no-underline">
-        <div class='flex flex-col gap-y-[1.875rem] zoom-in-out'>
+        <div class='flex flex-col-1 zoom-in-out'>
             <img :src="getThumbnailUrl(project?.mainImage)" :alt="`Image of ${project.title}`" class=" rounded-image">
             <div class="flex flex-col gap-y-[0.625rem] text-[1.125rem]">
                 <div class="project-title flex gap-x-[0.5rem] justify-between">
                     <span class="font-bold">{{ project.title }}</span>
                     <div v-if="projectStatusText(project.status)" class="status">{{ projectStatusText(project.status) }}</div>
                 </div>
-                <div class="line-clamp-3">{{ project.intro }}</div>
+                <div class="line-clamp-3 leading-[130%] text-[1rem]">{{ project.intro }}</div>
             </div>
         </div>
     </a>
