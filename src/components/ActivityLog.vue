@@ -9,7 +9,7 @@ const props = defineProps({
 });
 </script>
 <template>
-    <ul class="flex-col-05">
+    <ul class="activity-log flex-col-05">
         <li v-for="item in items">
             <a :href="item.html_url" target="_blank" class="hover:text-neutral-brown grid grid-cols-6 gap-x-[2rem] no-underline hover:text-white">
                 <p v-if="item.commit?.message" class="col-span-4 xl:col-span-5">{{ item.commit?.message }}</p>

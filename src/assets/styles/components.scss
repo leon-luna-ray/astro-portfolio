@@ -1,21 +1,6 @@
-.activity-log {
-    // @apply flex flex-col gap-y-[0.5rem];
-
-    // li a {
-    //     @apply grid grid-cols-6 gap-x-[2rem] no-underline hover:text-white;
-
-    //     .date {
-    //         @apply col-span-2 xl:col-span-1 flex justify-end;
-    //     }
-    //     .message {
-    //         @apply col-span-4 xl:col-span-5
-    //     }
-    // }
-    li:not(:last-child){
-        @apply border-b border-primary-orange pb-[0.5rem];
-    }
+.activity-log li:not(:last-child) {
+    @apply border-b border-primary-orange pb-[0.5rem];
 }
-
 
 .btn {
     @apply flex justify-center items-center px-[1.25rem] py-[0.625rem] rounded-full font-bold hover:cursor-pointer no-underline;
@@ -36,11 +21,13 @@
 .btn-links {
     @apply flex flex-col md:flex-row justify-center gap-[0.625rem];
 }
+
 .chevron-icon-sm {
     svg {
-        @apply  h-[1.5rem] w-[1.5rem] transition ease-in-out duration-300;
+        @apply h-[1.5rem] w-[1.5rem] transition ease-in-out duration-300;
     }
 }
+
 .detail-header {
     @media (max-width: 740px) {
         .text {
@@ -109,18 +96,23 @@
         }
     }
 }
+
 .info-list {
     @apply flex flex-col gap-y-[1rem] md:grid md:grid-cols-2;
+
     a {
         @apply no-underline;
     }
+
     li {
         @apply flex flex-col;
     }
+
     .label {
         @apply font-bold text-[0.875rem] uppercase;
     }
 }
+
 .link-list {
     li:not(:last-child) {
         @apply border-b border-primary-orange pb-[1rem];
