@@ -239,3 +239,18 @@ export async function fetchSkills() {
 
   return skills;
 }
+
+export async function fetchPageType(type: string) {
+  const query = groq`*[_type == '${type}'][0] {
+    ...,
+    "seoImage": seoImage.asset -> {
+          _id,
+          title,
+          altText,
+          description,
+    }
+  }`;
+  const skills = await useSanityClient().fetch(query);
+
+  return skills;
+}

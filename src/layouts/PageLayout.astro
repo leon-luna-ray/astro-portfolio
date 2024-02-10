@@ -1,11 +1,9 @@
 ---
-import { fetchGlobal, fetchProfile } from '../lib/api';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.vue';
 import Footer from '../components/Footer.vue';
 
-const global = await fetchGlobal();
-const profile = await fetchProfile();
+const { title, global, profile, seoDescription, seoImage } = Astro.props;
 
 const isHome = () => {
     return Astro.url.pathname === '/';
@@ -45,8 +43,9 @@ const getPathArray = (): string[] => {
 <html lang='en'>
     <head>
         <BaseHead
-            title={`${profile?.name} | ${pageTitle()}`}
-            description={global?.description}
+            title={title}
+            seoDescription={seoDescription}
+            seoImage={seoImage}
         />
     </head>
     <body>
@@ -54,7 +53,7 @@ const getPathArray = (): string[] => {
         <Header
             client:only
             name={profile?.name}
-            title={pageTitle()}
+            title={global?.title}
             path={getPathArray()}
             isHome={isHome()}
         />
@@ -62,6 +61,7 @@ const getPathArray = (): string[] => {
             <slot />
         </main>
         <Footer
+            name={profile?.name}
             linkedin={profile?.linkedin}
             github={profile?.github}
             email={profile?.email}

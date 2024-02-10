@@ -1,26 +1,34 @@
 ---
-import { fetchProject, fetchLanguages, fetchCommits } from '../../lib/api';
+import {
+    fetchProject,
+    fetchLanguages,
+    fetchCommits,
+    fetchGlobal,
+    fetchProfile,
+} from "../../lib/api";
 
-import ActivityLog from '../../components/ActivityLog.vue';
-import ImageGallery from '../../components/ImageGallery.vue';
-import BarGraph from '../../components/BarGraph.vue';
-import DetailHeader from '../../components/DetailHeader.vue';
-import PageLayout from '../../layouts/PageLayout.astro';
-import ProjectInfo from '../../components/ProjectInfo.vue';
-import TextBlock from '../../components/TextBlock.vue';
-import TechList from '../../components/TechList.vue';
-import TagGrid from '../../components/TagGrid.vue';
-import CardThumbnailLink from '../../components/cards/CardThumbnailLink.vue';
+import ActivityLog from "../../components/ActivityLog.vue";
+import ImageGallery from "../../components/ImageGallery.vue";
+import BarGraph from "../../components/BarGraph.vue";
+import DetailHeader from "../../components/DetailHeader.vue";
+import PageLayout from "../../layouts/PageLayout.astro";
+import ProjectInfo from "../../components/ProjectInfo.vue";
+import TextBlock from "../../components/TextBlock.vue";
+import TechList from "../../components/TechList.vue";
+import TagGrid from "../../components/TagGrid.vue";
+import CardThumbnailLink from "../../components/cards/CardThumbnailLink.vue";
 
-import type { Language } from '../../interfaces/Language';
-import type { Project } from '../../interfaces/Project';
+import type { Language } from "../../interfaces/Language";
+import type { Project } from "../../interfaces/Project";
 
-const project = await fetchProject(Astro.params.slug || '');
+const global = await fetchGlobal();
+const profile = await fetchProfile();
+const project = await fetchProject(Astro.params.slug || "");
 
 if (!project) {
     return new Response(null, {
         status: 404,
-        statusText: 'Not found',
+        statusText: "Not found",
     });
 }
 
@@ -30,10 +38,16 @@ let lastCommit;
 
 // Fetch Github Data
 if (project?.repositoryUsername && project?.repositorySlug) {
-    const fetchedLanguages = await fetchLanguages(project.repositoryUsername, project.repositorySlug);
+    const fetchedLanguages = await fetchLanguages(
+        project.repositoryUsername,
+        project.repositorySlug,
+    );
     languages = fetchedLanguages;
 
-    const fetchedCommits = await fetchCommits(project.repositoryUsername, project.repositorySlug);
+    const fetchedCommits = await fetchCommits(
+        project.repositoryUsername,
+        project.repositorySlug,
+    );
     commits = Array.isArray(fetchedCommits) ? fetchedCommits.slice(0, 6) : [];
 }
 
@@ -42,82 +56,111 @@ if (commits?.length) {
 }
 ---
 
-<PageLayout title={project.title}>
+<PageLayout
+    title={`${profile?.name} | ${project.title}`} 
+    global={global}
+    profile={profile}
+    seoDescription={project.intro}
+    seoImage={project.mainImage}
+>
     <section>
         <DetailHeader
-        client:load
-        title={project.title}
-        image={project.mainImage}
-        intro={project.intro}
-        launchUrl={project.url}
-        codeUrl={project.repository}
-        isFeatured={project.featured}
-        status={project.status}
+            client:load
+            title={project.title}
+            image={project.mainImage}
+            intro={project.intro}
+            launchUrl={project.url}
+            codeUrl={project.repository}
+            isFeatured={project.featured}
+            status={project.status}
         />
     </section>
-    <div class='project-details container grid md:grid-cols-3 gap-[2.5rem] md:gap-x-[4rem] pt-[2rem] md:pt-[4rem]'>
-        <div class='flex-col-3 md:col-span-2 order-last md:order-none'>
+    <div
+        class="project-details container grid md:grid-cols-3 gap-[2.5rem] md:gap-x-[4rem] pt-[2rem] md:pt-[4rem]"
+    >
+        <div class="flex-col-3 md:col-span-2 order-last md:order-none">
             <section class="flex-col-1">
                 <h2 class="section-title hidden md:block">Details</h2>
-                <ProjectInfo data={project} lastCommit={lastCommit} class='hidden md:block' />
+                <ProjectInfo
+                    data={project}
+                    lastCommit={lastCommit}
+                    class="hidden md:block"
+                />
             </section>
-            <section class='flex-col-1 mt-[-2.5rem] md:mt-0'>
-                <h2 class='section-title'>Description</h2>
-                <TextBlock text={project.description} isRichtext={true} client:load />
+            <section class="flex-col-1 mt-[-2.5rem] md:mt-0">
+                <h2 class="section-title">Description</h2>
+                <TextBlock
+                    text={project.description}
+                    isRichtext={true}
+                    client:load
+                />
             </section>
-            {commits?.length > 0 && (
-            <section class='flex-col-1'>
-                <h2 class='section-title'>Activity</h2>
-                <ActivityLog items={commits} />
-            </section>   
-            )}
-            {project?.galleryImages?.length > 0 && (
-            <section class='flex-col-1'>
-                <h2 class='section-title'>Images</h2>
-                <ImageGallery images={project.galleryImages} />
-            </section>
-            )}
+            {
+                commits?.length > 0 && (
+                    <section class="flex-col-1">
+                        <h2 class="section-title">Activity</h2>
+                        <ActivityLog items={commits} />
+                    </section>
+                )
+            }
+            {
+                project?.galleryImages?.length > 0 && (
+                    <section class="flex-col-1">
+                        <h2 class="section-title">Images</h2>
+                        <ImageGallery images={project.galleryImages} />
+                    </section>
+                )
+            }
             <section class="md:!hidden flex-col-1">
-                <h2 class='section-title'>Categories</h2>
-                <TagGrid tags={project.tags} title='categories' />
+                <h2 class="section-title">Categories</h2>
+                <TagGrid tags={project.tags} title="categories" />
             </section>
-            {project?.relatedProjects?.length > 0 && (
-            <section class='flex-col-1'>
-                <h2 class='section-title'>Related Projects</h2>
-                <ul class="grid xl:grid-cols-2 gap-x-[1rem] gap-y-[2rem]">
-                    {project.relatedProjects.map((relatedProject: Project) => (
-                    <li>
-                        <CardThumbnailLink link={relatedProject} />
-                    </li>
-                    ))}
-                </ul>
-            </section>
-            )}
+            {
+                project?.relatedProjects?.length > 0 && (
+                    <section class="flex-col-1">
+                        <h2 class="section-title">Related Projects</h2>
+                        <ul class="grid xl:grid-cols-2 gap-x-[1rem] gap-y-[2rem]">
+                            {project.relatedProjects.map(
+                                (relatedProject: Project) => (
+                                    <li>
+                                        <CardThumbnailLink
+                                            link={relatedProject}
+                                        />
+                                    </li>
+                                ),
+                            )}
+                        </ul>
+                    </section>
+                )
+            }
             <!-- End of page on mobile -->
         </div>
-        <aside class='sidebar flex flex-col gap-y-[3.125rem] justify-between'>
-            <div class='flex-col-3'>
+        <aside class="sidebar flex flex-col gap-y-[3.125rem] justify-between">
+            <div class="flex-col-3">
                 <!-- Top of page on mobile -->
                 <section class="md:!hidden flex-col-1">
                     <h2 class="section-title">Details</h2>
                     <ProjectInfo data={project} lastCommit={lastCommit} />
                 </section>
-                {languages.length > 0 && (
-                <section class='flex-col-1'>
-                    <h2 class='section-title'>Languages</h2>
-                    <BarGraph data={languages} />
-                </section>
-                )}
+                {
+                    languages.length > 0 && (
+                        <section class="flex-col-1">
+                            <h2 class="section-title">Languages</h2>
+                            <BarGraph data={languages} />
+                        </section>
+                    )
+                }
                 <section class="flex-col-1">
-                    <h2 class='section-title'>Technologies</h2>
+                    <h2 class="section-title">Technologies</h2>
                     <TechList
                         client:load
                         items={project.technologies}
-                        isOpen={true}/>
+                        isOpen={true}
+                    />
                 </section>
                 <section class="!hidden md:!block">
-                    <h2 class='section-title pb-[1rem]'>Categories</h2>
-                    <TagGrid tags={project.tags} title='categories' />
+                    <h2 class="section-title pb-[1rem]">Categories</h2>
+                    <TagGrid tags={project.tags} title="categories" />
                 </section>
             </div>
         </aside>

@@ -14,8 +14,8 @@ const props = defineProps({
 </script>
 <template>
     <div v-if="tags?.length" class="tag-grid">
-        <div class="tag-grid flex flex-wrap gap-y-[0.75rem] gap-x-[0.5rem]">
-            <div v-for="tag in tags" class="tag">{{ tag.title }}</div>
-        </div>
+        <ul class="tag-grid flex flex-wrap gap-y-[0.75rem] gap-x-[0.5rem]">
+            <li v-for="tag in tags" class="tag">{{ tag.title }}</li>
+        </ul>
     </div>
 </template>

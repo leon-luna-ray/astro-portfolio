@@ -4,6 +4,10 @@ import IconGithub from './icons/IconGithub.vue';
 import IconLinkedin from './icons/IconLinkedin.vue';
 
 const props = defineProps({
+    name: {
+        type: String,
+        default: 'Ray Luna',
+    },
     email: {
         type: String,
     },
@@ -31,7 +35,7 @@ const year = new Date().getFullYear();
             </a>
         </div>
         <div class='copyright'>
-            <p>© {{ year }} Ray Luna. All rights reserved.</p>
+            <p>© {{ year }} {{ name }}. All rights reserved.</p>
         </div>
     </footer>
 </template>
