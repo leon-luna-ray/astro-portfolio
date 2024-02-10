@@ -21,9 +21,11 @@ const featuredProjects = await fetchFeaturedProjects();
 const global = await fetchGlobal();
 const profile = await fetchProfile();
 const skills = await fetchSkills();
+
+// console.log('homePage', homePage.seoImage);
 ---
 
-<PageLayout title="Home">
+<PageLayout title="Home" seoDescription={homePage?.seoDescription} seoImage={homePage?.seoImage}>
   <div class="flex-col-4">
     <!-- Intro -->
     <section class="page-section">

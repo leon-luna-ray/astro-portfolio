@@ -7,6 +7,8 @@ import Footer from '../components/Footer.vue';
 const global = await fetchGlobal();
 const profile = await fetchProfile();
 
+const { title, seoDescription, seoImage } = Astro.props;
+
 const isHome = () => {
     return Astro.url.pathname === '/';
 };
@@ -45,8 +47,9 @@ const getPathArray = (): string[] => {
 <html lang='en'>
     <head>
         <BaseHead
-            title={`${profile?.name} | ${pageTitle()}`}
-            description={global?.description}
+            title={title}
+            seoDescription={seoDescription}
+            seoImage={seoImage}
         />
     </head>
     <body>
