@@ -7,7 +7,7 @@
                     <div class="site">
                         <div v-if="path.length > 1" class="inner">
                             <span>{{ name }}</span>
-                            <span>-</span>
+                            <span aria-hidden="true">-</span>
                             <span>{{ title }}</span>
                         </div>
                         <div v-else class="inner home">
@@ -22,7 +22,7 @@
                 <div v-else-if="path.length" v-for="(item, index) in path" class="path flex">
                     <a v-if="index < path.length - 1" :href="path[index]" class="text-item">{{ getTitle(item) }}</a>
                     <span v-else class="text-item">{{ getTitle(item) }}</span>
-                    <span v-if="index < path.length - 1" class="dash pl-2 hidden md:block"> - </span>
+                    <span v-if="index < path.length - 1" class="dash pl-2 hidden md:block" aria-hidden="true"> - </span>
                 </div>
             </div>
             <div class='divider'></div>
