@@ -10,13 +10,6 @@ export interface Image {
     description: string;
 }
 
-export interface Image {
-    _id: string;
-    title: string;
-    altText: string;
-    description: string;
-}
-
 export interface GalleryImage {
     image: Image;
 }

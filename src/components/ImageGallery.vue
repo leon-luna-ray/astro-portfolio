@@ -12,7 +12,7 @@ const props = defineProps({
 </script>
 <template>
     <div class="grid grid-cols-2 xl:grid-cols-3 gap-[1rem]">
-        <div v-for="(image, index) in images">
+        <div v-for="image in images">
             <img :src="getThumbnailUrl(image.image)" :alt="image.image.altText" class="rounded-2xl border border-neutral-brown w-full">
         </div>
     </div>
