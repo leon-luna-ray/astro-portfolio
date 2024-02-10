@@ -74,7 +74,15 @@ export async function fetchGlobal() {
 }
 
 export async function fetchProfile() {
-  const query = groq`*[_type == "profileDetails"][0]`;
+  const query = groq`*[_type == "profileDetails"][0] {
+    ...,
+    "image": image.asset->{
+      _id,
+      title,
+      altText,
+      description,
+    },
+  }`;
   const profile = await useSanityClient().fetch(query);
 
   return profile;
