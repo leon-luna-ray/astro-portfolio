@@ -74,7 +74,15 @@ export async function fetchGlobal() {
 }
 
 export async function fetchProfile() {
-  const query = groq`*[_type == "profileDetails"][0]`;
+  const query = groq`*[_type == "profileDetails"][0] {
+    ...,
+    "image": image.asset->{
+      _id,
+      title,
+      altText,
+      description,
+    },
+  }`;
   const profile = await useSanityClient().fetch(query);
 
   return profile;
@@ -116,7 +124,20 @@ export async function fetchProjectGroup(slug: string) {
     title,
     slug,
     description,
-    projects[]->{_id, intro, mainImage, slug, status, title, technologies[]->{_id, title, slug,},},
+    projects[]->{
+      _id, 
+      intro, 
+      "mainImage": mainImage.asset->{
+        _id,
+        title,
+        altText,
+        description,
+      }, 
+      slug, 
+      status, 
+      title, 
+      technologies[]->{_id, title, slug,},
+    },
   }`;
 
   const projectGroup = await useSanityClient().fetch(query);
@@ -128,7 +149,12 @@ export async function fetchProjects() {
   const query = groq`*[_type == "project"] | order(title asc) {
       _id,
       intro,
-      mainImage,
+      "mainImage": mainImage.asset->{
+        _id,
+        title,
+        altText,
+        description,
+      },
       slug,
       status,
       title,
@@ -144,7 +170,12 @@ export async function fetchFeaturedProjects() {
       _id,
       intro,
       description,
-      mainImage,
+      "mainImage": mainImage.asset->{
+        _id,
+        title,
+        altText,
+        description,
+      }, 
       slug,
       status,
       title,
@@ -162,9 +193,31 @@ export async function fetchProject(slug: string) {
     description,
     featured,
     intro,
-    mainImage,
-    galleryImages,
-    relatedProjects[]->{_id, slug, title, mainImage, intro},
+    "mainImage": mainImage.asset->{
+      _id,
+      title,
+      altText,
+      description,
+    },
+    "galleryImages": galleryImages[]{
+      "image": asset->{
+        _id,
+        title,
+        altText,
+        description,
+      }
+    },
+    relatedProjects[]->{
+      _id, 
+      slug, 
+      title, 
+      "mainImage": mainImage.asset->{
+        _id,
+        title,
+        altText,
+        description,
+      }, 
+      intro},
     repository,
     repositoryUsername,
     repositorySlug,

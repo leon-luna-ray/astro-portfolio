@@ -1,12 +1,15 @@
-interface ImageAsset {
+export interface ImageAsset {
     _ref: string;
     _type: string;
 }
 
-interface Image {
-    _type: string;
-    _key: string;
-    asset: ImageAsset;
+export interface Image {
+    _id: string;
+    title: string;
+    altText: string;
+    description: string;
 }
 
-export default Image;
+export interface GalleryImage {
+    image: Image;
+}
