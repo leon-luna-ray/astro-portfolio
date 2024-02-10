@@ -9,9 +9,9 @@ const props = defineProps({
 });
 </script>
 <template>
-    <div class="image-gallery">
-        <div v-for="(image, index) in images" class="img-wrap">
-            <img :src="getThumbnailUrl(image)" :alt="`Project Screenshot ${index + 1}`">
+    <div class="grid grid-cols-2 xl:grid-cols-3 gap-[1rem]">
+        <div v-for="(image, index) in images">
+            <img :src="getThumbnailUrl(image)" :alt="`Project Screenshot ${index + 1}`" class="rounded-2xl border border-neutral-brown w-full">
         </div>
     </div>
 </template>
