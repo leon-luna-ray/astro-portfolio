@@ -6,7 +6,7 @@ a {
   @apply hover:cursor-pointer transition ease-in-out underline;
 }
 main {
-  @apply flex flex-col gap-y-[3.125rem] pb-[3.125rem] md:pb-[6.25rem];
+  @apply pb-[3.125rem] md:pb-[6.25rem];
 }
 h1,h2,h3,h4,h5 {
   @apply font-monoton;
@@ -29,7 +29,7 @@ h5, .h5 {
 }
 
 .page-section {
-  @apply py-[1rem] md:py-[2rem] container;
+  @apply container flex-col-2;
 }
 
 .richtext {

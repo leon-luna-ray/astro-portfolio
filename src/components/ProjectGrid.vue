@@ -24,7 +24,7 @@ const gridCols = computed(() => ({
 </script>
 
 <template>
-    <ul :class="['grid gap-[1rem] md:gap-[2rem]', gridCols]">
+    <ul :class="['grid gap-[2rem]', gridCols]">
         <li v-for="project in projects">
             <CardFeaturedProject :project="project" :key="project._id" />
         </li>
