@@ -26,33 +26,10 @@
     animation: spin-slow 30s infinite linear;
 }
 
-.img-grayscale {
-    @apply grayscale hover:grayscale-0 transition ease-in-out;
-}
-
-.img-sepia {
-    @apply sepia hover:sepia-0 transition ease-in-out;
-}
-
-.zoom-in-out {
-    @apply hover:cursor-pointer transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300;
-}
-
-.zoom-hover {
-    @apply cursor-pointer translate-y-1 scale-110;
-}
-
-.test-border {
-    @apply border-4 border-red-500;
-}
-
-.rounded-image {
-    @apply rounded-3xl w-full aspect-square object-cover border border-neutral-brown;
-}
-
 .flex-col-05 {
     @apply flex flex-col gap-y-[0.5rem];
 }
+
 .flex-col-1 {
     @apply flex flex-col gap-y-[1rem];
 }
@@ -68,9 +45,35 @@
 .flex-col-4 {
     @apply flex flex-col gap-y-[4rem];
 }
+
 .flex-col-5 {
     @apply flex flex-col gap-y-[5rem];
 }
+
 .flex-col-6 {
     @apply flex flex-col gap-y-[6rem];
+}
+
+.img-grayscale {
+    @apply grayscale hover:grayscale-0 transition ease-in-out;
+}
+
+.img-sepia {
+    @apply sepia hover:sepia-0 transition ease-in-out;
+}
+
+.rounded-image {
+    @apply rounded-3xl w-full aspect-square object-cover border border-neutral-brown;
+}
+
+.test-border {
+    @apply border-4 border-red-500;
+}
+
+.zoom-hover {
+    @apply cursor-pointer translate-y-1 scale-110;
+}
+
+.zoom-in-out {
+    @apply hover:cursor-pointer transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300;
 }

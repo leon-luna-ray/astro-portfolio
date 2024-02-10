@@ -44,8 +44,54 @@
     }
 }
 
-.tag {
-    @apply bg-neutral-brown text-primary-yellow uppercase py-[0.3rem] px-[0.6rem] font-semibold text-[0.75rem] rounded-lg;
+#header {
+    @apply sticky top-0 md:top-[1rem] bg-primary-yellow z-[2];
+
+    a {
+        @apply no-underline hover:text-neutral-brown md:hover:text-white;
+        ;
+    }
+
+    .top-label {
+        @apply container flex items-center justify-center border-t border-b border-black md:border-none;
+
+        .divider {
+            @apply flex-grow bg-black h-[2px] hidden md:block;
+        }
+
+        .label-text {
+            @apply px-4 py-[1rem] md:py-0 flex justify-center gap-x-[0.5rem];
+        }
+
+        .text-item {
+            @apply text-center font-bold text capitalize;
+        }
+
+        .dash {
+            @apply hidden md:block;
+        }
+
+        .path {
+            @apply flex;
+        }
+
+    }
+
+    .mobile {
+        @apply text-center font-semibold;
+
+        .page-title {
+            @apply capitalize;
+        }
+
+        .inner {
+            @apply flex gap-x-[0.3rem];
+
+            &.home {
+                @apply flex-col;
+            }
+        }
+    }
 }
 
 .hero {
@@ -132,4 +178,8 @@
             @apply fill-neutral-brown;
         }
     }
+}
+
+.tag {
+    @apply bg-neutral-brown text-primary-yellow uppercase py-[0.3rem] px-[0.6rem] font-semibold text-[0.75rem] rounded-lg;
 }
