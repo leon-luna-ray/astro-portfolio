@@ -28,14 +28,14 @@ const computedStyles = computed(() => {
 </script>
 
 <template>
-  <ul v-if="data?.length" class="bar-graph">
-    <li v-for="item in computedStyles" :key="item.title">
+  <ul v-if="data?.length" class="flex flex-col gap-y-[0.6rem]">
+    <li v-for="item in computedStyles" :key="item.title" class="flex flex-col gap-y-[0.1rem]">
       <span>{{ item.title }}</span>
-      <div class="value">
-        <div class="bar">
-          <div :style="item.fillStyle" class="fill"></div>
+      <div class="grid grid-cols-6">
+        <div class="col-span-5">
+          <div :style="item.fillStyle" class="h-[15px] rounded-full border border-neutral-brown"></div>
         </div>
-        <div class="label">{{ item.value }}%</div>
+        <div class="col-span-1 leading-none pl-1">{{ item.value }}%</div>
       </div>
     </li>
   </ul>

@@ -29,17 +29,17 @@ let commits = [];
 let lastCommit;
 
 // Fetch Github Data
-if (project?.repositoryUsername && project?.repositorySlug) {
-    const fetchedLanguages = await fetchLanguages(project.repositoryUsername, project.repositorySlug);
-    languages = fetchedLanguages;
+// if (project?.repositoryUsername && project?.repositorySlug) {
+//     const fetchedLanguages = await fetchLanguages(project.repositoryUsername, project.repositorySlug);
+//     languages = fetchedLanguages;
 
-    const fetchedCommits = await fetchCommits(project.repositoryUsername, project.repositorySlug);
-    commits = Array.isArray(fetchedCommits) ? fetchedCommits.slice(0, 6) : [];
-}
+//     const fetchedCommits = await fetchCommits(project.repositoryUsername, project.repositorySlug);
+//     commits = Array.isArray(fetchedCommits) ? fetchedCommits.slice(0, 6) : [];
+// }
 
-if (commits?.length) {
-    lastCommit = commits[0].commit.author.date;
-}
+// if (commits?.length) {
+//     lastCommit = commits[0].commit.author.date;
+// }
 ---
 
 <PageLayout title={project.title}>
