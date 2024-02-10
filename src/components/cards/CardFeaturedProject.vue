@@ -35,7 +35,7 @@ const projectUrl = computed(() => {
                     <span class="font-bold">{{ project.title }}</span>
                     <div v-if="projectStatusText(project.status)" class="status">{{ projectStatusText(project.status) }}</div>
                 </div>
-                <div class="line-clamp-3">{{ project.intro }}</div>
+                <div class="line-clamp-3 leading-[130%] text-[1rem]">{{ project.intro }}</div>
             </div>
         </div>
     </a>
