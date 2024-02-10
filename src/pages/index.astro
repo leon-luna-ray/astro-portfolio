@@ -4,22 +4,23 @@ import {
   fetchGlobal,
   fetchProfile,
   fetchSkills,
+  fetchPageType,
 } from "../lib/api";
-import PageLayout from "../layouts/PageLayout.astro";
+import { getMediumUrl } from "../lib/images";
+
+import DiscoBall from "../components/DiscoBall.astro";
 import Hero from "../components/Hero.vue";
 import ImageTextTout from "../components/ImageTextTout.vue";
-import TechList from "../components/TechList.vue";
+import PageLayout from "../layouts/PageLayout.astro";
 import ProjectGrid from "../components/ProjectGrid.vue";
+import TechList from "../components/TechList.vue";
 import TextBlock from "../components/TextBlock.vue";
-import DiscoBall from "../components/DiscoBall.astro";
 
-import { getMediumUrl } from "../lib/images";
+const homePage = await fetchPageType('homePage');
 const featuredProjects = await fetchFeaturedProjects();
 const global = await fetchGlobal();
 const profile = await fetchProfile();
 const skills = await fetchSkills();
-
-const skillsIntro = 'I leverage a diverse range of tools to develop interactive web applications, utilizing content management systems, the latest backend and frontend frameworks, and multiple programming languages.My expertise spans across different domains, including organizational websites, educational portals, and enterprise solutions.'
 ---
 
 <PageLayout title="Home">
@@ -53,15 +54,15 @@ const skillsIntro = 'I leverage a diverse range of tools to develop interactive 
         <img src={getMediumUrl(profile.image?._id)} alt={profile.image?.altText} />
       </ImageTextTout>
       <TextBlock text={profile?.bio} isRichtext={false}>
-        <h2 slot="title" class="section-title">About Me</h2>
+        <h2 slot="title" class="section-title">{homePage?.aboutSection?.title}</h2>
       </TextBlock>
     </section>
     
     <!-- Projects -->
     <section class="page-section">
-      <TextBlock isRichtext={false}>
+      <TextBlock text={homePage?.projectsSection?.body} isRichtext={true} client:load >
         <div slot="title" class="flex justify-between">
-          <h2 class="section-title">FeaturedProjects</h2>
+          <h2 class="section-title">{homePage?.projectsSection?.title}</h2>
           <a v-if="showLink" class="uppercase font-bold" href="/projects">View All</a>
         </div>
       </TextBlock>
@@ -70,8 +71,8 @@ const skillsIntro = 'I leverage a diverse range of tools to develop interactive 
 
     <!-- Skills -->
     <section class="page-section">
-      <TextBlock text={skillsIntro} isRichtext={false}>
-        <h2 slot="title" class="section-title">Skills and expertise</h2>
+      <TextBlock text={homePage?.skillsSection?.body} isRichtext={true} client:load>
+        <h2 slot="title" class="section-title">{homePage?.skillsSection?.title}</h2>
       </TextBlock>
       <ul class="bottom grid md:grid-cols-3 gap-[2rem]">{skills.map((item) => (
         <li class="lists flex flex-col gap-y-[2rem]">
