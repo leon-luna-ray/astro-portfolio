@@ -16,16 +16,18 @@ import ProjectGrid from "../components/ProjectGrid.vue";
 import TechList from "../components/TechList.vue";
 import TextBlock from "../components/TextBlock.vue";
 
-const homePage = await fetchPageType('homePage');
-const featuredProjects = await fetchFeaturedProjects();
 const global = await fetchGlobal();
 const profile = await fetchProfile();
+const homePage = await fetchPageType('homePage');
 const skills = await fetchSkills();
-
-// console.log('homePage', homePage.seoImage);
+const featuredProjects = await fetchFeaturedProjects();
 ---
 
-<PageLayout title="Home" seoDescription={homePage?.seoDescription} seoImage={homePage?.seoImage}>
+<PageLayout title={homePage?.title} 
+            seoDescription={homePage?.seoDescription} 
+            seoImage={homePage?.seoImage}
+            profile={profile}
+            global={global}>
   <div class="flex-col-4">
     <!-- Intro -->
     <section class="page-section">
