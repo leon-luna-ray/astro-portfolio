@@ -53,7 +53,7 @@ const getPathArray = (): string[] => {
         <Header
             client:only
             name={profile?.name}
-            title={pageTitle()}
+            title={global?.title}
             path={getPathArray()}
             isHome={isHome()}
         />
