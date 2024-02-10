@@ -199,7 +199,14 @@ export async function fetchProject(slug: string) {
       altText,
       description,
     },
-    galleryImages,
+    "galleryImages": galleryImages[]{
+      "image": asset->{
+        _id,
+        title,
+        altText,
+        description,
+      }
+    },
     relatedProjects[]->{
       _id, 
       slug, 
