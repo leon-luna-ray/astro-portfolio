@@ -23,7 +23,7 @@ const skills = await fetchSkills();
 const featuredProjects = await fetchFeaturedProjects();
 ---
 
-<PageLayout title={homePage?.title} 
+<PageLayout title={`${profile?.name} | ${homePage?.title}`} 
             seoDescription={homePage?.seoDescription} 
             seoImage={homePage?.seoImage}
             profile={profile}
