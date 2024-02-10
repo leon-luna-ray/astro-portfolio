@@ -51,7 +51,7 @@ const showLanuchBtn = computed(() => {
     <div class="detail-header border-black pt-[2.5rem] md:pb-0 md:pt-[4rem]">
         <div class="inner md:container grid md:grid-cols-2 gap-y-[3.125rem] md:gap-[4rem]">
             <div class="flex flex-col gap-y-[1.5rem] order-last md:order-none flex-shrink">
-                <img :src="getMediumUrl(image)" :alt="`Screenshot of ${title}`" class="aspect-square object-cover md:rounded-3xl border-y md:border-2 border-neutral-brown w-full">
+                <img :src="getMediumUrl(image._id)" :alt="image.altText || `Screenshot of ${title}`" class="aspect-square object-cover md:rounded-3xl border-y md:border-2 border-neutral-brown w-full">
             </div>
             <div class="text flex flex-col gap-y-[1rem] lg:gap-y-[2.5rem] items-center justify-center text-center">
                 <div v-if="labelText" class="bg-neutral-brown text-primary-yellow uppercase py-[0.3rem] px-[0.6rem] font-semibold text-[0.75rem] rounded-lg">{{ labelText }}</div>
