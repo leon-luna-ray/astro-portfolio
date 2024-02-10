@@ -55,13 +55,13 @@ if (commits?.length) {
         status={project.status}
         />
     </section>
-    <div class='project-details container grid md:grid-cols-3 gap-[2.5rem] md:gap-x-[6.25rem];'>
+    <div class='project-details container grid md:grid-cols-3 gap-[2.5rem] md:gap-x-[4rem] pt-[2rem] md:pt-[4rem]'>
         <div class='flex-col-3 justify-between md:col-span-2 order-last md:order-none'>
             <section class="flex-col-1">
                 <h2 class="section-title hidden md:block">Details</h2>
                 <ProjectInfo data={project} lastCommit={lastCommit} class='hidden md:block' />
             </section>
-            <section class='flex-col-1'>
+            <section class='flex-col-1 mt-[-2.5rem] md:mt-0'>
                 <h2 class='section-title'>Description</h2>
                 <TextBlock text={project.description} isRichtext={true} client:load />
             </section>
@@ -77,7 +77,10 @@ if (commits?.length) {
                 <ImageGallery images={project.galleryImages} />
             </section>
             )}
-
+            <section class="md:!hidden flex-col-1">
+                <h2 class='section-title'>Categories</h2>
+                <TagGrid tags={project.tags} title='categories' />
+            </section>
             {project?.relatedProjects?.length > 0 && (
             <section class='flex-col-1'>
                 <h2 class='section-title'>Related Projects</h2>
@@ -90,10 +93,6 @@ if (commits?.length) {
                 </ul>
             </section>
             )}
-            <section class="md:!hidden flex-col-1">
-                <h2 class='section-title'>Categories</h2>
-                <TagGrid tags={project.tags} title='categories' />
-            </section>
             <!-- End of page on mobile -->
         </div>
         <aside class='sidebar flex flex-col gap-y-[3.125rem] justify-between'>
