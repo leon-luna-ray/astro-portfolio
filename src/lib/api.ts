@@ -165,7 +165,12 @@ export async function fetchFeaturedProjects() {
       _id,
       intro,
       description,
-      mainImage,
+      "mainImage": mainImage.asset->{
+        _id,
+        title,
+        altText,
+        description,
+      }, 
       slug,
       status,
       title,

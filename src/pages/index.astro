@@ -50,7 +50,7 @@ const skillsIntro = 'I leverage a diverse range of tools to develop interactive 
     <!-- About -->
     <section class="page-section flex-col-4">
       <ImageTextTout label={profile?.nickname} text={profile?.greeting} client:load>
-        <img src={getMediumUrl(profile?.image._id)} alt={profile.image?.altText} />
+        <img src={getMediumUrl(profile.image?._id)} alt={profile.image?.altText} />
       </ImageTextTout>
       <TextBlock text={profile?.bio} isRichtext={false}>
         <h2 slot="title" class="section-title">About Me</h2>
