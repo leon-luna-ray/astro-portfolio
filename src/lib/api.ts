@@ -124,7 +124,20 @@ export async function fetchProjectGroup(slug: string) {
     title,
     slug,
     description,
-    projects[]->{_id, intro, mainImage, slug, status, title, technologies[]->{_id, title, slug,},},
+    projects[]->{
+      _id, 
+      intro, 
+      "mainImage": mainImage.asset->{
+        _id,
+        title,
+        altText,
+        description,
+      }, 
+      slug, 
+      status, 
+      title, 
+      technologies[]->{_id, title, slug,},
+    },
   }`;
 
   const projectGroup = await useSanityClient().fetch(query);
