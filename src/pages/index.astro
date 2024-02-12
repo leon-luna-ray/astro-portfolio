@@ -13,9 +13,9 @@ import TextBlock from "../components/TextBlock.vue";
 const data = await fetchHomePage();
 ---
 
-<PageLayout title={`${data?.profile.name} | ${data?.homePage.title}`} 
-            seoDescription={data?.homePage.seoDescription} 
-            seoImage={data?.homePage.seoImage}
+<PageLayout title={`${data?.profile.name} | ${data?.page.title}`} 
+            seoDescription={data?.page.seoDescription} 
+            seoImage={data?.page.seoImage}
             profile={data?.profile}
             global={data?.global}>
   <div class="flex-col-4">
@@ -48,15 +48,15 @@ const data = await fetchHomePage();
         <img src={getMediumUrl(data?.profile.image._id)} alt={data?.profile.image.altText} />
       </ImageTextTout>
       <TextBlock text={data?.profile.bio} isRichtext={false}>
-        <h2 slot="title" class="section-title">{data?.homePage.aboutSection?.title}</h2>
+        <h2 slot="title" class="section-title">{data?.page.aboutSection?.title}</h2>
       </TextBlock>
     </section>
     
     <!-- Projects -->
     <section class="page-section">
-      <TextBlock text={data?.homePage.projectsSection?.body} isRichtext={true} client:load >
+      <TextBlock text={data?.page.projectsSection?.body} isRichtext={true} client:load >
         <div slot="title" class="flex justify-between">
-          <h2 class="section-title">{data?.homePage.projectsSection?.title}</h2>
+          <h2 class="section-title">{data?.page.projectsSection?.title}</h2>
           <a v-if="showLink" class="uppercase font-bold" href="/projects">View All</a>
         </div>
       </TextBlock>
@@ -65,8 +65,8 @@ const data = await fetchHomePage();
 
     <!-- Skills -->
     <section class="page-section">
-      <TextBlock text={data?.homePage.skillsSection?.body} isRichtext={true} client:load>
-        <h2 slot="title" class="section-title">{data?.homePage.skillsSection?.title}</h2>
+      <TextBlock text={data?.page.skillsSection?.body} isRichtext={true} client:load>
+        <h2 slot="title" class="section-title">{data?.page.skillsSection?.title}</h2>
       </TextBlock>
       <ul class="bottom grid md:grid-cols-3 gap-[2rem]">{data?.skillsGroups.map((item) => (
         <li class="lists flex flex-col gap-y-[2rem]">

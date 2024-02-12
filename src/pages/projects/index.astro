@@ -1,25 +1,13 @@
 ---
-import {
-    fetchProjects,
-    fetchProjectGroup,
-    fetchGlobal,
-    fetchProfile,
-    fetchPageType,
-} from "../../lib/api";
+import { fetchProjectsLandingPage } from "../../lib/sanity";
 
 import PageLayout from "../../layouts/PageLayout.astro";
 import ProjectGrid from "../../components/ProjectGrid.vue";
 import TextBlock from "../../components/TextBlock.vue";
 
-const global = await fetchGlobal();
-const profile = await fetchProfile();
-const projectsPage = await fetchPageType("projectsPage");
-const projects = await fetchProjects();
-const personalProjects = await fetchProjectGroup("personal-projects");
-const portfolioProjects = await fetchProjectGroup("portfolio-projects");
-const categories = [personalProjects, portfolioProjects];
+const data = await fetchProjectsLandingPage();
 
-if (!projects?.length) {
+if (!data) {
     return new Response(null, {
         status: 404,
         statusText: "Not found",
@@ -28,14 +16,15 @@ if (!projects?.length) {
 ---
 
 <PageLayout
-    title={`${profile?.name} | ${projectsPage.title}`}
-    global={global}
-    profile={profile}
-    seoDescription={projectsPage?.seoDescription}
-    seoImage={projectsPage?.seoImage}>
+    title={`${data?.profile.name} | ${data?.page.title}`}
+    global={data?.global}
+    profile={data?.profile}
+    seoDescription={data?.page.seoDescription}
+    seoImage={data?.page.seoImage}
+>
     <div class="flex-col-4 md:flex-col-6 pt-[2rem] md:pt-[4rem]">
         {
-            categories.map((category) => (
+            data?.projectGroups.map((category) => (
                 <section class="page-section flex-col-3">
                     <TextBlock
                         class="text-center text-[1.25rem]"
