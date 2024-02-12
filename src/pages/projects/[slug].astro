@@ -1,11 +1,9 @@
 ---
 import {
-    fetchProject,
     fetchLanguages,
     fetchCommits,
-    fetchGlobal,
-    fetchProfile,
-} from "../../lib/api";
+} from "../../lib/octokit";
+import { fetchProjectDetailPage } from "../../lib/sanity";
 
 import ActivityLog from "../../components/ActivityLog.vue";
 import ImageGallery from "../../components/ImageGallery.vue";
@@ -21,11 +19,9 @@ import CardThumbnailLink from "../../components/cards/CardThumbnailLink.vue";
 import type { Language } from "../../interfaces/Language";
 import type { Project } from "../../interfaces/Project";
 
-const global = await fetchGlobal();
-const profile = await fetchProfile();
-const project = await fetchProject(Astro.params.slug || "");
+const data = await fetchProjectDetailPage(Astro.params.slug || "");
 
-if (!project) {
+if (!data.project) {
     return new Response(null, {
         status: 404,
         statusText: "Not found",
@@ -37,16 +33,16 @@ let commits = [];
 let lastCommit;
 
 // Fetch Github Data
-if (project?.repositoryUsername && project?.repositorySlug) {
+if (data?.project.repositoryUsername && data?.project.repositorySlug) {
     const fetchedLanguages = await fetchLanguages(
-        project.repositoryUsername,
-        project.repositorySlug,
+        data.project.repositoryUsername,
+        data.project.repositorySlug,
     );
     languages = fetchedLanguages;
 
     const fetchedCommits = await fetchCommits(
-        project.repositoryUsername,
-        project.repositorySlug,
+        data.project.repositoryUsername,
+        data.project.repositorySlug,
     );
     commits = Array.isArray(fetchedCommits) ? fetchedCommits.slice(0, 6) : [];
 }
@@ -57,22 +53,22 @@ if (commits?.length) {
 ---
 
 <PageLayout
-    title={`${profile?.name} | ${project.title}`} 
-    global={global}
-    profile={profile}
-    seoDescription={project.intro}
-    seoImage={project.mainImage}
+    title={`${data?.profile.name} | ${data.project.title}`} 
+    global={data?.global}
+    profile={data?.profile}
+    seoDescription={data.project.intro}
+    seoImage={data.project.mainImage}
 >
     <section>
         <DetailHeader
             client:load
-            title={project.title}
-            image={project.mainImage}
-            intro={project.intro}
-            launchUrl={project.url}
-            codeUrl={project.repository}
-            isFeatured={project.featured}
-            status={project.status}
+            title={data?.project.title}
+            image={data?.project.mainImage}
+            intro={data?.project.intro}
+            launchUrl={data?.project.url}
+            codeUrl={data?.project.repository}
+            isFeatured={data?.project.featured}
+            status={data?.project.status}
         />
     </section>
     <div
@@ -82,7 +78,7 @@ if (commits?.length) {
             <section class="flex-col-1">
                 <h2 class="section-title hidden md:block">Details</h2>
                 <ProjectInfo
-                    data={project}
+                    data={data.project}
                     lastCommit={lastCommit}
                     class="hidden md:block"
                 />
@@ -90,7 +86,7 @@ if (commits?.length) {
             <section class="flex-col-1 mt-[-2.5rem] md:mt-0">
                 <h2 class="section-title">Description</h2>
                 <TextBlock
-                    text={project.description}
+                    text={data.project.description}
                     isRichtext={true}
                     client:load
                 />
@@ -104,23 +100,23 @@ if (commits?.length) {
                 )
             }
             {
-                project?.galleryImages?.length > 0 && (
+                data.project?.galleryImages?.length > 0 && (
                     <section class="flex-col-1">
                         <h2 class="section-title">Images</h2>
-                        <ImageGallery images={project.galleryImages} />
+                        <ImageGallery images={data.project.galleryImages} />
                     </section>
                 )
             }
             <section class="md:!hidden flex-col-1">
                 <h2 class="section-title">Categories</h2>
-                <TagGrid tags={project.tags} title="categories" />
+                <TagGrid tags={data.project.tags} title="categories" />
             </section>
             {
-                project?.relatedProjects?.length > 0 && (
+                data.project?.relatedProjects?.length > 0 && (
                     <section class="flex-col-1">
                         <h2 class="section-title">Related Projects</h2>
                         <ul class="grid xl:grid-cols-2 gap-x-[1rem] gap-y-[2rem]">
-                            {project.relatedProjects.map(
+                            {data?.project.relatedProjects.map(
                                 (relatedProject: Project) => (
                                     <li>
                                         <CardThumbnailLink
@@ -140,7 +136,7 @@ if (commits?.length) {
                 <!-- Top of page on mobile -->
                 <section class="md:!hidden flex-col-1">
                     <h2 class="section-title">Details</h2>
-                    <ProjectInfo data={project} lastCommit={lastCommit} />
+                    <ProjectInfo data={data?.project} lastCommit={lastCommit} />
                 </section>
                 {
                     languages.length > 0 && (
@@ -154,13 +150,13 @@ if (commits?.length) {
                     <h2 class="section-title">Technologies</h2>
                     <TechList
                         client:load
-                        items={project.technologies}
+                        items={data?.project.technologies}
                         isOpen={true}
                     />
                 </section>
                 <section class="!hidden md:!block">
                     <h2 class="section-title pb-[1rem]">Categories</h2>
-                    <TagGrid tags={project.tags} title="categories" />
+                    <TagGrid tags={data?.project.tags} title="categories" />
                 </section>
             </div>
         </aside>

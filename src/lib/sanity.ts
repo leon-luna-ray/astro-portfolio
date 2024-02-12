@@ -1,6 +1,8 @@
 import { useSanityClient, groq } from 'astro-sanity';
 
+// Queries
 const queryGlobalSettings = groq`*[_type == "globalSettings"][0]`
+
 const queryProfile = groq`*[_type == "profileDetails"][0]{
     ...,
     "image": image.asset->{
@@ -10,6 +12,7 @@ const queryProfile = groq`*[_type == "profileDetails"][0]{
       description,
     }
   }`
+
 const queryFeaturedProjects = groq`
   *[_type == "project" && featured] | order(_updatedAt desc) {
     _id,
@@ -26,6 +29,7 @@ const queryFeaturedProjects = groq`
     title,
     technologies[]->{_id, title, slug, description, website, tags[]->{title, slug}},
 }`
+
 const queryPageType = (type: string) => groq`*[_type == '${type}'][0] {
     ...,
     "seoImage": seoImage.asset -> {
@@ -35,6 +39,48 @@ const queryPageType = (type: string) => groq`*[_type == '${type}'][0] {
       description
     }
   }`;
+
+const queryProject = (slug: string) => groq`*[_type == "project" && slug.current == '${slug}'] {
+    _id,
+    customUrl,
+    description,
+    featured,
+    intro,
+    "mainImage": mainImage.asset->{
+      _id,
+      title,
+      altText,
+      description,
+    },
+    "galleryImages": galleryImages[]{
+      "image": asset->{
+        _id,
+        title,
+        altText,
+        description,
+      }
+    },
+    relatedProjects[]->{
+      _id, 
+      slug, 
+      title, 
+      "mainImage": mainImage.asset->{
+        _id,
+        title,
+        altText,
+        description,
+      }, 
+      intro},
+    repository,
+    repositoryUsername,
+    repositorySlug,
+    slug,
+    status,
+    technologies[]->{_id, title, slug, description, website, tags[]->{title, slug}},
+    tags[]->{title, slug},
+    title,
+    url,
+  }[0]`;
 
 const queryProjectGroups = (slugs: string[]) => {
     const slugQueries = slugs.map(slug => `slug.current == "${slug}"`).join(' || ');
@@ -72,6 +118,7 @@ const querySkillsGroups = groq`*[_type == "skillsList"] | order(title) {
     }
   }`;
 
+// Fetch Requests
 export async function fetchHomePage() {
     const query = groq`{
         "global": ${queryGlobalSettings},
@@ -92,7 +139,19 @@ export async function fetchProjectsLandingPage() {
         "profile": ${queryProfile},
         "projectGroups": ${queryProjectGroups(['personal-projects', 'portfolio-projects'])},
     }`;
-    
+
+    const data = await useSanityClient().fetch(query);
+
+    return data;
+}
+
+export async function fetchProjectDetailPage(slug: string) {
+    const query = groq`{
+        "global": ${queryGlobalSettings},
+        "profile": ${queryProfile},
+        "project": ${queryProject(slug)},
+    }`;
+
     const data = await useSanityClient().fetch(query);
 
     return data;
