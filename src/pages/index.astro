@@ -1,11 +1,5 @@
 ---
-import {
-  fetchFeaturedProjects,
-  fetchGlobal,
-  fetchProfile,
-  fetchSkills,
-  fetchPageType,
-} from "../lib/api";
+import { fetchHomePage } from "../lib/sanity";
 import { getMediumUrl } from "../lib/images";
 
 import DiscoBall from "../components/DiscoBall.astro";
@@ -16,34 +10,30 @@ import ProjectGrid from "../components/ProjectGrid.vue";
 import TechList from "../components/TechList.vue";
 import TextBlock from "../components/TextBlock.vue";
 
-const global = await fetchGlobal();
-const profile = await fetchProfile();
-const homePage = await fetchPageType('homePage');
-const skills = await fetchSkills();
-const featuredProjects = await fetchFeaturedProjects();
+const data = await fetchHomePage();
 ---
 
-<PageLayout title={`${profile?.name} | ${homePage?.title}`} 
-            seoDescription={homePage?.seoDescription} 
-            seoImage={homePage?.seoImage}
-            profile={profile}
-            global={global}>
+<PageLayout title={`${data?.profile.name} | ${data?.page.title}`} 
+            seoDescription={data?.page.seoDescription} 
+            seoImage={data?.page.seoImage}
+            profile={data?.profile}
+            global={data?.global}>
   <div class="flex-col-4">
     <!-- Intro -->
     <section class="page-section">
       <Hero showLinks={true} client:load>
-        <h1 slot="title" class="title">{profile?.name}</h1>
-        <h2 slot="subtitle" class="subtitle one pt-[1rem]">{profile?.tagline}</h2>
-        <h2 slot="subtitle" class="subtitle two" aria-hidden="true">{profile?.tagline}</h2>
-        <h2 slot="subtitle" class="subtitle three" aria-hidden="true">{profile?.tagline}</h2>
+        <h1 slot="title" class="title">{data?.profile.name}</h1>
+        <h2 slot="subtitle" class="subtitle one pt-[1rem]">{data?.profile.tagline}</h2>
+        <h2 slot="subtitle" class="subtitle two" aria-hidden="true">{data?.profile.tagline}</h2>
+        <h2 slot="subtitle" class="subtitle three" aria-hidden="true">{data?.profile.tagline}</h2>
         <h2 slot="subtitle" class="subtitle four pb-[1rem] md:pb-[2rem]" aria-hidden="true">
-          {profile?.tagline}
+          {data?.profile.tagline}
         </h2>
         <div class="relative" slot="disco-ball">
           <DiscoBall />
         </div>
         <div slot="intro" class="container">
-          <p class="intro">{global?.intro}</p>
+          <p class="intro">{data?.global.intro}</p>
         </div>
         <div slot="btn-links" class="btn-links">
           <a class="btn light" href="/projects/">Check Projects</a>
@@ -54,31 +44,31 @@ const featuredProjects = await fetchFeaturedProjects();
     
     <!-- About -->
     <section class="page-section flex-col-4">
-      <ImageTextTout label={profile?.nickname} text={profile?.greeting} client:load>
-        <img src={getMediumUrl(profile.image?._id)} alt={profile.image?.altText} />
+      <ImageTextTout label={data?.profile.nickname} text={data?.profile.greeting} client:load>
+        <img src={getMediumUrl(data?.profile.image._id)} alt={data?.profile.image.altText} />
       </ImageTextTout>
-      <TextBlock text={profile?.bio} isRichtext={false}>
-        <h2 slot="title" class="section-title">{homePage?.aboutSection?.title}</h2>
+      <TextBlock text={data?.profile.bio} isRichtext={false}>
+        <h2 slot="title" class="section-title">{data?.page.aboutSection?.title}</h2>
       </TextBlock>
     </section>
     
     <!-- Projects -->
     <section class="page-section">
-      <TextBlock text={homePage?.projectsSection?.body} isRichtext={true} client:load >
+      <TextBlock text={data?.page.projectsSection?.body} isRichtext={true} client:load >
         <div slot="title" class="flex justify-between">
-          <h2 class="section-title">{homePage?.projectsSection?.title}</h2>
+          <h2 class="section-title">{data?.page.projectsSection?.title}</h2>
           <a v-if="showLink" class="uppercase font-bold" href="/projects">View All</a>
         </div>
       </TextBlock>
-      <ProjectGrid projects={featuredProjects} minGridCols={1} />
+      <ProjectGrid projects={data?.projects} minGridCols={1} />
     </section>
 
     <!-- Skills -->
     <section class="page-section">
-      <TextBlock text={homePage?.skillsSection?.body} isRichtext={true} client:load>
-        <h2 slot="title" class="section-title">{homePage?.skillsSection?.title}</h2>
+      <TextBlock text={data?.page.skillsSection?.body} isRichtext={true} client:load>
+        <h2 slot="title" class="section-title">{data?.page.skillsSection?.title}</h2>
       </TextBlock>
-      <ul class="bottom grid md:grid-cols-3 gap-[2rem]">{skills.map((item) => (
+      <ul class="bottom grid md:grid-cols-3 gap-[2rem]">{data?.skillsGroups.map((item) => (
         <li class="lists flex flex-col gap-y-[2rem]">
             <h3 class="text-[1.125rem]">{item.title}</h3>
             <TechList items={item.skills} isOpen={false} client:load />
