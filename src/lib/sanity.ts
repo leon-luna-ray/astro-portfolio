@@ -30,7 +30,7 @@ const queryFeaturedProjects = groq`
     technologies[]->{_id, title, slug, description, website, tags[]->{title, slug}},
 }`
 
-const queryPageType = (type: string, slug: string) => groq`*[_type == '${type}' && slug.current == '${slug}'][0] {
+const queryPageType = (type: string, slug: string) => groq`*[_type == '${type}' && slug.current == '${slug}']{
     ...,
     "seoImage": seoImage.asset -> {
       _id,
@@ -38,7 +38,7 @@ const queryPageType = (type: string, slug: string) => groq`*[_type == '${type}' 
       altText,
       description
     }
-  }`;
+  }[0]`;
 
 const queryProject = (slug: string) => groq`*[_type == "project" && slug.current == '${slug}'] {
     _id,
