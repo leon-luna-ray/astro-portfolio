@@ -30,7 +30,7 @@ const queryFeaturedProjects = groq`
     technologies[]->{_id, title, slug, description, website, tags[]->{title, slug}},
 }`
 
-const queryPageType = (type: string) => groq`*[_type == '${type}'][0] {
+const queryPageType = (type: string, slug: string) => groq`*[_type == '${type}' && slug.current == '${slug}'][0] {
     ...,
     "seoImage": seoImage.asset -> {
       _id,
@@ -122,7 +122,7 @@ const querySkillsGroups = groq`*[_type == "skillsList"] | order(title) {
 export async function fetchHomePage() {
     const query = groq`{
         "global": ${queryGlobalSettings},
-        "page": ${queryPageType('homePage')},
+        "page": ${queryPageType('homePage', 'astro-portfolio-home-page')},
         "profile": ${queryProfile},
         "projects": ${queryFeaturedProjects},
         "skillsGroups": ${querySkillsGroups},
@@ -135,7 +135,7 @@ export async function fetchHomePage() {
 export async function fetchProjectsLandingPage() {
     const query = groq`{
         "global": ${queryGlobalSettings},
-        "page": ${queryPageType('projectsPage')},
+        "page": ${queryPageType('landingPage', 'astro-portfolio-projects')},
         "profile": ${queryProfile},
         "projectGroups": ${queryProjectGroups(['personal-projects', 'portfolio-projects'])},
     }`;
