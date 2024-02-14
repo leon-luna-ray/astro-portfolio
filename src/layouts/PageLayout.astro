@@ -3,7 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.vue';
 import Footer from '../components/Footer.vue';
 
-const { title, global, profile, seoDescription, seoImage } = Astro.props;
+const { title, global, profile, seoDescription, seoImage, hidePath } = Astro.props;
 
 const isHome = () => {
     return Astro.url.pathname === '/';
@@ -33,6 +33,10 @@ const getPathArray = (): string[] => {
 
     if (path !== '/') {
         paths.unshift('/');
+    }
+
+    if (hidePath) {
+        return ['Ray Luna'];
     }
 
     return paths;
