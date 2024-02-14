@@ -15,12 +15,13 @@
                             <span>{{ title }}</span>
                         </div>
                     </div>
-                    <span v-if="!isHome" class="page-title">
+                    <span v-if="!isHome && path.length > 1" class="page-title">
                         {{ getTitle(path[path.length - 1]) }}
                     </span>
                 </a>
                 <div v-else-if="path.length" v-for="(item, index) in path" class="path flex">
                     <a v-if="index < path.length - 1" :href="path[index]" class="text-item">{{ getTitle(item) }}</a>
+                    <a v-else-if="path.length === 1" href="/" class="text-item">{{ getTitle(item) }}</a>
                     <span v-else class="text-item">{{ getTitle(item) }}</span>
                     <span v-if="index < path.length - 1" class="dash pl-2 hidden md:block" aria-hidden="true"> - </span>
                 </div>
