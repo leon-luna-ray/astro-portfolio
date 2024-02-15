@@ -9,9 +9,9 @@
         @apply bg-black text-primary-red hover:cursor-not-allowed;
     }
 
-    &.dark {
-        @apply bg-black text-primary-orange dark:bg-orange-600 dark:text-white;
-    }
+    // &.dark {
+    //     @apply bg-black text-primary-orange dark:bg-orange-600 dark:text-white;
+    // }
 
     &.light {
         @apply text-white bg-red-600 border border-neutral-brown;
