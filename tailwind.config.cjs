@@ -35,7 +35,7 @@ module.exports = {
       },
       colors: {
         'dark-brown':'#120000',
-        beige: '#F8F3E3',
+        beige: '#F0EDE4',
         chocolate: '#3E2723',
         'yellow-h': '#D4AC0D',
         primary: {
