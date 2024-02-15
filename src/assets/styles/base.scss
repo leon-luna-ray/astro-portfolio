@@ -9,7 +9,7 @@ main {
   @apply pb-[3.125rem] md:pb-[6.25rem];
 }
 h1,h2,h3,h4,h5 {
-  @apply font-monoton text-chocolate dark:text-light-yellow;
+  @apply font-monoton text-chocolate dark:text-light-yellow/80;
 }
 
 h1, .h1 {
@@ -40,5 +40,5 @@ h5, .h5 {
   @apply flex-col-1;
 }
 .section-title {
-  @apply text-[1.25rem];
+  @apply text-[1.25rem] md:text-[1.5rem];
 }

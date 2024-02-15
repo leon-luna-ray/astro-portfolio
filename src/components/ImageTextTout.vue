@@ -1,7 +1,7 @@
 <template>
     <div class="grid md:grid-cols-5 gap-x-[4rem] gap-y-[2rem] items-center">
         <div class='md:col-span-2 relative flex justify-center items-center aspect-square'>
-            <div class="flex justify-center items-center aspect-square rounded-3xl p-[2rem] w-fit bg-black dark:bg-orange-900/30">
+            <div class="flex justify-center items-center aspect-square rounded-3xl p-[2rem] w-fit bg-black dark:bg-light-yellow/60">
                 <slot />
             </div>
         </div>

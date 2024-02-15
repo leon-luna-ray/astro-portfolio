@@ -64,7 +64,7 @@
 }
 
 .rounded-image {
-    @apply rounded-3xl w-full aspect-square object-cover border border-neutral-brown;
+    @apply rounded-3xl w-full aspect-square object-cover border border-neutral-brown dark:border-beige/30;
 }
 
 .test-border {

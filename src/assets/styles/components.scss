@@ -1,5 +1,5 @@
 .activity-log li:not(:last-child) {
-    @apply border-b border-primary-orange pb-[0.5rem];
+    @apply border-b border-primary-orange dark:border-light-yellow/50 pb-[0.5rem];
 }
 
 .btn {
@@ -10,7 +10,7 @@
     }
 
     &.dark {
-        @apply bg-black text-primary-orange;
+        @apply bg-black text-primary-orange dark:bg-orange-600 dark:text-white;
     }
 
     &.light {
@@ -48,15 +48,14 @@
     @apply sticky top-0 md:top-[1rem] bg-theme z-[2];
 
     a {
-        @apply no-underline hover:text-neutral-brown md:hover:text-white dark:text-light-yellow;
-        ;
+        @apply no-underline hover:text-neutral-brown md:hover:text-white dark:text-light-yellow/80;
     }
 
     .top-label {
         @apply container flex items-center justify-center border-t border-b border-black md:border-none;
 
         .divider {
-            @apply flex-grow bg-dark-brown dark:bg-light-yellow h-[2px] hidden md:block;
+            @apply flex-grow bg-dark-brown dark:bg-light-yellow/80 h-[2px] hidden md:block;
         }
 
         .label-text {
@@ -121,19 +120,19 @@
         }
 
         .subtitle {
-            @apply text-[2.2rem] md:text-[3.6rem] leading-[30px] md:leading-[45px] text-yellow-900 dark:text-yellow-600;
+            @apply text-[2.2rem] md:text-[3.6rem] leading-[30px] md:leading-[45px] text-red-800;
 
             &.two {
 
-                @apply text-red-800 dark:text-orange-700;
+                @apply text-orange-700;
             }
 
             &.three {
-                @apply text-orange-700 dark:text-red-800;
+                @apply text-yellow-600;
             }
 
             &.four {
-                @apply text-yellow-600 dark:text-yellow-900;
+                @apply text-yellow-900;
             }
         }
 
@@ -161,7 +160,7 @@
 
 .link-list {
     li:not(:last-child) {
-        @apply border-b border-primary-orange pb-[1rem];
+        @apply border-b border-primary-orange dark:border-light-yellow/50 pb-[1rem];
     }
 
     .chevron {
@@ -175,7 +174,7 @@
         @apply h-[32px] w-[32px] zoom-in-out fill-neutral-brown;
 
         g {
-            @apply fill-neutral-brown;
+            @apply fill-neutral-brown dark:fill-light-yellow/60;
         }
     }
 }

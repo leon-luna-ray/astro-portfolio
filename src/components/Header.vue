@@ -1,6 +1,6 @@
 <template>
     <header id="header" :class="bottomPadding">
-        <div class='top-label hover:text-inherit'>
+        <div class='top-label hover:text-inherit dark:text-light-yellow/80'>
             <div class='divider'></div>
             <div class="label-text">
                 <a v-if="isMobile && path.length" href="/" class="mobile">
