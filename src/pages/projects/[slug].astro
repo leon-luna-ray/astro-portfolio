@@ -115,7 +115,7 @@ if (commits?.length) {
                 data.project?.relatedProjects?.length > 0 && (
                     <section class="flex-col-1">
                         <h2 class="section-title">Related Projects</h2>
-                        <ul class="grid xl:grid-cols-2 gap-x-[1rem] gap-y-[2rem]">
+                        <ul class="grid xl:grid-cols-2 gap-x-[1rem] gap-y-[1rem] md:gap-y-[2rem]">
                             {data?.project.relatedProjects.map(
                                 (relatedProject: Project) => (
                                     <li>

@@ -37,7 +37,7 @@ module.exports = {
         'dark-brown':'#120000',
         beige: '#F0EDE4',
         chocolate: '#3E2723',
-        'yellow-h': '#D4AC0D',
+        'light-yellow': '#F7D070',
         primary: {
           red: '#E76F51',
           orange: '#F8961E',

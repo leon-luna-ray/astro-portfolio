@@ -48,7 +48,7 @@
     @apply sticky top-0 md:top-[1rem] bg-theme z-[2];
 
     a {
-        @apply no-underline hover:text-neutral-brown md:hover:text-white;
+        @apply no-underline hover:text-neutral-brown md:hover:text-white dark:text-light-yellow;
         ;
     }
 
@@ -56,7 +56,7 @@
         @apply container flex items-center justify-center border-t border-b border-black md:border-none;
 
         .divider {
-            @apply flex-grow bg-black h-[2px] hidden md:block;
+            @apply flex-grow bg-dark-brown dark:bg-light-yellow h-[2px] hidden md:block;
         }
 
         .label-text {
@@ -117,23 +117,23 @@
         }
 
         .title {
-            @apply pt-[1.875rem] md:pt-[3.125rem] text-center text-[3.7rem] md:text-[6rem];
+            @apply pt-[1.875rem] md:pt-[3.125rem] text-center text-[3.7rem] md:text-[6rem] dark:text-light-yellow;
         }
 
         .subtitle {
-            @apply text-[2.2rem] md:text-[3.6rem] leading-[30px] md:leading-[45px] text-yellow-900;
+            @apply text-[2.2rem] md:text-[3.6rem] leading-[30px] md:leading-[45px] text-yellow-900 dark:text-yellow-600;
 
             &.two {
 
-                @apply text-red-800;
+                @apply text-red-800 dark:text-orange-700;
             }
 
             &.three {
-                @apply text-orange-700;
+                @apply text-orange-700 dark:text-red-800;
             }
 
             &.four {
-                @apply text-yellow-600;
+                @apply text-yellow-600 dark:text-yellow-900;
             }
         }
 

@@ -9,7 +9,7 @@ main {
   @apply pb-[3.125rem] md:pb-[6.25rem];
 }
 h1,h2,h3,h4,h5 {
-  @apply font-monoton text-chocolate;
+  @apply font-monoton text-chocolate dark:text-light-yellow;
 }
 
 h1, .h1 {
@@ -28,10 +28,10 @@ h5, .h5 {
   @apply text-[1.75rem];
 }
 .bg-theme {
-  @apply bg-beige;
+  @apply bg-beige dark:bg-dark-brown;
 }
 .text-theme {
-  @apply text-dark-brown;
+  @apply text-dark-brown dark:text-beige;
 }
 .page-section {
   @apply container flex-col-2;
