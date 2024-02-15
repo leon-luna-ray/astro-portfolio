@@ -45,7 +45,7 @@
 }
 
 #header {
-    @apply sticky top-0 md:top-[1rem] bg-primary-yellow z-[2];
+    @apply sticky top-0 md:top-[1rem] bg-theme z-[2];
 
     a {
         @apply no-underline hover:text-neutral-brown md:hover:text-white;
@@ -117,7 +117,7 @@
         }
 
         .title {
-            @apply pt-[1.875rem] md:pt-[3.125rem] text-center text-[3.7rem] md:text-[6rem];
+            @apply text-theme pt-[1.875rem] md:pt-[3.125rem] text-center text-[3.7rem] md:text-[6rem];
         }
 
         .subtitle {

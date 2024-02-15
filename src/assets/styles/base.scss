@@ -1,5 +1,5 @@
 body {
-  @apply bg-primary-yellow font-archivo font-extralight pb-[3.125rem] md:py-[6.25rem] relative text-neutral-brown underline-offset-4;
+  @apply bg-theme font-archivo font-extralight pb-[3.125rem] md:py-[6.25rem] relative text-theme underline-offset-4;
   // @apply bg-primary-yellow dark:bg-dark-brown dark:text-white font-archivo font-extralight pb-[3.125rem] md:py-[6.25rem] relative text-neutral-brown underline-offset-4;
 }
 a {
@@ -9,7 +9,7 @@ main {
   @apply pb-[3.125rem] md:pb-[6.25rem];
 }
 h1,h2,h3,h4,h5 {
-  @apply font-monoton;
+  @apply font-monoton text-yellow-900;
 }
 
 h1, .h1 {
@@ -27,15 +27,18 @@ h4, .h4 {
 h5, .h5 {
   @apply text-[1.75rem];
 }
-
+.bg-theme {
+  @apply bg-beige;
+}
+.text-theme {
+  @apply text-dark-brown;
+}
 .page-section {
   @apply container flex-col-2;
 }
-
 .richtext {
   @apply flex-col-1;
 }
-
 .section-title {
   @apply text-[1.25rem];
 }
