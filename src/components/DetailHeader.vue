@@ -60,7 +60,7 @@ const showLanuchBtn = computed(() => {
                 <div class="btn-links">
                     <a v-if="launchUrl && showLanuchBtn" class="btn light" :href="launchUrl" target="_blank">Launch</a>
                     <div v-else-if="launchUrl" class="btn disabled" :href="launchUrl" target="_blank">Launch</div>
-                    <a v-if="codeUrl" class="btn dark" :href="codeUrl" target="_blank">Code</a>
+                    <a v-if="codeUrl" class="btn secondary" :href="codeUrl" target="_blank">Code</a>
                 </div>
             </div>
         </div>

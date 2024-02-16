@@ -9,9 +9,9 @@
         @apply bg-black text-primary-red hover:cursor-not-allowed;
     }
 
-    // &.dark {
-    //     @apply bg-black text-primary-orange dark:bg-orange-600 dark:text-white;
-    // }
+    &.secondary {
+        @apply bg-black text-primary-orange dark:bg-orange-600 dark:text-white;
+    }
 
     &.light {
         @apply text-white bg-red-600 border border-neutral-brown;
@@ -55,7 +55,7 @@
         @apply container flex items-center justify-center border-t border-b border-black md:border-none;
 
         .divider {
-            @apply flex-grow bg-dark-brown dark:bg-light-yellow/80 h-[2px] hidden md:block;
+            @apply flex-grow bg-dark-brown dark:bg-light-yellow h-[2px] hidden md:block;
         }
 
         .label-text {
@@ -116,7 +116,7 @@
         }
 
         .title {
-            @apply pt-[1.875rem] md:pt-[3.125rem] text-center text-[3.7rem] md:text-[6rem] dark:text-light-yellow;
+            @apply pt-[1.875rem] md:pt-[3.125rem] text-center text-[3.7rem] md:text-[6rem] dark:text-light-yellow/90;
         }
 
         .subtitle {
@@ -137,7 +137,7 @@
         }
 
         .intro {
-            @apply py-[1.875rem] text-[1.25rem] font-light;
+            @apply py-[1.875rem] text-[1.25rem] font-light leading-[120%];
         }
     }
 }
