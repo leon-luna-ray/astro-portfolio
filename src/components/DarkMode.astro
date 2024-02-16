@@ -1,5 +1,5 @@
-<!-- <script>
-    const setTheme = (theme) => {
+<script>
+    const setTheme = (theme: string) => {
         if (theme === "light") {
             document.documentElement.classList.remove("dark");
         } else {
@@ -9,7 +9,9 @@
     };
 
     const updateTheme = () => {
-        const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const prefersDarkMode = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+        ).matches;
         const storedTheme = localStorage.getItem("theme");
         const systemTheme = prefersDarkMode ? "dark" : "light";
 
@@ -25,5 +27,7 @@
         updateTheme();
     }
 
-    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", updateTheme);
-</script> -->
+    window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", updateTheme);
+</script>
