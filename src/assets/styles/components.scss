@@ -48,35 +48,16 @@
 }
 
 #header {
-    @apply sticky top-0 md:top-[1rem] bg-theme z-[2];
-
     a {
-        @apply no-underline hover:text-neutral-brown md:hover:text-white dark:text-light-yellow/80;
+        @apply no-underline dark:text-light-yellow/80;
     }
-
     .top-label {
-        @apply container flex items-center justify-center border-t border-b border-black md:border-none;
-
         .divider {
             @apply flex-grow bg-dark-brown dark:bg-light-yellow h-[2px] hidden md:block;
         }
-
-        .label-text {
-            @apply px-4 py-[1rem] md:py-0 flex justify-center gap-x-[0.5rem];
-        }
-
         .text-item {
-            @apply text-center font-bold text capitalize;
+            @apply text-center font-bold text capitalize dark:text-light-yellow/80;
         }
-
-        .dash {
-            @apply hidden md:block;
-        }
-
-        .path {
-            @apply flex;
-        }
-
     }
 
     .mobile {

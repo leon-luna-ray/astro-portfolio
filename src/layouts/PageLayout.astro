@@ -1,12 +1,14 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.vue';
-import Footer from '../components/Footer.vue';
+import BaseHead from "../components/BaseHead.astro";
+import DarkMode from "../components/DarkMode.astro";
+import Header from "../components/Header.vue";
+import Footer from "../components/Footer.vue";
 
-const { title, global, profile, seoDescription, seoImage, hidePath } = Astro.props;
+const { title, global, profile, seoDescription, seoImage, hidePath } =
+    Astro.props;
 
 const isHome = () => {
-    return Astro.url.pathname === '/';
+    return Astro.url.pathname === "/";
 };
 const pageTitle = () => {
     if (isHome()) {
@@ -18,33 +20,33 @@ const getPathArray = (): string[] => {
     const path = Astro.url.pathname;
 
     if (isHome()) {
-        return ['/'];
+        return ["/"];
     }
 
     const paths: string[] = [];
-    const segments = path.split('/').filter(Boolean);
+    const segments = path.split("/").filter(Boolean);
 
-    let currentPath = '';
+    let currentPath = "";
 
     for (const segment of segments) {
         currentPath += `/${segment}`;
         paths.push(currentPath);
     }
 
-    if (path !== '/') {
-        paths.unshift('/');
+    if (path !== "/") {
+        paths.unshift("/");
     }
 
     if (hidePath) {
-        return ['Ray Luna'];
+        return ["Ray Luna"];
     }
 
     return paths;
 };
 ---
 
-<!DOCTYPE html>
-<html lang='en'>
+<!doctype html>
+<html lang="en">
     <head>
         <BaseHead
             title={title}
@@ -53,7 +55,11 @@ const getPathArray = (): string[] => {
         />
     </head>
     <body>
-        <div aria-hidden='true' class="fixed w-screen top-0 h-[1rem] z-[2] bg-theme"></div>
+        <div
+            aria-hidden="true"
+            class="fixed w-screen top-0 h-[1rem] z-[2] bg-theme"
+        >
+        </div>
         <Header
             client:only
             name={profile?.name}
@@ -70,37 +76,6 @@ const getPathArray = (): string[] => {
             github={profile?.github}
             email={profile?.email}
         />
+        <DarkMode />
     </body>
 </html>
-
-<script is:inline>
-    const setTheme = (theme) => {
-        if (theme === "light") {
-            document.documentElement.classList.remove("dark");
-        } else {
-            document.documentElement.classList.add("dark");
-        }
-        window.localStorage.setItem("theme", theme);
-    };
-
-    const updateTheme = () => {
-        const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        const storedTheme = localStorage.getItem("theme");
-        const systemTheme = prefersDarkMode ? "dark" : "light";
-
-        if (storedTheme !== systemTheme) {
-            setTheme(systemTheme);
-        }
-    };
-
-    // Initial theme setup
-    const storedTheme = localStorage.getItem("theme");
-    if (storedTheme) {
-        setTheme(storedTheme);
-    } else {
-        updateTheme();
-    }
-
-    // Listen for changes in preferred color scheme
-    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", updateTheme);
-</script>
