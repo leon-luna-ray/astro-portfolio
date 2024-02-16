@@ -1,6 +1,6 @@
 <template>
     <header id="header" :class="bottomPadding">
-        <div class='top-label hover:text-inherit dark:text-light-yellow/80'>
+        <div class='top-label hover:text-inherit dark:text-light-yellow/80 relative'>
             <div class='divider'></div>
             <div class="label-text">
                 <a v-if="isMobile && path.length" href="/" class="mobile">
@@ -27,6 +27,7 @@
                 </div>
             </div>
             <div class='divider'></div>
+            <div class="dark-btn absolute right-[4rem] bg-theme px-[1rem] hover:cursor-pointer" @click="toggleDarkMode">I/O</div>
         </div>
     </header>
 </template>
@@ -84,6 +85,9 @@ const getTitle = (path: string): string => {
     }
     const title = lastElement.replace(/-/g, ' ');
     return title
+}
+const toggleDarkMode = () => {
+    document.documentElement.classList.toggle('dark');
 }
 
 // Watchers

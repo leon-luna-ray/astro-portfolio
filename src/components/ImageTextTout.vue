@@ -7,7 +7,7 @@
         </div>
         <div class='md:col-span-3 text-center md:text-left flex justify-center flex-col'>
             <span v-if="label" class='font-bold text-orange-900 dark:text-inherit'>{{ label }}</span>
-            <h2 class="font-monoton text-[2rem] md:text-[3.125rem] pt-[1rem] md:pt-[2.5rem] text-yellow-900 dark:text-light-yellow/80 leading-[120%]">{{ text }}</h2>
+            <h2 class="font-monoton text-[2rem] md:text-[3.125rem] pt-[1rem] md:pt-[2.5rem] dark:text-light-yellow/80 leading-[120%]">{{ text }}</h2>
         </div>
     </div>
 </template>
