@@ -1,8 +1,8 @@
 <template>
-    <header id="header" :class="bottomPadding">
-        <div class='top-label hover:text-inherit'>
+    <header id="header" :class="['sticky top-0 md:top-[1rem] bg-theme z-[2]', bottomPadding]">
+        <div class='top-label container flex items-center justify-center border-b border-black dark:border-light-yellow/80 md:border-none relative'>
             <div class='divider'></div>
-            <div class="label-text">
+            <div class="px-4 py-[1rem] md:py-0 flex justify-center gap-x-[0.5rem]">
                 <a v-if="isMobile && path.length" href="/" class="mobile">
                     <div class="site">
                         <div v-if="path.length > 1" class="inner">
@@ -23,10 +23,11 @@
                     <a v-if="index < path.length - 1" :href="path[index]" class="text-item">{{ getTitle(item) }}</a>
                     <a v-else-if="path.length === 1" href="/" class="text-item">{{ getTitle(item) }}</a>
                     <span v-else class="text-item">{{ getTitle(item) }}</span>
-                    <span v-if="index < path.length - 1" class="dash pl-2 hidden md:block" aria-hidden="true"> - </span>
+                    <span v-if="index < path.length - 1" class="pl-2 hidden md:block" aria-hidden="true"> - </span>
                 </div>
             </div>
             <div class='divider'></div>
+            <DarkModeBtn />
         </div>
     </header>
 </template>
@@ -34,6 +35,7 @@
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue';
 import { useWindowScroll, useMediaQuery } from '@vueuse/core'
+import DarkModeBtn from './DarkModeBtn.vue';
 
 const props = defineProps({
     title: {

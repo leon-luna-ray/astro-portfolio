@@ -25,7 +25,15 @@
 .animate-spin-slow {
     animation: spin-slow 30s infinite linear;
 }
-
+.border-red {
+    @apply border-2 border-red-500;
+}
+.border-green {
+    @apply border-2 border-green-500;
+}   
+.border-blue {
+    @apply border-2 border-blue-500;
+}
 .flex-col-05 {
     @apply flex flex-col gap-y-[0.5rem];
 }
@@ -63,7 +71,7 @@
 }
 
 .rounded-image {
-    @apply rounded-3xl w-full aspect-square object-cover border border-neutral-brown;
+    @apply rounded-3xl w-full aspect-square object-cover border border-neutral-brown dark:border-beige/30;
 }
 
 .test-border {

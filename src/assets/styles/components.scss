@@ -1,5 +1,5 @@
 .activity-log li:not(:last-child) {
-    @apply border-b border-primary-orange pb-[0.5rem];
+    @apply border-b border-primary-orange dark:border-light-yellow/50 pb-[0.5rem];
 }
 
 .btn {
@@ -9,8 +9,11 @@
         @apply bg-black text-primary-red hover:cursor-not-allowed;
     }
 
-    &.dark {
-        @apply bg-black text-primary-orange;
+    &.primary {
+        @apply bg-red-700 dark:bg-red-700/80 text-beige;
+    }
+    &.secondary {
+        @apply bg-orange-700 dark:bg-orange-700/80 text-beige;
     }
 
     &.light {
@@ -45,36 +48,16 @@
 }
 
 #header {
-    @apply sticky top-0 md:top-[1rem] bg-primary-yellow z-[2];
-
     a {
-        @apply no-underline hover:text-neutral-brown md:hover:text-white;
-        ;
+        @apply no-underline dark:text-light-yellow/80;
     }
-
     .top-label {
-        @apply container flex items-center justify-center border-t border-b border-black md:border-none;
-
         .divider {
-            @apply flex-grow bg-black h-[2px] hidden md:block;
+            @apply flex-grow bg-dark-brown dark:bg-light-yellow h-[2px] hidden md:block;
         }
-
-        .label-text {
-            @apply px-4 py-[1rem] md:py-0 flex justify-center gap-x-[0.5rem];
-        }
-
         .text-item {
-            @apply text-center font-bold text capitalize;
+            @apply text-center font-bold text capitalize dark:text-light-yellow/80;
         }
-
-        .dash {
-            @apply hidden md:block;
-        }
-
-        .path {
-            @apply flex;
-        }
-
     }
 
     .mobile {
@@ -117,28 +100,28 @@
         }
 
         .title {
-            @apply pt-[1.875rem] md:pt-[3.125rem] text-center text-[3.7rem] md:text-[6rem];
+            @apply pt-[1.875rem] md:pt-[3.125rem] text-center text-[3.7rem] md:text-[6rem] dark:text-light-yellow/90;
         }
 
         .subtitle {
-            @apply text-[2.2rem] md:text-[3.6rem] leading-[30px] md:leading-[45px];
+            @apply text-[2.2rem] md:text-[3.6rem] leading-[30px] md:leading-[45px] text-red-800;
 
             &.two {
 
-                @apply text-red-800;
-            }
-
-            &.three {
                 @apply text-orange-700;
             }
 
-            &.four {
+            &.three {
                 @apply text-yellow-600;
+            }
+
+            &.four {
+                @apply text-yellow-900;
             }
         }
 
         .intro {
-            @apply py-[1.875rem] text-[1.25rem] font-light;
+            @apply py-[1.875rem] text-[1.25rem] font-light leading-[120%];
         }
     }
 }
@@ -161,7 +144,7 @@
 
 .link-list {
     li:not(:last-child) {
-        @apply border-b border-primary-orange pb-[1rem];
+        @apply border-b border-primary-orange dark:border-light-yellow/50 pb-[1rem];
     }
 
     .chevron {
@@ -175,7 +158,7 @@
         @apply h-[32px] w-[32px] zoom-in-out fill-neutral-brown;
 
         g {
-            @apply fill-neutral-brown;
+            @apply fill-neutral-brown dark:fill-light-yellow/60;
         }
     }
 }
