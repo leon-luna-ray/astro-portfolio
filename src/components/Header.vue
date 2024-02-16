@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class='divider'></div>
-            <div class="dark-btn absolute right-[4rem] bg-theme px-[1rem] hover:cursor-pointer" @click="toggleDarkMode">I/O</div>
+            <DarkModeBtn />
         </div>
     </header>
 </template>
@@ -35,6 +35,7 @@
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue';
 import { useWindowScroll, useMediaQuery } from '@vueuse/core'
+import DarkModeBtn from './DarkModeBtn.vue';
 
 const props = defineProps({
     title: {
@@ -85,9 +86,6 @@ const getTitle = (path: string): string => {
     }
     const title = lastElement.replace(/-/g, ' ');
     return title
-}
-const toggleDarkMode = () => {
-    document.documentElement.classList.toggle('dark');
 }
 
 // Watchers

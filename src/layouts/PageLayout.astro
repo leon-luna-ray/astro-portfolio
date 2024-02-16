@@ -74,20 +74,33 @@ const getPathArray = (): string[] => {
 </html>
 
 <script is:inline>
-  const theme = (() => {
-    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-      return localStorage.getItem("theme");
-    }
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      return "dark";
-    }
-    return "light";
-  })();
+    const setTheme = (theme) => {
+        if (theme === "light") {
+            document.documentElement.classList.remove("dark");
+        } else {
+            document.documentElement.classList.add("dark");
+        }
+        window.localStorage.setItem("theme", theme);
+    };
 
-  if (theme === "light") {
-    document.documentElement.classList.remove("dark");
-  } else {
-    document.documentElement.classList.add("dark");
-  }
-  window.localStorage.setItem("theme", theme);
+    const updateTheme = () => {
+        const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const storedTheme = localStorage.getItem("theme");
+        const systemTheme = prefersDarkMode ? "dark" : "light";
+
+        if (storedTheme !== systemTheme) {
+            setTheme(systemTheme);
+        }
+    };
+
+    // Initial theme setup
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme) {
+        setTheme(storedTheme);
+    } else {
+        updateTheme();
+    }
+
+    // Listen for changes in preferred color scheme
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", updateTheme);
 </script>
