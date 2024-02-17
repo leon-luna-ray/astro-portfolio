@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-
+import type { Technology } from '../interfaces/Technology';
 import IconChevronUp from './icons/IconChevronUp.vue'
 import IconChevronDown from './icons/IconChevronDown.vue'
 
 const props = defineProps({
     items: {
-        type: Array,
+        type: Array as () => Technology[],
         required: true,
     },
     isOpen: {
@@ -31,6 +31,7 @@ onMounted(() => {
     if (props.isOpen) {
         setExpandedItem(0)
     }
+    console.log(props.items)
 });
 </script>
 <template>
