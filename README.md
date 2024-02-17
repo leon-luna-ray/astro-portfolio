@@ -18,8 +18,8 @@ The site contains my bio that gives a glimpse into my professional background, s
 ## Technologies
 
 - Astro
+- Cloudflare
 - JavaScript
-- Netlify
 - Sass
 - Sanity.io
 - Tailwind CSS
