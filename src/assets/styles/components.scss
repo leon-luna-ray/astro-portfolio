@@ -3,7 +3,7 @@
 }
 
 .btn {
-    @apply flex justify-center items-center px-[1.25rem] py-[0.625rem] rounded-full font-bold hover:cursor-pointer no-underline;
+    @apply flex justify-center items-center px-[1.25rem] py-[0.625rem] rounded-full font-bold hover:cursor-pointer no-underline dark:border dark:border-light-yellow/50;
 
     &.disabled {
         @apply bg-black text-primary-red hover:cursor-not-allowed;
@@ -78,7 +78,7 @@
 }
 
 .hero {
-    @apply container;
+    @apply md:container;
 
     .top-label {
         @apply flex items-center justify-center;
@@ -104,7 +104,7 @@
         }
 
         .subtitle {
-            @apply text-[2.2rem] md:text-[3.6rem] leading-[30px] md:leading-[45px] text-red-800;
+            @apply text-[2.2rem] md:text-[3.6rem] leading-[30px] md:leading-[45px] text-red-800 whitespace-nowrap;
 
             &.two {
 
