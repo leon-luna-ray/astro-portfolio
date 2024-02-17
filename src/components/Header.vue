@@ -1,6 +1,6 @@
 <template>
     <header id="header" :class="['sticky top-0 md:top-[1rem] bg-theme z-[2]', bottomPadding]">
-        <div class='top-label container flex items-center justify-center border-b border-black dark:border-light-yellow/80 md:border-none relative'>
+        <div class='top-label container flex items-center justify-center border-t border-b border-black dark:border-light-yellow/80 md:border-none relative'>
             <div class='divider'></div>
             <div class="px-4 py-[1rem] md:py-0 flex justify-center gap-x-[0.5rem]">
                 <a v-if="isMobile && path.length" href="/" class="mobile">

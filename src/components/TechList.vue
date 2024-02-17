@@ -31,7 +31,6 @@ onMounted(() => {
     if (props.isOpen) {
         setExpandedItem(0)
     }
-    console.log(props.items)
 });
 </script>
 <template>
