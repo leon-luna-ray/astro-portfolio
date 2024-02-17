@@ -21,13 +21,10 @@ const gridCols = computed(() => ({
     'grid-cols-2 lg:grid-cols-3 xl:grid-cols-4': props.minGridCols === 2,
     'grid-cols-3': props.minGridCols === 3,
 }));
-const gapY = computed(() => {
-    return props.minGridCols === 1 ? 'gap-y-[2rem]' : 'gap-y-[0.75rem]';
-})
 </script>
 
 <template>
-    <ul :class="['grid gap-x-[0.75rem] md:gap-[2rem]', gridCols, gapY]">
+    <ul :class="['grid gap-x-[0.75rem] md:gap-[2rem] gap-y-[2rem]', gridCols]">
         <li v-for="project in projects">
             <CardFeaturedProject :project="project" :key="project._id" />
         </li>
