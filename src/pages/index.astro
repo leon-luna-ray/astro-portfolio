@@ -2,7 +2,7 @@
 import { fetchHomePage } from "../lib/sanity";
 import { getMediumUrl } from "../lib/images";
 
-import DiscoBall from "../components/DiscoBall.astro";
+// import DiscoBall from "../components/DiscoBall.astro";
 import Hero from "../components/Hero.vue";
 import ImageTextTout from "../components/ImageTextTout.vue";
 import PageLayout from "../layouts/PageLayout.astro";
@@ -29,9 +29,9 @@ const data = await fetchHomePage();
         <h2 slot="subtitle" class="subtitle four pb-[1rem] md:pb-[2rem]" aria-hidden="true">
           {data?.profile.tagline}
         </h2>
-        <div class="relative" slot="disco-ball">
+        <!-- <div class="relative" slot="disco-ball">
           <DiscoBall />
-        </div>
+        </div> -->
         <div slot="intro" class="container">
           <p class="intro">{data?.global.intro}</p>
         </div>
