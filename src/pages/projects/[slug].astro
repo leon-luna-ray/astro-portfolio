@@ -15,9 +15,11 @@ import TextBlock from "../../components/TextBlock.vue";
 import TechList from "../../components/TechList.vue";
 import TagGrid from "../../components/TagGrid.vue";
 import CardThumbnailLink from "../../components/cards/CardThumbnailLink.vue";
+import CardOrganization from "../../components/cards/CardOrganization.vue";
 
 import type { Language } from "../../interfaces/Language";
 import type { Project } from "../../interfaces/Project";
+import type { Organization } from "../../interfaces/Organization";
 
 const data = await fetchProjectDetailPage(Astro.params.slug || "");
 
@@ -27,7 +29,7 @@ if (!data.project) {
         statusText: "Not found",
     });
 }
-
+console.log(data.project.relatedOrganizations)
 let languages: Language[] = [];
 let commits = [];
 let lastCommit;
@@ -153,6 +155,18 @@ if (commits?.length) {
                         items={data?.project.technologies}
                         isOpen={true}
                     />
+                </section>
+                <section class="flex-col-1">
+                    <h2 class="section-title">Organizations</h2>
+                    <ul>
+                        {data?.project.relatedOrganizations.map(
+                            (organization:Organization) => (
+                                <li>
+                                    <CardOrganization organization={organization}/>
+                                </li>
+                            ),
+                        )}
+                    </ul>
                 </section>
                 <section class="!hidden md:!block">
                     <h2 class="section-title pb-[1rem]">Categories</h2>
