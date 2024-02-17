@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, Ref, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 
 import IconChevronUp from './icons/IconChevronUp.vue'
 import IconChevronDown from './icons/IconChevronDown.vue'
@@ -16,7 +16,7 @@ const props = defineProps({
 });
 
 // State
-const expandedItem: Ref<number | null> = ref(null);
+const expandedItem = ref<number | null>(null);
 
 // Methods
 const setExpandedItem = (value: number | null): void => {
