@@ -1,8 +1,5 @@
 ---
-import {
-    fetchLanguages,
-    fetchCommits,
-} from "../../lib/octokit";
+import { fetchLanguages, fetchCommits } from "../../lib/octokit";
 import { fetchProjectDetailPage } from "../../lib/sanity";
 
 import ActivityLog from "../../components/ActivityLog.vue";
@@ -15,9 +12,11 @@ import TextBlock from "../../components/TextBlock.vue";
 import TechList from "../../components/TechList.vue";
 import TagGrid from "../../components/TagGrid.vue";
 import CardThumbnailLink from "../../components/cards/CardThumbnailLink.vue";
+import CardOrganization from "../../components/cards/CardOrganization.vue";
 
 import type { Language } from "../../interfaces/Language";
 import type { Project } from "../../interfaces/Project";
+import type { Organization } from "../../interfaces/Organization";
 
 const data = await fetchProjectDetailPage(Astro.params.slug || "");
 
@@ -53,7 +52,7 @@ if (commits?.length) {
 ---
 
 <PageLayout
-    title={`${data?.profile.name} | ${data.project.title}`} 
+    title={`${data?.profile.name} | ${data.project.title}`}
     global={data?.global}
     profile={data?.profile}
     seoDescription={data.project.intro}
@@ -154,6 +153,24 @@ if (commits?.length) {
                         isOpen={true}
                     />
                 </section>
+                {
+                    data.project.relatedOrganizations?.length > 0 && (
+                        <section class="flex-col-1">
+                            <h2 class="section-title">Organizations</h2>
+                            <ul class="flex-col-1">
+                                {data?.project.relatedOrganizations.map(
+                                    (organization: Organization) => (
+                                        <li>
+                                            <CardOrganization
+                                                org={organization}
+                                            />
+                                        </li>
+                                    ),
+                                )}
+                            </ul>
+                        </section>
+                    )
+                }
                 <section class="!hidden md:!block">
                     <h2 class="section-title pb-[1rem]">Categories</h2>
                     <TagGrid tags={data?.project.tags} title="categories" />
