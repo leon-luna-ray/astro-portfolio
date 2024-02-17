@@ -1,8 +1,5 @@
 ---
-import {
-    fetchLanguages,
-    fetchCommits,
-} from "../../lib/octokit";
+import { fetchLanguages, fetchCommits } from "../../lib/octokit";
 import { fetchProjectDetailPage } from "../../lib/sanity";
 
 import ActivityLog from "../../components/ActivityLog.vue";
@@ -29,7 +26,7 @@ if (!data.project) {
         statusText: "Not found",
     });
 }
-console.log(data.project.relatedOrganizations)
+
 let languages: Language[] = [];
 let commits = [];
 let lastCommit;
@@ -55,7 +52,7 @@ if (commits?.length) {
 ---
 
 <PageLayout
-    title={`${data?.profile.name} | ${data.project.title}`} 
+    title={`${data?.profile.name} | ${data.project.title}`}
     global={data?.global}
     profile={data?.profile}
     seoDescription={data.project.intro}
@@ -156,18 +153,24 @@ if (commits?.length) {
                         isOpen={true}
                     />
                 </section>
-                <section class="flex-col-1">
-                    <h2 class="section-title">Organizations</h2>
-                    <ul>
-                        {data?.project.relatedOrganizations.map(
-                            (organization:Organization) => (
-                                <li>
-                                    <CardOrganization organization={organization}/>
-                                </li>
-                            ),
-                        )}
-                    </ul>
-                </section>
+                {
+                    data.project.relatedOrganizations?.length > 0 && (
+                        <section class="flex-col-1">
+                            <h2 class="section-title">Organizations</h2>
+                            <ul class="flex-col-1">
+                                {data?.project.relatedOrganizations.map(
+                                    (organization: Organization) => (
+                                        <li>
+                                            <CardOrganization
+                                                org={organization}
+                                            />
+                                        </li>
+                                    ),
+                                )}
+                            </ul>
+                        </section>
+                    )
+                }
                 <section class="!hidden md:!block">
                     <h2 class="section-title pb-[1rem]">Categories</h2>
                     <TagGrid tags={data?.project.tags} title="categories" />
