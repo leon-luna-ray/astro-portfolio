@@ -21,9 +21,9 @@ export default defineConfig({
   ],
   output: "server",
   adapter: netlify(),
-  // resolve: {
-  //   alias: {
-  //     "@": "./src",
-  //   },
-  // },
+  resolve: {
+    alias: {
+      "@": "./src",
+    },
+  },
 });
