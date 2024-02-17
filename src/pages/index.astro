@@ -10,6 +10,13 @@ import ProjectGrid from "../components/ProjectGrid.vue";
 import TechList from "../components/TechList.vue";
 import TextBlock from "../components/TextBlock.vue";
 
+interface SkillGroup {
+  _type: 'skillsList';
+  _id: string;
+  title: string;
+  skills: [];
+}
+
 const data = await fetchHomePage();
 ---
 
@@ -68,7 +75,7 @@ const data = await fetchHomePage();
       <TextBlock text={data?.page.skillsSection?.body} isRichtext={true} client:load>
         <h2 slot="title" class="section-title">{data?.page.skillsSection?.title}</h2>
       </TextBlock>
-      <ul class="bottom grid md:grid-cols-3 gap-[2rem]">{data?.skillsGroups.map((item) => (
+      <ul class="bottom grid md:grid-cols-3 gap-[2rem]">{data?.skillsGroups.map((item:SkillGroup) => (
         <li class="lists flex flex-col gap-y-[2rem]">
             <h3 class="text-[1.125rem]">{item.title}</h3>
             <TechList items={item.skills} isOpen={false} client:load />
