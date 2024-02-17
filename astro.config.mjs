@@ -20,5 +20,7 @@ export default defineConfig({
     tailwind(),
   ],
   output: "server",
-  adapter: netlify(),
+  adapter: netlify({
+    edgeMiddleware: true
+  }),
 });
