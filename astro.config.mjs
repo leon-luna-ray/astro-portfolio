@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
-import netlify from "@astrojs/netlify";
+// import netlify from "@astrojs/netlify";
+import cloudflare from '@astrojs/cloudflare';
 import sitemap from "@astrojs/sitemap";
 import sanity from "astro-sanity";
 import tailwind from "@astrojs/tailwind";
@@ -20,7 +21,5 @@ export default defineConfig({
     tailwind(),
   ],
   output: "server",
-  adapter: netlify({
-    edgeMiddleware: true
-  }),
+  adapter: cloudflare(),
 });
