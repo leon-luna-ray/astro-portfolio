@@ -19,12 +19,6 @@ const {
 const isHome = () => {
     return Astro.url.pathname === "/";
 };
-const pageTitle = () => {
-    if (isHome()) {
-        return global?.title;
-    }
-    return Astro.props.title;
-};
 const getPathArray = (): string[] => {
     const path = Astro.url.pathname;
 
