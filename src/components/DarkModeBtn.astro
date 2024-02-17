@@ -4,14 +4,20 @@
 
 <script>
     const toggleDarkMode = () => {
-    const isDarkMode = document.documentElement.classList.contains("dark");
-    if (isDarkMode) {
-        document.documentElement.classList.remove("dark");
-        localStorage.setItem("theme", "light");
-    } else {
-        document.documentElement.classList.add("dark");
-        localStorage.setItem("theme", "dark");
+        const darkModeBtn = document.getElementById("dark-mode-btn");
+        if (darkModeBtn) {
+            const isDarkMode = document.documentElement.classList.contains("dark");
+            if (isDarkMode) {
+                document.documentElement.classList.remove("dark");
+                localStorage.setItem("theme", "light");
+            } else {
+                document.documentElement.classList.add("dark");
+                localStorage.setItem("theme", "dark");
+            }
+        }
+    };
+    const darkModeBtn = document.getElementById("dark-mode-btn");
+    if (darkModeBtn) {
+        darkModeBtn.addEventListener("click", toggleDarkMode);
     }
-};
-    document.getElementById("dark-mode-btn").addEventListener("click", toggleDarkMode);
 </script>
