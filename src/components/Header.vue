@@ -27,7 +27,8 @@
                 </div>
             </div>
             <div class='divider'></div>
-            <DarkModeBtn />
+            <!-- <DarkModeBtn /> -->
+            <slot name="dark-mode-btn" />
         </div>
     </header>
 </template>
@@ -35,7 +36,7 @@
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue';
 import { useWindowScroll, useMediaQuery } from '@vueuse/core'
-import DarkModeBtn from './DarkModeBtn.vue';
+// import DarkModeBtn from './DarkModeBtn.vue';
 
 const props = defineProps({
     title: {

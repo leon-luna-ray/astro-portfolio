@@ -1,6 +1,7 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
-import GoogleTag from '../components/GoogleTag.astro';
+import GoogleTag from "../components/GoogleTag.astro";
+import DarkModeBtn from "../components/DarkModeBtn.astro";
 import DarkMode from "../components/DarkMode.astro";
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
@@ -46,7 +47,7 @@ const getPathArray = (): string[] => {
 };
 ---
 
-<html lang='en'>
+<html lang="en">
     <head>
         <BaseHead
             title={title}
@@ -68,7 +69,9 @@ const getPathArray = (): string[] => {
             title={global?.title}
             path={getPathArray()}
             isHome={isHome()}
-        />
+        >
+            <DarkModeBtn slot="dark-mode-btn" />
+        </Header>
         <main>
             <slot />
         </main>
@@ -78,6 +81,5 @@ const getPathArray = (): string[] => {
             github={profile?.github}
             email={profile?.email}
         />
-
     </body>
 </html>
