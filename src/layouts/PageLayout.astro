@@ -1,20 +1,16 @@
 ---
-import '../assets/styles/index.scss';
-import BaseHead from "../components/BaseHead.astro";
+import "../assets/styles/index.scss";
+import { ViewTransitions } from "astro:transitions";
+
 import GoogleTag from "../components/GoogleTag.astro";
-import DarkModeBtn from "../components/DarkModeBtn.astro";
 import DarkMode from "../components/DarkMode.astro";
+import BaseHead from "../components/BaseHead.astro";
+import DarkModeBtn from "../components/DarkModeBtn.astro";
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 
-const { 
-    title, 
-    global, 
-    profile, 
-    seoDescription, 
-    seoImage,
-    hidePath, 
-} = Astro.props;
+const { title, global, profile, seoDescription, seoImage, hidePath } =
+    Astro.props;
 
 const isHome = () => {
     return Astro.url.pathname === "/";
@@ -55,6 +51,7 @@ const getPathArray = (): string[] => {
             seoDescription={seoDescription}
             seoImage={seoImage}
         />
+        <ViewTransitions />
         <DarkMode />
         <GoogleTag />
     </head>

@@ -3,7 +3,7 @@
 }
 
 .btn {
-    @apply flex justify-center items-center px-[1.25rem] py-[0.625rem] rounded-full font-bold hover:cursor-pointer no-underline dark:border dark:border-light-yellow/50;
+    @apply flex justify-center items-center px-[1.25rem] py-[0.625rem] rounded-full font-bold hover:cursor-pointer no-underline border border-dark-brown dark:border-light-yellow/50;
 
     &.disabled {
         @apply bg-black text-primary-red hover:cursor-not-allowed;
