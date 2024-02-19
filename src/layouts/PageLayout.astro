@@ -1,9 +1,7 @@
 ---
 import '../assets/styles/index.scss';
 import BaseHead from "../components/BaseHead.astro";
-import GoogleTag from "../components/GoogleTag.astro";
 import DarkModeBtn from "../components/DarkModeBtn.astro";
-import DarkMode from "../components/DarkMode.astro";
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 
@@ -55,8 +53,6 @@ const getPathArray = (): string[] => {
             seoDescription={seoDescription}
             seoImage={seoImage}
         />
-        <DarkMode />
-        <GoogleTag />
     </head>
     <body>
         <div
