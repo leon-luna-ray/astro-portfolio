@@ -1,9 +1,6 @@
 ---
 import "../assets/styles/index.scss";
-import { ViewTransitions } from "astro:transitions";
 
-import GoogleTag from "../components/GoogleTag.astro";
-import DarkMode from "../components/DarkMode.astro";
 import BaseHead from "../components/BaseHead.astro";
 import DarkModeBtn from "../components/DarkModeBtn.astro";
 import Header from "../components/Header.vue";
@@ -51,9 +48,6 @@ const getPathArray = (): string[] => {
             seoDescription={seoDescription}
             seoImage={seoImage}
         />
-        <ViewTransitions />
-        <DarkMode />
-        <GoogleTag />
     </head>
     <body>
         <div
