@@ -27,6 +27,9 @@ if (!data.project) {
     });
 }
 
+const projectURL = () => {
+    return data.project.customUrl ? data.project.customUrl : data.project.url;
+};
 let languages: Language[] = [];
 let commits = [];
 let lastCommit;
@@ -64,7 +67,7 @@ if (commits?.length) {
             title={data?.project.title}
             image={data?.project.mainImage}
             intro={data?.project.intro}
-            launchUrl={data?.project.url}
+            launchUrl={projectURL()}
             codeUrl={data?.project.repository}
             isFeatured={data?.project.featured}
             status={data?.project.status}
