@@ -28,7 +28,7 @@
             </div>
             <div class='divider'></div>
             <!-- Menu Btn -->
-            <div class="absolute z-10 right-[3.5rem] bg-theme p-[1rem]">
+            <div class="absolute z-10 right-0 md:right-[1.5rem] lg:right-[3rem] bg-theme p-[1rem]">
                 <IconHamburger class="hover:cursor-pointer" @click="isMenuOpen.set(!$isMenuOpen)"/>
             </div>
         </div>
