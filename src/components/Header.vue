@@ -27,7 +27,8 @@
                 </div>
             </div>
             <div class='divider'></div>
-            <slot name="dark-mode-btn" />
+            <!-- <slot name="dark-mode-btn" /> -->
+            <IconHamburger class="hover:cursor-pointer" @click="isMenuOpen.set(!$isMenuOpen)"/>
         </div>
     </header>
 </template>
@@ -35,6 +36,9 @@
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue';
 import { useWindowScroll, useMediaQuery } from '@vueuse/core'
+import { useStore } from '@nanostores/vue';
+import { isMenuOpen } from '../stores/menu';
+import IconHamburger from '../components/icons/IconHumburger.vue';
 
 const props = defineProps({
     title: {
@@ -54,12 +58,11 @@ const props = defineProps({
     },
 });
 
-// Composables
-const { y } = useWindowScroll();
-
 // State
+const { y } = useWindowScroll();
 const isMobile = useMediaQuery('(max-width: 640px)')
 const isSticky = ref(false);
+const $isMenuOpen = useStore(isMenuOpen);
 
 // Computed
 const bottomPadding = computed(() => ({
