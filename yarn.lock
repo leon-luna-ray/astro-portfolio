@@ -1166,7 +1166,7 @@
 
 "@nanostores/vue@^0.10.0":
   version "0.10.0"
-  resolved "https://registry.npmjs.org/@nanostores/vue/-/vue-0.10.0.tgz"
+  resolved "https://registry.yarnpkg.com/@nanostores/vue/-/vue-0.10.0.tgz#f1638933854c640ca4e91a59fda579cdbab4b8b0"
   integrity sha512-832RAUbzRfHPs1CdqVEwfvgB2+RD/INji4Zo8bUSEfRO2pQRMMeq479gydnohGpRaa0oNwlfKo7TGFXCghq/1g==
 
 "@nodelib/fs.scandir@2.1.5":
