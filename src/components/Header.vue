@@ -27,8 +27,10 @@
                 </div>
             </div>
             <div class='divider'></div>
-            <!-- <slot name="dark-mode-btn" /> -->
-            <IconHamburger class="hover:cursor-pointer" @click="isMenuOpen.set(!$isMenuOpen)"/>
+            <!-- Menu Btn -->
+            <div class="absolute z-10 right-[3.5rem] bg-theme p-[1rem]">
+                <IconHamburger class="hover:cursor-pointer" @click="isMenuOpen.set(!$isMenuOpen)"/>
+            </div>
         </div>
     </header>
 </template>

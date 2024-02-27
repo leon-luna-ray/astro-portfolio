@@ -12,6 +12,7 @@
     &.primary {
         @apply bg-red-700 dark:bg-red-700/80 text-beige;
     }
+
     &.secondary {
         @apply bg-orange-700 dark:bg-orange-700/80 text-beige;
     }
@@ -51,10 +52,12 @@
     a {
         @apply no-underline dark:text-light-yellow/80;
     }
+
     .top-label {
         .divider {
             @apply flex-grow bg-dark-brown dark:bg-light-yellow h-[2px] hidden md:block;
         }
+
         .text-item {
             @apply text-center font-bold text capitalize dark:text-light-yellow/80;
         }
@@ -152,6 +155,15 @@
     }
 }
 
+.menu-links {
+    li {
+        @apply zoom-in-out;
+    }
+
+    a {
+        @apply no-underline uppercase text-[1.5rem] font-semibold;
+    }
+}
 
 .social-icons {
     svg {
