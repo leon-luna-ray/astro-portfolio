@@ -32,6 +32,12 @@ h5, .h5 {
 .text-theme {
   @apply text-dark-brown dark:text-beige;
 }
+.stroke-theme {
+  @apply stroke-2 stroke-dark-brown dark:stroke-beige;
+}
+.fill-theme-heading {
+  @apply stroke-2 fill-dark-brown dark:fill-light-yellow/80;
+}
 .page-section {
   @apply container flex-col-2;
 }

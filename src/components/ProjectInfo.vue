@@ -38,6 +38,7 @@ const timeSinceUpdate = computed(() => {
     return null;
 })
 </script>
+
 <template>
     <div class="info">
         <ul class="info-list">

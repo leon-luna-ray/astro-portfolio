@@ -1,12 +1,4 @@
-<template>
-    <div v-if="items.length" class="container flex flex-wrap justify-center">
-        <div v-for="item in items" :key="item.id"
-            class="rounded-lg border border-neutral-brown px-[0.75rem] py-[0.2rem] m-[0.2rem] hover:cursor-pointer hover:bg-neutral-brown hover:text-primary-yellow"
-            :class="isSelected(item.slug.current)" @click="handleItemClick(item)">
-            {{ item.title }}
-        </div>
-    </div>
-</template>
+
   
 <script setup lang="ts">
 import { ref, onMounted, watch } from 'vue';
@@ -66,4 +58,13 @@ onMounted(() => {
     }
 });
 </script>
-  
+
+<template>
+    <div v-if="items.length" class="container flex flex-wrap justify-center">
+        <div v-for="item in items" :key="item.id"
+            class="rounded-lg border border-neutral-brown px-[0.75rem] py-[0.2rem] m-[0.2rem] hover:cursor-pointer hover:bg-neutral-brown hover:text-primary-yellow"
+            :class="isSelected(item.slug.current)" @click="handleItemClick(item)">
+            {{ item.title }}
+        </div>
+    </div>
+</template>
