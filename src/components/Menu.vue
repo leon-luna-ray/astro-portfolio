@@ -1,11 +1,10 @@
 <template>
-    <aside :class="[isVisible, 'fixed top-0 right-[-100vw] md:right-[-25vw] w-[100vw] md:w-[25vw] h-screen bg-theme z-10 transition-transform duration-300 ease-in-out border border-dark-brown dark:border-light-yellow/80 flex flex-col justify-between']">
-
+    <aside ref="asisdeRef" id="main-menu" :class="isVisible">
         <div class="p-[2rem] relative">
             <div class="absolute top-6 left-5">
                 <slot name="dark-mode-btn"></slot>
             </div>
-            <button @click="isMenuOpen.set(!$isMenuOpen)" class="absolute top-5 right-5">
+            <button @click="closeMenu" class="absolute top-5 right-5">
                 <IconClose />
             </button>
             <nav class="text-center">
@@ -28,7 +27,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
+import { onClickOutside } from '@vueuse/core'
 import { isMenuOpen } from '../stores/menu';
 import { useStore } from '@nanostores/vue';
 import IconClose from '../components/icons/IconClose.vue'
@@ -48,10 +48,19 @@ const props = defineProps({
 });
 
 // State
+const asisdeRef = ref(null);
 const $isMenuOpen = useStore(isMenuOpen);
 
 // Computed
 const isVisible = computed(() => ({
     'translate-x-[-100vw] md:translate-x-[-25vw]': $isMenuOpen.value,
 }))
+
+// Methods
+const closeMenu = () => {
+    isMenuOpen.set(false);
+}
+
+// Watchers
+onClickOutside(asisdeRef, closeMenu)
 </script>
