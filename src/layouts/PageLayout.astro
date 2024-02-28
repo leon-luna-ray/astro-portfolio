@@ -62,16 +62,15 @@ const getPathArray = (): string[] => {
             title={global?.title}
             path={getPathArray()}
             isHome={isHome()}
-        >
-            <DarkModeBtn slot="dark-mode-btn" />
-        </Header>
+        />
         <Menu
             client:load
-            name={profile?.name}
             linkedin={profile?.linkedin}
             github={profile?.github}
             email={profile?.email}
-        />
+        >
+            <DarkModeBtn slot="dark-mode-btn" />
+        </Menu>
         <main>
             <slot />
         </main>
