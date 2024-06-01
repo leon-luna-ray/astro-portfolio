@@ -148,14 +148,18 @@ if (commits?.length) {
                         </section>
                     )
                 }
-                <section class="flex-col-1">
-                    <h2 class="section-title">Technologies</h2>
-                    <TechList
-                        client:load
-                        items={data?.project.technologies}
-                        isOpen={true}
-                    />
-                </section>
+                {
+                    data?.project?.technologies?.length > 0 && (
+                        <section class="flex-col-1">
+                            <h2 class="section-title">Technologies</h2>
+                            <TechList
+                                client:load
+                                items={data?.project.technologies}
+                                isOpen={true}
+                            />
+                        </section>
+                    )
+                }
                 {
                     data.project.relatedOrganizations?.length > 0 && (
                         <section class="flex-col-1">
@@ -174,10 +178,17 @@ if (commits?.length) {
                         </section>
                     )
                 }
-                <section class="!hidden md:!block">
-                    <h2 class="section-title pb-[1rem]">Categories</h2>
-                    <TagGrid tags={data?.project.tags} title="categories" />
-                </section>
+                {
+                    data?.project?.tags?.length > 0 && (
+                        <section class="!hidden md:!block">
+                            <h2 class="section-title pb-[1rem]">Categories</h2>
+                            <TagGrid
+                                tags={data?.project.tags}
+                                title="categories"
+                            />
+                        </section>
+                    )
+                }
             </div>
         </aside>
     </div>
