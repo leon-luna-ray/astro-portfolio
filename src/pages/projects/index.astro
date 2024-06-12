@@ -13,6 +13,9 @@ if (!data) {
         statusText: "Not found",
     });
 }
+const slugOrder = ["professional-projects", "personal-projects", "portfolio-projects"];
+
+data.projectGroups.sort((a, b) => slugOrder.indexOf(a.slug.current) - slugOrder.indexOf(b.slug.current));
 ---
 
 <PageLayout

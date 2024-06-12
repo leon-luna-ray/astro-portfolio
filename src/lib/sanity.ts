@@ -138,7 +138,7 @@ export async function fetchProjectsLandingPage() {
         "global": ${queryGlobalSettings},
         "page": ${queryPageType('landingPage', 'astro-portfolio-projects')},
         "profile": ${queryProfile},
-        "projectGroups": ${queryProjectGroups(['personal-projects', 'portfolio-projects'])},
+        "projectGroups": ${queryProjectGroups(['professional-projects', 'personal-projects', 'portfolio-projects'])},
     }`;
 
   const data = await useSanityClient().fetch(query);
