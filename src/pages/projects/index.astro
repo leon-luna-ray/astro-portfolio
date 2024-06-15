@@ -5,6 +5,7 @@ import PageLayout from "../../layouts/PageLayout.astro";
 import ProjectGrid from "../../components/ProjectGrid.vue";
 import TextBlock from "../../components/TextBlock.vue";
 
+const slugOrder = ["professional-projects", "personal-projects", "portfolio-projects"];
 const data = await fetchProjectsLandingPage();
 
 if (!data) {
@@ -13,7 +14,6 @@ if (!data) {
         statusText: "Not found",
     });
 }
-const slugOrder = ["professional-projects", "personal-projects", "portfolio-projects"];
 
 data.projectGroups.sort((a, b) => slugOrder.indexOf(a.slug.current) - slugOrder.indexOf(b.slug.current));
 ---
