@@ -2,7 +2,7 @@ body {
   @apply bg-theme font-archivo font-extralight pb-[3.125rem] md:py-[6.25rem] relative text-theme underline-offset-4;
 }
 a {
-  @apply hover:cursor-pointer transition ease-in-out hover:underline;
+  @apply hover:cursor-pointer transition ease-in-out;
 }
 main {
   @apply pb-[3.125rem] md:pb-[6.25rem];
