@@ -4,6 +4,7 @@ import { useWindowScroll, useMediaQuery } from '@vueuse/core'
 import { useStore } from '@nanostores/vue';
 import { isMenuOpen } from '../stores/menu';
 import IconHamburger from '../components/icons/IconHumburger.vue';
+import IconChevronLeft from '../components/icons/IconChevronLeft.vue';
 
 const props = defineProps({
     title: {
@@ -31,8 +32,15 @@ const $isMenuOpen = useStore(isMenuOpen);
 
 // Computed
 const bottomPadding = computed(() => ({
-    'md:pb-[1rem]': isSticky.value,
+    'md:pb-[0.05rem]': isSticky.value,
 }))
+const parentPage = computed(() => {
+    const pathLength = props.path.length;
+    if (pathLength < 2) {
+        return null;
+    }
+    return props.path[pathLength - 2];
+});
 
 
 // Methods
@@ -61,7 +69,8 @@ watch(y, handleScroll)
 
 <template>
     <header id="header" :class="['sticky top-0 md:top-[1rem] bg-theme z-[2]', bottomPadding]">
-        <div class='top-label container flex items-center justify-center border-t border-b border-black dark:border-light-yellow/80 md:border-none relative'>
+        <div
+            class='top-label container flex items-center justify-center border-t border-b border-black dark:border-light-yellow/80 md:border-none relative'>
             <div class='divider'></div>
             <div class="px-4 py-[1rem] md:py-0 flex justify-center gap-x-[0.5rem]">
                 <a v-if="isMobile && path.length" href="/" class="mobile">
@@ -90,8 +99,13 @@ watch(y, handleScroll)
             <div class='divider'></div>
             <!-- Menu Btn -->
             <div class="absolute z-10 right-0 md:right-[1.5rem] lg:right-[3rem] bg-theme p-[1rem]">
-                <IconHamburger class="hover:cursor-pointer" @click="isMenuOpen.set(!$isMenuOpen)"/>
+                <IconHamburger class="hover:cursor-pointer" @click="isMenuOpen.set(!$isMenuOpen)" />
             </div>
+        </div>
+        <div v-if="parentPage"
+            class="stickty top-0 container flex items-center gap-x-[0.25rem] pb-[1rem] title-text-theme">
+            <IconChevronLeft class="h-[1.25rem]" />
+            <a :href="parentPage" class="uppercase font-[600] no-underline hover:underline">Back</a>
         </div>
     </header>
 </template>
