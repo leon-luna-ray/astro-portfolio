@@ -1,9 +1,5 @@
 <template>
     <div class="detail-header border-black pt-[2.5rem] md:pb-0 md:pt-[4rem]">
-        <div class="stickty top-0 container flex items-center gap-x-[0.25rem] pb-[1rem] title-text-theme">
-            <IconChevronLeft class="h-[1.25rem]" />
-            <a href="/projects" class="uppercase font-[600] no-underline hover:underline">Projects</a>
-        </div>
         <div class="inner md:container grid md:grid-cols-2 gap-y-[3.125rem] md:gap-[4rem]">
             <div class="flex flex-col gap-y-[1.5rem] order-last md:order-none flex-shrink">
                 <img :src="getMediumUrl(image._id)" :alt="image.altText || `Screenshot of ${title}`"
