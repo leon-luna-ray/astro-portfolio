@@ -119,6 +119,11 @@ const querySkillsGroups = groq`*[_type == "skillsList"] | order(title) {
     }
   }`;
 
+const queryTags = groq`*[_type == "tag"]{
+  title,
+  slug
+}`
+
 // Fetch Requests
 export async function fetchHomePage() {
   const query = groq`{
@@ -139,6 +144,7 @@ export async function fetchProjectsLandingPage() {
         "page": ${queryPageType('landingPage', 'astro-portfolio-projects')},
         "profile": ${queryProfile},
         "projectGroups": ${queryProjectGroups(['professional-projects', 'personal-projects', 'portfolio-projects'])},
+        "tags": ${queryTags},
     }`;
 
   const data = await useSanityClient().fetch(query);

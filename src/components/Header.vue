@@ -103,7 +103,7 @@ watch(y, handleScroll)
             </div>
         </div>
         <div v-if="parentPage"
-            class="stickty top-0 container flex items-center gap-x-[0.25rem] pb-[1rem] title-text-theme">
+            class="stickty top-0 container flex items-center gap-x-[0.25rem] title-text-theme">
             <IconChevronLeft class="h-[1.25rem]" />
             <a :href="parentPage" class="uppercase font-[600] no-underline hover:underline">Back</a>
         </div>

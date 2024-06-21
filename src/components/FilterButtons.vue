@@ -12,10 +12,6 @@ const props = defineProps({
         type: Array,
         required: true,
     },
-    query: {
-        type: String,
-        required: false,
-    },
 });
 
 const techQuery = ref<string | null>(null);
