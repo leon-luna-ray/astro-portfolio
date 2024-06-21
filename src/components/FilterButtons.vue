@@ -11,7 +11,7 @@ const props = defineProps({
 });
 
 const getHref = (slug: string) => {
-    return slug === props.activeItem ? '/projects' : `/projects/tech/${slug}`;
+    return slug === props.activeItem ? '/projects' : `/projects/technologies/${slug}`;
 }
 
 console.log('😃', props.activeItem)
