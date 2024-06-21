@@ -119,7 +119,7 @@ const querySkillsGroups = groq`*[_type == "skillsList"] | order(title) {
     }
   }`;
 
-const queryTags = groq`*[_type == "tag"]{
+const queryTags = groq`*[_type == "technology"]{
   title,
   slug
 }`

@@ -1,17 +1,24 @@
 ---
-import { fetchProjectsLandingPage } from "../../lib/sanity";
+import { fetchProjectsLandingPage } from "../../../lib/sanity";
 
-import FilterButtons from "../../components/FilterButtons.vue";
-import PageLayout from "../../layouts/PageLayout.astro";
-import ProjectGrid from "../../components/ProjectGrid.vue";
-import TextBlock from "../../components/TextBlock.vue";
+import FilterButtons from "../../../components/FilterButtons.vue";
+import PageLayout from "../../../layouts/PageLayout.astro";
+import ProjectGrid from "../../../components/ProjectGrid.vue";
+import TextBlock from "../../../components/TextBlock.vue";
 
 const { path } = Astro.params;
 
 // console.log(Astro.params)
 
-const slugOrder = ["professional-projects", "personal-projects", "portfolio-projects"];
 const data = await fetchProjectsLandingPage();
+const slugOrder = [
+    "professional-projects",
+    "personal-projects",
+    "portfolio-projects",
+];
+const url = new URL(Astro.request.url);
+const pathSegments = url.pathname.split("/");
+const activeItem = pathSegments[pathSegments.length - 1];
 
 if (!data) {
     return new Response(null, {
@@ -20,7 +27,10 @@ if (!data) {
     });
 }
 // console.log(data)
-data.projectGroups.sort((a, b) => slugOrder.indexOf(a.slug.current) - slugOrder.indexOf(b.slug.current));
+data.projectGroups.sort(
+    (a, b) =>
+        slugOrder.indexOf(a.slug.current) - slugOrder.indexOf(b.slug.current),
+);
 ---
 
 <PageLayout
@@ -31,8 +41,11 @@ data.projectGroups.sort((a, b) => slugOrder.indexOf(a.slug.current) - slugOrder.
     seoImage={data?.page.seoImage}
 >
     <div class="flex-col-4 md:flex-col-6 pt-[2rem] md:pt-[4rem]">
-        <FilterButtons items={data.tags} client:load/>
-        {
+        <FilterButtons items={data.tags} activeItem={activeItem} client:load />
+        <section class="page-section flex-col-3 text center flex justify-center border-red">
+            <h1 class="text-center">{activeItem} Projects</h1>
+        </section>
+        <!-- {
             data?.projectGroups.map((category) => (
                 <section class="page-section flex-col-3">
                     <TextBlock
@@ -50,6 +63,6 @@ data.projectGroups.sort((a, b) => slugOrder.indexOf(a.slug.current) - slugOrder.
                     />
                 </section>
             ))
-        }
+        } -->
     </div>
 </PageLayout>

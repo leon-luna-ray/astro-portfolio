@@ -182,3 +182,11 @@
 .tag {
     @apply bg-neutral-brown text-beige uppercase py-[0.3rem] px-[0.6rem] font-semibold text-[0.75rem] rounded-lg;
 }
+
+.filter-btn {
+    @apply rounded-lg border border-neutral-brown px-[0.75rem] py-[0.2rem] m-[0.2rem] hover:cursor-pointer hover:bg-neutral-brown hover:text-primary-yellow;
+}
+
+.filter-btn.active {
+    @apply bg-neutral-brown text-primary-yellow hover:bg-primary-yellow hover:text-black;
+}
