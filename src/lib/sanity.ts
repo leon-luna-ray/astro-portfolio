@@ -30,6 +30,8 @@ const queryFeaturedProjects = groq`
     technologies[]->{_id, title, slug, description, website, tags[]->{title, slug}},
 }`
 
+const queryTechnology = (slug: string) => groq`*[_type == "technology" && slug.current == '${slug}'][0]`;
+
 const queryPageType = (type: string, slug: string) => groq`*[_type == '${type}' && slug.current == '${slug}']{
     ...,
     "seoImage": seoImage.asset -> {
@@ -107,6 +109,22 @@ const queryProjectGroups = (slugs: string[]) => {
     }`;
 }
 
+const queryProjectsByTechnology = (slug: string) => groq`*[_type == "project" && "${slug}" in technologies[]->slug.current]  {
+    _id,
+    intro,
+    description,
+    "mainImage": mainImage.asset->{
+      _id,
+      title,
+      altText,
+      description,
+    }, 
+    slug,
+    status,
+    title,
+    technologies[]->{_id, title, slug, description, website, tags[]->{title, slug}},
+}`
+
 
 const querySkillsGroups = groq`*[_type == "skillsList"] | order(title) {
     title,
@@ -118,6 +136,12 @@ const querySkillsGroups = groq`*[_type == "skillsList"] | order(title) {
       website
     }
   }`;
+
+const queryUsedTechnologies = groq`*[_type == "technology" && _id in *[_type == "project"].technologies[]._ref] | order(title asc) {
+    title,
+    slug
+  }`;
+
 
 // Fetch Requests
 export async function fetchHomePage() {
@@ -139,7 +163,23 @@ export async function fetchProjectsLandingPage() {
         "page": ${queryPageType('landingPage', 'astro-portfolio-projects')},
         "profile": ${queryProfile},
         "projectGroups": ${queryProjectGroups(['professional-projects', 'personal-projects', 'portfolio-projects'])},
+        "tags": ${queryUsedTechnologies},
     }`;
+
+  const data = await useSanityClient().fetch(query);
+
+  return data;
+}
+
+export async function fetchFilteredProjectsPage(slug: string) {
+  const query = groq`{
+    "global": ${queryGlobalSettings},
+    "page": ${queryPageType('landingPage', 'astro-portfolio-projects')},
+    "technology": ${queryTechnology(slug)},
+    "profile": ${queryProfile},
+    "projects": ${queryProjectsByTechnology(slug)},
+    "tags": ${queryUsedTechnologies},
+}`;
 
   const data = await useSanityClient().fetch(query);
 

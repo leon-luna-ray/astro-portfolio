@@ -1,11 +1,11 @@
 #header {
+    @apply text-chocolate dark:text-light-yellow/80;
     a {
-        @apply no-underline dark:text-light-yellow/80;
+        @apply hover:underline;
     }
-
     .top-label {
         .divider {
-            @apply flex-grow bg-dark-brown dark:bg-light-yellow h-[2px] hidden md:block;
+            @apply flex-grow bg-chocolate dark:bg-light-yellow h-[2px] hidden md:block;
         }
 
         .text-item {
@@ -181,4 +181,18 @@
 
 .tag {
     @apply bg-neutral-brown text-beige uppercase py-[0.3rem] px-[0.6rem] font-semibold text-[0.75rem] rounded-lg;
+}
+
+.filter-btn {
+    @apply rounded-lg border border-neutral-brown px-[0.75rem] py-[0.2rem] m-[0.2rem] hover:cursor-pointer title-text-theme hover:bg-chocolate hover:text-white hover:dark:bg-primary-yellow hover:dark:text-chocolate flex gap-[0.25rem] items-center;
+}
+.filter-btn svg {
+    @apply h-[1rem] w-[1rem];
+}
+.filter-btn svg path {
+    @apply stroke-white dark:stroke-chocolate;
+}
+
+.filter-btn.active {
+    @apply bg-chocolate text-white dark:bg-primary-yellow dark:text-chocolate;
 }

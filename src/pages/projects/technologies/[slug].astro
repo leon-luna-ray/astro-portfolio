@@ -1,0 +1,36 @@
+---
+import { fetchFilteredProjectsPage } from "../../../lib/sanity";
+
+import FilterButtons from "../../../components/FilterButtons.vue";
+import PageLayout from "../../../layouts/PageLayout.astro";
+import ProjectGrid from "../../../components/ProjectGrid.vue";
+import TextBlock from "../../../components/TextBlock.vue";
+
+const slug = Astro.params.slug as string;
+const data = await fetchFilteredProjectsPage(slug);
+
+if (!data) {
+    return new Response(null, {
+        status: 404,
+        statusText: "Not found",
+    });
+}
+---
+
+<PageLayout
+    title={`${data?.profile.name} | ${data?.page.title}`}
+    global={data?.global}
+    profile={data?.profile}
+    seoDescription={data?.page.seoDescription}
+    seoImage={data?.page.seoImage}
+>
+<FilterButtons items={data?.tags} activeItem={slug} client:load />
+    <div class="flex-col-4 md:flex-col-6 pt-[2rem] md:pt-[4rem]">
+        <section class="page-section flex-col-3">
+            <TextBlock class="text-center text-[1.25rem]">
+                <h2 slot="title">{data?.technology?.title} Projects</h2>
+            </TextBlock>
+            <ProjectGrid projects={data?.projects} minGridCols={2} client:load />
+        </section>
+    </div>
+</PageLayout>
