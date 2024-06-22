@@ -141,6 +141,24 @@ if (commits?.length) {
                     <ProjectInfo data={data?.project} lastCommit={lastCommit} />
                 </section>
                 {
+                    data.project.relatedOrganizations?.length > 0 && (
+                        <section class="flex-col-1">
+                            <h2 class="section-title">Organizations</h2>
+                            <ul class="flex-col-1">
+                                {data?.project.relatedOrganizations.map(
+                                    (organization: Organization) => (
+                                        <li>
+                                            <CardOrganization
+                                                org={organization}
+                                            />
+                                        </li>
+                                    ),
+                                )}
+                            </ul>
+                        </section>
+                    )
+                }
+                {
                     languages.length > 0 && (
                         <section class="flex-col-1">
                             <h2 class="section-title">Languages</h2>
@@ -157,24 +175,6 @@ if (commits?.length) {
                                 items={data?.project.technologies}
                                 isOpen={true}
                             />
-                        </section>
-                    )
-                }
-                {
-                    data.project.relatedOrganizations?.length > 0 && (
-                        <section class="flex-col-1">
-                            <h2 class="section-title">Organizations</h2>
-                            <ul class="flex-col-1">
-                                {data?.project.relatedOrganizations.map(
-                                    (organization: Organization) => (
-                                        <li>
-                                            <CardOrganization
-                                                org={organization}
-                                            />
-                                        </li>
-                                    ),
-                                )}
-                            </ul>
                         </section>
                     )
                 }
