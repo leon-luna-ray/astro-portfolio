@@ -184,9 +184,15 @@
 }
 
 .filter-btn {
-    @apply rounded-lg border border-neutral-brown px-[0.75rem] py-[0.2rem] m-[0.2rem] hover:cursor-pointer hover:bg-neutral-brown hover:text-primary-yellow;
+    @apply rounded-lg border border-neutral-brown px-[0.75rem] py-[0.2rem] m-[0.2rem] hover:cursor-pointer title-text-theme hover:bg-chocolate hover:text-white hover:dark:bg-primary-yellow hover:dark:text-chocolate flex gap-[0.25rem] items-center;
+}
+.filter-btn svg {
+    @apply h-[1rem] w-[1rem];
+}
+.filter-btn svg path {
+    @apply stroke-white dark:stroke-chocolate;
 }
 
 .filter-btn.active {
-    @apply bg-neutral-brown text-primary-yellow hover:bg-primary-yellow hover:text-black;
+    @apply bg-chocolate text-white dark:bg-primary-yellow dark:text-chocolate;
 }
