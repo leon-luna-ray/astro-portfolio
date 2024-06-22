@@ -27,7 +27,7 @@ const getAriaLabel = (item: Tag) => { // Use Tag type for item
 
 <template>
     <section v-if="items.length" class="container pt-[2rem]">
-        <div class="flex flex-wrap justify-center">
+        <div class="flex flex-wrap justify-center md:px-[2rem]">
             <a v-for="item in items" :key="item._id" :href="getHref(item.slug.current)"
                 :class="[{ 'active': item.slug.current === activeItem }, 'filter-btn']"
                 :aria-label="getAriaLabel(item)">
