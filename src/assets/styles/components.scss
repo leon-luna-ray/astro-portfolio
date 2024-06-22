@@ -1,11 +1,11 @@
 #header {
+    @apply text-chocolate dark:text-light-yellow/80;
     a {
-        @apply no-underline dark:text-light-yellow/80;
+        @apply hover:underline;
     }
-
     .top-label {
         .divider {
-            @apply flex-grow bg-dark-brown dark:bg-light-yellow h-[2px] hidden md:block;
+            @apply flex-grow bg-chocolate dark:bg-light-yellow h-[2px] hidden md:block;
         }
 
         .text-item {
