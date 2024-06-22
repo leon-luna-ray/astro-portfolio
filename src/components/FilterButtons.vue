@@ -16,10 +16,13 @@ const getHref = (slug: string) => {
 </script>
 
 <template>
-    <div v-if="items.length" class="container flex flex-wrap justify-center">
-        <a v-for="item in items" :key="item._id" :href="getHref(item.slug.current)"
-            :class="[{ 'active': item.slug.current === activeItem }, 'filter-btn']">
-            {{ item.title }}
-        </a>
+    <div v-if="items.length" class="container pt-[2rem]">
+        <div class=" flex flex-wrap justify-center ">
+
+            <a v-for="item in items" :key="item._id" :href="getHref(item.slug.current)"
+                :class="[{ 'active': item.slug.current === activeItem }, 'filter-btn']">
+                {{ item.title }}
+            </a>
+        </div>
     </div>
 </template>

@@ -33,8 +33,8 @@ data.projectGroups.sort(
     seoDescription={data?.page.seoDescription}
     seoImage={data?.page.seoImage}
 >
+    <FilterButtons items={data.tags} client:load />
     <div class="flex-col-4 md:flex-col-6 pt-[2rem] md:pt-[4rem]">
-        <FilterButtons items={data.tags} client:load />
         {
             data?.projectGroups.map((category) => (
                 <section class="page-section flex-col-3">

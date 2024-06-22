@@ -16,7 +16,8 @@ const isHome = () => {
 };
 const getPathArray = (): string[] => {
     const path = Astro.url.pathname;
-
+    const exceptions = ["/projects/technologies"]; 
+    
     if (isHome()) {
         return ["/"];
     }
@@ -39,7 +40,7 @@ const getPathArray = (): string[] => {
         return ["Ray Luna"];
     }
 
-    return paths;
+    return paths.filter((path) => !exceptions.includes(path));
 };
 ---
 

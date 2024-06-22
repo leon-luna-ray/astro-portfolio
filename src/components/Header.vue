@@ -34,14 +34,10 @@ const $isMenuOpen = useStore(isMenuOpen);
 const bottomPadding = computed(() => ({
     'md:pb-[0.05rem]': isSticky.value,
 }))
-const parentPage = computed(() => {
-    const pathLength = props.path.length;
-    if (pathLength < 2) {
-        return null;
-    }
-    return props.path[pathLength - 2];
-});
 
+const parentPage = computed(() => {
+    return props.path.length >= 2 ? props.path[props.path.length - 2] : null;
+});
 
 // Methods
 const handleScroll = () => {
@@ -102,10 +98,9 @@ watch(y, handleScroll)
                 <IconHamburger class="hover:cursor-pointer" @click="isMenuOpen.set(!$isMenuOpen)" />
             </div>
         </div>
-        <div v-if="parentPage"
-            class="stickty top-0 container flex items-center gap-x-[0.25rem] title-text-theme">
+        <div v-if="parentPage" class="stickty top-0 container flex items-center gap-x-[0.25rem] title-text-theme">
             <IconChevronLeft class="h-[1.25rem]" />
-            <a :href="parentPage" class="uppercase font-[600] no-underline hover:underline">Back</a>
+            <a :href="parentPage" class="uppercase font-[600] hover:underline">Back</a>
         </div>
     </header>
 </template>
