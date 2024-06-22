@@ -6,15 +6,7 @@ import PageLayout from "../../../layouts/PageLayout.astro";
 import ProjectGrid from "../../../components/ProjectGrid.vue";
 import TextBlock from "../../../components/TextBlock.vue";
 
-const { path } = Astro.params;
-
-console.log(Astro.request)
-
-
-const url = new URL(Astro.request.url);
-const pathSegments = url.pathname.split("/");
-const slug = pathSegments[pathSegments.length - 1];
-
+const slug = Astro.params.slug as string;
 const data = await fetchFilteredProjectsPage(slug);
 
 if (!data) {
@@ -35,16 +27,10 @@ if (!data) {
     <div class="flex-col-4 md:flex-col-6 pt-[2rem] md:pt-[4rem]">
         <FilterButtons items={data.tags} activeItem={slug} client:load />
         <section class="page-section flex-col-3">
-            <TextBlock
-                class="text-center text-[1.25rem]"
-            >
+            <TextBlock class="text-center text-[1.25rem]">
                 <h2 slot="title">{data.technology?.title} Projects</h2>
             </TextBlock>
-            <ProjectGrid
-                projects={data.projectGroups}
-                minGridCols={2}
-                client:load
-            />
+            <ProjectGrid projects={data.projects} minGridCols={2} client:load />
         </section>
     </div>
 </PageLayout>

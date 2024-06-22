@@ -6,7 +6,11 @@ import PageLayout from "../../layouts/PageLayout.astro";
 import ProjectGrid from "../../components/ProjectGrid.vue";
 import TextBlock from "../../components/TextBlock.vue";
 
-const slugOrder = ["professional-projects", "personal-projects", "portfolio-projects"];
+const slugOrder = [
+    "professional-projects",
+    "personal-projects",
+    "portfolio-projects",
+];
 const data = await fetchProjectsLandingPage();
 
 if (!data) {
@@ -16,7 +20,10 @@ if (!data) {
     });
 }
 
-data.projectGroups.sort((a, b) => slugOrder.indexOf(a.slug.current) - slugOrder.indexOf(b.slug.current));
+data.projectGroups.sort(
+    (a, b) =>
+        slugOrder.indexOf(a.slug.current) - slugOrder.indexOf(b.slug.current),
+);
 ---
 
 <PageLayout
@@ -27,7 +34,7 @@ data.projectGroups.sort((a, b) => slugOrder.indexOf(a.slug.current) - slugOrder.
     seoImage={data?.page.seoImage}
 >
     <div class="flex-col-4 md:flex-col-6 pt-[2rem] md:pt-[4rem]">
-        <FilterButtons items={data.tags} client:load/>
+        <FilterButtons items={data.tags} client:load />
         {
             data?.projectGroups.map((category) => (
                 <section class="page-section flex-col-3">

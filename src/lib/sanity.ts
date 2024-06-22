@@ -137,10 +137,11 @@ const querySkillsGroups = groq`*[_type == "skillsList"] | order(title) {
     }
   }`;
 
-const queryTags = groq`*[_type == "technology"]{
-  title,
-  slug
-}`
+const queryUsedTechnologies = groq`*[_type == "technology" && _id in *[_type == "project"].technologies[]._ref] | order(title asc) {
+    title,
+    slug
+  }`;
+
 
 // Fetch Requests
 export async function fetchHomePage() {
@@ -162,7 +163,7 @@ export async function fetchProjectsLandingPage() {
         "page": ${queryPageType('landingPage', 'astro-portfolio-projects')},
         "profile": ${queryProfile},
         "projectGroups": ${queryProjectGroups(['professional-projects', 'personal-projects', 'portfolio-projects'])},
-        "tags": ${queryTags},
+        "tags": ${queryUsedTechnologies},
     }`;
 
   const data = await useSanityClient().fetch(query);
@@ -170,16 +171,14 @@ export async function fetchProjectsLandingPage() {
   return data;
 }
 
-
-
 export async function fetchFilteredProjectsPage(slug: string) {
   const query = groq`{
     "global": ${queryGlobalSettings},
     "page": ${queryPageType('landingPage', 'astro-portfolio-projects')},
     "technology": ${queryTechnology(slug)},
     "profile": ${queryProfile},
-    "projectGroups": ${queryProjectsByTechnology(slug)},
-    "tags": ${queryTags},
+    "projects": ${queryProjectsByTechnology(slug)},
+    "tags": ${queryUsedTechnologies},
 }`;
 
   const data = await useSanityClient().fetch(query);
